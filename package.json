@@ -4,7 +4,8 @@
   "description": "Alto Cinema web app",
   "main": "app.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "devStart": "nodemon app.js"
   },
   "repository": {
     "type": "git",
@@ -25,10 +26,19 @@
   },
   "homepage": "https://github.com/nachodm/altocinema#readme",
   "dependencies": {
+    "bcrypt": "^4.0.1",
     "cookie-parser": "^1.4.5",
     "express": "^4.17.1",
     "express-ejs-layouts": "^2.5.0",
+    "express-flash": "0.0.2",
     "express-session": "^1.17.0",
+    "mysql": "^2.18.1",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0",
     "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "dotenv": "^8.2.0",
+    "nodemon": "^2.0.2"
   }
 }
