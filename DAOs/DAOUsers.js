@@ -50,28 +50,6 @@ class DAOUsers {
         });
     }
 
-    userExists(email, callback) {
-        this.pool.getConnection((err, connection) => {
-            if(err){
-                callback(null);
-            }
-            else{
-                connection.query("SELECT email, pass FROM users WHERE email = ?",
-                [email],
-                (err, rows) => {
-                    connection.release();
-                    if (err) { callback(null); }
-                    if (rows.length === 0) {
-                        callback(null);
-                    } else {
-                        callback(rows[0]);
-                    }
-                });
-            }
-        });
-    }
-
-
     /**
      * Inserta la información del usuario pasado por parámetro en la base de datos.
      * @param {object} user Objeto usuario a insertar en la base de datos.
@@ -124,27 +102,27 @@ class DAOUsers {
      * @param {String} email Identificador del usuario
      * @param {function} callback Función que devolverá el objeto error o el resultado.
      */
-    getUser(email, callback) {
+    getUser(email) {
         this.pool.getConnection((err, connection) => {
             if (err) {
-                callback(`Error de conexión: $(err.message)`, undefined); return;
+                return null;
             }
             connection.query("SELECT * FROM users WHERE email = ?",
             [email],
             (err, rows) => {
                 connection.release();
-                if (err) {callback(err, undefined); return;}
+                if (err) {return null;}
                 else {
                     let user;
                     if (rows.length > 0) {
                         user = {
                             email: rows[0].email, 
                             name: rows[0].name, 
-                            password: rows[0].password,
+                            password: rows[0].pass,
                         }
                     }
-                    if (user !== undefined) { callback(null, user);}
-                    else { callback(err, undefined);}
+                    if (user !== undefined) { return user;}
+                    else { return null;}
                 }
             })
         });
