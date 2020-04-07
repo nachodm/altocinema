@@ -44,8 +44,6 @@ app.get('/', (request, response) => {
     response.render('login');
 });*/
 
-
-
 require('./router/index.js')(app, passport);
 
 app.listen(config.port, (err) => {

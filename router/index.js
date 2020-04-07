@@ -15,7 +15,7 @@ module.exports = function(app, passport) {
   }
 
   app.get('/', (request, response) => {
-    response.render('infinito2');
+    response.render('altocinema');
   })
 
   app.get('/login', checkNotAuthenticated, (request, response) => {
@@ -60,6 +60,6 @@ module.exports = function(app, passport) {
   })
 
   app.use((req, res) => {
-    res.status(404).send('error');
+    res.status(404).render('error');
   });
 }

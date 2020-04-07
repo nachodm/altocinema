@@ -1,0 +1,72 @@
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+    <title>Alto Cinema.</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@500&display=swap" rel="stylesheet"> 
+    <!--https://favicon.io/favicon-generator/ Monoton font-->
+    <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
+    <link rel="manifest" href="img/site.webmanifest">
+    <style>
+        body {
+            font-family: 'Rubik', sans-serif;
+            height: 100vh;
+            background-image: url('https://kicksdigitalmarketing.com/wp-content/uploads/2019/09/iStock-1142986365.jpg');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+        }
+        .floating {  
+            animation-name: floating;
+            animation-duration: 1.6s;
+            animation-iteration-count: infinite;
+            animation-timing-function:ease-in-out;
+        }
+
+        @keyframes floating {
+            from { transform: translate(0,  -0px); }
+            50%  { transform: translate(0, -5px); }
+            to   { transform: translate(0, 0px); }    
+        }
+
+        .btn-primary {
+            background-color: #0D0953 !important;
+            border: whitesmoke !important;
+        }
+
+        .btn-primary:hover {
+            background-color: #F71561 !important;
+            border: whitesmoke !important;
+        }
+
+        .container {
+            padding-top: 20vh;
+            padding-bottom: 10vh;
+        }
+        .bl {
+            color: #0D0953;
+            text-shadow: 0.5px 0.5px #F71561;
+            font-size: large;
+        }
+
+    </style>
+
+    </head>
+    <body>
+        <div class="container d-flex flex-column justify-content-between flex-nowrap" style="min-height:100vh">
+            <!--<img src="img/404.png" class="img-fluid floating" alt="Responsive image">-->
+            <div class="text-center mb-3 bl">We couldn´t find what <br/> you were looking for.</div>
+            <div class="text-center mt-3">
+                <a href="/" class="btn btn-primary btn-lg shadow-lg p-3 mb-5 rounded floating" role="button" aria-pressed="true">Back to main page.</a>
+            </div>
+          </div>
+    </body>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</html>
