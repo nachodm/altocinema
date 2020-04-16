@@ -23,26 +23,16 @@ a {
 nav {
   position: relative;
   z-index: 2;
-  padding: 1.25rem 0 1.25rem 0; }
-  nav ul {
-    line-height: 2.2;
-    display: flex;
-    justify-content: flex-start; }
-    nav ul li {
-      margin: 0.325rem 0; }
-
-#logo {
-  color: #232323;
-  font-weight: 700;
-  font-size: 1.125rem; }
-
-#highlight {
-  color: #e83f43; }
-
-img {
-  width: 100%;
-  height: 43vh;
-  object-fit: cover; }
+  padding: 1.25rem 0 1.25rem 0; 
+}
+nav ul {
+  line-height: 2.2;
+  display: flex;
+  justify-content: flex-start; 
+}
+nav ul li {
+  padding: 0.325rem 0; 
+}
 
 .vertical {
   flex-direction: column;
@@ -224,15 +214,17 @@ button {
       display: flex;
       justify-content: flex-start; }
       nav ul li {
-        font-size: 1rem;
+        font-size: 1.25rem;
         text-transform: uppercase;
         margin: 0 2rem 0 0; }
         nav ul li:nth-child(3) {
           margin: 0; } }
 
-.let_spac {
-  font-family: 'Montserrat', sans-serif;
-  letter-spacing: 1rem; }
 
 .navbar-default .navbar-toggler .navbar-toggler-icon {
   background-color: #8d8d8d; }
+  
+
+.navbar-brand img {
+    max-height: 100%;
+}
