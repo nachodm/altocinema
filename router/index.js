@@ -39,21 +39,21 @@ module.exports = function(app, passport) {
 
   app.post('register', async (request, response) => {
     try {
-        const hashed = await bcrypt.hash(request.body.password, 12);
-        let user = {
-            email: request.body.email,
-            password: hashed,
-            name: "Antonio"
-        }
-        users.newUser(user, (err) => {
-            if (!err) {
-                response.redirect('/');
-            }
-            else {
-                console.log(err);
-                response.redirect('/');
-            }
-        });
+      const hashed = await bcrypt.hash(request.body.password, 10);
+      let user = {
+          email: request.body.email,
+          password: hashed,
+          name: "Antonio"
+      }
+      users.newUser(user, (err) => {
+          if (!err) {
+              response.redirect('/');
+          }
+          else {
+              console.log(err);
+              response.redirect('/');
+          }
+      });
     } catch {
         response.redirect('/');
     }

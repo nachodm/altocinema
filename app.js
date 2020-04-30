@@ -35,15 +35,6 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.static(path.join(__dirname, "public")));
 
-// catch 404 and forward to error handler
-/*app.use((req, res) => {
-  res.status(404).render('error');
-});
-
-app.get('/', (request, response) => {
-    response.render('login');
-});*/
-
 require('./router/index.js')(app, passport);
 
 app.listen(config.port, (err) => {
