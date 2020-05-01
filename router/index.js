@@ -26,6 +26,10 @@ module.exports = function(app, passport) {
     response.render('home');
   })
 
+  /*app.get('/main', checkAuthenticated, (request, response) => {
+    response.render('main');
+  })*/
+
   app.post('/login', passport.authenticate('local', {
     successRedirect: '/home',
     failureRedirect: '/login',
@@ -60,6 +64,6 @@ module.exports = function(app, passport) {
   })
 
   app.use((req, res) => {
-    res.status(404).render('dashboard');
+    res.status(404).render('error');
   });
 }
