@@ -1,82 +1,103 @@
-<body class="bg-default">
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Start your development with a Dashboard for Node.js.">
+  <meta name="author" content="run Tim">
+  <title>Dashboard</title>
+  <!-- Favicon -->
+  <link href="img/brand/favicon.png" rel="icon" type="image/png">
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+  <!-- Icons -->
+  <link href="vendor/nucleo/css/nucleo.css" rel="stylesheet">
+  <link href="vendor/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+  <!-- Argon CSS -->
+  <link type="text/css" href="css/argon.min.css" rel="stylesheet">
+
+  <link href="https://unpkg.com/bootstrap-table@1.16.0/dist/bootstrap-table.min.css" rel="stylesheet">
+
+  <script src="https://unpkg.com/bootstrap-table@1.16.0/dist/bootstrap-table.min.js"></script>
+  <script src="https://unpkg.com/bootstrap-table@1.16.0/dist/extensions/multiple-sort/bootstrap-table-multiple-sort.js"></script>
+</head>
+ 
+
+<body>
+  <!-- Sidenav -->
+  <% include partials/sidebar %>
+  <!-- Main content -->
   <div class="main-content">
-    <!-- Navbar -->
-    <% include ../partials/auth/navbar %>
+    <!-- Top navbar -->
+    <% include partials/navbar %>
     <!-- Header -->
-    <% include ../partials/auth/header %>
+    <% include partials/header %>
     <!-- Page content -->
-    <div class="container mt--8 pb-5">
-      <!-- Table -->
+    <div class="container-fluid mt--6">
       <div class="row justify-content-center">
-        <div class="col-lg-6 col-md-8">
-          <div class="card bg-secondary shadow border-0">
-            <div class="card-header bg-transparent pb-5">
-              <div class="text-muted text-center mt-2 mb-4"><small>Sign up with</small></div>
-              <div class="text-center">
-                <a href="#" class="btn btn-neutral btn-icon mr-4">
-                  <span class="btn-inner--icon"><img src="img/icons/common/github.svg"></span>
-                  <span class="btn-inner--text">Github</span>
-                </a>
-                <a href="#" class="btn btn-neutral btn-icon">
-                  <span class="btn-inner--icon"><img src="img/icons/common/google.svg"></span>
-                  <span class="btn-inner--text">Google</span>
-                </a>
+        <div class="col-xl-10 m-2">
+          <div class="card bg-secondary shadow">
+            <div class="card-header bg-white border-0">
+              <div class="row align-items-center">
+                <div class="col-8">
+                  <h3 class="mb-0">Registrar nuevo usuario</h3>
+                </div>
               </div>
             </div>
-            <div class="card-body px-lg-5 py-lg-5">
-              <div class="text-center text-muted mb-4">
-                <small>Or sign up with credentials</small>
-              </div>
-              <form role="form" action="register" method="POST">
-                <div class="form-group">
-                  <div class="input-group input-group-alternative mb-3">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text"><i class="ni ni-hat-3"></i></span>
+            <div class="card-body">
+              <form action="/update" method="POST">
+                <h6 class="heading-small text-muted mb-4">Datos de usuario</h6>
+                <div class="pl-lg-4">
+                  <% if (locals.messages && messages.success) { %>
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                      <%= messages.success %>
+                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                      </button>
                     </div>
-                    <input class="form-control" name="name" placeholder="Name" type="text" required>
-                  </div>
-                  <% if (locals.messages && messages.errors && messages.errors.name) { %>
-                    <strong class="invalid-feedback" style="display: block"><%= messages.errors.name %></strong>
                   <% } %>
-                </div>
-                <div class="form-group">
-                  <div class="input-group input-group-alternative mb-3">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text"><i class="ni ni-email-83"></i></span>
+                  <% if (locals.messages && messages.errors && messages.errors.databaseError) { %>
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                      <%= messages.errors %>
+                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                      </button>
                     </div>
-                    <input class="form-control" name="username" placeholder="Email" type="email" required>
-                  </div>
-                  <% if (locals.messages && messages.errors && messages.errors.username) { %>
-                    <strong class="invalid-feedback" style="display: block"><%= messages.errors.username %></strong>
                   <% } %>
-                </div>
-                <div class="form-group">
-                  <div class="input-group input-group-alternative">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
+                  <div class="row">
+                    <div class="col-lg-12">
+                      <div class="form-group">
+                        <label class="form-control-label" for="input-name">Email</label>
+                        <input type="text" id="input-name" class="form-control form-control-alternative" name="name" placeholder="Jessica Jones" value="<%= locals.userInfo && locals.userInfo.name %>">
+                        <% if (locals.messages && messages.errors && messages.errors.name) { %>
+                          <strong class="invalid-feedback" style="display: block"><%= messages.errors.name %></strong>
+                        <% } %>
+                      </div>
                     </div>
-                    <input class="form-control" name="password" placeholder="Password" type="password" required>
-                  </div>
-                  <% if (locals.messages && messages.errors && messages.errors.password) { %>
-                    <strong class="invalid-feedback" style="display: block"><%= messages.errors.password %></strong>
-                  <% } %>
-                </div>
-                <div class="text-muted font-italic"><small>password strength: <span class="text-success font-weight-700">strong</span></small></div>
-                <div class="row my-4">
-                  <div class="col-12">
-                    <div class="custom-control custom-control-alternative custom-checkbox">
-                      <input class="custom-control-input" id="customCheckRegister" type="checkbox" required>
-                      <label class="custom-control-label" for="customCheckRegister">
-                        <span class="text-muted">I agree with the <a href="#!">Privacy Policy</a></span>
-                      </label>
+                    <div class="col-lg-12">
+                      <div class="form-group">
+                        <label class="form-control-label" for="input-email">Email</label>
+                        <input type="email" id="input-email" class="form-control form-control-alternative" name="username" placeholder="example@altocinema.com" value="<%= locals.userInfo && locals.userInfo.name %>">
+                        <% if (locals.messages && messages.errors && messages.errors.name) { %>
+                          <strong class="invalid-feedback" style="display: block"><%= messages.errors.name %></strong>
+                        <% } %>
+                      </div>
+                    </div>
+                    <div class="col-lg-12">
+                      <div class="form-group">
+                        <label class="form-control-label" for="input-pass">Contraseña</label>
+                        <input type="password" id="input-pass" class="form-control form-control-alternative" name="password" placeholder="*******" value="<%= locals.userInfo && locals.userInfo.email %>">
+                        <% if (locals.messages && messages.errors && messages.errors.username) { %>
+                          <strong class="invalid-feedback" style="display: block"><%= messages.errors.username %></strong>
+                        <% } %>
+                      </div>
+                    </div>
+                    <div class="col-lg-12 text-center">
+                      <button class="btn btn-success mt-3 mb-2">Guardar</button>
                     </div>
                   </div>
-                </div>
-                <% if (locals.messages && locals.messages.databaseError) { %>
-                  <strong class="invalid-feedback" style="display: block"><%= messages.databaseError %></strong>
-                <% } %>
-                <div class="text-center">
-                  <button class="btn btn-primary mt-4">Create account</button>
                 </div>
               </form>
             </div>
@@ -85,9 +106,9 @@
       </div>
     </div>
   </div>
-  <!-- Footer -->
-  <% include ../partials/auth/footer %>
 
   <!-- Include scripts -->
-  <% include ../partials/scripts %>
+  <% include partials/scripts %>
 </body>
+
+</html>

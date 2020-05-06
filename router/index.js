@@ -22,8 +22,30 @@ module.exports = function(app, passport) {
     response.render('login');
   })
 
-  app.get('/home', checkAuthenticated, (request, response) => {
-    response.render('home');
+  app.get('/dashboard', checkAuthenticated, (request, response) => {
+    response.render('dashboard');
+  })
+  app.get('/festivals', checkAuthenticated, (request, response) => {
+    response.render('festivals');
+  })
+  app.get('/films', checkAuthenticated, (request, response) => {
+    response.render('films');
+  })
+  app.get('/halls', checkAuthenticated, (request, response) => {
+    response.render('halls');
+  })
+  app.get('/producers', checkAuthenticated, (request, response) => {
+    response.render('producers');
+  })
+  app.get('/platforms', checkAuthenticated, (request, response) => {
+    response.render('platforms');
+  })
+  app.get('/directors', checkAuthenticated, (request, response) => {
+    response.render('directors');
+  })
+
+  app.get('/settings', checkAuthenticated, (request, response) => {
+    response.render('settings');
   })
 
   /*app.get('/main', checkAuthenticated, (request, response) => {
@@ -64,6 +86,6 @@ module.exports = function(app, passport) {
   })
 
   app.use((req, res) => {
-    res.status(404).render('error');
+    res.status(404).render('tables'/*, {user: req.user.username}*/);
   });
 }
