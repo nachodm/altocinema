@@ -9,7 +9,7 @@ module.exports = function(app, passport) {
 
   function checkNotAuthenticated(req, res, next) {
     if (req.isAuthenticated()) {
-        return res.redirect('/');
+        return res.redirect('/dashboard');
     }
     next();
   }
@@ -23,29 +23,37 @@ module.exports = function(app, passport) {
   })
 
   app.get('/dashboard', checkAuthenticated, (request, response) => {
-    response.render('dashboard');
+    response.render('dashboard', {user: request.user, title: "Inicio"});
   })
   app.get('/festivals', checkAuthenticated, (request, response) => {
-    response.render('festivals');
+    response.render('festivals', {user: request.user, title: "Festivales"});
   })
   app.get('/films', checkAuthenticated, (request, response) => {
-    response.render('films');
+    response.render('films', {user: request.user, title: "Películas"});
   })
   app.get('/halls', checkAuthenticated, (request, response) => {
-    response.render('halls');
+    response.render('halls', {user: request.user, title: "Salas de proyección"});
   })
   app.get('/producers', checkAuthenticated, (request, response) => {
-    response.render('producers');
+    response.render('producers', {user: request.user, title: "Productores"});
   })
   app.get('/platforms', checkAuthenticated, (request, response) => {
-    response.render('platforms');
+    response.render('platforms', {user: request.user, title: "Plataformas"});
   })
   app.get('/directors', checkAuthenticated, (request, response) => {
-    response.render('directors');
+    response.render('directors', {user: request.user, title: "Directores"});
+  })
+
+  app.get('/profile', checkAuthenticated, (request, response) => {
+    response.render('profile', {user: request.user, title: "Perfil de usuario"});
+  })
+
+  app.get('/register', checkAuthenticated, (request, response) => {
+    response.render('register', {user: request.user, title: "Registro de nuevo usuario"});
   })
 
   app.get('/settings', checkAuthenticated, (request, response) => {
-    response.render('settings');
+    response.render('settings', {user: request.user});
   })
 
   /*app.get('/main', checkAuthenticated, (request, response) => {
@@ -53,7 +61,7 @@ module.exports = function(app, passport) {
   })*/
 
   app.post('/login', passport.authenticate('local', {
-    successRedirect: '/home',
+    successRedirect: '/dashboard',
     failureRedirect: '/login',
     failureFlash: true
   }))
@@ -69,19 +77,19 @@ module.exports = function(app, passport) {
       let user = {
           email: request.body.email,
           password: hashed,
-          name: "Antonio"
+          name: request.body.name
       }
       users.newUser(user, (err) => {
           if (!err) {
-              response.redirect('/');
+              response.redirect('/register');
           }
           else {
               console.log(err);
-              response.redirect('/');
+              response.redirect('/register');
           }
       });
     } catch {
-        response.redirect('/');
+        response.redirect('/register');
     }
   })
 

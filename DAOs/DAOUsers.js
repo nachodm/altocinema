@@ -84,8 +84,8 @@ class DAOUsers {
             if (err) {
                 callback("Error de conexion a la BBDD", undefined); return;
             }
-            connection.query("UPDATE users SET email = ?, password = ?, name = ?, surnames = ?, birthdate = ?, nationality = ?, profile_picture = ? WHERE email = ?",
-            [user.email, user.password, user.name, user.surnames, user.birthdate, user.nationality, user.profile_picture, user.email],
+            connection.query("UPDATE users SET password = ?, name = ? WHERE email = ?",
+            [user.password, user.name, user.email],
             (err) => {
                 connection.release();
                 if (err) {callback(err, undefined); return;}

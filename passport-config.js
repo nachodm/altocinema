@@ -25,7 +25,7 @@ function initialize(passport) {
                 }
             }
             if (user == null) {
-                return done(null, false, {message: "Error: User not found."})
+                return done(null, false, {message: "Error: Usuario no encontrado."})
             }
     
             try {
@@ -33,7 +33,7 @@ function initialize(passport) {
                     return done(null, user);
                 }
                 else {
-                    return done(null, false, {message: "Error: Password incorrect."});
+                    return done(null, false, {message: "Error: Contraseña incorrecta."});
                 }
             } catch (e){
                 return done(e);

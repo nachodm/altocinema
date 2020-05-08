@@ -13,7 +13,7 @@
       <li class="nav-item dropdown">
         <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <div class="media align-items-center">
-            <span class="mb-0 text-sm font-weight-bold"><%= locals.userInfo && locals.userInfo.name || 'Jessica Jones' %></span>
+            <span class="mb-0 text-sm font-weight-bold"><%= user.name || 'Ooops you should restart' %></span>
           </div>
         </a>
         <% include dropdown %>
