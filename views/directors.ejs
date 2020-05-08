@@ -1,0 +1,96 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Start your development with a Dashboard for Node.js.">
+  <meta name="author" content="run Tim">
+  <title>Dashboard</title>
+  <!-- Favicon -->
+  <link href="img/brand/favicon.png" rel="icon" type="image/png">
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+  <!-- Icons -->
+  <link href="vendor/nucleo/css/nucleo.css" rel="stylesheet">
+  <link href="vendor/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+  <!-- Argon CSS -->
+  <link type="text/css" href="css/argon.min.css" rel="stylesheet">
+
+  <link href="https://unpkg.com/bootstrap-table@1.16.0/dist/bootstrap-table.min.css" rel="stylesheet">
+
+  <script src="https://unpkg.com/bootstrap-table@1.16.0/dist/bootstrap-table.min.js"></script>
+  <script src="https://unpkg.com/bootstrap-table@1.16.0/dist/extensions/multiple-sort/bootstrap-table-multiple-sort.js"></script>
+</head>
+  
+<body>
+  <!-- Sidenav -->
+  <% include partials/sidebar %>
+  <!-- Main content -->
+  <div class="main-content">
+    <!-- Top navbar -->
+    <% include partials/navbar %>
+    <!-- Header -->
+    <% include partials/header %>
+    <!-- Page content -->
+    <div class="container-fluid mt--7">
+      <div class="row">
+        <div class="col">
+          <div class="card shadow">
+            <div class="card-header bg-transparent">
+              <div class="row align-items-center">
+                <div class="col">
+                  <h6 class="text-uppercase text-muted ls-1 mb-1">Directores</h6>
+                  <h2 class="mb-0">Listado de directores</h2>
+                </div>
+              </div>
+            </div>
+            <div class="card-body">
+              <!-- Chart -->
+              <table
+                    id="table"
+                    data-sort-name="name"
+                    data-sort-order="desc"
+                    data-search="true"
+                    data-pagination="true"
+                    data-locale="en-US">
+                    <thead>
+                      <tr>
+                        <th data-field="name" data-sortable="true">Nombre</th>
+                        <th data-field="birthday" data-sortable="true">Fecha de nacimiento</th>
+                        <th data-field="email" data-sortable="true">Correo electrónico</th>
+                        <th data-field="phone" data-sortable="true">Número de teléfono</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th scope="row">Spielberg</th>
+                        <td>10/09/1840</td>
+                        <td>spipi@gmail.com</td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Christopher Nolan</th>
+                        <td>30/03/1970</td>
+                        <td>nolan@nolan.com</td>
+                        <td> 1 903 023 032</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Tim Burton</th>
+                        <td>30/03/1940</td>
+                        <td>bur@burburburtontonton.com</td>
+                        <td> 1 903 392 032</td>
+                      </tr>
+                    </tbody>
+                  </table>
+            </div>
+          </div>
+        </div>
+      </div>
+  <!-- Include scripts -->
+  <% include partials/scripts %>
+
+</body>
+</html>
+

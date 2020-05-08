@@ -86,6 +86,6 @@ module.exports = function(app, passport) {
   })
 
   app.use((req, res) => {
-    res.status(404).render('tables'/*, {user: req.user.username}*/);
+    res.status(404).render('404'/*, {user: req.user.username}*/);
   });
 }

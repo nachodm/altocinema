@@ -8,6 +8,16 @@ CREATE TABLE USERS (
 CREATE TABLE FILMS (
     id INT NOT NULL AUTO_INCREMENT, -- primary key column
     title VARCHAR(255) NOT NULL,
+    id_director VARCHAR(255) NOT NULL,
+    PRIMARY KEY (id)
+    -- specify more columns here
+);
+
+CREATE TABLE DIRECTORS (
+    id INT NOT NULL AUTO_INCREMENT, -- primary key column
+    name VARCHAR(255) NOT NULL,
+    email VARCHAR(255) DEFAULT NULL,
+    phone VARCHAR(255) DEFAULT NULL,
     PRIMARY KEY (id)
     -- specify more columns here
 );
