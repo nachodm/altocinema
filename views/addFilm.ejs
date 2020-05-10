@@ -1,0 +1,264 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Start your development with a Dashboard for Node.js.">
+  <meta name="author" content="run Tim">
+  <title>Dashboard</title>
+  <!-- Favicon -->
+  <link href="img/brand/favicon.png" rel="icon" type="image/png">
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+  <!-- Icons -->
+  <link href="vendor/nucleo/css/nucleo.css" rel="stylesheet">
+  <link href="vendor/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+  <!-- Argon CSS -->
+  <link type="text/css" href="css/argon.min.css" rel="stylesheet">
+
+  <link href="https://unpkg.com/bootstrap-table@1.16.0/dist/bootstrap-table.min.css" rel="stylesheet">
+
+  <script src="https://unpkg.com/bootstrap-table@1.16.0/dist/bootstrap-table.min.js"></script>
+  <script src="https://unpkg.com/bootstrap-table@1.16.0/dist/extensions/multiple-sort/bootstrap-table-multiple-sort.js"></script>
+</head>
+ 
+
+<body>
+  <!-- Sidenav -->
+  <% include partials/sidebar %>
+  <!-- Main content -->
+  <div class="main-content">
+    <!-- Top navbar -->
+    <% include partials/navbar %>
+    <!-- Header -->
+    <% include partials/header %>
+    <!-- Page content -->
+    <div class="container-fluid mt--7">
+      <div class="row justify-content-center">
+        <div class="col-xl-12">
+          <div class="card bg-secondary shadow">
+            <div class="card-header bg-white border-0">
+              <div class="row align-items-center">
+                <div class="col-8">
+                  <h3 class="mb-0">Añadir película</h3>
+                </div>
+              </div>
+            </div>
+            <div class="card-body">
+              <form action="/register" method="POST">
+                <h6 class="heading-small text-muted mb-3">Datos:</h6>
+                <div class="pl-lg-4">
+                  <% if (locals.messages && messages.success) { %>
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                      <%= messages.success %>
+                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                      </button>
+                    </div>
+                  <% } %>
+                  <% if (locals.messages && messages.errors && messages.errors.databaseError) { %>
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                      <%= messages.errors %>
+                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                      </button>
+                    </div>
+                  <% } %>
+                  <div class="row">
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label class="form-control-label" for="name">Título original</label>
+                        <input type="text" id="name" class="form-control form-control-alternative" name="name" placeholder="Jessica Jones" required>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label class="form-control-label" for="name">Título en inglés</label>
+                        <input type="text" id="name" class="form-control form-control-alternative" name="name" placeholder="Jessica Jones" required>
+                      </div>
+                    </div>
+                    <div class="col-lg-2">
+                      <div class="form-group">
+                        <label class="form-control-label" for="name">Año</label>
+                        <input type="text" id="name" class="form-control form-control-alternative" name="name" placeholder="Jessica Jones" value="<%= locals.userInfo && locals.userInfo.name %>">
+                        <% if (locals.messages && messages.errors && messages.errors.name) { %>
+                          <strong class="invalid-feedback" style="display: block"><%= messages.errors.name %></strong>
+                        <% } %>
+                      </div>
+                    </div>
+                    <div class="col-lg-2">
+                      <div class="form-group">
+                        <label class="form-control-label" for="productiondate">Fecha de producción</label>
+                        <input type="date" id="productiondate" class="form-control form-control-alternative" name="name" placeholder="Jessica Jones" value="<%= locals.userInfo && locals.userInfo.name %>">
+                        <% if (locals.messages && messages.errors && messages.errors.name) { %>
+                          <strong class="invalid-feedback" style="display: block"><%= messages.errors.name %></strong>
+                        <% } %>
+                      </div>
+                    </div>
+                    <div class="col-lg-2">
+                      <div class="form-group">
+                        <label class="form-control-label" for="color">Color</label>
+                        <select  class="form-control form-control-alternative" id="color" name="color" required>
+                          <option value="volvo">Color</option>
+                          <option value="saab">Blanco y Negro</option>
+                        </select> 
+                      </div>
+                    </div>
+                    <div class="col-lg-3">
+                      <div class="form-group">
+                        <label class="form-control-label" for="genre">Género</label>
+                        <select multiple class="form-control form-control-alternative" id="genre" name="genre" required>
+                          <option value="volvo">Acción</option>
+                          <option value="saab">Drama</option>
+                          <option value="saab">Romance</option>
+                          <option value="saab">Terror</option>
+                          <option value="saab">Animación</option>
+                        </select> 
+                      </div>
+                    </div>
+                    <div class="col-lg-3">
+                      <div class="form-group">
+                        <label class="form-control-label" for="password">Técnica de animación</label>
+                        <input type="password" id="password" class="form-control form-control-alternative" name="password" placeholder="*******" value="<%= locals.userInfo && locals.userInfo.email %>">
+                        <% if (locals.messages && messages.errors && messages.errors.username) { %>
+                          <strong class="invalid-feedback" style="display: block"><%= messages.errors.username %></strong>
+                        <% } %>
+                      </div>
+                    </div>
+                    <div class="col-lg-3">
+                      <div class="form-group">
+                        <label class="form-control-label" for="password">Versión original</label>
+                        <input type="password" id="password" class="form-control form-control-alternative" name="password" placeholder="*******" value="<%= locals.userInfo && locals.userInfo.email %>">
+                        <% if (locals.messages && messages.errors && messages.errors.username) { %>
+                          <strong class="invalid-feedback" style="display: block"><%= messages.errors.username %></strong>
+                        <% } %>
+                      </div>
+                    </div>
+                    <div class="col-lg-3">
+                      <div class="form-group">
+                        <label class="form-control-label" for="password">País de producción</label>
+                        <input type="password" id="password" class="form-control form-control-alternative" name="password" placeholder="*******" value="<%= locals.userInfo && locals.userInfo.email %>">
+                        <% if (locals.messages && messages.errors && messages.errors.username) { %>
+                          <strong class="invalid-feedback" style="display: block"><%= messages.errors.username %></strong>
+                        <% } %>
+                      </div>
+                    </div>
+                    <div class="col-lg-3">
+                      <div class="form-group">
+                        <label class="form-control-label" for="password">Pantalla</label>
+                        <input type="password" id="password" class="form-control form-control-alternative" name="password" placeholder="*******" value="<%= locals.userInfo && locals.userInfo.email %>">
+                        <% if (locals.messages && messages.errors && messages.errors.username) { %>
+                          <strong class="invalid-feedback" style="display: block"><%= messages.errors.username %></strong>
+                        <% } %>
+                      </div>
+                    </div>
+                    <div class="col-lg-3">
+                      <div class="form-group">
+                        <label class="form-control-label" for="password">Lugar de rodaje</label>
+                        <input type="password" id="password" class="form-control form-control-alternative" name="password" placeholder="*******" value="<%= locals.userInfo && locals.userInfo.email %>">
+                        <% if (locals.messages && messages.errors && messages.errors.username) { %>
+                          <strong class="invalid-feedback" style="display: block"><%= messages.errors.username %></strong>
+                        <% } %>
+                      </div>
+                    </div>
+                    <div class="col-lg-12">
+                      <div class="form-group">
+                        <label class="form-control-label" for="password">Sinopsis en idioma original</label>
+                        <input type="password" id="password" class="form-control form-control-alternative" name="password" placeholder="*******" value="<%= locals.userInfo && locals.userInfo.email %>">
+                        <% if (locals.messages && messages.errors && messages.errors.username) { %>
+                          <strong class="invalid-feedback" style="display: block"><%= messages.errors.username %></strong>
+                        <% } %>
+                      </div>
+                    </div>
+                    <div class="col-lg-12">
+                      <div class="form-group">
+                        <label class="form-control-label" for="password">Sinopsis en inglés</label>
+                        <input type="password" id="password" class="form-control form-control-alternative" name="password" placeholder="*******" value="<%= locals.userInfo && locals.userInfo.email %>">
+                        <% if (locals.messages && messages.errors && messages.errors.username) { %>
+                          <strong class="invalid-feedback" style="display: block"><%= messages.errors.username %></strong>
+                        <% } %>
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label class="form-control-label" for="password">Enlace de materiales</label>
+                        <input type="password" id="password" class="form-control form-control-alternative" name="password" placeholder="*******" value="<%= locals.userInfo && locals.userInfo.email %>">
+                        <% if (locals.messages && messages.errors && messages.errors.username) { %>
+                          <strong class="invalid-feedback" style="display: block"><%= messages.errors.username %></strong>
+                        <% } %>
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label class="form-control-label" for="password">Enlace copias</label>
+                        <input type="password" id="password" class="form-control form-control-alternative" name="password" placeholder="*******" value="<%= locals.userInfo && locals.userInfo.email %>">
+                        <% if (locals.messages && messages.errors && messages.errors.username) { %>
+                          <strong class="invalid-feedback" style="display: block"><%= messages.errors.username %></strong>
+                        <% } %>
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label class="form-control-label" for="password">Vimeo original</label>
+                        <input type="password" id="password" class="form-control form-control-alternative" name="password" placeholder="*******" value="<%= locals.userInfo && locals.userInfo.email %>">
+                        <% if (locals.messages && messages.errors && messages.errors.username) { %>
+                          <strong class="invalid-feedback" style="display: block"><%= messages.errors.username %></strong>
+                        <% } %>
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label class="form-control-label" for="password">Vimeo en inglés</label>
+                        <input type="password" id="password" class="form-control form-control-alternative" name="password" placeholder="*******" value="<%= locals.userInfo && locals.userInfo.email %>">
+                        <% if (locals.messages && messages.errors && messages.errors.username) { %>
+                          <strong class="invalid-feedback" style="display: block"><%= messages.errors.username %></strong>
+                        <% } %>
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label class="form-control-label" for="password">Vimeo en francés</label>
+                        <input type="password" id="password" class="form-control form-control-alternative" name="password" placeholder="*******" value="<%= locals.userInfo && locals.userInfo.email %>">
+                        <% if (locals.messages && messages.errors && messages.errors.username) { %>
+                          <strong class="invalid-feedback" style="display: block"><%= messages.errors.username %></strong>
+                        <% } %>
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label class="form-control-label" for="password">Vimeo en italiano</label>
+                        <input type="password" id="password" class="form-control form-control-alternative" name="password" placeholder="*******" value="<%= locals.userInfo && locals.userInfo.email %>">
+                        <% if (locals.messages && messages.errors && messages.errors.username) { %>
+                          <strong class="invalid-feedback" style="display: block"><%= messages.errors.username %></strong>
+                        <% } %>
+                      </div>
+                    </div>
+                    <div class="col-lg-12">
+                      <div class="form-group">
+                        <label class="form-control-label" for="password">Trailer</label>
+                        <input type="password" id="password" class="form-control form-control-alternative" name="password" placeholder="*******" value="<%= locals.userInfo && locals.userInfo.email %>">
+                        <% if (locals.messages && messages.errors && messages.errors.username) { %>
+                          <strong class="invalid-feedback" style="display: block"><%= messages.errors.username %></strong>
+                        <% } %>
+                      </div>
+                    </div>
+                    <div class="col-lg-12 text-center">
+                      <button class="btn btn-success mt-3 mb-2">Guardar</button>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Include scripts -->
+  <% include partials/scripts %>
+</body>
+
+</html>
