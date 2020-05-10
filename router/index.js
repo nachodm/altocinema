@@ -55,6 +55,10 @@ module.exports = function(app, passport) {
   app.get('/settings', checkAuthenticated, (request, response) => {
     response.render('settings', {user: request.user, title: "Ajustes"});
   })
+  
+  app.get('/prizes', checkAuthenticated, (request, response) => {
+    response.render('prizes', {user: request.user, title: "Premio"});
+  })
 
   app.get('/addFilm', checkAuthenticated, (request, response) => {
     response.render('addFilm', {user: request.user, title: "Añadir película"});
