@@ -16,7 +16,7 @@
             <span class="mb-0 text-sm font-weight-bold"><%= user.name || 'Ooops you should restart' %></span>
           </div>
         </a>
-        <% include ('dropdown'); %>
+        <%- include ('dropdown'); -%>
       </li>
     </ul>
     <!-- Collapse -->
@@ -25,7 +25,7 @@
       <div class="navbar-collapse-header d-md-none">
         <div class="row">
           <div class="col-6 collapse-brand">
-            <a href="./index">
+            <a href="./dashboard">
               <img src="img/logo.png" class="img-fluid">
             </a>
           </div>
