@@ -11,7 +11,7 @@ function initialize(passport) {
         let user;
         const connection = mysql.createConnection(config.mysqlconfig);
 
-        connection.query("SELECT * FROM users WHERE email = ?",
+        connection.query("SELECT * FROM USERS WHERE email = ?",
         [email],
         (err, rows) => {
             if (err) {return null;}
@@ -48,7 +48,7 @@ function initialize(passport) {
     passport.deserializeUser((email, done) => {
         const connection = mysql.createConnection(config.mysqlconfig);
 
-        connection.query("SELECT * FROM users WHERE email = ? ", 
+        connection.query("SELECT * FROM USERS WHERE email = ? ", 
         [email],
             (err, rows) => {
             done(err, rows[0]);

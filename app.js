@@ -18,8 +18,8 @@ const users = new DAOUsers.DAOUsers(pool);
 const initializePassport = require('./passport-config');
 initializePassport(passport);
 
-app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
 //app.use(expressLayouts);
 
 app.use(express.json());

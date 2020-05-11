@@ -24,13 +24,13 @@
 </head>
 <body>
   <!-- Sidenav -->
-  <%- ('include partials/sidebar') -%>
+  <%- include ('partials/sidebar'); -%>
   <!-- Main content -->
   <div class="main-content">
     <!-- Top navbar -->
-    <%- ('include partials/navbar') -%>
+    <%- include ('partials/navbar'); -%>
     <!-- Header -->
-    <%- ('include partials/header') -%>
+    <%- include ('partials/header'); -%>
     <!-- Page content -->
     <div class="container-fluid mt--7">
       <!-- Table -->
@@ -378,7 +378,7 @@
   </div>
 
   <!-- Include scripts -->
-  <%- ('include partials/scripts') -%>
+  <%- include ('partials/scripts'); -%>
 </body>
 
 </html>
