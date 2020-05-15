@@ -5,8 +5,6 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="Start your development with a Dashboard for Node.js.">
-  <meta name="author" content="run Tim">
   <title>Añadir Película</title>
   <!-- Favicon -->
   <link href="img/favicon.ico" rel="icon" type="image/png">
@@ -17,11 +15,9 @@
   <link href="vendor/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
   <!-- Argon CSS -->
   <link type="text/css" href="css/argon.min.css" rel="stylesheet">
+  <!-- Bootstrap-select -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
 
-  <link href="https://unpkg.com/bootstrap-table@1.16.0/dist/bootstrap-table.min.css" rel="stylesheet">
-
-  <script src="https://unpkg.com/bootstrap-table@1.16.0/dist/bootstrap-table.min.js"></script>
-  <script src="https://unpkg.com/bootstrap-table@1.16.0/dist/extensions/multiple-sort/bootstrap-table-multiple-sort.js"></script>
 </head>
  
 
@@ -47,7 +43,7 @@
               </div>
             </div>
             <div class="card-body">
-              <form action="/register" method="POST">
+              <form id="addFilmForm" action="/addFilm" method="POST">
                 <h6 class="heading-small text-muted mb-3">Datos:</h6>
                 <div class="pl-lg-4">
                   <% if (locals.messages && messages.success) { %>
@@ -82,7 +78,7 @@
                     <div class="col-lg-2">
                       <div class="form-group">
                         <label class="form-control-label" for="name">Año</label>
-                        <input type="text" id="name" class="form-control form-control-alternative" name="name" placeholder="Jessica Jones" value="<%= locals.userInfo && locals.userInfo.name %>">
+                        <input type="text" id="name" class="form-control form-control-alternative" name="name" >
                         <% if (locals.messages && messages.errors && messages.errors.name) { %>
                           <strong class="invalid-feedback" style="display: block"><%= messages.errors.name %></strong>
                         <% } %>
@@ -90,8 +86,8 @@
                     </div>
                     <div class="col-lg-2">
                       <div class="form-group">
-                        <label class="form-control-label" for="productiondate">Fecha de producción</label>
-                        <input type="date" id="productiondate" class="form-control form-control-alternative" name="name" placeholder="Jessica Jones" value="<%= locals.userInfo && locals.userInfo.name %>">
+                        <label class="form-control-label" for="productiondate">Fecha</label>
+                        <input type="date" id="productiondate" class="form-control form-control-alternative" name="name">
                         <% if (locals.messages && messages.errors && messages.errors.name) { %>
                           <strong class="invalid-feedback" style="display: block"><%= messages.errors.name %></strong>
                         <% } %>
@@ -108,18 +104,6 @@
                     </div>
                     <div class="col-lg-3">
                       <div class="form-group">
-                        <label class="form-control-label" for="genre">Género</label>
-                        <select multiple class="form-control form-control-alternative" id="genre" name="genre" required>
-                          <option value="volvo">Acción</option>
-                          <option value="saab">Drama</option>
-                          <option value="saab">Romance</option>
-                          <option value="saab">Terror</option>
-                          <option value="saab">Animación</option>
-                        </select> 
-                      </div>
-                    </div>
-                    <div class="col-lg-3">
-                      <div class="form-group">
                         <label class="form-control-label" for="animationtechnique">Técnica de animación</label>
                         <input type="text" id="animationtechnique" class="form-control form-control-alternative" name="animationtechnique">
                       </div>
@@ -130,9 +114,80 @@
                         <input type="text" id="originalv" class="form-control form-control-alternative" name="originalv">
                       </div>
                     </div>
+                    <div class="col-lg-12">
+                      <div class="form-group">
+                        <label class="form-control-label" for="genre">Género</label>
+                        <select multiple class="selectpicker form-control form-control-alternative" id="genre" name="genre" data-actions-box="true" data-style="btn-light" required>
+                          <option value="anim">Animación</option>
+                          <option value="disc">Discapacidad</option>
+                          <option value="docu">Documental</option>
+                          <option value="escu">Escuelas</option>
+                          <option value="etno">Etnográfico</option>
+                          <option value="exper">Experimental</option>
+                          <option value="fantas">Fantástico</option>
+                          <option value="fash">Fashion</option>
+                          <option value="ficc">Ficción </option>
+                          <option value="gen">General</option>
+                          <option value="infan">Infantil</option>
+                          <option value="juve">Juvenil</option>
+                          <option value="scifi">Sci-Fi</option>
+                          <option value="terr">Terror</option>
+                          <option value="video">Videoclips</option>
+                          <option value="VR">VR</option>
+                          <option value="comed">Comedia</option>
+                          <option value="danz">Danza</option>
+                          <option value="DDHH">DDHH</option>
+                          <option value="deport">Deporte</option>
+                          <option value="edad26">Edad26</option>
+                          <option value="edad30">Edad30</option>
+                          <option value="edad35">Edad35</option>
+                          <option value="edad40">Edad40 </option>
+                          <option value="inter">Internet</option>
+                          <option value="lgbt">LGBT</option>
+                          <option value="medioamb">MedioAmbiente</option>
+                          <option value="movil">Movil</option>
+                          <option value="mujer">Mujer</option>
+                          <option value="poes">Poesia</option>
+                          <option value="primpeli">PrimeraPeli</option>
+                          <option value="subfr">SubFrances</option>
+                          <option value="subita">SubItaliano</option>
+                          <option value="femen">TemaFemenino</option>
+                          <option value="trabaj">Trabajo</option>
+                          <option value="efa">EFA</option>
+                          <option value="fiapf">FIAPF</option>
+                          <option value="goya">Goya </option>
+                          <option value="melie">Melies</option>
+                          <option value="MM">MM</option>
+                          <option value="oscar">Oscars</option>
+                          <option value="ip">IP</option>
+                          <option value="np">NP</option>
+                          <option value="rp">RP</option>
+                          <option value="wp">WP</option>
+                          <option value="alic">Alicantino</option>
+                          <option value="anda">Andaluz</option>
+                          <option value="arag">Aragonés</option>
+                          <option value="astu">Asturiano</option>
+                          <option value="cana">Canario</option>
+                          <option value="cata">Catalán</option>
+                          <option value="extr">Extremadura</option>
+                          <option value="franc">Francés</option>
+                          <option value="galle">Gallego </option>
+                          <option value="ita">Italiano</option>
+                          <option value="latin">Latino</option>
+                          <option value="leon">Leonés</option>
+                          <option value="mala">Malagueño</option>
+                          <option value="murc">Murciano</option>
+                          <option value="nava">Navarro</option>
+                          <option value="portu">Portugués</option>
+                          <option value="rioj">Riojano</option>
+                          <option value="valen">Valenciano</option>
+                          <option value="vasc">Vasco</option>
+                        </select> 
+                      </div>
+                    </div>
                     <div class="col-lg-3">
                       <div class="form-group">
-                        <label class="form-control-label" for="productioncountry">País de producción</label>
+                        <label class="form-control-label" for="productioncountry">País</label>
                         <input type="text" id="productioncountry" class="form-control form-control-alternative" name="productioncountry">
                       </div>
                     </div>
@@ -148,16 +203,22 @@
                         <input type="text" id="shootingplace" class="form-control form-control-alternative" name="shootingplace">
                       </div>
                     </div>
+                    <div class="col-lg-3">
+                      <div class="form-group">
+                        <label class="form-control-label" for="catalogue">Catálogo</label>
+                        <input type="text" id="catalogue" class="form-control form-control-alternative" name="catalogue">
+                      </div>
+                    </div>
                     <div class="col-lg-12">
                       <div class="form-group">
                         <label class="form-control-label" for="sinopsis">Sinopsis en idioma original</label>
-                        <input type="text" id="sinopsis" class="form-control form-control-alternative" name="sinopsis">
+                        <textarea name="sinopsis" id="sinopsis" class="form-control form-control-alternative" rows="3"></textarea>
                       </div>
                     </div>
                     <div class="col-lg-12">
                       <div class="form-group">
                         <label class="form-control-label" for="eng_sinopsis">Sinopsis en inglés</label>
-                        <input type="text" id="eng_sinopsis" class="form-control form-control-alternative" name="eng_sinopsis">
+                        <textarea name="eng_sinopsis" id="eng_sinopsis" class="form-control form-control-alternative" rows="3"></textarea>
                       </div>
                     </div>
                     <div class="col-lg-6">
@@ -172,10 +233,16 @@
                         <input type="url" id="link" class="form-control form-control-alternative" name="link"  >
                       </div>
                     </div>
-                    <div class="col-lg-6">
+                    <div class="col-lg-12">
                       <div class="form-group">
                         <label class="form-control-label" for="originalvimeo">Vimeo original</label>
                         <input type="url" id="originalvimeo" class="form-control form-control-alternative" name="originalvimeo"  >
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label class="form-control-label" for="spavimeo">Vimeo español</label>
+                        <input type="url" id="spavimeo" class="form-control form-control-alternative" name="spavimeo"  >
                       </div>
                     </div>
                     <div class="col-lg-6">
@@ -196,98 +263,128 @@
                         <input type="url" id="italianvimeo" class="form-control form-control-alternative" name="italianvimeo">
                       </div>
                     </div>
-                    <div class="col-lg-12">
+                    <div class="col-lg-6">
                       <div class="form-group">
-                        <label class="form-control-label" for="trailer">Trailer</label>
+                        <label class="form-control-label" for="trailer">Trailer VO</label>
                         <input type="url" id="trailer" class="form-control form-control-alternative" name="trailer">
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label class="form-control-label" for="trailereng">Trailer Inglés</label>
+                        <input type="url" id="trailereng" class="form-control form-control-alternative" name="trailereng">
                       </div>
                     </div>
                     <div class="col-lg-12">
                       <hr/>
                       <p class="p-3 mb-2 bg-light font-weight-bold text-center text-uppercase">Ficha Técnica</p>  
                     </div>
+                    <div class="col-lg-4">
+                      <div class="form-group">
+                          <label class="form-control-label" for="director">Director</label>
+                          <input type="text" id="director" class="form-control form-control-alternative" name="director">
+                      </div>
+                    </div>
+                    <div class="col-lg-4">
+                      <div class="form-group">
+                          <label class="form-control-label" for="script">Guión</label>
+                          <input type="text" id="script" class="form-control form-control-alternative" name="script">
+                      </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="form-group">
+                            <label class="form-control-label" for="street">Fotografía</label>
+                            <input type="text" id="street" class="form-control form-control-alternative" name="street">
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="form-group">
+                            <label class="form-control-label" for="postalcode">Dirección artística</label>
+                            <input type="text" id="postalcode" class="form-control form-control-alternative" name="postalcode">
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="form-group">
+                            <label class="form-control-label" for="city">Música</label>
+                            <input type="text" id="city" class="form-control form-control-alternative" name="city">
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                      <div class="form-group">
+                          <label class="form-control-label" for="province">Montaje</label>
+                          <input type="text" id="province" class="form-control form-control-alternative" name="province">
+                      </div>
+                    </div>
+                    <div class="col-lg-4">
+                      <div class="form-group">
+                          <label class="form-control-label" for="province">Productor</label>
+                          <input type="text" id="province" class="form-control form-control-alternative" name="province">
+                      </div>
+                    </div>
+                    <div class="col-lg-4">
+                      <div class="form-group">
+                          <label class="form-control-label" for="province">Animación</label>
+                          <input type="text" id="province" class="form-control form-control-alternative" name="province">
+                      </div>
+                    </div>
+                    <div class="col-lg-4">
+                      <div class="form-group">
+                          <label class="form-control-label" for="sound">Sonido</label>
+                          <input type="text" id="sound" class="form-control form-control-alternative" name="sound">
+                      </div>
+                    </div>
+                    <div class="col-lg-12">
+                      <div class="form-group">
+                          <label class="form-control-label" for="province">Intérpretes</label>
+                          <input type="text" id="province" class="form-control form-control-alternative" name="province">
+                      </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <hr/>
+                        <p class="p-3 mb-2 bg-light font-weight-bold text-center text-uppercase">Empresa</p>  
+                    </div>
                     <div class="col-lg-6">
-                      <div class="form-group">
-                          <label class="form-control-label" for="header">Guión</label>
-                          <input type="text" id="header" class="form-control form-control-alternative" name="header">
-                      </div>
-                  </div>
-                  <div class="col-lg-6">
-                      <div class="form-group">
-                          <label class="form-control-label" for="street">Fotografía</label>
-                          <input type="text" id="street" class="form-control form-control-alternative" name="street">
-                      </div>
-                  </div>
-                  <div class="col-lg-4">
-                      <div class="form-group">
-                          <label class="form-control-label" for="postalcode">Dirección artística</label>
-                          <input type="text" id="postalcode" class="form-control form-control-alternative" name="postalcode">
-                      </div>
-                  </div>
-                  <div class="col-lg-4">
-                      <div class="form-group">
-                          <label class="form-control-label" for="city">Música</label>
-                          <input type="text" id="city" class="form-control form-control-alternative" name="city">
-                      </div>
-                  </div>
-                  <div class="col-lg-4">
-                    <div class="form-group">
-                        <label class="form-control-label" for="province">Montaje</label>
-                        <input type="text" id="province" class="form-control form-control-alternative" name="province">
+                        <div class="form-group">
+                            <label class="form-control-label" for="copiesheader">Encabezado</label>
+                            <input type="text" id="copiesheader" class="form-control form-control-alternative" name="copiesheader">
+                        </div>
                     </div>
-                  </div>
-                  <div class="col-lg-6">
-                    <div class="form-group">
-                        <label class="form-control-label" for="province">Productor</label>
-                        <input type="text" id="province" class="form-control form-control-alternative" name="province">
-                    </div>
-                  </div>
-                  <div class="col-lg-6">
-                    <div class="form-group">
-                        <label class="form-control-label" for="province">Animación</label>
-                        <input type="text" id="province" class="form-control form-control-alternative" name="province">
-                    </div>
-                  </div>
-                  <div class="col-lg-12">
-                    <div class="form-group">
-                        <label class="form-control-label" for="province">Intérpretes</label>
-                        <input type="text" id="province" class="form-control form-control-alternative" name="province">
-                    </div>
-                  </div>
-                  <div class="col-lg-12">
-                      <hr/>
-                      <p class="p-3 mb-2 bg-light font-weight-bold text-center text-uppercase">Empresa</p>  
-                  </div>
-                  <div class="col-lg-6">
+                    <div class="col-lg-4">
                       <div class="form-group">
-                          <label class="form-control-label" for="copiesheader">Encabezado</label>
-                          <input type="text" id="copiesheader" class="form-control form-control-alternative" name="copiesheader">
+                          <label class="form-control-label" for="copiesstreet">Calle</label>
+                          <input type="text" id="copiesstreet" class="form-control form-control-alternative" name="copiesstreet">
                       </div>
-                  </div>
-                  <div class="col-lg-6">
-                  <div class="form-group">
-                      <label class="form-control-label" for="copiesstreet">Calle</label>
-                      <input type="text" id="copiesstreet" class="form-control form-control-alternative" name="copiesstreet">
-                  </div>
-                  </div>
-                  <div class="col-lg-2">
-                  <div class="form-group">
-                      <label class="form-control-label" for="copiescp">Código postal</label>
-                      <input type="text" id="copiescp" class="form-control form-control-alternative" name="copiescp">
-                  </div>
-                  </div>
-                  <div class="col-lg-3">
-                  <div class="form-group">
-                      <label class="form-control-label" for="copiestel">Telef portada</label>
-                      <input type="tel" id="copiestel" class="form-control form-control-alternative" name="copiestel">
-                  </div>
-                  </div>
-                  <div class="col-lg-3">
-                  <div class="form-group">
-                      <label class="form-control-label" for="copiescity">Localidad</label>
-                      <input type="text" id="copiescity" class="form-control form-control-alternative" name="copiescity">
-                  </div>
-                  </div>
+                    </div>
+                    <div class="col-lg-2">
+                      <div class="form-group">
+                          <label class="form-control-label" for="copiescp">Código postal</label>
+                          <input type="text" id="copiescp" class="form-control form-control-alternative" name="copiescp">
+                      </div>
+                    </div>
+                    <div class="col-lg-3">
+                      <div class="form-group">
+                          <label class="form-control-label" for="copiestel">Telef portada</label>
+                          <input type="tel" id="copiestel" class="form-control form-control-alternative" name="copiestel">
+                      </div>
+                    </div>
+                    <div class="col-lg-3">
+                      <div class="form-group">
+                          <label class="form-control-label" for="copiescity">Localidad</label>
+                          <input type="text" id="copiescity" class="form-control form-control-alternative" name="copiescity">
+                      </div>
+                    </div>
+                    <div class="col-lg-3">
+                      <div class="form-group">
+                          <label class="form-control-label" for="copiesprovince">Provincia</label>
+                          <input type="text" id="copiesprovince" class="form-control form-control-alternative" name="copiesprovince">
+                      </div>
+                    </div>
+                    <div class="col-lg-3">
+                      <div class="form-group">
+                          <label class="form-control-label" for="copiescountry">País</label>
+                          <input type="text" id="copiescountry" class="form-control form-control-alternative" name="copiescountry">
+                      </div>
+                    </div> 
                     <div class="col-lg-12 text-center">
                       <button class="btn btn-success mt-3 mb-2">Guardar</button>
                     </div>

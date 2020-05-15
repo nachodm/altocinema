@@ -82,6 +82,23 @@ module.exports = function(app, passport) {
     res.redirect('/');
   })
 
+  app.post('addFilm', )
+  
+/*app.post("/addFilm", (request, response) => {
+  const film = {
+
+  }
+  films.newFilm(film, (err) => {
+      if (err) {
+          request.session.error = err;
+          response.redirect("addFilm");
+      }
+      else {
+          response.redirect("films");
+      }
+  });
+});
+*/
   app.post('register', async (request, response) => {
     try {
       const hashed = await bcrypt.hash(request.body.password, 10);

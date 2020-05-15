@@ -40,13 +40,12 @@
             <div class="card-header bg-white border-0">
               <div class="row align-items-center">
                 <div class="col-8">
-                  <h3 class="mb-0">Mi cuenta</h3>
+                  <h4 class="heading-small text-muted mb-0">Modificar datos de usuario</h4>
                 </div>
               </div>
             </div>
             <div class="card-body">
               <form action="/update" method="POST">
-                <h6 class="heading-small text-muted mb-4">Datos de usuario</h6>
                 <div class="pl-lg-4">
                   <% if (locals.messages && messages.success) { %>
                     <div class="alert alert-success alert-dismissible fade show" role="alert">
