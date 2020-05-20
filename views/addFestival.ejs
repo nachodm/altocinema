@@ -30,26 +30,21 @@
   <%- include ('partials/sidebar'); -%>
   <!-- Main content -->
   <div class="main-content">
-    <!-- Top navbar -->
-    <%- include ('partials/navbar'); -%>
-    <!-- Header -->
-    <%- include ('partials/header'); -%>
     <!-- Page content -->
-    <div class="container-fluid mt--6 mb-2">
+    <div class="container-fluid mt-4 mb-2">
       <div class="row justify-content-center">
         <div class="col-xl-11 m-1">
           <div class="card bg-secondary shadow">
             <div class="card-header bg-white border-0">
               <div class="row align-items-center">
-                <div class="col-8">
+                <div class="col">
                   <h3 class="mb-0">Añadir festival</h3>
                 </div>
               </div>
             </div>
             <div class="card-body">
               <form action="/register" method="POST">
-                <h6 class="heading-small text-muted mb-4">Datos:</h6>
-                <div class="pl-lg-4">
+                <div class="pl-lg-2">
                   <% if (locals.messages && messages.success) { %>
                     <div class="alert alert-success alert-dismissible fade show" role="alert">
                       <%= messages.success %>
@@ -67,13 +62,13 @@
                     </div>
                   <% } %>
                   <div class="row">
-                    <div class="col-lg-10">
-                      <div class="form-group">
-                        <label class="form-control-label" for="name">Nombre</label>
-                        <input type="text" id="name" class="form-control form-control-alternative" name="name" placeholder="Festival Cannes" required>
-                      </div>
+                    <div class="col-lg-10 my--2">
+                        <div class="form-group">
+                            <label class="form-control-label" for="name">Nombre</label>
+                            <input type="text" id="name" class="form-control form-control-alternative" name="name" placeholder="Festival Cannes" required>
+                        </div>
                     </div>
-                    <div class="col-lg-2">
+                    <div class="col-lg-2 my--2">
                         <div class="form-group">
                             <label class="form-control-label" for="password">Ok</label>
                             <select class="form-control form-control-alternative" id="entryfee" name="entryfee" required>
@@ -83,34 +78,34 @@
                             </select> 
                         </div>
                     </div>
-                    <div class="col-lg-2">
+                    <div class="col-lg-2 my--2">
                       <div class="form-group">
                         <label class="form-control-label" for="initDate">Fecha Inicio</label>
-                        <input type="date" id="initDate" class="form-control form-control-alternative" name="initDate" required>
+                        <input type="date" id="initDate" class="form-control form-control-alternative input-sm" name="initDate" required>
                       </div>
                     </div>
-                    <div class="col-lg-2">
+                    <div class="col-lg-2 my--2">
                       <div class="form-group">
                         <label class="form-control-label" for="endDate">Fecha Fin</label>
-                        <input type="date" id="endDate" class="form-control form-control-alternative" name="endDate" >
+                        <input type="date" id="endDate" class="form-control form-control-alternative input-sm" name="endDate" >
                       </div>
                     </div>
-                    <div class="col-lg-2">
+                    <div class="col-lg-2 my--2">
                         <div class="form-group">
                             <label class="form-control-label" for="edition">Edición</label>
-                            <input type="number" id="edition" class="form-control form-control-alternative" name="edition" placeholder="10">
+                            <input type="number" id="edition" class="form-control form-control-alternative input-sm" name="edition" placeholder="10">
                         </div>
                     </div>
-                    <div class="col-lg-3">
+                    <div class="col-lg-3 my--2">
                         <div class="form-group">
                             <label class="form-control-label text-warning font-weight-bold" for="deadline">Deadline</label>
-                            <input type="date" id="deadline" class="form-control form-control-alternative" name="deadline" required>
+                            <input type="date" id="deadline" class="form-control form-control-alternative input-sm" name="deadline" required>
                         </div>
                     </div>
-                    <div class="col-lg-3">
+                    <div class="col-lg-3 my--2">
                         <div class="form-group">
                             <label class="form-control-label" for="type">Tipo Deadline</label>
-                            <select  class="form-control form-control-alternative" id="type" name="type" required>
+                            <select  class="form-control form-control-alternative input-sm" id="type" name="type" required>
                                 <option value="0">Early</option>
                                 <option value="1">Regular</option>
                                 <option value="2">Late</option>
@@ -118,22 +113,22 @@
                             </select> 
                         </div>
                     </div>
-                    <div class="col-lg-2">
+                    <div class="col-lg-2 my--2">
                         <div class="form-group">
                             <label class="form-control-label" for="entryfee">EntryFee</label>
-                            <select class="form-control form-control-alternative" id="entryfee" name="entryfee" required>
+                            <select class="form-control form-control-alternative input-sm" id="entryfee" name="entryfee" required>
                                 <option value="y">Sí</option>
                                 <option value="n">No</option>
                             </select> 
                         </div>
                     </div>
-                    <div class="col-lg-2">
+                    <div class="col-lg-2 my--2">
                         <div class="form-group">
                             <label class="form-control-label" for="price">Tasa</label>
                             <input type="number" step="0.01" min="0.00" id="price" class="form-control form-control-alternative" name="price">
                         </div>
                     </div>
-                    <div class="col-lg-2">
+                    <div class="col-lg-2 my--2">
                         <div class="form-group">
                             <label class="form-control-label" for="currency">Moneda</label>
                             <select class="form-control form-control-alternative" id="currency" name="currency" required>
@@ -204,7 +199,7 @@
                             </select>
                         </div>
                     </div>
-                    <div class="col-lg-2">
+                    <div class="col-lg-2 my--2">
                         <div class="form-group">
                             <label class="form-control-label" for="platform">Plataforma</label>
                             <select class="form-control form-control-alternative" id="platform" name="platform" required>
@@ -213,7 +208,7 @@
                             </select> 
                         </div>
                     </div>
-                    <div class="col-lg-2">
+                    <div class="col-lg-2 my--2">
                         <div class="form-group">
                             <label class="form-control-label" for="print">Imprimir</label>
                             <select class="form-control form-control-alternative" id="print" name="print" required>
@@ -222,7 +217,7 @@
                             </select> 
                         </div>
                     </div>
-                    <div class="col-lg-2">
+                    <div class="col-lg-2 my--2">
                         <div class="form-group">
                             <label class="form-control-label" for="prize">Premio en metálico</label>
                             <select class="form-control form-control-alternative" id="prize" name="prize" required>
@@ -231,9 +226,8 @@
                             </select> 
                         </div>
                     </div>
-                    <div class="col-lg-12">
-                        <hr/>
-                        <p class="p-3 mb-2 bg-light font-weight-bold text-center text-uppercase">Contacto</p>  
+                    <div class="col-lg-12 my--2">
+                        <p class="py-2 mb-2 bg-light font-weight-bold text-center text-uppercase">Contacto</p>  
                     </div>
                     <div class="col-lg-6">
                         <div class="form-group">
@@ -247,43 +241,43 @@
                             <input type="email" id="contactemail" class="form-control form-control-alternative" name="contactemail" placeholder="john@gmail.com" >
                         </div>
                     </div>
-                    <div class="col-lg-6">
+                    <div class="col-lg-6 my--2">
                         <div class="form-group">
                             <label class="form-control-label" for="programmer">Programador</label>
                             <input type="text" id="programmer" class="form-control form-control-alternative" name="programmer" placeholder="Ginna" >
                         </div>
                     </div>
-                    <div class="col-lg-6">
+                    <div class="col-lg-6 my--2">
                         <div class="form-group">
                             <label class="form-control-label" for="progemail">E-mail programador</label>
                             <input type="email" id="progemail" class="form-control form-control-alternative" name="progemail" placeholder="ginna@gmail.com">
                         </div>
                     </div>
-                    <div class="col-lg-2">
+                    <div class="col-lg-2 my--2">
                         <div class="form-group">
                             <label class="form-control-label" for="contacttel">Teléfono</label>
                             <input type="tel" id="contacttel" class="form-control form-control-alternative" name="contacttel">
                         </div>
                     </div>
-                    <div class="col-lg-5">
+                    <div class="col-lg-5 my--2">
                         <div class="form-group">
                             <label class="form-control-label" for="contactweb">Web</label>
                             <input type="url" id="contactweb" class="form-control form-control-alternative" name="contactweb">
                         </div>
                     </div>
-                    <div class="col-lg-5">
+                    <div class="col-lg-5 my--2">
                         <div class="form-group">
                             <label class="form-control-label" for="platformurl">Web plataforma</label>
                             <input type="url" id="platformurl" class="form-control form-control-alternative" name="platformurl">
                         </div>
                     </div>
-                    <div class="col-lg-4">
+                    <div class="col-lg-4 my--2">
                     <div class="form-group">
                         <label class="form-control-label" for="state">Autonomía/Estado</label>
                         <input type="text" id="state" class="form-control form-control-alternative" name="state">
                     </div>
                     </div>
-                    <div class="col-lg-4">
+                    <div class="col-lg-4 my--2">
                         <div class="form-group">
                             <label class="form-control-label" for="contactcountry">País</label>
                             <input type="text" id="contactcountry" list="countries" class="form-control form-control-alternative" name="contactcountry">
@@ -540,23 +534,22 @@
                             </datalist>
                         </div>
                     </div>
-                    <div class="col-lg-4">
+                    <div class="col-lg-4 my--2">
                         <div class="form-group">
                             <label class="form-control-label" for="language">Idioma</label>
                             <input type="text" id="language" class="form-control form-control-alternative" name="language">
                         </div>
                     </div>
-                    <div class="col-lg-12">
+                    <div class="col-lg-12 my--2">
                         <div class="form-group">
                             <label class="form-control-label" for="notes">NOTAS</label>
                             <textarea name="notes" id="notes" class="form-control form-control-alternative" rows="3"></textarea>
                         </div>
                     </div>
                     <div class="col-lg-12">
-                        <hr/>
                         <p class="p-3 mb-2 bg-light font-weight-bold text-center text-uppercase">Gestión inscripciones</p>  
                     </div>
-                    <div class="col-lg-2">
+                    <div class="col-lg-2 my--2">
                         <div class="form-group">
                             <label class="form-control-label" for="confirmed">Confirmado</label>
                             <select class="form-control form-control-alternative" id="confirmed" name="confirmed" required>
@@ -565,54 +558,52 @@
                             </select> 
                         </div>
                     </div>
-                    <div class="col-lg-5">
+                    <div class="col-lg-5 my--2">
                         <div class="form-group">
                             <label class="form-control-label" for="file">Ficha</label>
                             <input type="text" id="file" class="form-control form-control-alternative" name="file" required>
                         </div>
                     </div>
-                    <div class="col-lg-5">
+                    <div class="col-lg-5 my--2">
                         <div class="form-group">
                             <label class="form-control-label" for="shortname">Nombre corto</label>
                             <input type="text" id="shortname" class="form-control form-control-alternative" name="shortname">
                         </div>
                     </div>
                     <div class="col-lg-12">
-                        <hr/>
                         <p class="p-3 mb-2 bg-light font-weight-bold text-center text-uppercase">Dirección de inscripción</p>  
                     </div>
-                    <div class="col-lg-12">
+                    <div class="col-lg-12 my--2">
                         <div class="form-group">
                             <label class="form-control-label" for="header">Encabezado</label>
                             <input type="text" id="header" class="form-control form-control-alternative" name="header">
                         </div>
                     </div>
-                    <div class="col-lg-12">
+                    <div class="col-lg-12 my--2">
                         <div class="form-group">
                             <label class="form-control-label" for="street">Calle</label>
                             <input type="text" id="street" class="form-control form-control-alternative" name="street">
                         </div>
                     </div>
-                    <div class="col-lg-3">
+                    <div class="col-lg-3 my--2">
                         <div class="form-group">
                             <label class="form-control-label" for="postalcode">Código postal</label>
                             <input type="text" id="postalcode" class="form-control form-control-alternative" name="postalcode">
                         </div>
                     </div>
-                    <div class="col-lg-4">
+                    <div class="col-lg-4 my--2">
                         <div class="form-group">
                             <label class="form-control-label" for="city">Localidad</label>
                             <input type="text" id="city" class="form-control form-control-alternative" name="city">
                         </div>
                     </div>
-                    <div class="col-lg-5">
+                    <div class="col-lg-5 my--2">
                     <div class="form-group">
                         <label class="form-control-label" for="province">Provincia/Estado</label>
                         <input type="text" id="province" class="form-control form-control-alternative" name="province">
                     </div>
                     </div>
                     <div class="col-lg-12">
-                        <hr/>
                         <p class="p-3 mb-2 bg-light font-weight-bold text-center text-uppercase">Dirección envío copias</p>  
                     </div>
                     <div class="col-lg-6">
@@ -627,37 +618,37 @@
                         <input type="text" id="copiesstreet" class="form-control form-control-alternative" name="copiesstreet">
                     </div>
                     </div>
-                    <div class="col-lg-2">
+                    <div class="col-lg-2 my--2">
                     <div class="form-group">
                         <label class="form-control-label" for="copiescp">Código postal</label>
                         <input type="text" id="copiescp" class="form-control form-control-alternative" name="copiescp">
                     </div>
                     </div>
-                    <div class="col-lg-3">
+                    <div class="col-lg-3 my--2">
                     <div class="form-group">
                         <label class="form-control-label" for="copiestel">Telef portada</label>
                         <input type="tel" id="copiestel" class="form-control form-control-alternative" name="copiestel">
                     </div>
                     </div>
-                    <div class="col-lg-3">
+                    <div class="col-lg-3 my--2">
                     <div class="form-group">
                         <label class="form-control-label" for="copiescity">Localidad</label>
                         <input type="text" id="copiescity" class="form-control form-control-alternative" name="copiescity">
                     </div>
                     </div>
-                    <div class="col-lg-4">
+                    <div class="col-lg-4 my--2">
                     <div class="form-group">
                         <label class="form-control-label" for="copiesprovince">Provincia/Estado</label>
                         <input type="text" id="copiesprovince" class="form-control form-control-alternative" name="copiesprovince">
                     </div>
                     </div>
-                    <div class="col-lg-12">
+                    <div class="col-lg-12 my--2">
                         <div class="form-group">
                             <label class="form-control-label" for="copiescountry">País</label>
                             <input type="text" id="copiescountry" list="countries" class="form-control form-control-alternative" name="copiescountry">
                         </div>
                     </div>
-                    <div class="col-lg-12">
+                    <div class="col-lg-12 my--2">
                         <div class="form-group">
                             <label class="form-control-label" for="lastmodification">Última modificación:</label>
                             <input type="text" id="lastmodification" class="form-control form-control-alternative" name="lastmodification">

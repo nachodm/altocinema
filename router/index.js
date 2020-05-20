@@ -1,4 +1,12 @@
 module.exports = function(app, passport) {
+
+  const config = require ("../config/config");
+  const mysql = require('mysql');
+  const DAOUsers = require('../DAOs/DAOUsers');
+  const DAOFilms = require('../DAOs/DAOFilms');
+  const pool = mysql.createPool(config.mysqlconfig);
+  const users = new DAOUsers.DAOUsers(pool);
+  const films = new DAOFilms.DAOFilms(pool);
     
   function checkAuthenticated(req, res, next) {
     if (req.isAuthenticated()) {
@@ -29,8 +37,30 @@ module.exports = function(app, passport) {
     response.render('festivals', {user: request.user, title: "Festivales"});
   })
   app.get('/films', checkAuthenticated, (request, response) => {
-    response.render('films', {user: request.user, title: "Películas"});
+    films.getFilmList((err, filmsList) => {
+      if (err) {
+          response.locals.messages = err;
+          response.redirect("/dashboard");
+      }
+      else {
+        response.render('films', {user: request.user, title: "Películas", films: filmsList});
+      }
+    });
   })
+
+  app.get("/film:=:id", checkAuthenticated, (request, response) => {   
+    films.getFilm(request.params.id, (err, film) => {
+      if (err) {
+        response.locals.messages = err;
+        response.redirect("/dashboard");
+      }
+      else {
+        response.render('film', {user: request.user, title: film.title, film: film});
+      }
+    });
+  });
+
+
   app.get('/halls', checkAuthenticated, (request, response) => {
     response.render('halls', {user: request.user, title: "Salas de proyección"});
   })
@@ -82,15 +112,57 @@ module.exports = function(app, passport) {
     res.redirect('/');
   })
 
-  app.post('addFilm', )
   
-/*app.post("/addFilm", (request, response) => {
-  const film = {
+app.post("/addFilm", checkAuthenticated, (request, response) => {
+  const film = [[
+      request.body.title,
+      request.body.engtitle,
+      parseInt(request.body.year),
+      request.body.date,
+      request.body.color,
+      request.body.animationtechnique,
+      request.body.originalv,
+      request.body.genre,
+      parseInt(request.body.duration),
+      request.body.country,
+      request.body.screen,
+      request.body.shootingplace,
+      request.body.catalogue,
+      request.body.sinopsis,
+      request.body.eng_sinopsis,
+      request.body.materialslink,
+      request.body.link,
+      request.body.originalvimeo,
+      request.body.englishvimeo,
+      request.body.frenchvimeo,
+      request.body.italianvimeo,
+      request.body.spavimeo,
+      request.body.trailer,
+      request.body.trailereng,
+      request.body.director,
+      request.body.script,
+      request.body.photography,
+      request.body.artistic,
+      request.body.soundtrack,
+      request.body.montage,
+      request.body.producer,
+      request.body.animation,
+      request.body.sound,
+      request.body.interpreter,
+      request.body.copiesheader,
+      request.body.copiesstreet,
+      request.body.copiescp,
+      request.body.copiestel,
+      request.body.copiescity,
+      request.body.copiesprovince,
+      request.body.copiescountry
+  ]];
 
-  }
-  films.newFilm(film, (err) => {
+  const categories = request.body.categories;
+
+  films.newFilm(film, categories, (err) => {
       if (err) {
-          request.session.error = err;
+          response.locals.messages = err;
           response.redirect("addFilm");
       }
       else {
@@ -98,7 +170,7 @@ module.exports = function(app, passport) {
       }
   });
 });
-*/
+
   app.post('register', async (request, response) => {
     try {
       const hashed = await bcrypt.hash(request.body.password, 10);
@@ -122,6 +194,6 @@ module.exports = function(app, passport) {
   })
 
   app.use((req, res) => {
-    res.status(404).render('404'/*, {user: req.user.username}*/);
+    res.status(404).render('404');
   });
 }

@@ -1,11 +1,11 @@
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Añadir Película</title>
+  <title>Datos de película</title>
   <!--https://favicon.io/favicon-generator/ Monoton font-->
   <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
@@ -49,29 +49,13 @@
             <div class="card-header bg-white border-0">
               <div class="row align-items-center">
                 <div class="col-8">
-                  <h3 class="mb-0">Añadir película</h3>
+                  <h3 class="mb-0"><%=title%></h3>
                 </div>
               </div>
             </div>
             <div class="card-body">
-              <form id="addFilmForm" action="/addFilm" method="POST">
+              <form id="addFilmForm" action="/editFilm" method="POST">
                 <div class="pl-lg-4">
-                  <% if (locals.messages && messages.success) { %>
-                    <div class="alert alert-success alert-dismissible fade show" role="alert">
-                      <%= messages.success %>
-                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                      </button>
-                    </div>
-                  <% } %>
-                  <% if (locals.messages && messages.errors && messages.errors.databaseError) { %>
-                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                      <%= messages.errors %>
-                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                      </button>
-                    </div>
-                  <% } %>
                   <div class="row">
                     <div class="col-lg-6 my--2">
                       <div class="form-group">
@@ -88,21 +72,27 @@
                     <div class="col-lg-2 my--2">
                       <div class="form-group">
                         <label class="form-control-label" for="year">Año</label>
-                        <input type="number" id="year" class="form-control form-control-alternative" name="year" required>
+                        <input type="text" id="year" class="form-control form-control-alternative" name="year" required>
+                        <% if (locals.messages && messages.errors && messages.errors.name) { %>
+                          <strong class="invalid-feedback" style="display: block"><%= messages.errors.name %></strong>
+                        <% } %>
                       </div>
                     </div>
                     <div class="col-lg-2 my--2">
                       <div class="form-group">
                         <label class="form-control-label" for="productiondate">Fecha</label>
                         <input type="date" id="date" class="form-control form-control-alternative" name="date" required>
+                        <% if (locals.messages && messages.errors && messages.errors.name) { %>
+                          <strong class="invalid-feedback" style="display: block"><%= messages.errors.name %></strong>
+                        <% } %>
                       </div>
                     </div>
                     <div class="col-lg-2 my--2">
                       <div class="form-group">
                         <label class="form-control-label" for="color">Color</label>
                         <select  class="form-control form-control-alternative" id="color" name="color" required>
-                          <option value="Color">Color</option>
-                          <option value="ByN">Blanco y Negro</option>
+                          <option value="volvo">Color</option>
+                          <option value="saab">Blanco y Negro</option>
                         </select> 
                       </div>
                     </div>
@@ -121,7 +111,7 @@
                     <div class="col-lg-8 my--2">
                       <div class="form-group">
                         <label class="form-control-label" for="genre">Género</label>
-                        <select class="form-control form-control-alternative" id="genre" name="genre" required>
+                        <select multiple class="selectpicker form-control form-control-alternative" id="genre" name="genre" data-actions-box="true" data-style="btn-light">
                           <option value="anim">Animación</option>
                           <option value="disc">Documental</option>
                           <option value="docu">Experimental</option>

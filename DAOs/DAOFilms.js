@@ -31,18 +31,25 @@ class DAOFilms {
                 callback(null);
             }
             else{
-                connection.query("INSERT INTO films email, password FROM users VALUES () email = ? and password = ?",
-                [film, password],
-                (err, rows) => {
-                    if (err) { callback(null); }
-                    if (rows.length === 0) {
+                connection.query("INSERT INTO FILMS (title, engtitle, year, date, color, animationtechnique, originalv, genre, duration, country, screen, shootingplace, catalogue, sinopsis, eng_sinopsis, materialslink, link, originalvimeo, englishvimeo, frenchvimeo, italianvimeo, spavimeo, trailer, trailereng, director, script, photography, artistic, soundtrack, montage, producer, animation, sound, interpreter, copiesheader, copiesstreet, copiescp, copiestel, copiescity, copiesprovince, copiescountry) VALUES ?",
+                [film],
+                (err, result) => {
+                    if (err) { callback(err);}
+                    else {
+                        /*connection.query("INSERT INTO films email, password FROM users VALUES ?",
+                        [result.insertId, categories],
+                        (err) => {
+                            connection.release();
+                            if (err) { callback(err); }
+                            
+                            else {
+                                callback(null);
+                            }
+                        });*/
                         callback(null);
-                    } else {
-                        callback(user);
                     }
                 });
             }
-        connection.release();
         });
     }
 
@@ -70,62 +77,42 @@ class DAOFilms {
 
 
     /**
-     * Devuelve un objeto user que contiene la información del usuario al que se desea buscar.
-     * @param {String} email Identificador del usuario
+     * Devuelve un objeto user que contiene la información de la película  que se desea buscar.
+     * @param {String} id Identificador del usuario
      * @param {function} callback Función que devolverá el objeto error o el resultado.
      */
-    getFilm(email) {
+    getFilm(id, callback) {
         this.pool.getConnection((err, connection) => {
             if (err) {
-                return null;
+                callback(err, undefined);
             }
-            connection.query("SELECT * FROM users WHERE email = ?",
-            [email],
-            (err, rows) => {
+            connection.query("SELECT * FROM films WHERE id = ?",
+            [id],
+            (err, film) => {
                 connection.release();
-                if (err) {return null;}
+                if (err) {callback(err, undefined);}
                 else {
-                    let user;
-                    if (rows.length > 0) {
-                        user = {
-                            email: rows[0].email, 
-                            name: rows[0].name, 
-                            password: rows[0].pass,
-                        }
-                    }
-                    if (user !== undefined) { return user;}
-                    else { return null;}
+                    callback(null, film[0]);
                 }
             })
         });
     }
 
     /**
-     * Devuelve un objeto user que contiene la información del usuario al que se desea buscar.
-     * @param {String} email Identificador del usuario
+     * Devuelve un objeto que contiene el listado de películas de la base de datos.
      * @param {function} callback Función que devolverá el objeto error o el resultado.
      */
-    getFilmList(email) {
+    getFilmList(callback) {
         this.pool.getConnection((err, connection) => {
             if (err) {
                 return null;
             }
-            connection.query("SELECT * FROM users WHERE email = ?",
-            [email],
-            (err, rows) => {
+            connection.query("SELECT * FROM FILMS",
+            (err, films) => {
                 connection.release();
-                if (err) {return null;}
+                if (err) {callback(err, null);}
                 else {
-                    let user;
-                    if (rows.length > 0) {
-                        user = {
-                            email: rows[0].email, 
-                            name: rows[0].name, 
-                            password: rows[0].pass,
-                        }
-                    }
-                    if (user !== undefined) { return user;}
-                    else { return null;}
+                    callback(null, films);
                 }
             })
         });

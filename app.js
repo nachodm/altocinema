@@ -12,9 +12,11 @@ const bcrypt = require('bcrypt');
 const passport = require('passport');
 const indexRouter = require('./router/index');
 const DAOUsers = require('./DAOs/DAOUsers');
+const DAOFilms = require('./DAOs/DAOFilms');
 const flash = require('express-flash');
 const pool = mysql.createPool(config.mysqlconfig);
 const users = new DAOUsers.DAOUsers(pool);
+const films = new DAOFilms.DAOFilms(pool);
 const initializePassport = require('./passport-config');
 initializePassport(passport);
 
