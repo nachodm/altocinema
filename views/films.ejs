@@ -70,16 +70,18 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <% films.forEach(film => { %>
-                        <tr>
-                          <th scope="row">
-                            <a href="/film:=<%= film.id %>" value="visit"> <%= film.title %> </a>
-                          </th>
-                          <td><%= film.duration %></td>
-                          <td><%= film.company %></td>
-                          <td><%= film.director %></td>
-                        </tr>
-                      <% }) %>
+                      <%if (typeof films !== 'undefined' && films) {%>
+                        <% films.forEach(film => { %>
+                          <tr>
+                            <th scope="row">
+                              <a href="/film:=<%= film.id %>" value="visit"> <%= film.title %> </a>
+                            </th>
+                            <td><%= film.duration %></td>
+                            <td><%= film.company %></td>
+                            <td><%= film.director %></td>
+                          </tr>
+                        <% }) %>
+                      <% }%>
                       <tr>
                         <th scope="row">Sinister</th>
                         <td>Mark</td>
