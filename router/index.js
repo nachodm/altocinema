@@ -2,6 +2,8 @@ module.exports = function(app, passport) {
 
   const config = require ("../config/config");
   const mysql = require('mysql');
+  
+const bcrypt = require('bcrypt');
   const DAOUsers = require('../DAOs/DAOUsers');
   const DAOFilms = require('../DAOs/DAOFilms');
   const pool = mysql.createPool(config.mysqlconfig);
@@ -79,7 +81,7 @@ module.exports = function(app, passport) {
   })
 
   app.get('/register', checkAuthenticated, (request, response) => {
-    response.render('register', {user: request.user, title: "Registro de nuevo usuario"});
+    response.render('register', {user: request.user, title: "Registro de nuevo usuario", error:null});
   })
 
   app.get('/settings', checkAuthenticated, (request, response) => {
@@ -171,26 +173,26 @@ app.post("/addFilm", checkAuthenticated, (request, response) => {
   });
 });
 
-  app.post('register', async (request, response) => {
-    try {
-      const hashed = await bcrypt.hash(request.body.password, 10);
-      let user = {
-          email: request.body.email,
-          password: hashed,
-          name: request.body.name
-      }
-      users.newUser(user, (err) => {
-          if (!err) {
-              response.redirect('/register');
+  app. post("/register_user", (request, response) => {
+      bcrypt.hash(request.body.password, 10, (err, hashed) => {
+        if (err) {
+          response.render('register', {user: request.user, title: "Registro de nuevo usuario", error: err});
+        }
+        else {
+          let user = {
+            email: request.body.email,
+            password: hashed,
+            name: request.body.name
           }
-          else {
-              console.log(err);
-              response.redirect('/register');
-          }
+          users.newUser(user, (err) => {
+              if (!err) {
+                  response.redirect('dashboard');
+              }
+              else {
+              }
+          });
+        }
       });
-    } catch {
-        response.redirect('/register');
-    }
   })
 
   app.use((req, res) => {
