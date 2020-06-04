@@ -54,17 +54,19 @@ class DAOFilms {
     }
 
     /**
-     * Modifica en la base de datos la información del usuario pasado por parámetro 
-     * @param {object} user Usuario a actualizar en la base de datos.
-     * @param {function} callback Función que devolverá el objeto error o el booleano indicando la correcta actualización del usuario.
+     * Modifica en base de datos el id de película pasado por parámetro.
+     * @param {*} data 
+     * @param {*} categories 
+     * @param {*} id 
+     * @param {*} callback 
      */
-    modifyFilm(user, callback){
+    updateFilm(data, categories, id, callback){
         this.pool.getConnection((err, connection) => {
             if (err) {
                 callback("Error de conexion a la BBDD", undefined); return;
             }
-            connection.query("UPDATE users SET password = ?, name = ? WHERE email = ?",
-            [user.password, user.name, user.email],
+            connection.query("UPDATE films SET = ? WHERE id = ?",
+            [data, id],
             (err) => {
                 connection.release();
                 if (err) {callback(err, undefined); return;}

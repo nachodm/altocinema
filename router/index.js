@@ -173,6 +173,62 @@ app.post("/addFilm", checkAuthenticated, (request, response) => {
   });
 });
 
+app.post("/updateFilm", checkAuthenticated, (request, response) => {
+  const film = [[
+      request.body.title,
+      request.body.engtitle,
+      parseInt(request.body.year),
+      request.body.date,
+      request.body.color,
+      request.body.animationtechnique,
+      request.body.originalv,
+      request.body.genre,
+      parseInt(request.body.duration),
+      request.body.country,
+      request.body.screen,
+      request.body.shootingplace,
+      request.body.catalogue,
+      request.body.sinopsis,
+      request.body.eng_sinopsis,
+      request.body.materialslink,
+      request.body.link,
+      request.body.originalvimeo,
+      request.body.englishvimeo,
+      request.body.frenchvimeo,
+      request.body.italianvimeo,
+      request.body.spavimeo,
+      request.body.trailer,
+      request.body.trailereng,
+      request.body.director,
+      request.body.script,
+      request.body.photography,
+      request.body.artistic,
+      request.body.soundtrack,
+      request.body.montage,
+      request.body.producer,
+      request.body.animation,
+      request.body.sound,
+      request.body.interpreter,
+      request.body.copiesheader,
+      request.body.copiesstreet,
+      request.body.copiescp,
+      request.body.copiestel,
+      request.body.copiescity,
+      request.body.copiesprovince,
+      request.body.copiescountry
+  ]];
+
+  films.updateFilm(film, request.body.categories, request.body.id, (err) => {
+      if (err) {
+          response.locals.messages = err;
+          response.redirect("films");
+      }
+      else {
+          response.redirect("films");
+      }
+  });
+});
+
   app. post("/register_user", (request, response) => {
       bcrypt.hash(request.body.password, 10, (err, hashed) => {
         if (err) {

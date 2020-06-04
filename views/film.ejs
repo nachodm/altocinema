@@ -54,25 +54,26 @@
               </div>
             </div>
             <div class="card-body">
-              <form id="addFilmForm" action="/editFilm" method="POST">
+              <form id="addFilmForm" action="/updateFilm" method="POST">
+                <input type="hidden" id="id" name="id" value="<%=film.id%>">
                 <div class="pl-lg-4">
                   <div class="row">
                     <div class="col-lg-6 my--2">
                       <div class="form-group">
                         <label class="form-control-label" for="title">Título original</label>
-                        <input type="text" id="title" class="form-control form-control-alternative" name="title" placeholder="Jessica Jones" required>
+                        <input type="text" id="title" class="form-control form-control-alternative" name="title" value="<%=film.title%>" required>
                         </div>
                     </div>
                     <div class="col-lg-6 my--2">
                       <div class="form-group">
                         <label class="form-control-label" for="engtitle">Título en inglés</label>
-                        <input type="text" id="engtitle" class="form-control form-control-alternative" name="engtitle" placeholder="Jessica Jones (Eng)" required>
+                        <input type="text" id="engtitle" class="form-control form-control-alternative" name="engtitle" value="<%=film.engtitle%>" required>
                       </div>
                     </div>
                     <div class="col-lg-2 my--2">
                       <div class="form-group">
                         <label class="form-control-label" for="year">Año</label>
-                        <input type="text" id="year" class="form-control form-control-alternative" name="year" required>
+                        <input type="text" id="year" class="form-control form-control-alternative" name="year" value="<%=film.year%>"required>
                         <% if (locals.messages && messages.errors && messages.errors.name) { %>
                           <strong class="invalid-feedback" style="display: block"><%= messages.errors.name %></strong>
                         <% } %>
@@ -81,7 +82,7 @@
                     <div class="col-lg-2 my--2">
                       <div class="form-group">
                         <label class="form-control-label" for="productiondate">Fecha</label>
-                        <input type="date" id="date" class="form-control form-control-alternative" name="date" required>
+                        <input type="date" id="date" class="form-control form-control-alternative" name="date" value="<%=film.date%>" required>
                         <% if (locals.messages && messages.errors && messages.errors.name) { %>
                           <strong class="invalid-feedback" style="display: block"><%= messages.errors.name %></strong>
                         <% } %>
@@ -91,27 +92,27 @@
                       <div class="form-group">
                         <label class="form-control-label" for="color">Color</label>
                         <select  class="form-control form-control-alternative" id="color" name="color" required>
-                          <option value="volvo">Color</option>
-                          <option value="saab">Blanco y Negro</option>
+                          <option value="color">Color</option>
+                          <option value="b&n">Blanco y Negro</option>
                         </select> 
                       </div>
                     </div>
                     <div class="col-lg-3 my--2">
                       <div class="form-group">
                         <label class="form-control-label" for="animationtechnique">Técnica de animación</label>
-                        <input type="text" id="animationtechnique" class="form-control form-control-alternative" name="animationtechnique">
+                        <input type="text" id="animationtechnique" class="form-control form-control-alternative" name="animationtechnique" value="<%=film.animationtechnique%>">
                       </div>
                     </div>
                     <div class="col-lg-3 my--2">
                       <div class="form-group">
                         <label class="form-control-label" for="originalv">Versión original</label>
-                        <input type="text" id="originalv" class="form-control form-control-alternative" name="originalv">
+                        <input type="text" id="originalv" class="form-control form-control-alternative" name="originalv" value="<%=film.originalv%>">
                       </div>
                     </div>
                     <div class="col-lg-8 my--2">
                       <div class="form-group">
                         <label class="form-control-label" for="genre">Género</label>
-                        <select multiple class="selectpicker form-control form-control-alternative" id="genre" name="genre" data-actions-box="true" data-style="btn-light">
+                        <select class="form-control form-control-alternative" id="genre" name="genre" required>
                           <option value="anim">Animación</option>
                           <option value="disc">Documental</option>
                           <option value="docu">Experimental</option>
@@ -124,7 +125,7 @@
                     <div class="col-lg-4 my--2">
                       <div class="form-group">
                         <label class="form-control-label" for="duration">Duración</label>
-                        <input type="number" id="duration" class="form-control form-control-alternative" name="duration" required>   
+                        <input type="number" id="duration" class="form-control form-control-alternative" name="duration" value="<%=film.duration%>" required>   
                       </div>
                     </div>
                     <div class="col-lg-12 my--2">
@@ -201,19 +202,19 @@
                     <div class="col-lg-3 my--2">
                       <div class="form-group">
                         <label class="form-control-label" for="country">País</label>
-                        <input type="text" id="country" class="form-control form-control-alternative" name="country" required>
+                        <input type="text" id="country" class="form-control form-control-alternative" name="country" value="<%=film.country%>" required>
                       </div>
                     </div>
                     <div class="col-lg-3 my--2">
                       <div class="form-group">
                         <label class="form-control-label" for="screen">Pantalla</label>
-                        <input type="text" id="screen" class="form-control form-control-alternative" name="screen" required>
+                        <input type="text" id="screen" class="form-control form-control-alternative" name="screen" value="<%=film.screen%>" required>
                       </div>
                     </div>
                     <div class="col-lg-3 my--2">
                       <div class="form-group">
                         <label class="form-control-label" for="shootingplace">Lugar de rodaje</label>
-                        <input type="text" id="shootingplace" class="form-control form-control-alternative" name="shootingplace" required>
+                        <input type="text" id="shootingplace" class="form-control form-control-alternative" name="shootingplace" value="<%=film.shootingplace%>" required>
                       </div>
                     </div>
                     <div class="col-lg-3 my--2">
@@ -228,67 +229,67 @@
                     <div class="col-lg-12 my--2">
                       <div class="form-group">
                         <label class="form-control-label" for="sinopsis">Sinopsis en idioma original</label>
-                        <textarea name="sinopsis" id="sinopsis" class="form-control form-control-alternative" rows="2"></textarea>
+                        <textarea name="sinopsis" id="sinopsis" class="form-control form-control-alternative" rows="2"><%=film.sinopsis%></textarea>
                       </div>
                     </div>
                     <div class="col-lg-12 my--2">
                       <div class="form-group">
                         <label class="form-control-label" for="eng_sinopsis">Sinopsis en inglés</label>
-                        <textarea name="eng_sinopsis" id="eng_sinopsis" class="form-control form-control-alternative" rows="2"></textarea>
+                        <textarea name="eng_sinopsis" id="eng_sinopsis" class="form-control form-control-alternative" rows="2"><%=film.eng_sinopsis%></textarea>
                       </div>
                     </div>
                     <div class="col-lg-6 my--2">
                       <div class="form-group">
                         <label class="form-control-label" for="materialslink">Enlace de materiales</label>
-                        <input type="url" id="materialslink" class="form-control form-control-alternative" name="materialslink">
+                        <input type="url" id="materialslink" class="form-control form-control-alternative" name="materialslink" value="<%=film.materialslink%>">
                       </div>
                     </div>
                     <div class="col-lg-6 my--2">
                       <div class="form-group">
                         <label class="form-control-label" for="link">Enlace copias</label>
-                        <input type="url" id="link" class="form-control form-control-alternative" name="link"  >
+                        <input type="url" id="link" class="form-control form-control-alternative" name="link" value="<%=film.link%>">
                       </div>
                     </div>
                     <div class="col-lg-12 my--2">
                       <div class="form-group">
                         <label class="form-control-label" for="originalvimeo">Vimeo original</label>
-                        <input type="url" id="originalvimeo" class="form-control form-control-alternative" name="originalvimeo"  >
+                        <input type="url" id="originalvimeo" class="form-control form-control-alternative" name="originalvimeo" value="<%=film.originalvimeo%>">
                       </div>
                     </div>
                     <div class="col-lg-6 my--2">
                       <div class="form-group">
                         <label class="form-control-label" for="spavimeo">Vimeo español</label>
-                        <input type="url" id="spavimeo" class="form-control form-control-alternative" name="spavimeo"  >
+                        <input type="url" id="spavimeo" class="form-control form-control-alternative" name="spavimeo" value="<%=film.spavimeo%>">
                       </div>
                     </div>
                     <div class="col-lg-6 my--2">
                       <div class="form-group">
                         <label class="form-control-label" for="englishvimeo">Vimeo en inglés</label>
-                        <input type="url" id="englishvimeo" class="form-control form-control-alternative" name="englishvimeo"  >
+                        <input type="url" id="englishvimeo" class="form-control form-control-alternative" name="englishvimeo" value="<%=film.englishvimeo%>">
                       </div>
                     </div>
                     <div class="col-lg-6 my--2">
                       <div class="form-group">
                         <label class="form-control-label" for="frenchvimeo">Vimeo en francés</label>
-                        <input type="url" id="frenchvimeo" class="form-control form-control-alternative" name="frenchvimeo"  >
+                        <input type="url" id="frenchvimeo" class="form-control form-control-alternative" name="frenchvimeo" value="<%=film.frenchvimeo%>">
                       </div>
                     </div>
                     <div class="col-lg-6 my--2">
                       <div class="form-group">
                         <label class="form-control-label" for="italianvimeo">Vimeo en italiano</label>
-                        <input type="url" id="italianvimeo" class="form-control form-control-alternative" name="italianvimeo">
+                        <input type="url" id="italianvimeo" class="form-control form-control-alternative" name="italianvimeo" value="<%=film.italianvimeo%>">
                       </div>
                     </div>
                     <div class="col-lg-6 my--2">
                       <div class="form-group">
                         <label class="form-control-label" for="trailer">Trailer VO</label>
-                        <input type="url" id="trailer" class="form-control form-control-alternative" name="trailer">
+                        <input type="url" id="trailer" class="form-control form-control-alternative" name="trailer" value="<%=film.trailer%>">
                       </div>
                     </div>
                     <div class="col-lg-6 my--2">
                       <div class="form-group">
                         <label class="form-control-label" for="trailereng">Trailer Inglés</label>
-                        <input type="url" id="trailereng" class="form-control form-control-alternative" name="trailereng">
+                        <input type="url" id="trailereng" class="form-control form-control-alternative" name="trailereng" value="<%=film.trailereng%>">
                       </div>
                     </div>
                     <div class="col-lg-12">
@@ -297,61 +298,61 @@
                     <div class="col-lg-4">
                       <div class="form-group">
                           <label class="form-control-label" for="director">Director</label>
-                          <input type="text" id="director" class="form-control form-control-alternative" name="director" required>
+                          <input type="text" id="director" class="form-control form-control-alternative" name="director" value="<%=film.director%>" required>
                       </div>
                     </div>
                     <div class="col-lg-4">
                       <div class="form-group">
                           <label class="form-control-label" for="script">Guión</label>
-                          <input type="text" id="script" class="form-control form-control-alternative" name="script">
+                          <input type="text" id="script" class="form-control form-control-alternative" name="script" value="<%=film.script%>">
                       </div>
                     </div>
                     <div class="col-lg-4">
                         <div class="form-group">
                             <label class="form-control-label" for="photography">Fotografía</label>
-                            <input type="text" id="photography" class="form-control form-control-alternative" name="photography">
+                            <input type="text" id="photography" class="form-control form-control-alternative" name="photography" value="<%=film.photograhpy%>">
                         </div>
                     </div>
                     <div class="col-lg-4 my--2">
                         <div class="form-group">
                             <label class="form-control-label" for="artistic">Dirección artística</label>
-                            <input type="text" id="artistic" class="form-control form-control-alternative" name="artistic">
+                            <input type="text" id="artistic" class="form-control form-control-alternative" name="artistic" value="<%=film.artistic%>">
                         </div>
                     </div>
                     <div class="col-lg-4 my--2">
                         <div class="form-group">
                             <label class="form-control-label" for="soundtrack">Música</label>
-                            <input type="text" id="soundtrack" class="form-control form-control-alternative" name="soundtrack">
+                            <input type="text" id="soundtrack" class="form-control form-control-alternative" name="soundtrack" value="<%=film.soundtrack%>">
                         </div>
                     </div>
                     <div class="col-lg-4 my--2">
                       <div class="form-group">
                           <label class="form-control-label" for="montage">Montaje</label>
-                          <input type="text" id="montage" class="form-control form-control-alternative" name="montage" required>
+                          <input type="text" id="montage" class="form-control form-control-alternative" name="montage"value="<%=film.montage%>" required>
                       </div>
                     </div>
                     <div class="col-lg-4 my--2">
                       <div class="form-group">
                           <label class="form-control-label" for="producer">Productor</label>
-                          <input type="text" id="producer" class="form-control form-control-alternative" name="producer" required>
+                          <input type="text" id="producer" class="form-control form-control-alternative" name="producer" value="<%=film.producer%>" required>
                       </div>
                     </div>
                     <div class="col-lg-4 my--2">
                       <div class="form-group">
                           <label class="form-control-label" for="animation">Animación</label>
-                          <input type="text" id="animation" class="form-control form-control-alternative" name="animation">
+                          <input type="text" id="animation" class="form-control form-control-alternative" name="animation" value="<%=film.animation%>">
                       </div>
                     </div>
                     <div class="col-lg-4 my--2">
                       <div class="form-group">
                           <label class="form-control-label" for="sound">Sonido</label>
-                          <input type="text" id="sound" class="form-control form-control-alternative" name="sound">
+                          <input type="text" id="sound" class="form-control form-control-alternative" name="sound" value="<%=film.sound%>">
                       </div>
                     </div>
                     <div class="col-lg-12 my--2">
                       <div class="form-group">
                           <label class="form-control-label" for="interpreter">Intérpretes</label>
-                          <input type="text" id="interpreter" class="form-control form-control-alternative" name="interpreter">
+                          <input type="text" id="interpreter" class="form-control form-control-alternative" name="interpreter" value="<%=film.interpreter%>">
                       </div>
                     </div>
                     <div class="col-lg-12">
@@ -360,47 +361,47 @@
                     <div class="col-lg-6">
                         <div class="form-group">
                             <label class="form-control-label" for="copiesheader">Encabezado</label>
-                            <input type="text" id="copiesheader" class="form-control form-control-alternative" name="copiesheader">
+                            <input type="text" id="copiesheader" class="form-control form-control-alternative" name="copiesheader" value="<%=film.copiesheader%>">
                         </div>
                     </div>
                     <div class="col-lg-4">
                       <div class="form-group">
                           <label class="form-control-label" for="copiesstreet">Calle</label>
-                          <input type="text" id="copiesstreet" class="form-control form-control-alternative" name="copiesstreet">
+                          <input type="text" id="copiesstreet" class="form-control form-control-alternative" name="copiesstreet" value="<%=film.copiesstreet%>">
                       </div>
                     </div>
                     <div class="col-lg-2">
                       <div class="form-group">
                           <label class="form-control-label" for="copiescp">Código postal</label>
-                          <input type="text" id="copiescp" class="form-control form-control-alternative" name="copiescp">
+                          <input type="text" id="copiescp" class="form-control form-control-alternative" name="copiescp" value="<%=film.copiescp%>">
                       </div>
                     </div>
                     <div class="col-lg-3 my--2">
                       <div class="form-group">
                           <label class="form-control-label" for="copiestel">Telef portada</label>
-                          <input type="tel" id="copiestel" class="form-control form-control-alternative" name="copiestel">
+                          <input type="tel" id="copiestel" class="form-control form-control-alternative" name="copiestel" value="<%=film.copiestel%>">
                       </div>
                     </div>
                     <div class="col-lg-3 my--2">
                       <div class="form-group">
                           <label class="form-control-label" for="copiescity">Localidad</label>
-                          <input type="text" id="copiescity" class="form-control form-control-alternative" name="copiescity">
+                          <input type="text" id="copiescity" class="form-control form-control-alternative" name="copiescity" value="<%=film.copiescity%>">
                       </div>
                     </div>
                     <div class="col-lg-3 my--2">
                       <div class="form-group">
                           <label class="form-control-label" for="copiesprovince">Provincia</label>
-                          <input type="text" id="copiesprovince" class="form-control form-control-alternative" name="copiesprovince">
+                          <input type="text" id="copiesprovince" class="form-control form-control-alternative" name="copiesprovince" value="<%=film.copiesprovince%>">
                       </div>
                     </div>
                     <div class="col-lg-3 my--2">
                       <div class="form-group">
                           <label class="form-control-label" for="copiescountry">País</label>
-                          <input type="text" id="copiescountry" class="form-control form-control-alternative" name="copiescountry">
+                          <input type="text" id="copiescountry" class="form-control form-control-alternative" name="copiescountry" value="<%=film.copiescountry%>">
                       </div>
                     </div> 
                     <div class="col-lg-12 text-center">
-                      <button class="btn btn-success mt-3 mb-2">Guardar</button>
+                      <button class="btn btn-success mt-3 mb-2" type="submit">Guardar</button>
                     </div>
                   </div>
                 </div>

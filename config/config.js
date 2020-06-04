@@ -9,7 +9,9 @@ module.exports={
         //Contraseña de acceso a la BD
         password:"",
         //Nombre de la BD
-        database:"altocinema"
+        database:"altocinema",
+        // Format dates
+        dateStrings:true,
     },
     //Puerto de arranque del servidor
     port:3000
