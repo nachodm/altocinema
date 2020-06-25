@@ -63,24 +63,45 @@ CREATE TABLE DIRECTORS (
  
  CREATE TABLE FESTIVALS (
     festival_id INT NOT NULL AUTO_INCREMENT, -- primary key column
-    deadline DATE NOT NULL,
-    fest_type TINYINT NOT NULL,
     name VARCHAR(255) NOT NULL,
-    edition_year INT NOT NULL,
-    country VARCHAR(255) NOT NULL,
+    ok TINYINT NOT NULL,
     init_date DATE NOT NULL,
     end_date DATE NOT NULL,
-    web VARCHAR(255) NOT NULL,
-    taxfree BOOLEAN NOT NULL DEFAULT FALSE,
-    envio0 BOOLEAN NOT NULL DEFAULT FALSE,
-    envio1 BOOLEAN NOT NULL DEFAULT FALSE,    
-    envio2 BOOLEAN NOT NULL DEFAULT FALSE,
-    envio4 BOOLEAN NOT NULL DEFAULT FALSE,
-    envio1fee BOOLEAN NOT NULL DEFAULT FALSE,    
-    envio2fee BOOLEAN NOT NULL DEFAULT FALSE,
-    enviono BOOLEAN NOT NULL DEFAULT FALSE,
-    platform_id INT NOT NULL,
-    CONSTRAINT FK_platform FOREIGN KEY (platform_id) REFERENCES PLATFORMS (id) ON DELETE CASCADE ON UPDATE CASCADE,
+    edition INT NOT NULL,
+    deadline DATE NOT NULL,
+    type TINYINT NOT NULL,
+    entryfee BOOLEAN NOT NULL DEFAULT TRUE,
+    fee INT NOT NULL,
+    currency VARCHAR(256) NOT NULL,
+    platform VARCHAR(256) NOT NULL,
+    print BOOLEAN DEFAULT FALSE,
+    prize BOOLEAN DEFAULT FALSE,
+    contactname VARCHAR(128),
+    contact_email VARCHAR(256),
+    programmer VARCHAR(128),
+    prog_email VARCHAR(256),
+    contact_tel VARCHAR(64),
+    contact_web VARCHAR(256),
+    platformurl VARCHAR(256),
+    state VARCHAR(256),
+    contactcountry VARCHAR(256),
+    language VARCHAR(256),
+    notes VARCHAR(2048),
+    confirmed BOOLEAN NOT NULL DEFAULT FALSE,
+    sheet VARCHAR(255),
+    shortname VARCHAR(255) NOT NULL,
+    header VARCHAR(255),
+    street VARCHAR(255),
+    postalcode INT,    
+    city BOOLEAN NOT NULL DEFAULT FALSE,
+    province BOOLEAN NOT NULL DEFAULT FALSE,
+    copies_header VARCHAR(255),
+    copies_street VARCHAR(255),
+    copies_cp VARCHAR(255),
+    copies_tel VARCHAR(255),
+    copies_city VARCHAR(255),
+    copies_province VARCHAR(255),
+    copies_country VARCHAR(255),
     PRIMARY KEY (festival_id)
     -- specify more columns here
 );
@@ -92,12 +113,6 @@ CREATE TABLE FILMCATEGORIES (
     primary key(id, category)
     -- specify more columns here
 );
-
-CREATE TABLE PLATFORM(
-    id INT NOT NULL AUTO_INCREMENT,
-    name VARCHAR(255) NOT NULL,
-    PRIMARY KEY(id)
-)
 
 CREATE TABLE CONNECTFILMCATEGORIES ( 
     category_id VARCHAR(255) NOT NULL,

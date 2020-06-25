@@ -22,7 +22,7 @@ class DAOFestivals {
      * pasando el objeto Error (si se produce, o null en caso contrario)
      * 
      * @param {string} festival Identificador del festival a introducir
-     * @param {string} categories Categorías a las que corresponde la película.
+     * @param {string} categories Categorías que recibe el festival.
      * @param {function} callback Función que recibirá el objeto error y el resultado
      */
     newFestival(festival, categories, callback) {
@@ -31,22 +31,27 @@ class DAOFestivals {
                 callback(null);
             }
             else{
-                connection.query("INSERT INTO FILMS (title, engtitle, year, date, color, animationtechnique, originalv, genre, duration, country, screen, shootingplace, catalogue, sinopsis, eng_sinopsis, materialslink, link, originalvimeo, englishvimeo, frenchvimeo, italianvimeo, spavimeo, trailer, trailereng, director, script, photography, artistic, soundtrack, montage, producer, animation, sound, interpreter, copiesheader, copiesstreet, copiescp, copiestel, copiescity, copiesprovince, copiescountry) VALUES ?",
+                connection.query("INSERT INTO FESTIVALS (festival_id, name, ok, init_date, end_date, edition,  deadline,  type, entryfee,fee, currency,platform,print,prize,contactname,contact_email,programmer,prog_email,contact_tel,contact_web,platformurl,state,contactcountry,language,notes,confirmed,sheet,shortname,header,street,postalcode,city, province,copies_header,copies_street,copies_cp,copies_tel,copies_city,copies_province, copies_country) VALUES ?",
                 [festival],
                 (err, result) => {
                     if (err) { callback(err);}
                     else {
-                        /*connection.query("INSERT INTO films email, password FROM users VALUES ?",
-                        [result.insertId, categories],
-                        (err) => {
-                            connection.release();
-                            if (err) { callback(err); }
-                            
-                            else {
-                                callback(null);
-                            }
-                        });*/
-                        callback(null);
+                        let festivalcategories = [];
+                        categories.forEach(c => {
+                            festivalcategories.push({id: result.insertId, category: c});
+                        });
+                        if (festivalcategories.length > 0) {
+                            connection.query("INSERT INTO festivalcategories (id, category) VALUES ?",
+                            [festivalcategories.map(festival => [festival.id, festival.category])],
+                            (err) => {
+                                connection.release();
+                                if (err) { callback(err); }
+                                
+                                else {
+                                    callback(null);
+                                }
+                            });
+                        }
                     }
                 });
             }
