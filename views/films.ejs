@@ -80,13 +80,11 @@
                             <td><%= film.director %></td>
                           </tr>
                         <% }) %>
-                      <% }%>
+                      <% } else {%>
                       <tr>
-                        <th scope="row">Sinister</th>
-                        <td>Mark</td>
-                        <td>Twain</td>
-                        <td>@mdooo</td>
+                        <th colspan=3 scope="row">No hay películas en base de datos</th>
                       </tr>
+                      <% } %>
                     </tbody>
                   </table>
             </div>

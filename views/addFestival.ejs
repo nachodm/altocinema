@@ -32,7 +32,7 @@
     <!-- Page content -->
     <div class="container-fluid mt-4 mb-2">
       <div class="row justify-content-center">
-        <div class="col-xl-11 m-1">
+        <div class="col-xl-12 m-1">
           <div class="card bg-secondary shadow">
             <div class="card-header bg-white border-0">
               <div class="row align-items-center">
@@ -42,7 +42,7 @@
               </div>
             </div>
             <div class="card-body">
-              <form action="/register" method="POST">
+              <form action="/addFestival" method="POST">
                 <div class="pl-lg-2">
                   <% if (locals.messages && messages.success) { %>
                     <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -645,12 +645,6 @@
                         <div class="form-group">
                             <label class="form-control-label" for="copiescountry">País</label>
                             <input type="text" id="copiescountry" list="countries" class="form-control form-control-alternative" name="copiescountry">
-                        </div>
-                    </div>
-                    <div class="col-lg-12 my--2">
-                        <div class="form-group">
-                            <label class="form-control-label" for="lastmodification">Última modificación:</label>
-                            <input type="text" id="lastmodification" class="form-control form-control-alternative" name="lastmodification">
                         </div>
                     </div>
                     <div class="col-lg-12 text-center">

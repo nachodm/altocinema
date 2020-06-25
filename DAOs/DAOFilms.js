@@ -36,17 +36,22 @@ class DAOFilms {
                 (err, result) => {
                     if (err) { callback(err);}
                     else {
-                        /*connection.query("INSERT INTO films email, password FROM users VALUES ?",
-                        [result.insertId, categories],
-                        (err) => {
-                            connection.release();
-                            if (err) { callback(err); }
-                            
-                            else {
-                                callback(null);
-                            }
-                        });*/
-                        callback(null);
+                        let filmcategories = [];
+                        categories.forEach(c => {
+                            filmcategories.push({id: result.insertId, category: c});
+                        });
+                        if (filmcategories.length > 0) {
+                            connection.query("INSERT INTO filmcategories (id, category) VALUES ?",
+                            [filmcategories.map(film => [film.id, film.category])],
+                            (err) => {
+                                connection.release();
+                                if (err) { callback(err); }
+                                
+                                else {
+                                    callback(null);
+                                }
+                            });
+                        }
                     }
                 });
             }

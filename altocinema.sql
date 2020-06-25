@@ -86,8 +86,9 @@ CREATE TABLE DIRECTORS (
 );
 
 CREATE TABLE FILMCATEGORIES (
-    id INT NOT NULL AUTO_INCREMENT,
+    id INT NOT NULL,
     category VARCHAR(255) NOT NULL,
+    CONSTRAINT FK_id FOREIGN KEY (id) REFERENCES FILMS (id) ON DELETE CASCADE ON UPDATE CASCADE,
     primary key(id, category)
     -- specify more columns here
 );
