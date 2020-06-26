@@ -128,5 +128,5 @@ class DAOFestivals {
 }
 
 module.exports = {
-    DAOFilms: DAOFilms
+    DAOFestivals: DAOFestivals
 }

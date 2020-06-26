@@ -6,7 +6,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="Añadir festival">
-  <title>Alto Cinema- Festival</title>
+  <title>Añadir festival</title>
   <!-- Favicon -->
   <link href="img/favicon.ico" rel="icon" type="image/png">
   <!-- Fonts -->
@@ -16,13 +16,23 @@
   <link href="vendor/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
   <!-- Argon CSS -->
   <link type="text/css" href="css/argon.min.css" rel="stylesheet">
+  
+  <!-- Bootstrap-select -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
+  <style>
+    /* Chrome, Safari, Edge, Opera */
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
 
-  <link href="https://unpkg.com/bootstrap-table@1.16.0/dist/bootstrap-table.min.css" rel="stylesheet">
-
-  <script src="https://unpkg.com/bootstrap-table@1.16.0/dist/bootstrap-table.min.js"></script>
-  <script src="https://unpkg.com/bootstrap-table@1.16.0/dist/extensions/multiple-sort/bootstrap-table-multiple-sort.js"></script>
+    /* Firefox */
+    input[type=number] {
+      -moz-appearance: textfield;
+    }
+  </style>
 </head>
- 
 
 <body>
   <!-- Sidenav -->
@@ -112,6 +122,77 @@
                             </select> 
                         </div>
                     </div>
+                    <div class="col-lg-10 my--2">
+                        <div class="form-group">
+                          <label class="form-control-label" for="categories">Categorías</label>
+                          <select multiple class="selectpicker form-control form-control-alternative" id="categories" name="categories" data-actions-box="true" required>
+                            <option value="anim">Animación</option>
+                            <option value="disc">Discapacidad</option>
+                            <option value="docu">Documental</option>
+                            <option value="escu">Escuelas</option>
+                            <option value="etno">Etnográfico</option>
+                            <option value="exper">Experimental</option>
+                            <option value="fantas">Fantástico</option>
+                            <option value="fash">Fashion</option>
+                            <option value="ficc">Ficción </option>
+                            <option value="gen">General</option>
+                            <option value="infan">Infantil</option>
+                            <option value="juve">Juvenil</option>
+                            <option value="scifi">Sci-Fi</option>
+                            <option value="terr">Terror</option>
+                            <option value="video">Videoclips</option>
+                            <option value="VR">VR</option>
+                            <option value="comed">Comedia</option>
+                            <option value="danz">Danza</option>
+                            <option value="DDHH">DDHH</option>
+                            <option value="deport">Deporte</option>
+                            <option value="edad26">Edad26</option>
+                            <option value="edad30">Edad30</option>
+                            <option value="edad35">Edad35</option>
+                            <option value="edad40">Edad40 </option>
+                            <option value="inter">Internet</option>
+                            <option value="lgbt">LGBT</option>
+                            <option value="medioamb">MedioAmbiente</option>
+                            <option value="movil">Movil</option>
+                            <option value="mujer">Mujer</option>
+                            <option value="poes">Poesia</option>
+                            <option value="primpeli">PrimeraPeli</option>
+                            <option value="subfr">SubFrances</option>
+                            <option value="subita">SubItaliano</option>
+                            <option value="femen">TemaFemenino</option>
+                            <option value="trabaj">Trabajo</option>
+                            <option value="efa">EFA</option>
+                            <option value="fiapf">FIAPF</option>
+                            <option value="goya">Goya </option>
+                            <option value="melie">Melies</option>
+                            <option value="MM">MM</option>
+                            <option value="oscar">Oscars</option>
+                            <option value="ip">IP</option>
+                            <option value="np">NP</option>
+                            <option value="rp">RP</option>
+                            <option value="wp">WP</option>
+                            <option value="alic">Alicantino</option>
+                            <option value="anda">Andaluz</option>
+                            <option value="arag">Aragonés</option>
+                            <option value="astu">Asturiano</option>
+                            <option value="cana">Canario</option>
+                            <option value="cata">Catalán</option>
+                            <option value="extr">Extremadura</option>
+                            <option value="franc">Francés</option>
+                            <option value="galle">Gallego </option>
+                            <option value="ita">Italiano</option>
+                            <option value="latin">Latino</option>
+                            <option value="leon">Leonés</option>
+                            <option value="mala">Malagueño</option>
+                            <option value="murc">Murciano</option>
+                            <option value="nava">Navarro</option>
+                            <option value="portu">Portugués</option>
+                            <option value="rioj">Riojano</option>
+                            <option value="valen">Valenciano</option>
+                            <option value="vasc">Vasco</option>
+                          </select> 
+                        </div>
+                      </div>
                     <div class="col-lg-2 my--2">
                         <div class="form-group">
                             <label class="form-control-label" for="entryfee">EntryFee</label>
@@ -236,7 +317,7 @@
                     </div>
                     <div class="col-lg-6">
                         <div class="form-group">
-                            <label class="form-control-label" for="contacte_email">E-mail</label>
+                            <label class="form-control-label" for="contact_email">E-mail</label>
                             <input type="email" id="contact_email" class="form-control form-control-alternative" name="contact_email" placeholder="john@gmail.com" >
                         </div>
                     </div>
@@ -644,7 +725,7 @@
                     <div class="col-lg-12 my--2">
                         <div class="form-group">
                             <label class="form-control-label" for="copies_country">País</label>
-                            <input type="text" id="copies_country" list="countries" class="form-control form-control-alternative" name="copies_country">
+                            <input type="text" id="copies_country" list="countries" class="form-control form-control-alternative" name="copies_ country">
                         </div>
                     </div>
                     <div class="col-lg-12 text-center">

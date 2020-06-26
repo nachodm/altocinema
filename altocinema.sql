@@ -114,6 +114,14 @@ CREATE TABLE FILMCATEGORIES (
     -- specify more columns here
 );
 
+CREATE TABLE FESTIVALCATEGORIES (
+    id INT NOT NULL,
+    category VARCHAR(255) NOT NULL,
+    CONSTRAINT FK_festival_id FOREIGN KEY (id) REFERENCES FESTIVALS (festival_id) ON DELETE CASCADE ON UPDATE CASCADE,
+    primary key(id, category)
+    -- specify more columns here
+);
+
 CREATE TABLE CONNECTFILMCATEGORIES ( 
     category_id VARCHAR(255) NOT NULL,
     film_id VARCHAR(255) NOT NULL,
@@ -131,10 +139,9 @@ CREATE TABLE CONNECTFESTIVALCATEGORIES (
 );
 
  CREATE TABLE PRESINSCR (
-     film_id,
-     festival_id,
-     PRIMARY KEY(film_id, festival_id),
+    film_id,
+    festival_id,
+    PRIMARY KEY(film_id, festival_id),
     CONSTRAINT FK_film FOREIGN KEY (film_id) REFERENCES FILMS (id) ON DELETE CASCADE ON UPDATE CASCADE,
-    CONSTRAINT FK_festival FOREIGN KEY (festival_id) REFERENCES FESTIVALS (festival_id) ON DELETE CASCADE ON UPDATE CASCADE
-
+    CONSTRAINT FK_festival FOREIGN KEY (festival_id) REFERENCES FESTIVALS (festival_id) ON DELETE CASCADE ON UPDATE CASCADE+
  )
