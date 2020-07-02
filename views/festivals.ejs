@@ -50,36 +50,49 @@
             </div>
             <div class="card-body">
               <!-- Chart -->
+              <% if(locals.message){ %>
+                <div class="alert alert-success" role="alert">
+                    <strong>Wrong!</strong> <%=message%>
+                </div>
+              <% } %>
               <table
-                    id="table"
-                    data-sort-name="date"
-                    data-sort-order="desc"
-                    data-search="true"
-                    data-pagination="true"
-                    data-locale="en-US">
-                    <thead>
-                      <tr>
-                        <th data-field="date" data-sortable="true">Deadline</th>
-                        <th data-field="festival" data-sortable="true">Festival</th>
-                        <th data-field="envío" data-sortable="true">Sin EntryFee</th>
-                        <th data-field="description" data-sortable="true">Número de envíos</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">2</th>
-                        <td>Mark</td>
-                        <td>Twain</td>
-                        <td>@mdooo</td>
-                      </tr>
-                    </tbody>
-                  </table>
+                  id="table"
+                  data-sort-name="date"
+                  data-sort-order="desc"
+                  data-search="true"
+                  data-pagination="true"
+                  data-locale="en-US">
+                  <thead>
+                    <tr>
+                      <th data-field="date" data-sortable="true">Deadline</th>
+                      <th data-field="festival" data-sortable="true">Festival</th>
+                      <th data-field="envío" data-sortable="true">EntryFee</th>
+                      <th data-field="description" data-sortable="true">Número de envíos</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <%if (typeof festivals !== 'undefined' && festivals) {%>
+                      <% festivals.forEach(festival => { %>
+                        <tr>
+                          <th scope="row">
+                            <a href="/festival:=<%= festival.festival_id %>" value="visit"> <%= festival.deadline %> </a>
+                          </th>
+                          <td><%= festival.name %></td>
+                          <% if (festival.entryfee === 0) { %>
+                            <td>Sí</td>
+                          <% } else { %>
+                            <td>No</td>
+                          <% } %>
+                          <td><%= festival.director %></td>
+                        </tr>
+                      <% }) %>
+                    <% } else {%>
+                    <tr>
+                      <th colspan=4 scope="row" class="text-center text-danger">No hay festivales en la  base de datos</th>
+                    </tr>
+                    <% } %>
+                  </tbody>
+                </table>
             </div>
           </div>
         </div>

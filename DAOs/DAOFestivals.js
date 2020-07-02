@@ -31,7 +31,7 @@ class DAOFestivals {
                 callback(null);
             }
             else{
-                connection.query("INSERT INTO FESTIVALS (festival_id, name, ok, init_date, end_date, edition,  deadline,  type, entryfee,fee, currency,platform,print,prize,contactname,contact_email,programmer,prog_email,contact_tel,contact_web,platformurl,state,contactcountry,language,notes,confirmed,sheet,shortname,header,street,postalcode,city, province,copies_header,copies_street,copies_cp,copies_tel,copies_city,copies_province, copies_country) VALUES ?",
+                connection.query("INSERT INTO FESTIVALS (name, ok, init_date, end_date, edition,  deadline,  type, entryfee, fee, currency, platform, print, prize, contactname, contact_email, programmer, prog_email, contact_tel, contact_web, platformurl,state,contactcountry,language,notes,confirmed,sheet,shortname,header,street,postalcode,city, province, copies_header, copies_street,copies_cp,copies_tel,copies_city,copies_province, copies_country) VALUES ?",
                 [festival],
                 (err, result) => {
                     if (err) { callback(err);}
@@ -109,17 +109,17 @@ class DAOFestivals {
      * Devuelve un objeto que contiene el listado de películas de la base de datos.
      * @param {function} callback Función que devolverá el objeto error o el resultado.
      */
-    getFilmList(callback) {
+    getFestivals(callback) {
         this.pool.getConnection((err, connection) => {
             if (err) {
                 return null;
             }
-            connection.query("SELECT * FROM FILMS",
-            (err, films) => {
+            connection.query("SELECT * FROM FESTIVALS",
+            (err, festivals) => {
                 connection.release();
                 if (err) {callback(err, null);}
                 else {
-                    callback(null, films);
+                    callback(null, festivals);
                 }
             })
         });

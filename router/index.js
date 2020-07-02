@@ -2,10 +2,10 @@ module.exports = function(app, passport) {
 
 const config = require ("../config/config");
 const mysql = require('mysql');
-
 const bcrypt = require('bcrypt');
 const DAOUsers = require('../DAOs/DAOUsers');
 const DAOFilms = require('../DAOs/DAOFilms');
+const DAOFestivals = require('../DAOs/DAOFestivals');
 const pool = mysql.createPool(config.mysqlconfig);
 const users = new DAOUsers.DAOUsers(pool);
 const films = new DAOFilms.DAOFilms(pool);
@@ -39,13 +39,33 @@ app.get('/dashboard', checkAuthenticated, (request, response) => {
 })
 
 app.get('/festivals', checkAuthenticated, (request, response) => {
-  response.render('festivals', {user: request.user, title: "Festivales"});
+    festivals.getFestivals((err, festivalList) => {
+        if (err) {
+          request.flash('error', err);
+          response.redirect("/dashboard");
+        }
+        else {
+          response.render('festivals', {user: request.user, title: "Festivales", festivals: festivalList});
+        }
+    });
 })
 
+app.get("/festival:=:id", checkAuthenticated, (request, response) => {   
+  festivals.getFestival(request.params.id, (err, festival) => {
+    if (err) {
+      request.flash('error', err);
+      response.redirect("/dashboard");
+    }
+    else {
+      response.render('festival', {user: request.user, title: film.title, festival: festival});
+    }
+  });
+});
+ 
 app.get('/films', checkAuthenticated, (request, response) => {
   films.getFilmList((err, filmsList) => {
     if (err) {
-        response.locals.messages = err;
+        request.flash('error', err);
         response.redirect("/dashboard");
     }
     else {
@@ -57,7 +77,7 @@ app.get('/films', checkAuthenticated, (request, response) => {
 app.get("/film:=:id", checkAuthenticated, (request, response) => {   
   films.getFilm(request.params.id, (err, film) => {
     if (err) {
-      response.locals.messages = err;
+      request.flash('error', err);
       response.redirect("/dashboard");
     }
     else {
@@ -168,7 +188,7 @@ const categories = request.body.categories;
 
 films.newFilm(film, categories, (err) => {
     if (err) {
-        response.locals.messages = err;
+        request.flash('error', err);
         response.redirect("addFilm");
     }
     else {
@@ -224,7 +244,7 @@ const film = [[
 
 films.updateFilm(film, request.body.categories, request.body.id, (err) => {
     if (err) {
-        response.locals.messages = err;
+        request.flash('error', err);
         response.redirect("films");
     }
     else {
@@ -280,7 +300,7 @@ const categories = request.body.categories;
 
 festivals.newFestival(festival, categories, (err) => {
     if (err) {
-        response.locals.messages = err;
+        request.flash('error', err);
         response.redirect("addFestival");
     }
     else {
@@ -334,7 +354,7 @@ const festival = [[
 
 festivals.updateFestival(festival, request.body.categories, request.body.id, (err) => {
     if (err) {
-        response.locals.messages = err;
+        request.flash('error', err);
         response.redirect("festivals");
     }
     else {
