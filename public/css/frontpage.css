@@ -12,15 +12,6 @@ body {
     padding-top: 15vh;
 }
 
-.carousel-inner {
-    max-height: 100vh;
-    min-height: 100vh;
-}
-
-.carousel-inner img {
-    min-height: 100vh;
-    max-height: 100vh;
-}
 
 .glyphicon {
     color: silver !important;
@@ -44,4 +35,16 @@ body {
 
 .max-size  {
     max-height: 3vh;
+
 }
+/*
+/* Navigation*/
+.navbar {
+    background-color: transparent;
+}
+.scrolling-navbar {
+    transition: background .5s ease-in-out, padding .5s ease-in-out;
+}
+  .top-nav-collapse {
+    background-color: #667490;
+  }
