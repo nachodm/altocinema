@@ -29,6 +29,15 @@ function checkNotAuthenticated(req, res, next) {
 app.get('/', (request, response) => {
   response.render('altocinema');
 })
+app.get('/services', (request, response) => {
+  response.render('services');
+})
+app.get('/catalogue', (request, response) => {
+  response.render('catalogue');
+})
+app.get('/contact', (request, response) => {
+  response.render('contact');
+})
 
 app.get('/login', checkNotAuthenticated, (request, response) => {
   response.render('login');
@@ -198,63 +207,119 @@ films.newFilm(film, categories, (err) => {
 });
 
 app.post("/updateFilm", checkAuthenticated, (request, response) => {
-const film = [[
-    request.body.title,
-    request.body.engtitle,
-    parseInt(request.body.year),
-    request.body.date,
-    request.body.color,
-    request.body.animationtechnique,
-    request.body.originalv,
-    request.body.genre,
-    parseInt(request.body.duration),
-    request.body.country,
-    request.body.screen,
-    request.body.shootingplace,
-    request.body.catalogue,
-    request.body.sinopsis,
-    request.body.eng_sinopsis,
-    request.body.materialslink,
-    request.body.link,
-    request.body.originalvimeo,
-    request.body.englishvimeo,
-    request.body.frenchvimeo,
-    request.body.italianvimeo,
-    request.body.spavimeo,
-    request.body.trailer,
-    request.body.trailereng,
-    request.body.director,
-    request.body.script,
-    request.body.photography,
-    request.body.artistic,
-    request.body.soundtrack,
-    request.body.montage,
-    request.body.producer,
-    request.body.animation,
-    request.body.sound,
-    request.body.interpreter,
-    request.body.copiesheader,
-    request.body.copiesstreet,
-    request.body.copiescp,
-    request.body.copiestel,
-    request.body.copiescity,
-    request.body.copiesprovince,
-    request.body.copiescountry
-]];
+  const film = [[
+      request.body.title,
+      request.body.engtitle,
+      parseInt(request.body.year),
+      request.body.date,
+      request.body.color,
+      request.body.animationtechnique,
+      request.body.originalv,
+      request.body.genre,
+      parseInt(request.body.duration),
+      request.body.country,
+      request.body.screen,
+      request.body.shootingplace,
+      request.body.catalogue,
+      request.body.sinopsis,
+      request.body.eng_sinopsis,
+      request.body.materialslink,
+      request.body.link,
+      request.body.originalvimeo,
+      request.body.englishvimeo,
+      request.body.frenchvimeo,
+      request.body.italianvimeo,
+      request.body.spavimeo,
+      request.body.trailer,
+      request.body.trailereng,
+      request.body.director,
+      request.body.script,
+      request.body.photography,
+      request.body.artistic,
+      request.body.soundtrack,
+      request.body.montage,
+      request.body.producer,
+      request.body.animation,
+      request.body.sound,
+      request.body.interpreter,
+      request.body.copiesheader,
+      request.body.copiesstreet,
+      request.body.copiescp,
+      request.body.copiestel,
+      request.body.copiescity,
+      request.body.copiesprovince,
+      request.body.copiescountry
+  ]];
 
-films.updateFilm(film, request.body.categories, request.body.id, (err) => {
-    if (err) {
-        request.flash('error', err);
-        response.redirect("films");
-    }
-    else {
-        response.redirect("films");
-    }
-});
+  films.updateFilm(film, request.body.categories, request.body.id, (err) => {
+      if (err) {
+          request.flash('error', err);
+          response.redirect("films");
+      }
+      else {
+          response.redirect("films");
+      }
+  });
 });
 
 app.post("/addFestival", checkAuthenticated, (request, response) => {
-const festival = [[
+  const festival = [[
+      request.body.name,
+      request.body.ok,
+      request.body.init_date,
+      request.body.end_date,
+      request.body.edition,
+      request.body.deadline,
+      request.body.type,
+      request.body.entryfee,
+      request.body.fee,
+      request.body.currency,
+      request.body.platform,
+      request.body.print,
+      request.body.prize,
+      request.body.contactname,
+      request.body.contact_email,
+      request.body.programmer,
+      request.body.prog_email,
+      request.body.contact_tel,
+      request.body.contact_web,
+      request.body.platformurl,
+      request.body.state,
+      request.body.contactcountry,
+      request.body.language,
+      request.body.notes,
+      request.body.confirmed,
+      request.body.sheet,
+      request.body.shortname,
+      request.body.header,
+      request.body.street,
+      request.body.postalcode,
+      request.body.city,
+      request.body.province,
+      request.body.copies_header,
+      request.body.copies_street,
+      request.body.copies_cp,
+      request.body.copies_tel,
+      request.body.copies_city,
+      request.body.copies_province,
+      request.body.copies_country
+  ]];
+
+  const categories = request.body.categories;
+
+  festivals.newFestival(festival, categories, (err) => {
+      if (err) {
+          request.flash('error', err);
+          response.redirect("addFestival");
+      }
+      else {
+          response.redirect("festivals");
+      }
+  });
+});
+
+  app.post("/updateFestival", checkAuthenticated, (request, response) => {
+  const festival = [[
     request.body.name,
     request.body.ok,
     request.body.init_date,
@@ -294,73 +359,17 @@ const festival = [[
     request.body.copies_city,
     request.body.copies_province,
     request.body.copies_country
-]];
+  ]];
 
-const categories = request.body.categories;
-
-festivals.newFestival(festival, categories, (err) => {
-    if (err) {
-        request.flash('error', err);
-        response.redirect("addFestival");
-    }
-    else {
-        response.redirect("festivals");
-    }
-});
-});
-
-app.post("/updateFestival", checkAuthenticated, (request, response) => {
-const festival = [[
-  request.body.name,
-  request.body.ok,
-  request.body.init_date,
-  request.body.end_date,
-  request.body.edition,
-  request.body.deadline,
-  request.body.type,
-  request.body.entryfee,
-  request.body.fee,
-  request.body.currency,
-  request.body.platform,
-  request.body.print,
-  request.body.prize,
-  request.body.contactname,
-  request.body.contact_email,
-  request.body.programmer,
-  request.body.prog_email,
-  request.body.contact_tel,
-  request.body.contact_web,
-  request.body.platformurl,
-  request.body.state,
-  request.body.contactcountry,
-  request.body.language,
-  request.body.notes,
-  request.body.confirmed,
-  request.body.sheet,
-  request.body.shortname,
-  request.body.header,
-  request.body.street,
-  request.body.postalcode,
-  request.body.city,
-  request.body.province,
-  request.body.copies_header,
-  request.body.copies_street,
-  request.body.copies_cp,
-  request.body.copies_tel,
-  request.body.copies_city,
-  request.body.copies_province,
-  request.body.copies_country
-]];
-
-festivals.updateFestival(festival, request.body.categories, request.body.id, (err) => {
-    if (err) {
-        request.flash('error', err);
-        response.redirect("festivals");
-    }
-    else {
-        response.redirect("festivals");
-    }
-});
+  festivals.updateFestival(festival, request.body.categories, request.body.id, (err) => {
+      if (err) {
+          request.flash('error', err);
+          response.redirect("festivals");
+      }
+      else {
+          response.redirect("festivals");
+      }
+  });
 });
 
 app. post("/register_user", (request, response) => {
