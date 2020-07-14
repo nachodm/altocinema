@@ -45,6 +45,26 @@ body {
 .scrolling-navbar {
     transition: background .5s ease-in-out, padding .5s ease-in-out;
 }
-  .top-nav-collapse {
+.top-nav-collapse {
     background-color: #667490;
-  }
+}
+
+@media (max-width: 768px) {
+    .contact {
+        margin-bottom: 16px;
+    }
+
+    .map-responsive{
+        overflow:hidden;
+        padding-bottom:56.25%;
+        position:relative;
+        height:0;
+    }
+    .map-responsive iframe{
+        left:0;
+        top:0;
+        height:80%;
+        width:100%;
+        position:absolute;
+    }
+}
