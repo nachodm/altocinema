@@ -74,7 +74,6 @@ CREATE TABLE DIRECTORS (
     fee INT NOT NULL,
     currency VARCHAR(256) NOT NULL,
     platform VARCHAR(256) NOT NULL,
-    print BOOLEAN DEFAULT FALSE,
     prize BOOLEAN DEFAULT FALSE,
     contactname VARCHAR(128),
     contact_email VARCHAR(256),
