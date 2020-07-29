@@ -124,6 +124,47 @@ class DAOFestivals {
             })
         });
     }
+    /**
+     * Realiza las preinscripciones a los festivales de todas las películas que recibe por parámetro.
+     * @param {*} films 
+     * @param {*} callback 
+     */
+    handleMonthPrescriptions(films, callback) {
+        this.pool.getConnection((err, connection) => {
+            if (err) {
+                callback(err);
+            }
+            let currentmonth = new Date().getMonth() + 1;
+            connection.query("SELECT * FROM FESTIVALS WHERE MONTH(deadline) = ?",
+            [currentmonth],
+            (err, festivals) => {
+                if (err) {
+                    connection.release();
+                    callback(err);
+                }
+                else {
+                    let preinscriptions;
+                    films.forEach(film => {
+                        festivals.forEach(festival => {
+                            let temp = [festival.festival_id, film.id];
+                            preinscriptions.push(temp);
+                        });
+                    });
+                    connection.query("INSERT INTO PRESINSCR(festival_id, film_id) VALUES ?",
+                    [preinscriptions],
+                    (err) => {
+                        if (err) {
+                            connection.release();
+                            callback(err);
+                        }
+                        else {
+                            callback(null);
+                        }
+                    })
+                }
+            })
+        });
+    }
 
 }
 

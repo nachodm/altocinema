@@ -112,7 +112,7 @@ class DAOFilms {
     getFilmList(callback) {
         this.pool.getConnection((err, connection) => {
             if (err) {
-                return null;
+                callback(err, null);
             }
             connection.query("SELECT * FROM FILMS",
             (err, films) => {

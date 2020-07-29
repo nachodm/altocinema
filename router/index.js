@@ -3,6 +3,7 @@ module.exports = function(app, passport) {
 const config = require ("../config/config");
 const mysql = require('mysql');
 const bcrypt = require('bcrypt');
+const schedule = require('node-schedule')
 const DAOUsers = require('../DAOs/DAOUsers');
 const DAOFilms = require('../DAOs/DAOFilms');
 const DAOFestivals = require('../DAOs/DAOFestivals');
@@ -10,6 +11,23 @@ const pool = mysql.createPool(config.mysqlconfig);
 const users = new DAOUsers.DAOUsers(pool);
 const films = new DAOFilms.DAOFilms(pool);
 const festivals = new DAOFestivals.DAOFestivals(pool);
+
+let job = schedule.scheduleJob("Preinscription", {minute:30, hour:0, date:1}, function(){
+  films.getFilmList((err, films) => {
+    if (err) {  
+      var datetime = new Date();
+      console.log("HUGE ERROR AT " + datetime);
+    }
+    else {
+      festivals.handleMonthPrescriptions(films, (err) => {
+        if (err) {
+          var datetime = new Date();
+          console.log("HUGE ERROR AT " + datetime);
+        }
+      });
+    }
+  })
+})
 
     
 function checkAuthenticated(req, res, next) {
