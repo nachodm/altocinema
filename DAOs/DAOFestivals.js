@@ -84,22 +84,22 @@ class DAOFestivals {
 
 
     /**
-     * Devuelve un objeto user que contiene la información de la película  que se desea buscar.
+     * Devuelve un objeto user que contiene la información del festival que se desea buscar.
      * @param {String} id Identificador del usuario
      * @param {function} callback Función que devolverá el objeto error o el resultado.
      */
-    getFilm(id, callback) {
+    getFestival(id, callback) {
         this.pool.getConnection((err, connection) => {
             if (err) {
                 callback(err, undefined);
             }
-            connection.query("SELECT * FROM films WHERE id = ?",
+            connection.query("SELECT * FROM festivals WHERE festival_id = ?",
             [id],
-            (err, film) => {
+            (err, festival) => {
                 connection.release();
                 if (err) {callback(err, undefined);}
                 else {
-                    callback(null, film[0]);
+                    callback(null, festival[0]);
                 }
             })
         });

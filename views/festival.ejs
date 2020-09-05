@@ -47,7 +47,7 @@
             <div class="card-header bg-white border-0">
               <div class="row align-items-center">
                 <div class="col">
-                  <h3 class="mb-0">Añadir festival</h3>
+                  <h3 class="mb-0"><%=name%></h3>
                 </div>
               </div>
             </div>
@@ -73,14 +73,14 @@
                   <div class="row">
                     <div class="col-lg-10 my--2">
                         <div class="form-group">
-                            <label class="form-control-label" for="name">Nombre</label>
-                            <input type="text" id="name" class="form-control form-control-alternative" name="name" placeholder="Festival Cannes" required>
+                            <label class="form-control-label" for="name">Nombre*</label>
+                            <input type="text" id="name" class="form-control form-control-alternative form-control-sm" name="name" placeholder="Festival Cannes" required>
                         </div>
                     </div>
                     <div class="col-lg-2 my--2">
                         <div class="form-group">
                             <label class="form-control-label" for="ok">Ok</label>
-                            <select class="form-control form-control-alternative" id="ok" name="ok" required>
+                            <select class="form-control form-control-alternative form-control-sm" id="ok" name="ok" required>
                                 <option class="text-white bg-success" value="y">Sí</option>
                                 <option class="text-white bg-danger" value="n">No</option>
                                 <option class="text-white bg-warning" value="pen">Pendiente</option>
@@ -89,32 +89,32 @@
                     </div>
                     <div class="col-lg-2 my--2">
                       <div class="form-group">
-                        <label class="form-control-label" for="init_date">Fecha Inicio</label>
-                        <input type="date" id="init_date" class="form-control form-control-alternative input-sm" name="init_date" required>
+                        <label class="form-control-label" for="init_date">Fecha Inicio*</label>
+                        <input type="date" id="init_date" class="form-control form-control-alternative form-control-sm" name="init_date" required>
                       </div>
                     </div>
                     <div class="col-lg-2 my--2">
                       <div class="form-group">
-                        <label class="form-control-label" for="end_date">Fecha Fin</label>
-                        <input type="date" id="end_date" class="form-control form-control-alternative input-sm" name="end_date" >
+                        <label class="form-control-label" for="end_date">Fecha Fin*</label>
+                        <input type="date" id="end_date" class="form-control form-control-alternative form-control-sm" name="end_date" required>
                       </div>
                     </div>
                     <div class="col-lg-2 my--2">
                         <div class="form-group">
                             <label class="form-control-label" for="edition">Edición</label>
-                            <input type="number" id="edition" class="form-control form-control-alternative input-sm" name="edition" placeholder="10">
+                            <input type="number" id="edition" class="form-control form-control-alternative form-control-sm" name="edition" placeholder="10">
                         </div>
                     </div>
                     <div class="col-lg-3 my--2">
                         <div class="form-group">
                             <label class="form-control-label text-warning font-weight-bold" for="deadline">Deadline</label>
-                            <input type="date" id="deadline" class="form-control form-control-alternative input-sm" name="deadline" required>
+                            <input type="date" id="deadline" class="form-control form-control-alternative form-control-sm" name="deadline" required>
                         </div>
                     </div>
                     <div class="col-lg-3 my--2">
                         <div class="form-group">
                             <label class="form-control-label" for="type">Tipo Deadline</label>
-                            <select  class="form-control form-control-alternative input-sm" id="type" name="type" required>
+                            <select  class="form-control form-control-alternative form-control-sm" id="type" name="type" required>
                                 <option value="0">Early</option>
                                 <option value="1">Regular</option>
                                 <option value="2">Late</option>
@@ -125,7 +125,7 @@
                     <div class="col-lg-10 my--2">
                         <div class="form-group">
                           <label class="form-control-label" for="categories">Categorías</label>
-                          <select multiple class="selectpicker form-control form-control-alternative" id="categories" name="categories" data-actions-box="true" required>
+                          <select multiple class="selectpicker form-control form-control-alternative form-control-sm" id="categories" name="categories" data-actions-box="true" required>
                             <option value="anim">Animación</option>
                             <option value="disc">Discapacidad</option>
                             <option value="docu">Documental</option>
@@ -195,17 +195,17 @@
                       </div>
                     <div class="col-lg-2 my--2">
                         <div class="form-group">
-                            <label class="form-control-label" for="entryfee">EntryFee</label>
-                            <select class="form-control form-control-alternative input-sm" id="entryfee" name="entryfee" required>
+                            <label class="form-control-label" for="entryfee">EntryFee*</label>
+                            <select class="form-control form-control-alternative form-control-sm" id="entryfee" name="entryfee" required>
                                 <option value="y">Sí</option>
                                 <option value="n">No</option>
                             </select> 
                         </div>
                     </div>
-                    <div class="col-lg-6 my--2">
+                    <div class="col-lg-4 my--2">
                         <div class="form-group">
-                            <label class="form-control-label" for="platform">Plataforma</label>
-                            <select class="form-control form-control-alternative" id="platform" name="platform" required>
+                            <label class="form-control-label" for="platform">Plataforma*</label>
+                            <select class="form-control form-control-alternative form-control-sm" id="platform" name="platform" required>
                                 <option value="filmfreeway">FilmFreeway</option>
                                 <option value="festhome">Festhome</option>
                             </select> 
@@ -214,13 +214,13 @@
                     <div class="col-lg-2 my--2">
                         <div class="form-group">
                             <label class="form-control-label" for="fee">Tasa</label>
-                            <input type="number" step="0.01" min="0.00" id="fee" class="form-control form-control-alternative" name="fee">
+                            <input type="number" step="0.01" min="0.00" id="fee" class="form-control form-control-alternative form-control-sm" name="fee">
                         </div>
                     </div>
                     <div class="col-lg-2 my--2">
                         <div class="form-group">
                             <label class="form-control-label" for="currency">Moneda</label>
-                            <select class="form-control form-control-alternative" id="currency" name="currency" required>
+                            <select class="form-control form-control-alternative form-control-sm" id="currency" name="currency">
                                 <option value="USD" selected="selected">US Dollars ($)</option>
                                 <option value="EUR">Euro (€)</option>
                                 <option value="GBP">United Kingdom Pounds</option>
@@ -290,8 +290,14 @@
                     </div>
                     <div class="col-lg-2 my--2">
                         <div class="form-group">
+                            <label class="form-control-label" for="euros">Conversión euros</label>
+                            <input type="number" step="0.01" min="0.00" id="euros" class="form-control form-control-alternative form-control-sm" name="euros">
+                        </div>
+                    </div>
+                    <div class="col-lg-2 my--2">
+                        <div class="form-group">
                             <label class="form-control-label" for="prize">Premio en metálico</label>
-                            <select class="form-control form-control-alternative" id="prize" name="prize" required>
+                            <select class="form-control form-control-alternative form-control-sm" id="prize" name="prize">
                                 <option value="y">Sí</option>
                                 <option value="n">No</option>
                             </select> 
@@ -303,55 +309,55 @@
                     <div class="col-lg-6">
                         <div class="form-group">
                             <label class="form-control-label" for="contactname">Nombre contacto</label>
-                            <input type="text" id="contactname" class="form-control form-control-alternative" name="contactname" placeholder="John" >
+                            <input type="text" id="contactname" class="form-control form-control-alternative form-control-sm" name="contactname" placeholder="John" >
                         </div>
                     </div>
                     <div class="col-lg-6">
                         <div class="form-group">
                             <label class="form-control-label" for="contact_email">E-mail</label>
-                            <input type="email" id="contact_email" class="form-control form-control-alternative" name="contact_email" placeholder="john@gmail.com" >
+                            <input type="email" id="contact_email" class="form-control form-control-alternative form-control-sm" name="contact_email" placeholder="john@gmail.com" >
                         </div>
                     </div>
                     <div class="col-lg-6 my--2">
                         <div class="form-group">
                             <label class="form-control-label" for="programmer">Programador</label>
-                            <input type="text" id="programmer" class="form-control form-control-alternative" name="programmer" placeholder="Ginna" >
+                            <input type="text" id="programmer" class="form-control form-control-alternative form-control-sm" name="programmer" placeholder="Ginna" >
                         </div>
                     </div>
                     <div class="col-lg-6 my--2">
                         <div class="form-group">
                             <label class="form-control-label" for="prog_email">E-mail programador</label>
-                            <input type="email" id="prog_email" class="form-control form-control-alternative" name="prog_email" placeholder="ginna@gmail.com">
+                            <input type="email" id="prog_email" class="form-control form-control-alternative form-control-sm" name="prog_email" placeholder="ginna@gmail.com">
                         </div>
                     </div>
                     <div class="col-lg-2 my--2">
                         <div class="form-group">
                             <label class="form-control-label" for="contact_tel">Teléfono</label>
-                            <input type="tel" id="contact_tel" class="form-control form-control-alternative" name="contact_tel">
+                            <input type="tel" id="contact_tel" class="form-control form-control-alternative form-control-sm" name="contact_tel">
                         </div>
                     </div>
                     <div class="col-lg-5 my--2">
                         <div class="form-group">
-                            <label class="form-control-label" for="contact_web">Web</label>
-                            <input type="url" id="contact_web" class="form-control form-control-alternative" name="contact_web">
+                            <label class="form-control-label" for="contact_web">Web*</label>
+                            <input type="url" id="contact_web" class="form-control form-control-alternative form-control-sm" name="contact_web" required>
                         </div>
                     </div>
                     <div class="col-lg-5 my--2">
                         <div class="form-group">
                             <label class="form-control-label" for="platformurl">Web plataforma</label>
-                            <input type="url" id="platformurl" class="form-control form-control-alternative" name="platformurl">
+                            <input type="url" id="platformurl" class="form-control form-control-alternative form-control-sm" name="platformurl">
                         </div>
                     </div>
                     <div class="col-lg-4 my--2">
                     <div class="form-group">
                         <label class="form-control-label" for="state">Autonomía/Estado</label>
-                        <input type="text" id="state" class="form-control form-control-alternative" name="state">
+                        <input type="text" id="state" class="form-control form-control-alternative form-control-sm" name="state">
                     </div>
                     </div>
                     <div class="col-lg-4 my--2">
                         <div class="form-group">
-                            <label class="form-control-label" for="contactcountry">País</label>
-                            <input type="text" id="contactcountry" list="countries" class="form-control form-control-alternative" name="contactcountry">
+                            <label class="form-control-label" for="contactcountry">País*</label>
+                            <input type="text" id="contactcountry" list="countries" class="form-control form-control-alternative form-control-sm" name="contactcountry" required>
                             <datalist id="countries">
                                 <option value="AF">Afghanistan</option>
                                 <option value="AX">Åland Islands</option>
@@ -608,7 +614,7 @@
                     <div class="col-lg-4 my--2">
                         <div class="form-group">
                             <label class="form-control-label" for="language">Idioma</label>
-                            <select class="form-control form-control-alternative" id="language" name="language" required>
+                            <select class="form-control form-control-alternative form-control-sm" id="language" name="language">
                                 <option value="eng">Inglés</option>
                                 <option value="esp">Español</option>
                             </select> 
@@ -617,7 +623,7 @@
                     <div class="col-lg-12 my--2">
                         <div class="form-group">
                             <label class="form-control-label" for="notes">NOTAS</label>
-                            <textarea name="notes" id="notes" class="form-control form-control-alternative" rows="3"></textarea>
+                            <textarea name="notes" id="notes" class="form-control form-control-alternative form-control-sm" rows="3"></textarea>
                         </div>
                     </div>
                     <div class="col-lg-12">
@@ -625,24 +631,24 @@
                     </div>
                     <div class="col-lg-2 my--2">
                         <div class="form-group">
-                            <label class="form-control-label" for="confirmed">Confirmado</label>
-                            <select class="form-control form-control-alternative" id="confirmed" name="confirmed" required>
+                            <label class="form-control-label" for="confirmed">Confirmado*</label>
+                            <select class="form-control form-control-alternative form-control-sm" id="confirmed" name="confirmed" required>
                                 <option class="text-white bg-success" value="y">Sí</option>
                                 <option class="text-white bg-danger" value="n">No</option>
-                                <option class="text-white bg-warning" value="pen">Pendiente</option>
+                                <option class="text-white bg-warning" value="pen">Pt</option>
                             </select> 
                         </div>
                     </div>
                     <div class="col-lg-5 my--2">
                         <div class="form-group">
                             <label class="form-control-label" for="sheet">Ficha</label>
-                            <input type="text" id="sheet" class="form-control form-control-alternative" name="sheet" required>
+                            <input type="text" id="sheet" class="form-control form-control-alternative form-control-sm" name="sheet">
                         </div>
                     </div>
                     <div class="col-lg-5 my--2">
                         <div class="form-group">
                             <label class="form-control-label" for="shortname">Nombre corto</label>
-                            <input type="text" id="shortname" class="form-control form-control-alternative" name="shortname">
+                            <input type="text" id="shortname" class="form-control form-control-alternative form-control-sm" name="shortname">
                         </div>
                     </div>
                     <div class="col-lg-12">
@@ -651,31 +657,31 @@
                     <div class="col-lg-12 my--2">
                         <div class="form-group">
                             <label class="form-control-label" for="header">Encabezado</label>
-                            <input type="text" id="header" class="form-control form-control-alternative" name="header">
+                            <input type="text" id="header" class="form-control form-control-alternative form-control-sm" name="header">
                         </div>
                     </div>
                     <div class="col-lg-12 my--2">
                         <div class="form-group">
                             <label class="form-control-label" for="street">Calle</label>
-                            <input type="text" id="street" class="form-control form-control-alternative" name="street">
+                            <input type="text" id="street" class="form-control form-control-alternative form-control-sm" name="street">
                         </div>
                     </div>
                     <div class="col-lg-3 my--2">
                         <div class="form-group">
                             <label class="form-control-label" for="postalcode">Código postal</label>
-                            <input type="text" id="postalcode" class="form-control form-control-alternative" name="postalcode">
+                            <input type="text" id="postalcode" class="form-control form-control-alternative form-control-sm" name="postalcode">
                         </div>
                     </div>
                     <div class="col-lg-4 my--2">
                         <div class="form-group">
                             <label class="form-control-label" for="city">Localidad</label>
-                            <input type="text" id="city" class="form-control form-control-alternative" name="city">
+                            <input type="text" id="city" class="form-control form-control-alternative form-control-sm" name="city">
                         </div>
                     </div>
                     <div class="col-lg-5 my--2">
                     <div class="form-group">
                         <label class="form-control-label" for="province">Provincia/Estado</label>
-                        <input type="text" id="province" class="form-control form-control-alternative" name="province">
+                        <input type="text" id="province" class="form-control form-control-alternative form-control-sm" name="province">
                     </div>
                     </div>
                     <div class="col-lg-12">
@@ -684,43 +690,43 @@
                     <div class="col-lg-6">
                         <div class="form-group">
                             <label class="form-control-label" for="copies_header">Encabezado</label>
-                            <input type="text" id="copies_header" class="form-control form-control-alternative" name="copies_header">
+                            <input type="text" id="copies_header" class="form-control form-control-alternative form-control-sm" name="copies_header">
                         </div>
                     </div>
                     <div class="col-lg-6">
                     <div class="form-group">
                         <label class="form-control-label" for="copies_street">Calle</label>
-                        <input type="text" id="copies_street" class="form-control form-control-alternative" name="copies_street">
+                        <input type="text" id="copies_street" class="form-control form-control-alternative form-control-sm" name="copies_street">
                     </div>
                     </div>
                     <div class="col-lg-2 my--2">
                     <div class="form-group">
                         <label class="form-control-label" for="copies_cp">Código postal</label>
-                        <input type="text" id="copies_cp" class="form-control form-control-alternative" name="copies_cp">
+                        <input type="text" id="copies_cp" class="form-control form-control-alternative form-control-sm" name="copies_cp">
                     </div>
                     </div>
                     <div class="col-lg-3 my--2">
                     <div class="form-group">
                         <label class="form-control-label" for="copies_tel">Telef portada</label>
-                        <input type="tel" id="copies_tel" class="form-control form-control-alternative" name="copies_tel">
+                        <input type="tel" id="copies_tel" class="form-control form-control-alternative form-control-sm" name="copies_tel">
                     </div>
                     </div>
                     <div class="col-lg-3 my--2">
                     <div class="form-group">
                         <label class="form-control-label" for="copies_city">Localidad</label>
-                        <input type="text" id="copies_city" class="form-control form-control-alternative" name="copies_city">
+                        <input type="text" id="copies_city" class="form-control form-control-alternative form-control-sm" name="copies_city">
                     </div>
                     </div>
                     <div class="col-lg-4 my--2">
                     <div class="form-group">
                         <label class="form-control-label" for="copies_province">Provincia/Estado</label>
-                        <input type="text" id="copies_province" class="form-control form-control-alternative" name="copies_province">
+                        <input type="text" id="copies_province" class="form-control form-control-alternative form-control-sm" name="copies_province">
                     </div>
                     </div>
                     <div class="col-lg-12 my--2">
                         <div class="form-group">
                             <label class="form-control-label" for="copies_country">País</label>
-                            <input type="text" id="copies_country" list="countries" class="form-control form-control-alternative" name="copies_ country">
+                            <input type="text" id="copies_country" list="countries" class="form-control form-control-alternative form-control-sm" name="copies_ country">
                         </div>
                     </div>
                     <div class="col-lg-12 text-center">

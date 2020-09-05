@@ -84,7 +84,7 @@ app.get("/festival:=:id", checkAuthenticated, (request, response) => {
       response.redirect("/dashboard");
     }
     else {
-      response.render('festival', {user: request.user, title: film.title, festival: festival});
+      response.render('festival', {user: request.user, name: festival.name, festival: festival});
     }
   });
 });
@@ -292,6 +292,7 @@ app.post("/addFestival", checkAuthenticated, (request, response) => {
       request.body.entryfee,
       request.body.fee,
       request.body.currency,
+      request.body.euros,
       request.body.platform,
       request.body.print,
       request.body.prize,
@@ -348,6 +349,7 @@ app.post("/addFestival", checkAuthenticated, (request, response) => {
     request.body.entryfee,
     request.body.fee,
     request.body.currency,
+    request.body.euros,
     request.body.platform,
     request.body.print,
     request.body.prize,
