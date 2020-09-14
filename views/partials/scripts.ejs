@@ -33,3 +33,15 @@
     $('#my-select').selectpicker()
   })
 </script>
+
+<script>
+  $("#waiver").change(updateFinalFee); 
+  $("#disc").change(updateFinalFee); 
+  $("#fee").change(updateFinalFee); 
+
+  function updateFinalFee(){
+      let desc = $("#disc").val()/100;
+      let final = desc * $("#fee").val();
+      $("#final").val(final);
+  }
+</script>
