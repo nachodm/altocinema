@@ -125,6 +125,26 @@ class DAOFilms {
         });
     }
 
+    /**
+     * Devuelve el nombre de todos los productores junto con sus datos personales
+     * @param {function} callback Función que devolverá el objeto error o el resultado.
+     */
+    getProducerList(callback) {
+        this.pool.getConnection((err, connection) => {
+            if (err) {
+                callback(err, null);
+            }
+            connection.query("SELECT DISTINCT producer, copiestel, copiescountry FROM FILMS",
+            (err, films) => {
+                connection.release();
+                if (err) {callback(err, null);}
+                else {
+                    callback(null, films);
+                }
+            })
+        });
+    }
+
 }
 
 module.exports = {

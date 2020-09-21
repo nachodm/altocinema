@@ -56,25 +56,26 @@
                     <thead>
                       <tr>
                         <th data-field="name" data-sortable="true">Nombre</th>
-                        <th data-field="web" data-sortable="true">Web</th>
-                        <th data-field="email" data-sortable="true">Correo electrónico</th>
-                        <th data-field="phone" data-sortable="true">Número de teléfono</th>
+                        <th data-field="web" data-sortable="true">Teléfono</th>
+                        <th data-field="email" data-sortable="true">País</th>
                       </tr>
                     </thead>
                     <tbody>
+                      <%if (typeof producers !== 'undefined' && producers) {%>
+                        <% producers.forEach(producer => { %>
+                          <tr>
+                            <th scope="row">
+                              <%= producer.producer %> </a>
+                            </th>
+                            <td><%= producer.copiestel %></td>
+                            <td><%= producer.copiescountry %></td>
+                          </tr>
+                        <% }) %>
+                      <% } else {%>
                       <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
+                        <th colspan=4 scope="row" class="text-center text-danger">No hay películas en base de datos</th>
                       </tr>
-                      <tr>
-                        <th scope="row">2</th>
-                        <td>Mark</td>
-                        <td>Twain</td>
-                        <td>@mdooo</td>
-                      </tr>
-                    </tbody>
+                      <% } %>
                   </table>
             </div>
           </div>

@@ -117,9 +117,19 @@ app.get("/film:=:id", checkAuthenticated, (request, response) => {
 app.get('/halls', checkAuthenticated, (request, response) => {
   response.render('halls', {user: request.user, title: "Salas de proyección"});
 })
+
 app.get('/producers', checkAuthenticated, (request, response) => {
-  response.render('producers', {user: request.user, title: "Productores"});
+  films.getProducerList((err, producers) => {
+    if (err) {
+        request.flash('error', err);
+        response.redirect("/dashboard");
+    }
+    else {
+      response.render('producers', {user: request.user, title: "Productores", producers: producers});
+    }
+  });
 })
+  
 app.get('/platforms', checkAuthenticated, (request, response) => {
   response.render('platforms', {user: request.user, title: "Plataformas"});
 })
