@@ -57,17 +57,9 @@
             <div class="card-body">
               <form id="addFilmForm" action="/addFilm" method="POST">
                 <div class="pl-lg-4">
-                  <% if (locals.messages && messages.success) { %>
-                    <div class="alert alert-success alert-dismissible fade show" role="alert">
-                      <%= messages.success %>
-                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                      </button>
-                    </div>
-                  <% } %>
-                  <% if (locals.messages && messages.errors && messages.errors.databaseError) { %>
+                  <% if (locals.error) { %>
                     <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                      <%= messages.errors %>
+                      <%= locals.error %>
                       <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">×</span>
                       </button>
@@ -77,31 +69,31 @@
                     <div class="col-lg-5 my--2">
                       <div class="form-group">
                         <label class="form-control-label" for="title">Título original*</label>
-                        <input type="text" id="title" class="form-control form-control-alternative" name="title" placeholder="Jessica Jones" required>
+                        <input type="text" id="title" class="form-control form-control-alternative form-control-sm" name="title" placeholder="Jessica Jones" required>
                         </div>
                     </div>
                     <div class="col-lg-5 my--2">
                       <div class="form-group">
                         <label class="form-control-label" for="engtitle">Título en inglés*</label>
-                        <input type="text" id="engtitle" class="form-control form-control-alternative" name="engtitle" placeholder="Jessica Jones (Eng)" required>
+                        <input type="text" id="engtitle" class="form-control form-control-alternative form-control-sm" name="engtitle" placeholder="Jessica Jones (Eng)" required>
                       </div>
                     </div>
                     <div class="col-lg-2 my--2">
                       <div class="form-group">
                         <label class="form-control-label" for="year">Año*</label>
-                        <input type="number" id="year" class="form-control form-control-alternative" name="year" required>
+                        <input type="number" id="year" class="form-control form-control-alternative form-control-sm" name="year" required>
                       </div>
                     </div>
                     <div class="col-lg-2 my--2">
                       <div class="form-group">
                         <label class="form-control-label" for="productiondate">Fecha*</label>
-                        <input type="date" id="date" class="form-control form-control-alternative" name="date" required>
+                        <input type="date" id="date" class="form-control form-control-alternative form-control-sm" name="date" required>
                       </div>
                     </div>
                     <div class="col-lg-2 my--2">
                       <div class="form-group">
                         <label class="form-control-label" for="color">Color*</label>
-                        <select  class="form-control form-control-alternative" id="color" name="color" required>
+                        <select  class="form-control form-control-alternative form-control-sm" id="color" name="color" required>
                           <option value="Color">Color</option>
                           <option value="ByN">Blanco y Negro</option>
                         </select> 
@@ -110,19 +102,19 @@
                     <div class="col-lg-3 my--2">
                       <div class="form-group">
                         <label class="form-control-label" for="animationtechnique">Técnica de animación</label>
-                        <input type="text" id="animationtechnique" class="form-control form-control-alternative" name="animationtechnique">
+                        <input type="text" id="animationtechnique" class="form-control form-control-alternative form-control-sm" name="animationtechnique">
                       </div>
                     </div>
                     <div class="col-lg-2 my--2">
                       <div class="form-group">
                         <label class="form-control-label" for="originalv">Versión original</label>
-                        <input type="text" id="originalv" class="form-control form-control-alternative" name="originalv">
+                        <input type="text" id="originalv" class="form-control form-control-alternative form-control-sm" name="originalv">
                       </div>
                     </div>
                     <div class="col-lg-3 my--2">
                       <div class="form-group">
                         <label class="form-control-label" for="genre">Género*</label>
-                        <select class="form-control form-control-alternative" id="genre" name="genre" required>
+                        <select class="form-control form-control-alternative form-control-sm" id="genre" name="genre" required>
                           <option value="anim">Animación</option>
                           <option value="disc">Documental</option>
                           <option value="docu">Experimental</option>
@@ -135,13 +127,13 @@
                     <div class="col-lg-2 my--2">
                       <div class="form-group">
                         <label class="form-control-label" for="duration">Duración*</label>
-                        <input type="number" id="duration" class="form-control form-control-alternative" name="duration" required>   
+                        <input type="number" id="duration" class="form-control form-control-alternative form-control-sm" name="duration" required>   
                       </div>
                     </div>
                     <div class="col-lg-10 my--2">
                       <div class="form-group">
                         <label class="form-control-label" for="categories">Categorías*</label>
-                        <select multiple class="selectpicker form-control form-control-alternative" id="categories" name="categories" data-actions-box="true" data-style="btn-light" required>
+                        <select multiple class="selectpicker form-control form-control-alternative form-control-sm" id="categories" name="categories" data-actions-box="true" data-style="btn-light" required>
                           <option value="anim">Animación</option>
                           <option value="disc">Discapacidad</option>
                           <option value="docu">Documental</option>
@@ -212,7 +204,7 @@
                     <div class="col-lg-3 my--2">
                       <div class="form-group">
                         <label class="form-control-label" for="country">País*</label>
-                        <input type="text" id="country" list="countries" class="form-control form-control-alternative" name="country" required>
+                        <input type="text" id="country" list="countries" class="form-control form-control-alternative form-control-sm" name="country" required>
                         <datalist id="countries">
                           <option value="AF">Afghanistan</option>
                           <option value="AX">Åland Islands</option>
@@ -469,19 +461,19 @@
                     <div class="col-lg-3 my--2">
                       <div class="form-group">
                         <label class="form-control-label" for="screen">Pantalla*</label>
-                        <input type="text" id="screen" class="form-control form-control-alternative" name="screen" required>
+                        <input type="text" id="screen" class="form-control form-control-alternative form-control-sm" name="screen" required>
                       </div>
                     </div>
                     <div class="col-lg-3 my--2">
                       <div class="form-group">
                         <label class="form-control-label" for="shootingplace">Lugar de rodaje*</label>
-                        <input type="text" id="shootingplace" class="form-control form-control-alternative" name="shootingplace" required>
+                        <input type="text" id="shootingplace" class="form-control form-control-alternative form-control-sm" name="shootingplace" required>
                       </div>
                     </div>
                     <div class="col-lg-3 my--2">
                       <div class="form-group">
                         <label class="form-control-label" for="catalogue">Catálogo*</label>
-                        <select  class="form-control form-control-alternative" id="catalogue" name="catalogue" required>
+                        <select  class="form-control form-control-alternative form-control-sm" id="catalogue" name="catalogue" required>
                           <option value="AltoCinema">AltoCinema</option>
                           <option value="NouvelleCinema">NouvelleCinema</option>
                           <option value="LambdaCinema">LambdaCinema</option>
@@ -491,79 +483,88 @@
                     <div class="col-lg-12 my--2">
                       <div class="form-group">
                         <label class="form-control-label" for="sinopsis">Sinopsis en idioma original</label>
-                        <textarea name="sinopsis" id="sinopsis" class="form-control form-control-alternative" rows="3"></textarea>
+                        <textarea name="sinopsis" id="sinopsis" class="form-control form-control-alternative form-control-sm" rows="3"></textarea>
                       </div>
                     </div>
                     <div class="col-lg-12 my--2">
                       <div class="form-group">
                         <label class="form-control-label" for="eng_sinopsis">Sinopsis en inglés</label>
-                        <textarea name="eng_sinopsis" id="eng_sinopsis" class="form-control form-control-alternative" rows="3"></textarea>
+                        <textarea name="eng_sinopsis" id="eng_sinopsis" class="form-control form-control-alternative form-control-sm" rows="3"></textarea>
                       </div>
                     </div>
                     <div class="col-lg-12 my--2">
                       <div class="form-group">
                         <label class="form-control-label" for="esp_sinopsis">Sinopsis en español</label>
-                        <textarea name="esp_sinopsis" id="esp_sinopsis" class="form-control form-control-alternative" rows="3"><%=film.esp_sinopsis%></textarea>
+                        <textarea name="esp_sinopsis" id="esp_sinopsis" class="form-control form-control-alternative form-control-sm" rows="3"></textarea>
                       </div>
                     </div>
                     <div class="col-lg-6 my--2">
                       <div class="form-group">
                         <label class="form-control-label" for="materialslink">Enlace de materiales</label>
-                        <input type="url" id="materialslink" class="form-control form-control-alternative" name="materialslink">
+                        <input type="url" id="materialslink" class="form-control form-control-alternative form-control-sm" name="materialslink">
                       </div>
                     </div>
                     <div class="col-lg-6 my--2">
                       <div class="form-group">
                         <label class="form-control-label" for="link">Enlace copias</label>
-                        <input type="url" id="link" class="form-control form-control-alternative" name="link"  >
+                        <input type="url" id="link" class="form-control form-control-alternative form-control-sm" name="link"  >
                       </div>
                     </div>
                     <div class="col-lg-12 my--2">
                       <div class="form-group">
                         <label class="form-control-label" for="originalvimeo">Vimeo original</label>
-                        <input type="url" id="originalvimeo" class="form-control form-control-alternative" name="originalvimeo"  >
+                        <input type="url" id="originalvimeo" class="form-control form-control-alternative form-control-sm" name="originalvimeo"  >
                       </div>
                     </div>
                     <div class="col-lg-6 my--2">
                       <div class="form-group">
                         <label class="form-control-label" for="spavimeo">Vimeo español</label>
-                        <input type="url" id="spavimeo" class="form-control form-control-alternative" name="spavimeo"  >
+                        <input type="url" id="spavimeo" class="form-control form-control-alternative form-control-sm" name="spavimeo"  >
                       </div>
                     </div>
                     <div class="col-lg-6 my--2">
                       <div class="form-group">
                         <label class="form-control-label" for="englishvimeo">Vimeo en inglés</label>
-                        <input type="url" id="englishvimeo" class="form-control form-control-alternative" name="englishvimeo"  >
+                        <input type="url" id="englishvimeo" class="form-control form-control-alternative form-control-sm" name="englishvimeo"  >
                       </div>
                     </div>
                     <div class="col-lg-6 my--2">
                       <div class="form-group">
                         <label class="form-control-label" for="frenchvimeo">Vimeo en francés</label>
-                        <input type="url" id="frenchvimeo" class="form-control form-control-alternative" name="frenchvimeo"  >
+                        <input type="url" id="frenchvimeo" class="form-control form-control-alternative form-control-sm" name="frenchvimeo"  >
                       </div>
                     </div>
                     <div class="col-lg-6 my--2">
                       <div class="form-group">
                         <label class="form-control-label" for="italianvimeo">Vimeo en italiano</label>
-                        <input type="url" id="italianvimeo" class="form-control form-control-alternative" name="italianvimeo">
+                        <input type="url" id="italianvimeo" class="form-control form-control-alternative form-control-sm" name="italianvimeo">
                       </div>
                     </div>
                     <div class="col-lg-6 my--2">
                       <div class="form-group">
                         <label class="form-control-label" for="trailer">Trailer VO</label>
-                        <input type="url" id="trailer" class="form-control form-control-alternative" name="trailer">
+                        <input type="url" id="trailer" class="form-control form-control-alternative form-control-sm" name="trailer">
                       </div>
                     </div>
                     <div class="col-lg-6 my--2">
                       <div class="form-group">
                         <label class="form-control-label" for="trailereng">Trailer Inglés</label>
-                        <input type="url" id="trailereng" class="form-control form-control-alternative" name="trailereng">
+                        <input type="url" id="trailereng" class="form-control form-control-alternative form-control-sm" name="trailereng">
                       </div>
                     </div>
                     <div class="col-lg-6 my--2">
                       <div class="form-group">
                         <label class="form-control-label" for="traileresp">Trailer Español</label>
-                        <input type="url" id="traileresp" class="form-control form-control-alternative" name="traileresp">
+                        <input type="url" id="traileresp" class="form-control form-control-alternative form-control-sm" name="traileresp">
+                      </div>
+                    </div>
+                    <div class="col-lg-6 my--2">
+                      <div class="form-group">
+                        <label class="form-control-label" for="addcatalogue">Añadir al catálogo</label>
+                        <select  class="form-control form-control-alternative form-control-sm" id="addcatalogue" name="addcatalogue" required>
+                          <option value="0">No</option>
+                          <option value="1">Sí</option>
+                        </select> 
                       </div>
                     </div>
                     <div class="col-lg-12">
@@ -572,61 +573,61 @@
                     <div class="col-lg-4">
                       <div class="form-group">
                           <label class="form-control-label" for="director">Director*</label>
-                          <input type="text" id="director" class="form-control form-control-alternative" name="director" required>
+                          <input type="text" id="director" class="form-control form-control-alternative form-control-sm" name="director" required>
                       </div>
                     </div>
                     <div class="col-lg-4">
                       <div class="form-group">
                           <label class="form-control-label" for="script">Guión</label>
-                          <input type="text" id="script" class="form-control form-control-alternative" name="script">
+                          <input type="text" id="script" class="form-control form-control-alternative form-control-sm" name="script">
                       </div>
                     </div>
                     <div class="col-lg-4">
                         <div class="form-group">
                             <label class="form-control-label" for="photography">Fotografía</label>
-                            <input type="text" id="photography" class="form-control form-control-alternative" name="photography">
+                            <input type="text" id="photography" class="form-control form-control-alternative form-control-sm" name="photography">
                         </div>
                     </div>
                     <div class="col-lg-4 my--2">
                         <div class="form-group">
                             <label class="form-control-label" for="artistic">Dirección artística</label>
-                            <input type="text" id="artistic" class="form-control form-control-alternative" name="artistic">
+                            <input type="text" id="artistic" class="form-control form-control-alternative form-control-sm" name="artistic">
                         </div>
                     </div>
                     <div class="col-lg-4 my--2">
                         <div class="form-group">
                             <label class="form-control-label" for="soundtrack">Música</label>
-                            <input type="text" id="soundtrack" class="form-control form-control-alternative" name="soundtrack">
+                            <input type="text" id="soundtrack" class="form-control form-control-alternative form-control-sm" name="soundtrack">
                         </div>
                     </div>
                     <div class="col-lg-4 my--2">
                       <div class="form-group">
                           <label class="form-control-label" for="montage">Montaje*</label>
-                          <input type="text" id="montage" class="form-control form-control-alternative" name="montage" required>
+                          <input type="text" id="montage" class="form-control form-control-alternative form-control-sm" name="montage" required>
                       </div>
                     </div>
                     <div class="col-lg-4 my--2">
                       <div class="form-group">
                           <label class="form-control-label" for="producer">Productor*</label>
-                          <input type="text" id="producer" class="form-control form-control-alternative" name="producer" required>
+                          <input type="text" id="producer" class="form-control form-control-alternative form-control-sm" name="producer" required>
                       </div>
                     </div>
                     <div class="col-lg-4 my--2">
                       <div class="form-group">
                           <label class="form-control-label" for="animation">Animación</label>
-                          <input type="text" id="animation" class="form-control form-control-alternative" name="animation">
+                          <input type="text" id="animation" class="form-control form-control-alternative form-control-sm" name="animation">
                       </div>
                     </div>
                     <div class="col-lg-4 my--2">
                       <div class="form-group">
                           <label class="form-control-label" for="sound">Sonido</label>
-                          <input type="text" id="sound" class="form-control form-control-alternative" name="sound">
+                          <input type="text" id="sound" class="form-control form-control-alternative form-control-sm" name="sound">
                       </div>
                     </div>
                     <div class="col-lg-12 my--2">
                       <div class="form-group">
                           <label class="form-control-label" for="interpreter">Intérpretes</label>
-                          <input type="text" id="interpreter" class="form-control form-control-alternative" name="interpreter">
+                          <input type="text" id="interpreter" class="form-control form-control-alternative form-control-sm" name="interpreter">
                       </div>
                     </div>
                     <div class="col-lg-12">
@@ -635,43 +636,43 @@
                     <div class="col-lg-6">
                         <div class="form-group">
                             <label class="form-control-label" for="copiesheader">Encabezado</label>
-                            <input type="text" id="copiesheader" class="form-control form-control-alternative" name="copiesheader">
+                            <input type="text" id="copiesheader" class="form-control form-control-alternative form-control-sm" name="copiesheader">
                         </div>
                     </div>
                     <div class="col-lg-4">
                       <div class="form-group">
                           <label class="form-control-label" for="copiesstreet">Calle</label>
-                          <input type="text" id="copiesstreet" class="form-control form-control-alternative" name="copiesstreet">
+                          <input type="text" id="copiesstreet" class="form-control form-control-alternative form-control-sm" name="copiesstreet">
                       </div>
                     </div>
                     <div class="col-lg-2">
                       <div class="form-group">
                           <label class="form-control-label" for="copiescp">Código postal</label>
-                          <input type="text" id="copiescp" class="form-control form-control-alternative" name="copiescp">
+                          <input type="text" id="copiescp" class="form-control form-control-alternative form-control-sm" name="copiescp">
                       </div>
                     </div>
                     <div class="col-lg-3 my--2">
                       <div class="form-group">
                           <label class="form-control-label" for="copiestel">Telef portada</label>
-                          <input type="tel" id="copiestel" class="form-control form-control-alternative" name="copiestel">
+                          <input type="tel" id="copiestel" class="form-control form-control-alternative form-control-sm" name="copiestel">
                       </div>
                     </div>
                     <div class="col-lg-3 my--2">
                       <div class="form-group">
                           <label class="form-control-label" for="copiescity">Localidad</label>
-                          <input type="text" id="copiescity" class="form-control form-control-alternative" name="copiescity">
+                          <input type="text" id="copiescity" class="form-control form-control-alternative form-control-sm" name="copiescity">
                       </div>
                     </div>
                     <div class="col-lg-3 my--2">
                       <div class="form-group">
                           <label class="form-control-label" for="copiesprovince">Provincia</label>
-                          <input type="text" id="copiesprovince" class="form-control form-control-alternative" name="copiesprovince">
+                          <input type="text" id="copiesprovince" class="form-control form-control-alternative form-control-sm" name="copiesprovince">
                       </div>
                     </div>
                     <div class="col-lg-3 my--2">
                       <div class="form-group">
                           <label class="form-control-label" for="copiescountry">País</label>
-                          <input type="text" id="copiescountry" class="form-control form-control-alternative" name="copiescountry">
+                          <input type="text" id="copiescountry" class="form-control form-control-alternative form-control-sm" name="copiescountry">
                       </div>
                     </div> 
                     <div class="col-lg-12 text-center">

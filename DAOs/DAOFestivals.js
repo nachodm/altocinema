@@ -31,7 +31,7 @@ class DAOFestivals {
                 callback(null);
             }
             else{
-                connection.query("INSERT INTO FESTIVALS (name, ok, init_date, end_date, edition,  deadline,  type, entryfee, fee, currency, platform, print, prize, waiver, disc, final, contactname, contact_email, programmer, prog_email, contact_tel, contact_web, platformurl,state,contactcountry,language,notes,confirmed,sheet,shortname,header,street,postalcode,city, province, copies_header, copies_street,copies_cp,copies_tel,copies_city,copies_province, copies_country) VALUES ?",
+                connection.query("INSERT INTO FESTIVALS (festival_id, name, ok, init_date, end_date, edition, year, deadline, type, entryfee, fee, currency, euros, platform, prize, waiver, disc, final, contactname, contact_email, programmer, prog_email, contact_tel, contact_web, platformurl,state,contactcountry,language,notes,confirmed,sheet,shortname,header,street,postalcode,city, province, copies_header, copies_street,copies_cp,copies_tel,copies_city,copies_province, copies_country, modif) VALUES ?",
                 [festival],
                 (err, result) => {
                     if (err) { callback(err);}
@@ -70,7 +70,7 @@ class DAOFestivals {
             if (err) {
                 callback("Error de conexion a la BBDD", undefined); return;
             }
-            connection.query("UPDATE festivals SET = ? WHERE festival_id = ?",
+            connection.query("UPDATE festivals SET = ? WHERE id = ?",
             [data, id],
             (err) => {
                 connection.release();
@@ -93,7 +93,7 @@ class DAOFestivals {
             if (err) {
                 callback(err, undefined);
             }
-            connection.query("SELECT * FROM festivals WHERE festival_id = ?",
+            connection.query("SELECT * FROM festivals WHERE id = ?",
             [id],
             (err, festival) => {
                 connection.release();
@@ -146,7 +146,7 @@ class DAOFestivals {
                     let preinscriptions;
                     films.forEach(film => {
                         festivals.forEach(festival => {
-                            let temp = [festival.festival_id, film.id];
+                            let temp = [festival.id, film.id];
                             preinscriptions.push(temp);
                         });
                     });

@@ -48,6 +48,7 @@ CREATE TABLE FILMS (
     copiescity VARCHAR(255) DEFAULT NULL,
     copiesprovince VARCHAR(255) DEFAULT NULL,
     copiescountry VARCHAR(255) DEFAULT NULL,
+    addcatalogue BOOLEAN DEFAULT FALSE,
     PRIMARY KEY (id)
     -- specify more columns here
 );
@@ -62,12 +63,14 @@ CREATE TABLE DIRECTORS (
 );
  
  CREATE TABLE FESTIVALS (
-    festival_id INT NOT NULL AUTO_INCREMENT, -- primary key column
+    id INT NOT NULL AUTO_INCREMENT, -- primary key column
+    festival_id INT NOT NULL,
     name VARCHAR(255) NOT NULL,
-    ok TINYINT NOT NULL,
+    ok VARCHAR(16) NOT NULL,
     init_date DATE NOT NULL,
     end_date DATE NOT NULL,
-    edition INT NOT NULL,
+    edition INT,
+    year INT NOT NULL,
     deadline DATE NOT NULL,
     type TINYINT NOT NULL,
     entryfee BOOLEAN NOT NULL DEFAULT TRUE,
@@ -88,16 +91,16 @@ CREATE TABLE DIRECTORS (
     platformurl VARCHAR(256),
     state VARCHAR(256),
     contactcountry VARCHAR(256),
-    language VARCHAR(256),
+    language VARCHAR(256) NOT NULL,
     notes VARCHAR(2048),
-    confirmed BOOLEAN NOT NULL DEFAULT FALSE,
+    confirmed VARCHAR(16) NOT NULL,
     sheet VARCHAR(255),
     shortname VARCHAR(255) NOT NULL,
     header VARCHAR(255),
     street VARCHAR(255),
     postalcode INT,    
-    city BOOLEAN NOT NULL DEFAULT FALSE,
-    province BOOLEAN NOT NULL DEFAULT FALSE,
+    city VARCHAR(255),
+    province VARCHAR(255),
     copies_header VARCHAR(255),
     copies_street VARCHAR(255),
     copies_cp VARCHAR(255),
@@ -105,7 +108,8 @@ CREATE TABLE DIRECTORS (
     copies_city VARCHAR(255),
     copies_province VARCHAR(255),
     copies_country VARCHAR(255),
-    PRIMARY KEY (festival_id)
+    modif VARCHAR(255),
+    PRIMARY KEY (id)
     -- specify more columns here
 );
 
@@ -120,7 +124,7 @@ CREATE TABLE FILMCATEGORIES (
 CREATE TABLE FESTIVALCATEGORIES (
     id INT NOT NULL,
     category VARCHAR(255) NOT NULL,
-    CONSTRAINT FK_festival_id FOREIGN KEY (id) REFERENCES FESTIVALS (festival_id) ON DELETE CASCADE ON UPDATE CASCADE,
+    CONSTRAINT FK_festival_id FOREIGN KEY (id) REFERENCES FESTIVALS (id) ON DELETE CASCADE ON UPDATE CASCADE,
     primary key(id, category)
     -- specify more columns here
 );
@@ -138,7 +142,7 @@ CREATE TABLE CONNECTFESTIVALCATEGORIES (
     festival_id VARCHAR(255) NOT NULL,
     PRIMARY KEY(category_id, festival_id),
     CONSTRAINT FK_category FOREIGN KEY (category_id) REFERENCES FILMCATEGORIES (id) ON DELETE CASCADE ON UPDATE CASCADE,
-    CONSTRAINT FK_festival FOREIGN KEY (festival_id) REFERENCES FESTIVALS (festival_id) ON DELETE CASCADE ON UPDATE CASCADE
+    CONSTRAINT FK_festival FOREIGN KEY (festival_id) REFERENCES FESTIVALS (id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
  CREATE TABLE PRESINSCR (
@@ -146,5 +150,5 @@ CREATE TABLE CONNECTFESTIVALCATEGORIES (
     film_id INT NOT NULL,
     PRIMARY KEY(film_id, festival_id),
     CONSTRAINT FK_film FOREIGN KEY (film_id) REFERENCES FILMS (id) ON DELETE CASCADE ON UPDATE CASCADE,
-    CONSTRAINT FK_festival FOREIGN KEY (festival_id) REFERENCES FESTIVALS (festival_id) ON DELETE CASCADE ON UPDATE CASCADE
+    CONSTRAINT FK_festival FOREIGN KEY (festival_id) REFERENCES FESTIVALS (id) ON DELETE CASCADE ON UPDATE CASCADE
  )

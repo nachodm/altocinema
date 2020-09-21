@@ -71,16 +71,22 @@
                     </div>
                   <% } %>
                   <div class="row">
-                    <div class="col-lg-10 my--2">
+                    <div class="col-lg-1 my--2">
+                        <div class="form-group">
+                            <label class="form-control-label" for="festival_id">Fest ID</label>
+                            <input type="number" id="festival_id" class="form-control form-control-alternative form-control-sm" name="festival_id">
+                        </div>
+                    </div>
+                    <div class="col-lg-9 my--2">
                         <div class="form-group">
                             <label class="form-control-label" for="name">Nombre*</label>
-                            <input type="text" id="name" class="form-control form-control-alternative" name="name" placeholder="Festival Cannes" required>
+                            <input type="text" id="name" class="form-control form-control-alternative form-control-sm" name="name" placeholder="Festival Cannes" required>
                         </div>
                     </div>
                     <div class="col-lg-2 my--2">
                         <div class="form-group">
                             <label class="form-control-label" for="ok">Ok*</label>
-                            <select class="form-control form-control-alternative" id="ok" name="ok" required>
+                            <select class="form-control form-control-alternative form-control-sm" id="ok" name="ok" required>
                                 <option class="text-white bg-success" value="y">Sí</option>
                                 <option class="text-white bg-danger" value="n">No</option>
                                 <option class="text-white bg-warning" value="pen">Pt</option>
@@ -90,31 +96,37 @@
                     <div class="col-lg-2 my--2">
                       <div class="form-group">
                         <label class="form-control-label" for="init_date">Fecha Inicio*</label>
-                        <input type="date" id="init_date" class="form-control form-control-alternative input-sm" name="init_date" required>
+                        <input type="date" id="init_date" class="form-control form-control-alternative form-control-sm datepicker" name="init_date" required>
                       </div>
                     </div>
                     <div class="col-lg-2 my--2">
                       <div class="form-group">
                         <label class="form-control-label" for="end_date">Fecha Fin*</label>
-                        <input type="date" id="end_date" class="form-control form-control-alternative input-sm" name="end_date" required>
+                        <input type="date" id="end_date" class="form-control form-control-alternative form-control-sm" name="end_date" required>
                       </div>
                     </div>
-                    <div class="col-lg-2 my--2">
+                    <div class="col-lg-1 my--2">
                         <div class="form-group">
                             <label class="form-control-label" for="edition">Edición</label>
-                            <input type="number" id="edition" class="form-control form-control-alternative input-sm" name="edition" placeholder="10">
+                            <input type="number" id="edition" class="form-control form-control-alternative form-control-sm" name="edition" placeholder="10">
+                        </div>
+                    </div>
+                    <div class="col-lg-1 my--2">
+                        <div class="form-group">
+                            <label class="form-control-label" for="year">Año</label>
+                            <input type="number" id="year" class="form-control form-control-alternative form-control-sm" name="year" placeholder="2020" required>
                         </div>
                     </div>
                     <div class="col-lg-3 my--2">
                         <div class="form-group">
                             <label class="form-control-label text-warning font-weight-bold" for="deadline">Deadline*</label>
-                            <input type="date" id="deadline" class="form-control form-control-alternative input-sm" name="deadline" required>
+                            <input type="date" id="deadline" class="form-control form-control-alternative form-control-sm" name="deadline" required>
                         </div>
                     </div>
                     <div class="col-lg-3 my--2">
                         <div class="form-group">
                             <label class="form-control-label" for="type">Tipo Deadline*</label>
-                            <select  class="form-control form-control-alternative input-sm" id="type" name="type" required>
+                            <select  class="form-control form-control-alternative form-control-sm" id="type" name="type" required>
                                 <option value="0">Early</option>
                                 <option value="1">Regular</option>
                                 <option value="2">Late</option>
@@ -125,7 +137,7 @@
                     <div class="col-lg-10 my--2">
                         <div class="form-group">
                           <label class="form-control-label" for="categories">Categorías*</label>
-                          <select multiple class="selectpicker form-control form-control-alternative" id="categories" name="categories" data-actions-box="true" required>
+                          <select multiple class="selectpicker form-control form-control-alternative form-control-sm" id="categories" name="categories" data-actions-box="true" required>
                             <option value="anim">Animación</option>
                             <option value="disc">Discapacidad</option>
                             <option value="docu">Documental</option>
@@ -196,7 +208,7 @@
                     <div class="col-lg-2 my--2">
                         <div class="form-group">
                             <label class="form-control-label" for="entryfee">EntryFee*</label>
-                            <select class="form-control form-control-alternative input-sm" id="entryfee" name="entryfee" required>
+                            <select class="form-control form-control-alternative form-control-sm" id="entryfee" name="entryfee" required>
                                 <option value="y">Sí</option>
                                 <option value="n">No</option>
                             </select> 

@@ -21,6 +21,10 @@ body {
     color: silver !important;
 }
 
+.dropdown-menu {
+    opacity: 0.8;
+}
+
 .my-auto {
     display: flex;
     flex-direction: column;

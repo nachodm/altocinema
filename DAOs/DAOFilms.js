@@ -31,7 +31,7 @@ class DAOFilms {
                 callback(null);
             }
             else{
-                connection.query("INSERT INTO FILMS (title, engtitle, year, date, color, animationtechnique, originalv, genre, duration, country, screen, shootingplace, catalogue, sinopsis, eng_sinopsis, materialslink, link, originalvimeo, englishvimeo, frenchvimeo, italianvimeo, spavimeo, trailer, trailereng, director, script, photography, artistic, soundtrack, montage, producer, animation, sound, interpreter, copiesheader, copiesstreet, copiescp, copiestel, copiescity, copiesprovince, copiescountry) VALUES ?",
+                connection.query("INSERT INTO FILMS (title, engtitle, year, date, color, animationtechnique, originalv, genre, duration, country, screen, shootingplace, catalogue, sinopsis, eng_sinopsis, materialslink, link, originalvimeo, englishvimeo, frenchvimeo, italianvimeo, spavimeo, trailer, trailereng, director, script, photography, artistic, soundtrack, montage, producer, animation, sound, interpreter, copiesheader, copiesstreet, copiescp, copiestel, copiescity, copiesprovince, copiescountry, addcatalogue) VALUES ?",
                 [film],
                 (err, result) => {
                     if (err) { callback(err);}

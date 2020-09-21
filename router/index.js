@@ -208,7 +208,8 @@ const film = [[
     request.body.copiestel,
     request.body.copiescity,
     request.body.copiesprovince,
-    request.body.copiescountry
+    request.body.copiescountry,
+    request.body.addcatalogue
 ]];
 
 const categories = request.body.categories;
@@ -266,7 +267,8 @@ app.post("/updateFilm", checkAuthenticated, (request, response) => {
       request.body.copiestel,
       request.body.copiescity,
       request.body.copiesprovince,
-      request.body.copiescountry
+      request.body.copiescountry,
+      request.body.catalogue
   ]];
 
   films.updateFilm(film, request.body.categories, request.body.id, (err) => {
@@ -281,12 +283,16 @@ app.post("/updateFilm", checkAuthenticated, (request, response) => {
 });
 
 app.post("/addFestival", checkAuthenticated, (request, response) => {
+  let auxdate = new Date();
+  let modif = "Modificado el " + auxdate + " por " +  request.user;
   const festival = [[
+      request.body.festival_id,
       request.body.name,
       request.body.ok,
       request.body.init_date,
       request.body.end_date,
       request.body.edition,
+      request.body.year,
       request.body.deadline,
       request.body.type,
       request.body.entryfee,
@@ -294,7 +300,6 @@ app.post("/addFestival", checkAuthenticated, (request, response) => {
       request.body.currency,
       request.body.euros,
       request.body.platform,
-      request.body.print,
       request.body.prize,
       request.body.waiver,
       request.body.disc,
@@ -324,7 +329,8 @@ app.post("/addFestival", checkAuthenticated, (request, response) => {
       request.body.copies_tel,
       request.body.copies_city,
       request.body.copies_province,
-      request.body.copies_country
+      request.body.copies_country,
+      modif
   ]];
 
   const categories = request.body.categories;
@@ -341,12 +347,16 @@ app.post("/addFestival", checkAuthenticated, (request, response) => {
 });
 
   app.post("/updateFestival", checkAuthenticated, (request, response) => {
+  let auxdate = new Date();
+  let modif = "Modificado el " + auxdate + " por " +  request.user;
   const festival = [[
+    request.body.festival_id,
     request.body.name,
     request.body.ok,
     request.body.init_date,
     request.body.end_date,
     request.body.edition,
+    request.body.year,
     request.body.deadline,
     request.body.type,
     request.body.entryfee,
@@ -354,7 +364,6 @@ app.post("/addFestival", checkAuthenticated, (request, response) => {
     request.body.currency,
     request.body.euros,
     request.body.platform,
-    request.body.print,
     request.body.prize,
     request.body.waiver,
     request.body.disc,
@@ -384,7 +393,8 @@ app.post("/addFestival", checkAuthenticated, (request, response) => {
     request.body.copies_tel,
     request.body.copies_city,
     request.body.copies_province,
-    request.body.copies_country
+    request.body.copies_country,
+    modif
   ]];
 
   festivals.updateFestival(festival, request.body.categories, request.body.id, (err) => {
@@ -420,6 +430,12 @@ app. post("/register_user", (request, response) => {
       }
     });
 })
+
+app.use(function(req, res, next){
+  res.locals.success = req.flash('success');
+  res.locals.error = req.flash('error');
+  next();
+});
 
 app.use((req, res) => {
   res.status(404).render('404');
