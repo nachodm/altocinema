@@ -52,6 +52,9 @@ class DAOFilms {
                                 }
                             });
                         }
+                        else {
+                            callback(null);
+                        }
                     }
                 });
             }
