@@ -40,15 +40,24 @@
   $("#fee").change(updateFinalFee); 
 
   function updateFinalFee(){
-      let desc = $("#disc").val()/100;
-      let final = desc * $("#fee").val();
-      $("#final").val(final);
+    
+      let waiver = $("#waiver").val()
+      if (waiver == "y1" || waiver == "y2") {
+        $("#disc").prop('disabled', false); 
+        let desc = $("#disc").val()/100;
+        let final = desc * $("#fee").val();
+        $("#final").val(final);
+      }
+      else {
+        $("#disc").prop('disabled', true); 
+        $("#final").val($("#fee").val());
+      }
   }
 </script>
 
 <script>
-  $('#init_date').datepicker({
-    minDate : 0
-  });
+ var today = new Date().toISOString().split('T')[0];
+  document.getElementsByName("init_date")[0].setAttribute('min', today);
+  document.getElementsByName("end_date")[0].setAttribute('min', today);
 </script>
 

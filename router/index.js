@@ -294,7 +294,7 @@ app.post("/updateFilm", checkAuthenticated, (request, response) => {
 
 app.post("/addFestival", checkAuthenticated, (request, response) => {
   let auxdate = new Date();
-  let modif = "Modificado el " + auxdate + " por " +  request.user;
+  let modif = "Modificado el " + auxdate + " por " +  request.user.name;
   const festival = [[
       request.body.festival_id,
       request.body.name,

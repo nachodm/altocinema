@@ -40,7 +40,7 @@
             <div class="card-header bg-transparent">
               <div class="row align-items-center">
                 <div class="col">
-                  <h6 class="text-uppercase text-muted ls-1 mb-1">Festivales</h6>
+                  <h6 class="text-uppercase text-muted ls-1 mb-0">Festivales</h6>
                   <h2 class="mb-0">Listado de festivales</h2>
                 </div>
                 <div class="col text-right">
@@ -75,7 +75,7 @@
                       <% festivals.forEach(festival => { %>
                         <tr>
                           <th scope="row">
-                            <a href="/festival:=<%= festival.festival_id %>" value="visit"> <%= festival.deadline %> </a>
+                            <a href="/festival:=<%= festival.id %>" value="visit"> <%= festival.deadline %> </a>
                           </th>
                           <td><%= festival.name %></td>
                           <% if (festival.entryfee === 0) { %>

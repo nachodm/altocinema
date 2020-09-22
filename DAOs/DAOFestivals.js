@@ -52,6 +52,9 @@ class DAOFestivals {
                                 }
                             });
                         }
+                        else {
+                            callback(null);
+                        }
                     }
                 });
             }
