@@ -37,9 +37,9 @@ class DAOFestivals {
                     if (err) { callback(err);}
                     else {
                         let festivalcategories = [];
-                        /*categories.forEach(c => {
+                        categories.forEach(c => {
                             festivalcategories.push({id: result.insertId, category: c});
-                        });*/
+                        });
                         if (festivalcategories.length > 0) {
                             connection.query("INSERT INTO festivalcategories (id, category) VALUES ?",
                             [festivalcategories.map(festival => [festival.id, festival.category])],
