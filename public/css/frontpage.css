@@ -1,6 +1,21 @@
 html {
     scroll-behavior: smooth;
+    scrollbar-width: thin;          /* "auto" or "thin"  */
+    scrollbar-color: #212121 black;   /* scroll thumb & track */
 }
+
+/* Works on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+    width: 12px;
+  }
+  *::-webkit-scrollbar-track {
+    background: black;
+  }
+  *::-webkit-scrollbar-thumb {
+    background-color: #212121;
+    border-radius: 20px;
+    border: 0.5px solid whitesmoke;
+  }
 
 .nav-link {
     font-family: Montserrat;
@@ -10,6 +25,7 @@ html {
 
 body {
     background-color: black;
+
 }
 
 .content {
