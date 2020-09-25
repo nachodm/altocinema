@@ -38,11 +38,18 @@ class DAOFestivals {
                     else {
                         let festivalcategories = [];
                         categories.forEach(c => {
-                            festivalcategories.push({id: 24 /*result.insertId*/, category: c});
+                            festivalcategories.push({id: result.insertId, category: c});
                         });
+                        let fests=j.reduce((o,a)=>{
+                            let ini=[];
+                            ini.push(a.id);
+                            ini.push(a.category);
+                            o.push(ini);
+                            return o
+                      },[])
                         if (festivalcategories.length > 0) {
                             connection.query("INSERT INTO festivalcategories (id, category) VALUES ?",
-                            [festivalcategories.map(festival => [festival.id, festival.category])],
+                            [fests],
                             (err) => {
                                 connection.release();
                                 if (err) { callback(err); }
