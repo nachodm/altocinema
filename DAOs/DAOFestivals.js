@@ -40,13 +40,13 @@ class DAOFestivals {
                         categories.forEach(c => {
                             festivalcategories.push({id: result.insertId, category: c});
                         });
-                        let fests=j.reduce((o,a)=>{
+                        let fests=festivalcategories.reduce((o,a)=>{
                             let ini=[];
                             ini.push(a.id);
                             ini.push(a.category);
                             o.push(ini);
                             return o
-                      },[])
+                      },[]);
                         if (festivalcategories.length > 0) {
                             connection.query("INSERT INTO festivalcategories (id, category) VALUES ?",
                             [fests],
