@@ -37,7 +37,7 @@ class DAOFestivals {
                     if (err) { callback(err);}
                     else {
                         let festivalcategories = [];
-                        categories.forEach(c => {
+                        Array.prototype.forEach.call(categories, c => {
                             festivalcategories.push({id: result.insertId, category: c});
                         });
                         let fests=festivalcategories.reduce((o,a)=>{
