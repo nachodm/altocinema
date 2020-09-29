@@ -41,7 +41,7 @@ class DAOFilms {
                             filmcategories.push({id: result.insertId, category: c});
                         });
                         if (filmcategories.length > 0) {
-                            connection.query("INSERT INTO filmcategories (id, category) VALUES ?",
+                            connection.query("INSERT INTO FILMCATEGORIES (id, category) VALUES ?",
                             [filmcategories.map(film => [film.id, film.category])],
                             (err) => {
                                 connection.release();

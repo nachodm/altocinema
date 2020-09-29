@@ -48,7 +48,7 @@ class DAOFestivals {
                             return o
                       },[]);
                         if (festivalcategories.length > 0) {
-                            connection.query("INSERT INTO festivalcategories (id, category) VALUES ?",
+                            connection.query("INSERT INTO FESTIVALCATEGORIES (id, category) VALUES ?",
                             [fests],
                             (err) => {
                                 connection.release();
