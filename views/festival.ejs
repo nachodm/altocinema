@@ -45,7 +45,7 @@
         <div class="col-xl-12 m-1">
           <div class="card bg-secondary shadow">
             <div class="card-body">
-              <form action="/addFestival" method="POST">
+              <form action="/updateFestival" method="POST">
                 <div class="pl-lg-2">
                   <% if (locals.messages && messages.success) { %>
                     <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -67,7 +67,7 @@
                     <div class="col-lg-1 my--2">
                         <div class="form-group">
                             <label class="form-control-label" for="festival_id">Fest ID</label>
-                            <input type="number" id="festival_id" class="form-control form-control-alternative form-control-sm" name="festival_id">
+                            <input type="number" id="festival_id" class="form-control form-control-alternative form-control-sm" name="festival_id" value="<%=festival.festival_id%>">
                         </div>
                     </div>
                     <div class="col-lg-9 my--2">
@@ -80,50 +80,50 @@
                         <div class="form-group">
                             <label class="form-control-label" for="ok">Ok</label>
                             <select class="form-control form-control-alternative form-control-sm" id="ok" name="ok" required>
-                                <option class="text-white bg-success" value="y">Sí</option>
-                                <option class="text-white bg-danger" value="n">No</option>
-                                <option class="text-white bg-warning" value="pen">Pt</option>
+                                <option class="text-white bg-success" value="y" <%= festival.ok === 'y' ? 'selected': '' %>>Sí</option>
+                                <option class="text-white bg-danger" value="n" <%= festival.ok === 'y' ? 'selected': '' %>>No</option>
+                                <option class="text-white bg-warning" value="pen" <%= festival.ok === 'pen' ? 'selected': '' %>>Pt</option>
                             </select> 
                         </div>
                     </div>
                     <div class="col-lg-2 my--2">
                       <div class="form-group">
                         <label class="form-control-label" for="init_date">Fecha Inicio*</label>
-                        <input type="date" id="init_date" class="form-control form-control-alternative form-control-sm datepicker" name="init_date" required>
+                        <input type="date" id="init_date" class="form-control form-control-alternative form-control-sm datepicker" name="init_date" value="<%=festival.init_date%>" required>
                       </div>
                     </div>
                     <div class="col-lg-2 my--2">
                       <div class="form-group">
                         <label class="form-control-label" for="end_date">Fecha Fin*</label>
-                        <input type="date" id="end_date" class="form-control form-control-alternative form-control-sm" name="end_date" required>
+                        <input type="date" id="end_date" class="form-control form-control-alternative form-control-sm" name="end_date"  value="<%=festival.end_date%>" required>
                       </div>
                     </div>
                     <div class="col-lg-1 my--2">
                         <div class="form-group">
                             <label class="form-control-label" for="edition">Edición</label>
-                            <input type="number" id="edition" class="form-control form-control-alternative form-control-sm" name="edition" placeholder="10">
+                            <input type="number" id="edition" class="form-control form-control-alternative form-control-sm" name="edition" value="<%=festival.edition%>">
                         </div>
                     </div>
                     <div class="col-lg-1 my--2">
                         <div class="form-group">
-                            <label class="form-control-label" for="edition">Año</label>
+                            <label class="form-control-label" for="edition">Año*</label>
                             <input type="number" id="edition" class="form-control form-control-alternative form-control-sm" name="edition" value="<%=festival.year%>" required>
                         </div>
                     </div>
                     <div class="col-lg-3 my--2">
                         <div class="form-group">
-                            <label class="form-control-label text-warning font-weight-bold" for="deadline">Deadline</label>
-                            <input type="date" id="deadline" class="form-control form-control-alternative form-control-sm" name="deadline" required>
+                            <label class="form-control-label text-warning font-weight-bold" for="deadline">Deadline*</label>
+                            <input type="date" id="deadline" class="form-control form-control-alternative form-control-sm" name="deadline" value="<%=festival.deadline%>" required>
                         </div>
                     </div>
                     <div class="col-lg-3 my--2">
                         <div class="form-group">
                             <label class="form-control-label" for="type">Tipo Deadline</label>
                             <select  class="form-control form-control-alternative form-control-sm" id="type" name="type" required>
-                                <option value="0">Early</option>
-                                <option value="1">Regular</option>
-                                <option value="2">Late</option>
-                                <option value="3">Extended</option>
+                                <option value="0" <%= festival.type === 0 ? 'selected': '' %>>Early</option>
+                                <option value="1" <%= festival.type === 1 ? 'selected': '' %>>Regular</option>
+                                <option value="2" <%= festival.type === 2 ? 'selected': '' %>>Late</option>
+                                <option value="3" <%= festival.type === 3 ? 'selected': '' %>>Extended</option>
                             </select> 
                         </div>
                     </div>
@@ -202,8 +202,8 @@
                         <div class="form-group">
                             <label class="form-control-label" for="entryfee">EntryFee*</label>
                             <select class="form-control form-control-alternative form-control-sm" id="entryfee" name="entryfee" required>
-                                <option value="y">Sí</option>
-                                <option value="n">No</option>
+                                <option value="y"  <%= festival.entreyfee === 'y' ? 'selected': '' %>>Sí</option>
+                                <option value="n" <%= festival.entryfee === 'n' ? 'selected': '' %>>No</option>
                             </select> 
                         </div>
                     </div>
@@ -211,117 +211,104 @@
                         <div class="form-group">
                             <label class="form-control-label" for="platform">Plataforma*</label>
                             <select class="form-control form-control-alternative form-control-sm" id="platform" name="platform" required>
-                                <option value="filmfreeway">FilmFreeway</option>
-                                <option value="festhome">Festhome</option>
-                                <option value="Click">Click</option>                              
-                                <option value="Director">Director</option>                              
-                                <option value="DocFilmDepot">DocFilmDepot</option>                            
-                                <option value="Evennial">Evennial</option>                            
-                                <option value="Eventival">Eventival</option>                            
-                                <option value="FilmFestivalLife">FilmFestivalLife</option>                             
-                                <option value="FilmFestPlatform">FilmFestPlatform</option>
-                                <option value="FilmFreewaygold">FilmFreeway Gold</option>
-                                <option value="ICAA">ICAA</option>
-                                <option value="Invitacion">Invitación</option>
-                                <option value="KIMUAK">KIMUAK</option>
-                                <option value="Movibeta">Movibeta</option>
-                                <option value="Online">Online</option>
-                                <option value="Reelport">Reelport</option>
-                                <option value="ShortFilmDepot">ShortFilmDepot</option>
-                                <option value="UpToFest">UpToFest</option>
-                                <option value="Withoutabox">Withoutabox</option>
+                                <option value="filmfreeway" <%= festival.type === 'filmfreeway' ? 'selected': '' %>>FilmFreeway</option>
+                                <option value="filmfreeway" <%= festival.type === 'filmfreeway' ? 'selected': '' %>>Festhome</option>
+                                <option value="Click" <%= festival.type === 'Click' ? 'selected': '' %>>Click</option>                              
+                                <option value="Director" <%= festival.type === 'Director' ? 'selected': '' %>>Director</option>                              
+                                <option value="DocFilmDepot" <%= festival.type === 'DocFilmDepot' ? 'selected': '' %>>DocFilmDepot</option>                            
+                                <option value="Evennial" <%= festival.type === 'Evennial' ? 'selected': '' %>>Evennial</option>                            
+                                <option value="Eventival" <%= festival.type === 'Eventival' ? 'selected': '' %>>Eventival</option>                            
+                                <option value="FilmFestivalLife" <%= festival.type === 'FilmFestivalLife' ? 'selected': '' %>>FilmFestivalLife</option>                             
+                                <option value="FilmFestPlatform" <%= festival.type === 'FilmFestPlatform' ? 'selected': '' %>>FilmFestPlatform</option>
+                                <option value="FilmFreewaygold" <%= festival.type === 'FilmFreewaygold' ? 'selected': '' %>>FilmFreeway Gold</option>
+                                <option value="ICAA" <%= festival.type === 'ICAA' ? 'selected': '' %>>ICAA</option>
+                                <option value="Invitacion" <%= festival.type === 'Invitacion' ? 'selected': '' %>>Invitación</option>
+                                <option value="KIMUAK" <%= festival.type === 'KIMUAK' ? 'selected': '' %>>KIMUAK</option>
+                                <option value="Movibeta" <%= festival.type === 'Movibeta' ? 'selected': '' %>>Movibeta</option>
+                                <option value="Online" <%= festival.type === 'Online' ? 'selected': '' %>>Online</option>
+                                <option value="Reelport" <%= festival.type === 'Reelport' ? 'selected': '' %>>Reelport</option>
+                                <option value="ShortFilmDepot" <%= festival.type === 'ShortFilmDepot' ? 'selected': '' %>>ShortFilmDepot</option>
+                                <option value="UpToFest" <%= festival.type === 'UpToFest' ? 'selected': '' %>>UpToFest</option>
+                                <option value="Withoutabox" <%= festival.type === 'Withoutabox' ? 'selected': '' %>>Withoutabox</option>
                             </select> 
                         </div>
                     </div>
                     <div class="col-lg-2 my--2">
                         <div class="form-group">
                             <label class="form-control-label" for="fee">Tasa</label>
-                            <input type="number" step="0.01" min="0.00" id="fee" class="form-control form-control-alternative form-control-sm" name="fee">
+                            <input type="number" step="0.01" min="0.00" id="fee" class="form-control form-control-alternative form-control-sm" value="<%=festival.fee%>" name="fee">
                         </div>
                     </div>
                     <div class="col-lg-2 my--2">
                         <div class="form-group">
                             <label class="form-control-label" for="currency">Moneda</label>
                             <select class="form-control form-control-alternative form-control-sm" id="currency" name="currency">
-                                <option value="USD" selected="selected">US Dollars ($)</option>
-                                <option value="EUR">Euro (€)</option>
-                                <option value="GBP">United Kingdom Pounds</option>
-                                <option value="DZD">Algeria Dinars</option>
-                                <option value="ARP">Argentina Pesos</option>
-                                <option value="AUD">Australia Dollars</option>
-                                <option value="BSD">Bahamas Dollars</option>
-                                <option value="BBD">Barbados Dollars</option>
-                                <option value="BMD">Bermuda Dollars</option>
-                                <option value="BRR">Brazil Real</option>
-                                <option value="BGL">Bulgaria Lev</option>
-                                <option value="CAD">Canada Dollars</option>
-                                <option value="CLP">Chile Pesos</option>
-                                <option value="CNY">China Yuan Renmimbi</option>
-                                <option value="CYP">Cyprus Pounds</option>
-                                <option value="DKK">Denmark Kroner</option>
-                                <option value="XCD">Eastern Caribbean Dollars</option>
-                                <option value="EGP">Egypt Pounds</option>
-                                <option value="FJD">Fiji Dollars</option>
-                                <option value="XAU">Gold Ounces</option>
-                                <option value="HKD">Hong Kong Dollars</option>
-                                <option value="HUF">Hungary Forint</option>
-                                <option value="ISK">Iceland Krona</option>
-                                <option value="INR">India Rupees</option>
-                                <option value="IDR">Indonesia Rupiah</option>
-                                <option value="ILS">Israel New Shekels</option>
-                                <option value="JMD">Jamaica Dollars</option>
-                                <option value="JPY">Japan Yen</option>
-                                <option value="JOD">Jordan Dinar</option>
-                                <option value="KRW">Korea (South) Won</option>
-                                <option value="LBP">Lebanon Pounds</option>
-                                <option value="LUF">Luxembourg Francs</option>
-                                <option value="MYR">Malaysia Ringgit</option>
-                                <option value="MXP">Mexico Pesos</option>
-                                <option value="NLG">Netherlands Guilders</option>
-                                <option value="NZD">New Zealand Dollars</option>
-                                <option value="NOK">Norway Kroner</option>
-                                <option value="PKR">Pakistan Rupees</option>
-                                <option value="XPD">Palladium Ounces</option>
-                                <option value="PHP">Philippines Pesos</option>
-                                <option value="XPT">Platinum Ounces</option>
-                                <option value="PLZ">Poland Zloty</option>
-                                <option value="PTE">Portugal Escudo</option>
-                                <option value="ROL">Romania Leu</option>
-                                <option value="RUR">Russia Rubles</option>
-                                <option value="SAR">Saudi Arabia Riyal</option>
-                                <option value="XAG">Silver Ounces</option>
-                                <option value="SGD">Singapore Dollars</option>
-                                <option value="SKK">Slovakia Koruna</option>
-                                <option value="ZAR">South Africa Rand</option>
-                                <option value="KRW">South Korea Won</option>
-                                <option value="XDR">Special Drawing Right (IMF)</option>
-                                <option value="SDD">Sudan Dinar</option>
-                                <option value="CHF">Switzerland Francs</option>
-                                <option value="TWD">Taiwan Dollars</option>
-                                <option value="THB">Thailand Baht</option>
-                                <option value="TTD">Trinidad and Tobago Dollars</option>
-                                <option value="TRL">Turkey Lira</option>
-                                <option value="VEB">Venezuela Bolivar</option>
-                                <option value="ZMK">Zambia Kwacha</option>
-                                <option value="XAG">Silver Ounces</option>
-                                <option value="XAU">Gold Ounces</option>
-                                <option value="XPD">Palladium Ounces</option>
-                                <option value="XPT">Platinum Ounces</option>
+                                <option value="USD" <%= festival.currency === 'USD' ? 'selected': '' %>>US Dollars ($)</option>
+                                <option value="EUR" <%= festival.currency === 'EUR' ? 'selected': '' %>>Euro (€)</option>
+                                <option value="GBP" <%= festival.currency === 'GBP' ? 'selected': '' %>>United Kingdom Pounds</option>
+                                <option value="DZD" <%= festival.currency === 'DZD' ? 'selected': '' %>>Algeria Dinars</option>
+                                <option value="ARP" <%= festival.currency === 'ARP' ? 'selected': '' %>>Argentina Pesos</option>
+                                <option value="AUD" <%= festival.currency === 'AUD' ? 'selected': '' %>>Australia Dollars</option>
+                                <option value="BSD" <%= festival.currency === 'BSD' ? 'selected': '' %>>Bahamas Dollars</option>
+                                <option value="BBD" <%= festival.currency === 'BBD' ? 'selected': '' %>>Barbados Dollars</option>
+                                <option value="BMD" <%= festival.currency === 'BMD' ? 'selected': '' %>>Bermuda Dollars</option>
+                                <option value="BRR" <%= festival.currency === 'BRR' ? 'selected': '' %>>Brazil Real</option>
+                                <option value="BGL" <%= festival.currency === 'BGL' ? 'selected': '' %>>Bulgaria Lev</option>
+                                <option value="CAD" <%= festival.currency === 'CAD' ? 'selected': '' %>>Canada Dollars</option>
+                                <option value="CLP" <%= festival.currency === 'CLP' ? 'selected': '' %>>Chile Pesos</option>
+                                <option value="CNY" <%= festival.currency === 'CNY' ? 'selected': '' %>>China Yuan Renmimbi</option>
+                                <option value="CYP" <%= festival.currency === 'CYP' ? 'selected': '' %>>Cyprus Pounds</option>
+                                <option value="DKK" <%= festival.currency === 'DKK' ? 'selected': '' %>>Denmark Kroner</option>
+                                <option value="XCD" <%= festival.currency === 'XCD' ? 'selected': '' %>>Eastern Caribbean Dollars</option>
+                                <option value="EGP" <%= festival.currency === 'EGP' ? 'selected': '' %>>Egypt Pounds</option>
+                                <option value="FJD" <%= festival.currency === 'FJD' ? 'selected': '' %>>Fiji Dollars</option>
+                                <option value="HKD" <%= festival.currency === 'HKD' ? 'selected': '' %>>Hong Kong Dollars</option>
+                                <option value="HUF" <%= festival.currency === 'HUF' ? 'selected': '' %>>Hungary Forint</option>
+                                <option value="ISK" <%= festival.currency === 'ISK' ? 'selected': '' %>>Iceland Krona</option>
+                                <option value="INR" <%= festival.currency === 'INR' ? 'selected': '' %>>India Rupees</option>
+                                <option value="IDR" <%= festival.currency === 'IDR' ? 'selected': '' %>>Indonesia Rupiah</option>
+                                <option value="ILS" <%= festival.currency === 'ILS' ? 'selected': '' %>>Israel New Shekels</option>
+                                <option value="JMD" <%= festival.currency === 'JMD' ? 'selected': '' %>>Jamaica Dollars</option>
+                                <option value="JPY" <%= festival.currency === 'JPY' ? 'selected': '' %>>Japan Yen</option>
+                                <option value="JOD" <%= festival.currency === 'JOD' ? 'selected': '' %>>Jordan Dinar</option>
+                                <option value="KRW" <%= festival.currency === 'KRW' ? 'selected': '' %>>Korea (South) Won</option>
+                                <option value="LBP" <%= festival.currency === 'LBP' ? 'selected': '' %>>Lebanon Pounds</option>
+                                <option value="MYR" <%= festival.currency === 'MYR' ? 'selected': '' %>>Malaysia Ringgit</option>
+                                <option value="MXP" <%= festival.currency === 'MXP' ? 'selected': '' %>>Mexico Pesos</option>
+                                <option value="NZD" <%= festival.currency === 'NZD' ? 'selected': '' %>>New Zealand Dollars</option>
+                                <option value="NOK" <%= festival.currency === 'NOK' ? 'selected': '' %>>Norway Kroner</option>
+                                <option value="PKR" <%= festival.currency === 'PKR' ? 'selected': '' %>>Pakistan Rupees</option>
+                                <option value="PHP" <%= festival.currency === 'PHP' ? 'selected': '' %>>Philippines Pesos</option>
+                                <option value="PLZ" <%= festival.currency === 'PLZ' ? 'selected': '' %>>Poland Zloty</option>
+                                <option value="ROL" <%= festival.currency === 'ROL' ? 'selected': '' %>>Romania Leu</option>
+                                <option value="RUR" <%= festival.currency === 'RUR' ? 'selected': '' %>>Russia Rubles</option>
+                                <option value="SAR" <%= festival.currency === 'SAR' ? 'selected': '' %>>Saudi Arabia Riyal</option>
+                                <option value="SGD" <%= festival.currency === 'SGD' ? 'selected': '' %>>Singapore Dollars</option>
+                                <option value="ZAR" <%= festival.currency === 'ZAR' ? 'selected': '' %>>South Africa Rand</option>
+                                <option value="KRW" <%= festival.currency === 'KRW' ? 'selected': '' %>>South Korea Won</option>
+                                <option value="SDD" <%= festival.currency === 'SDD' ? 'selected': '' %>>Sudan Dinar</option>
+                                <option value="CHF" <%= festival.currency === 'CHF' ? 'selected': '' %>>Switzerland Francs</option>
+                                <option value="TWD" <%= festival.currency === 'TWD' ? 'selected': '' %>>Taiwan Dollars</option>
+                                <option value="THB" <%= festival.currency === 'THB' ? 'selected': '' %>>Thailand Baht</option>
+                                <option value="TTD" <%= festival.currency === 'TTD' ? 'selected': '' %>>Trinidad and Tobago Dollars</option>
+                                <option value="TRL" <%= festival.currency === 'TRL' ? 'selected': '' %>>Turkey Lira</option>
+                                <option value="VEB" <%= festival.currency === 'VEB' ? 'selected': '' %>>Venezuela Bolivar</option>
+                                <option value="ZMK" <%= festival.currency === 'ZMK' ? 'selected': '' %>>Zambia Kwacha</option>
                             </select>
                         </div>
                     </div>
                     <div class="col-lg-2 my--2">
                         <div class="form-group">
                             <label class="form-control-label" for="euros">Conversión euros</label>
-                            <input type="number" step="0.01" min="0.00" id="euros" class="form-control form-control-alternative form-control-sm" name="euros">
+                            <input type="number" step="0.01" min="0.00" id="euros" class="form-control form-control-alternative form-control-sm" value="<%=festival.euros%>" name="euros">
                         </div>
                     </div>
                     <div class="col-lg-2 my--2">
                         <div class="form-group">
                             <label class="form-control-label" for="prize">Premio en metálico</label>
                             <select class="form-control form-control-alternative form-control-sm" id="prize" name="prize">
-                                <option value="y">Sí</option>
-                                <option value="n">No</option>
+                                <option value="y" <%= festival.prize === 'y' ? 'selected': '' %>>Sí</option>
+                                <option value="n" <%= festival.prize === 'n' ? 'selected': '' %>>No</option>
                             </select> 
                         </div>
                     </div>
@@ -329,10 +316,10 @@
                         <div class="form-group">
                             <label class="form-control-label" for="waiver">Waiver</label>
                             <select class="form-control form-control-alternative form-control-sm" id="waiver" name="waiver">
-                                <option value="y">Sí</option>
-                                <option value="n">No</option>
-                                <option value="n">Nunca</option>
-                                <option value="n">Siempre</option>
+                                <option value="y1" <%= festival.waiver === 'y1' ? 'selected': '' %>>Sí</option>
+                                <option value="n1" <%= festival.waiver === 'n1' ? 'selected': '' %>>No</option>
+                                <option value="n2" <%= festival.waiver === 'n2' ? 'selected': '' %>>Nunca</option>
+                                <option value="y2" <%= festival.waiver === 'y2' ? 'selected': '' %>>Siempre</option>
                             </select> 
                         </div>
                     </div>
@@ -355,94 +342,90 @@
                     <div class="col-lg-6">
                         <div class="form-group">
                             <label class="form-control-label" for="contactname">Nombre contacto</label>
-                            <input type="text" id="contactname" class="form-control form-control-alternative form-control-sm" name="contactname" placeholder="John" >
+                            <input type="text" id="contactname" class="form-control form-control-alternative form-control-sm" name="contactname" value="<%=festival.contactname%>" >
                         </div>
                     </div>
                     <div class="col-lg-6">
                         <div class="form-group">
                             <label class="form-control-label" for="contact_email">E-mail*</label>
-                            <input type="email" id="contact_email" class="form-control form-control-alternative form-control-sm" name="contact_email" placeholder="john@gmail.com" required>
+                            <input type="email" id="contact_email" class="form-control form-control-alternative form-control-sm" name="contact_email" value="<%=festival.contact_email%>" required>
                         </div>
                     </div>
                     <div class="col-lg-6 my--2">
                         <div class="form-group">
                             <label class="form-control-label" for="programmer">Programador</label>
-                            <input type="text" id="programmer" class="form-control form-control-alternative form-control-sm" name="programmer" placeholder="Ginna" >
+                            <input type="text" id="programmer" class="form-control form-control-alternative form-control-sm" name="programmer" value="<%=festival.programmer%>" >
                         </div>
                     </div>
                     <div class="col-lg-6 my--2">
                         <div class="form-group">
                             <label class="form-control-label" for="prog_email">E-mail programador</label>
-                            <input type="email" id="prog_email" class="form-control form-control-alternative form-control-sm" name="prog_email" placeholder="ginna@gmail.com">
+                            <input type="email" id="prog_email" class="form-control form-control-alternative form-control-sm" name="prog_email" value="<%=festival.prog_email%>">
                         </div>
                     </div>
                     <div class="col-lg-2 my--2">
                         <div class="form-group">
                             <label class="form-control-label" for="contact_tel">Teléfono</label>
-                            <input type="tel" id="contact_tel" class="form-control form-control-alternative form-control-sm" name="contact_tel">
+                            <input type="tel" id="contact_tel" class="form-control form-control-alternative form-control-sm" name="contact_tel" value="<%=festival.contact_tel%>">
                         </div>
                     </div>
                     <div class="col-lg-5 my--2">
                         <div class="form-group">
                             <label class="form-control-label" for="contact_web">Web*</label>
-                            <input type="url" id="contact_web" class="form-control form-control-alternative form-control-sm" name="contact_web" required>
+                            <input type="url" id="contact_web" class="form-control form-control-alternative form-control-sm" name="contact_web"  value="<%=festival.contact_web%>" required>
                         </div>
                     </div>
                     <div class="col-lg-5 my--2">
                         <div class="form-group">
                             <label class="form-control-label" for="platformurl">Web plataforma</label>
-                            <input type="url" id="platformurl" class="form-control form-control-alternative form-control-sm" name="platformurl">
+                            <input type="url" id="platformurl" class="form-control form-control-alternative form-control-sm" name="platformurl"  value="<%=festival.platformurl%>">
                         </div>
                     </div>
                     <div class="col-lg-4 my--2">
                     <div class="form-group">
                         <label class="form-control-label" for="state">Autonomía/Estado</label>
-                        <input type="text" id="state" class="form-control form-control-alternative form-control-sm" name="state">
+                        <input type="text" id="state" class="form-control form-control-alternative form-control-sm" name="state"  value="<%=festival.state%>">
                     </div>
                     </div>
                     <div class="col-lg-4 my--2">
                         <div class="form-group">
                             <label class="form-control-label" for="contactcountry">País*</label>
-                            <input type="text" id="contactcountry" list="countries" class="form-control form-control-alternative form-control-sm" name="contactcountry" required>
+                            <input type="text" id="contactcountry" list="countries" class="form-control form-control-alternative form-control-sm" name="contactcountry" value="<%=festival.contactcountry%>" required>
                             <datalist id="countries">
                                 <option value="AF">Afghanistan</option>
                                 <option value="AX">Åland Islands</option>
-                                <option value="AL">Albania</option>
-                                <option value="DZ">Algeria</option>
+                                <option value="ALB">Albania</option>
+                                <option value="ALG">Algeria</option>
                                 <option value="AS">American Samoa</option>
-                                <option value="AD">Andorra</option>
+                                <option value="AND">Andorra</option>
                                 <option value="AO">Angola</option>
-                                <option value="AI">Anguilla</option>
-                                <option value="AQ">Antarctica</option>
                                 <option value="AG">Antigua and Barbuda</option>
-                                <option value="AR">Argentina</option>
-                                <option value="AM">Armenia</option>
+                                <option value="ARG">Argentina</option>
+                                <option value="ARM">Armenia</option>
                                 <option value="AW">Aruba</option>
-                                <option value="AU">Australia</option>
+                                <option value="AUS">Australia</option>
                                 <option value="AT">Austria</option>
                                 <option value="AZ">Azerbaijan</option>
-                                <option value="BS">Bahamas</option>
-                                <option value="BH">Bahrain</option>
-                                <option value="BD">Bangladesh</option>
-                                <option value="BB">Barbados</option>
-                                <option value="BY">Belarus</option>
-                                <option value="BE">Belgium</option>
+                                <option value="BHS">Bahamas</option>
+                                <option value="BHN">Bahrain</option>
+                                <option value="BDH">Bangladesh</option>
+                                <option value="BBS">Barbados</option>
+                                <option value="BIE">Belarus</option>
+                                <option value="BEL">Belgium</option>
                                 <option value="BZ">Belize</option>
                                 <option value="BJ">Benin</option>
                                 <option value="BM">Bermuda</option>
-                                <option value="BT">Bhutan</option>
-                                <option value="BO">Bolivia, Plurinational State of</option>
-                                <option value="BQ">Bonaire, Sint Eustatius and Saba</option>
-                                <option value="BA">Bosnia and Herzegovina</option>
+                                <option value="BTN">Bhutan</option>
+                                <option value="BOL">Bolivia</option>
+                                <option value="BOS">Bosnia and Herzegovina</option>
                                 <option value="BW">Botswana</option>
                                 <option value="BV">Bouvet Island</option>
-                                <option value="BR">Brazil</option>
-                                <option value="IO">British Indian Ocean Territory</option>
+                                <option value="BRA">Brazil</option>
                                 <option value="BN">Brunei Darussalam</option>
-                                <option value="BG">Bulgaria</option>
+                                <option value="BGA">Bulgaria</option>
                                 <option value="BF">Burkina Faso</option>
-                                <option value="BI">Burundi</option>
-                                <option value="KH">Cambodia</option>
+                                <option value="BUR">Burundi</option>
+                                <option value="CAM">Cambodia</option>
                                 <option value="CM">Cameroon</option>
                                 <option value="CA">Canada</option>
                                 <option value="CV">Cape Verde</option>
@@ -453,7 +436,7 @@
                                 <option value="CN">China</option>
                                 <option value="CX">Christmas Island</option>
                                 <option value="CC">Cocos (Keeling) Islands</option>
-                                <option value="CO">Colombia</option>
+                                <option value="COL">Colombia</option>
                                 <option value="KM">Comoros</option>
                                 <option value="CG">Congo</option>
                                 <option value="CD">Congo, the Democratic Republic of the</option>
@@ -468,29 +451,29 @@
                                 <option value="DK">Denmark</option>
                                 <option value="DJ">Djibouti</option>
                                 <option value="DM">Dominica</option>
-                                <option value="DO">Dominican Republic</option>
-                                <option value="EC">Ecuador</option>
-                                <option value="EG">Egypt</option>
+                                <option value="DOM">Dominican Republic</option>
+                                <option value="ECU">Ecuador</option>
+                                <option value="EGI">Egypt</option>
                                 <option value="SV">El Salvador</option>
-                                <option value="GQ">Equatorial Guinea</option>
-                                <option value="ER">Eritrea</option>
-                                <option value="EE">Estonia</option>
+                                <option value="GUI">Equatorial Guinea</option>
+                                <option value="ERI">Eritrea</option>
+                                <option value="EST">Estonia</option>
                                 <option value="ET">Ethiopia</option>
                                 <option value="FK">Falkland Islands (Malvinas)</option>
                                 <option value="FO">Faroe Islands</option>
                                 <option value="FJ">Fiji</option>
-                                <option value="FI">Finland</option>
-                                <option value="FR">France</option>
+                                <option value="FIN">Finland</option>
+                                <option value="FRA">France</option>
                                 <option value="GF">French Guiana</option>
                                 <option value="PF">French Polynesia</option>
                                 <option value="TF">French Southern Territories</option>
                                 <option value="GA">Gabon</option>
                                 <option value="GM">Gambia</option>
-                                <option value="GE">Georgia</option>
+                                <option value="GEO">Georgia</option>
                                 <option value="DE">Germany</option>
                                 <option value="GH">Ghana</option>
-                                <option value="GI">Gibraltar</option>
-                                <option value="GR">Greece</option>
+                                <option value="GIB">Gibraltar</option>
+                                <option value="GRE">Greece</option>
                                 <option value="GL">Greenland</option>
                                 <option value="GD">Grenada</option>
                                 <option value="GP">Guadeloupe</option>
@@ -511,16 +494,16 @@
                                 <option value="ID">Indonesia</option>
                                 <option value="IR">Iran, Islamic Republic of</option>
                                 <option value="IQ">Iraq</option>
-                                <option value="IE">Ireland</option>
+                                <option value="IRL">Ireland</option>
                                 <option value="IM">Isle of Man</option>
-                                <option value="IL">Israel</option>
-                                <option value="IT">Italy</option>
+                                <option value="ISR">Israel</option>
+                                <option value="ITA">Italy</option>
                                 <option value="JM">Jamaica</option>
-                                <option value="JP">Japan</option>
+                                <option value="JAP">Japan</option>
                                 <option value="JE">Jersey</option>
-                                <option value="JO">Jordan</option>
+                                <option value="JOR">Jordan</option>
                                 <option value="KZ">Kazakhstan</option>
-                                <option value="KE">Kenya</option>
+                                <option value="KEN">Kenya</option>
                                 <option value="KI">Kiribati</option>
                                 <option value="KP">Korea, Democratic People's Republic of</option>
                                 <option value="KR">Korea, Republic of</option>
@@ -532,10 +515,10 @@
                                 <option value="LS">Lesotho</option>
                                 <option value="LR">Liberia</option>
                                 <option value="LY">Libya</option>
-                                <option value="LI">Liechtenstein</option>
-                                <option value="LT">Lithuania</option>
-                                <option value="LU">Luxembourg</option>
-                                <option value="MO">Macao</option>
+                                <option value="LIE">Liechtenstein</option>
+                                <option value="LIT">Lithuania</option>
+                                <option value="LUX">Luxembourg</option>
+                                <option value="MAC">Macao</option>
                                 <option value="MK">Macedonia, the former Yugoslav Republic of</option>
                                 <option value="MG">Madagascar</option>
                                 <option value="MW">Malawi</option>
@@ -548,14 +531,14 @@
                                 <option value="MR">Mauritania</option>
                                 <option value="MU">Mauritius</option>
                                 <option value="YT">Mayotte</option>
-                                <option value="MX">Mexico</option>
+                                <option value="MEX">Mexico</option>
                                 <option value="FM">Micronesia, Federated States of</option>
                                 <option value="MD">Moldova, Republic of</option>
-                                <option value="MC">Monaco</option>
-                                <option value="MN">Mongolia</option>
+                                <option value="MON">Monaco</option>
+                                <option value="MNG">Mongolia</option>
                                 <option value="ME">Montenegro</option>
                                 <option value="MS">Montserrat</option>
-                                <option value="MA">Morocco</option>
+                                <option value="MAR">Morocco</option>
                                 <option value="MZ">Mozambique</option>
                                 <option value="MM">Myanmar</option>
                                 <option value="NA">Namibia</option>
@@ -601,7 +584,7 @@
                                 <option value="ST">Sao Tome and Principe</option>
                                 <option value="SA">Saudi Arabia</option>
                                 <option value="SN">Senegal</option>
-                                <option value="RS">Serbia</option>
+                                <option value="SER">Serbia</option>
                                 <option value="SC">Seychelles</option>
                                 <option value="SL">Sierra Leone</option>
                                 <option value="SG">Singapore</option>
@@ -613,7 +596,7 @@
                                 <option value="ZA">South Africa</option>
                                 <option value="GS">South Georgia and the South Sandwich Islands</option>
                                 <option value="SS">South Sudan</option>
-                                <option value="ES">Spain</option>
+                                <option value="ESP">Spain</option>
                                 <option value="LK">Sri Lanka</option>
                                 <option value="SD">Sudan</option>
                                 <option value="SR">Suriname</option>
@@ -637,15 +620,15 @@
                                 <option value="TC">Turks and Caicos Islands</option>
                                 <option value="TV">Tuvalu</option>
                                 <option value="UG">Uganda</option>
-                                <option value="UA">Ukraine</option>
+                                <option value="UCR">Ukraine</option>
                                 <option value="AE">United Arab Emirates</option>
-                                <option value="GB">United Kingdom</option>
+                                <option value="UK">United Kingdom</option>
                                 <option value="US">United States</option>
                                 <option value="UM">United States Minor Outlying Islands</option>
                                 <option value="UY">Uruguay</option>
                                 <option value="UZ">Uzbekistan</option>
                                 <option value="VU">Vanuatu</option>
-                                <option value="VE">Venezuela, Bolivarian Republic of</option>
+                                <option value="VEN">Venezuela, Bolivarian Republic of</option>
                                 <option value="VN">Viet Nam</option>
                                 <option value="VG">Virgin Islands, British</option>
                                 <option value="VI">Virgin Islands, U.S.</option>
@@ -661,15 +644,15 @@
                         <div class="form-group">
                             <label class="form-control-label" for="language">Idioma</label>
                             <select class="form-control form-control-alternative form-control-sm" id="language" name="language" required>
-                                <option value="eng">Inglés</option>
-                                <option value="esp">Español</option>
+                                <option value="eng" <%= festival.language === 'eng' ? 'selected': '' %>>Inglés</option>
+                                <option value="esp" <%= festival.language === 'esp' ? 'selected': '' %>>Español</option>
                             </select> 
                         </div>
                     </div>
                     <div class="col-lg-12 my--2">
                         <div class="form-group">
                             <label class="form-control-label" for="notes">NOTAS</label>
-                            <textarea name="notes" id="notes" class="form-control form-control-alternative form-control-sm" rows="3"></textarea>
+                            <textarea name="notes" id="notes" class="form-control form-control-alternative form-control-sm" rows="3"  value="<%=festival.notes%>"></textarea>
                         </div>
                     </div>
                     <div class="col-lg-12">
@@ -679,22 +662,22 @@
                         <div class="form-group">
                             <label class="form-control-label" for="confirmed">Confirmado*</label>
                             <select class="form-control form-control-alternative form-control-sm" id="confirmed" name="confirmed" required>
-                                <option class="text-white bg-success" value="y">Sí</option>
-                                <option class="text-white bg-danger" value="n">No</option>
-                                <option class="text-white bg-warning" value="pen">Pt</option>
+                                <option class="text-white bg-success" value="y" <%= festival.confirmed === 'y' ? 'selected': '' %>>Sí</option>
+                                <option class="text-white bg-danger" value="n" <%= festival.confirmed === 'n' ? 'selected': '' %>>No</option>
+                                <option class="text-white bg-warning" value="pen" <%= festival.confirmed === 'pen' ? 'selected': '' %>>Pt</option>
                             </select> 
                         </div>
                     </div>
                     <div class="col-lg-5 my--2">
                         <div class="form-group">
                             <label class="form-control-label" for="sheet">Ficha</label>
-                            <input type="text" id="sheet" class="form-control form-control-alternative form-control-sm" name="sheet">
+                            <input type="text" id="sheet" class="form-control form-control-alternative form-control-sm" name="sheet"  value="<%=festival.sheet%>">
                         </div>
                     </div>
                     <div class="col-lg-5 my--2">
                         <div class="form-group">
                             <label class="form-control-label" for="shortname">Nombre corto</label>
-                            <input type="text" id="shortname" class="form-control form-control-alternative form-control-sm" name="shortname">
+                            <input type="text" id="shortname" class="form-control form-control-alternative form-control-sm" name="shortname"  value="<%=festival.shortname%>">
                         </div>
                     </div>
                     <div class="col-lg-12">
@@ -703,31 +686,31 @@
                     <div class="col-lg-12 my--2">
                         <div class="form-group">
                             <label class="form-control-label" for="header">Encabezado</label>
-                            <input type="text" id="header" class="form-control form-control-alternative form-control-sm" name="header">
+                            <input type="text" id="header" class="form-control form-control-alternative form-control-sm" name="header"  value="<%=festival.header%>">
                         </div>
                     </div>
                     <div class="col-lg-12 my--2">
                         <div class="form-group">
                             <label class="form-control-label" for="street">Calle</label>
-                            <input type="text" id="street" class="form-control form-control-alternative form-control-sm" name="street">
+                            <input type="text" id="street" class="form-control form-control-alternative form-control-sm" name="street"  value="<%=festival.street%>">
                         </div>
                     </div>
                     <div class="col-lg-3 my--2">
                         <div class="form-group">
                             <label class="form-control-label" for="postalcode">Código postal</label>
-                            <input type="text" id="postalcode" class="form-control form-control-alternative form-control-sm" name="postalcode">
+                            <input type="text" id="postalcode" class="form-control form-control-alternative form-control-sm" name="postalcode"  value="<%=festival.postalcode%>">
                         </div>
                     </div>
                     <div class="col-lg-4 my--2">
                         <div class="form-group">
                             <label class="form-control-label" for="city">Localidad</label>
-                            <input type="text" id="city" class="form-control form-control-alternative form-control-sm" name="city">
+                            <input type="text" id="city" class="form-control form-control-alternative form-control-sm" name="city"  value="<%=festival.city%>">
                         </div>
                     </div>
                     <div class="col-lg-5 my--2">
                     <div class="form-group">
                         <label class="form-control-label" for="province">Provincia/Estado</label>
-                        <input type="text" id="province" class="form-control form-control-alternative form-control-sm" name="province">
+                        <input type="text" id="province" class="form-control form-control-alternative form-control-sm" name="province"  value="<%=festival.province%>">
                     </div>
                     </div>
                     <div class="col-lg-12">
@@ -736,43 +719,43 @@
                     <div class="col-lg-6">
                         <div class="form-group">
                             <label class="form-control-label" for="copies_header">Encabezado</label>
-                            <input type="text" id="copies_header" class="form-control form-control-alternative form-control-sm" name="copies_header">
+                            <input type="text" id="copies_header" class="form-control form-control-alternative form-control-sm" name="copies_header" value="<%=festival.copies_header%>">
                         </div>
                     </div>
                     <div class="col-lg-6">
                     <div class="form-group">
                         <label class="form-control-label" for="copies_street">Calle</label>
-                        <input type="text" id="copies_street" class="form-control form-control-alternative form-control-sm" name="copies_street">
+                        <input type="text" id="copies_street" class="form-control form-control-alternative form-control-sm" name="copies_street" value="<%=festival.copies_street%>">
                     </div>
                     </div>
                     <div class="col-lg-2 my--2">
                     <div class="form-group">
                         <label class="form-control-label" for="copies_cp">Código postal</label>
-                        <input type="text" id="copies_cp" class="form-control form-control-alternative form-control-sm" name="copies_cp">
+                        <input type="text" id="copies_cp" class="form-control form-control-alternative form-control-sm" name="copies_cp" value="<%=festival.copies_cp%>">
                     </div>
                     </div>
                     <div class="col-lg-3 my--2">
                     <div class="form-group">
                         <label class="form-control-label" for="copies_tel">Telef portada</label>
-                        <input type="tel" id="copies_tel" class="form-control form-control-alternative form-control-sm" name="copies_tel">
+                        <input type="tel" id="copies_tel" class="form-control form-control-alternative form-control-sm" name="copies_tel" value="<%=festival.copies_tel%>">
                     </div>
                     </div>
                     <div class="col-lg-3 my--2">
                     <div class="form-group">
                         <label class="form-control-label" for="copies_city">Localidad</label>
-                        <input type="text" id="copies_city" class="form-control form-control-alternative form-control-sm" name="copies_city">
+                        <input type="text" id="copies_city" class="form-control form-control-alternative form-control-sm" name="copies_city" value="<%=festival.copies_city%>">
                     </div>
                     </div>
                     <div class="col-lg-4 my--2">
                     <div class="form-group">
                         <label class="form-control-label" for="copies_province">Provincia/Estado</label>
-                        <input type="text" id="copies_province" class="form-control form-control-alternative form-control-sm" name="copies_province">
+                        <input type="text" id="copies_province" class="form-control form-control-alternative form-control-sm" name="copies_province" value="<%=festival.copies_province%>">
                     </div>
                     </div>
                     <div class="col-lg-12 my--2">
                         <div class="form-group">
                             <label class="form-control-label" for="copies_country">País</label>
-                            <input type="text" id="copies_country" list="countries" class="form-control form-control-alternative form-control-sm" name="copies_ country">
+                            <input type="text" id="copies_country" list="countries" class="form-control form-control-alternative form-control-sm" name="copies_country" value="<%=festival.copies_country%>">
                         </div>
                     </div>
                     <div class="col-lg-12">
@@ -791,6 +774,7 @@
     </div>
   </div>
 
+  <input type="hidden" name="id" id="id" value="<%=festival.id%>">
   <!-- Include scripts -->
   <%- include ('partials/scripts'); -%>
 </body>

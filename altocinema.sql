@@ -76,7 +76,7 @@ CREATE TABLE DIRECTORS (
     entryfee BOOLEAN NOT NULL DEFAULT TRUE,
     fee INT NOT NULL,
     currency VARCHAR(256) NOT NULL,
-    euros INT,
+    euros INT DEFAULT NULL,
     platform VARCHAR(256) NOT NULL,
     prize BOOLEAN DEFAULT FALSE,
     waiver VARCHAR(32) NOT NULL,
