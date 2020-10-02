@@ -25,7 +25,6 @@ html {
 
 body {
     background-color: black;
-
 }
 
 .content {
@@ -138,4 +137,22 @@ body {
     from {-moz-transform:translate(0, 0px);}
     65% {-moz-transform:translate(0, 10px);}
     to {-moz-transform: translate(0, -0px);}    
+}
+
+.nouvelle {
+    background-color: #00253c !important;
+}
+
+.nouvelle-card {
+    background-color:  #7b7b7b !important;
+}
+
+
+.comingout {
+    background: rgb(7,7,93) !important;
+background: linear-gradient(90deg, rgba(7,7,93,1) 0%, rgba(154,2,78,1)) !important;
+}
+
+.comingout-card {
+    background-color:  #7b7b7b !important;
 }

@@ -53,6 +53,12 @@ app.get('/services', (request, response) => {
 app.get('/catalogue', (request, response) => {
   response.render('catalogue');
 })
+app.get('/comingOutCinema', (request, response) => {
+  response.render('comingOutCinema');
+})
+app.get('/nouvelleCinema', (request, response) => {
+  response.render('nouvelleCinema');
+})
 app.get('/contact', (request, response) => {
   response.render('contact');
 })
