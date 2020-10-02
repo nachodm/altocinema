@@ -46,7 +46,7 @@ body {
     justify-content: center;
     align-items: center;
     text-align: center;
-    min-height: 104vh;
+    min-height: 100vh;
 }
 
 .contact {
@@ -91,7 +91,7 @@ body {
         position:absolute;
     }
 }
-
+/*
 .values {
     -webkit-transform: skewY(-2deg);
     -moz-transform: skewY(-2deg);
@@ -107,7 +107,7 @@ body {
     -o-transform: skewY(2deg);
     transform: skewY(2deg);
 }
-
+*/
 .customsize {
     max-height: 280px;
 }
