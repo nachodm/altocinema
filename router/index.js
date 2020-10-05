@@ -1,16 +1,23 @@
+const { request } = require("express");
+const flash = require("express-flash");
+const DAODirectors = require("../DAOs/DAODirectors");
+
 module.exports = function(app, passport) {
 
 const config = require ("../config/config");
 const mysql = require('mysql');
 const bcrypt = require('bcrypt');
-const schedule = require('node-schedule')
+const schedule = require('node-schedule');
+const nodemailer = require('nodemailer');
 const DAOUsers = require('../DAOs/DAOUsers');
 const DAOFilms = require('../DAOs/DAOFilms');
 const DAOFestivals = require('../DAOs/DAOFestivals');
+const DAODirectors = require('../DAOs/DAODirectors');
 const pool = mysql.createPool(config.mysqlconfig);
 const users = new DAOUsers.DAOUsers(pool);
 const films = new DAOFilms.DAOFilms(pool);
 const festivals = new DAOFestivals.DAOFestivals(pool);
+const directors = new DAODirectors.DAODirectors(pool);
 
 let job = schedule.scheduleJob("Preinscription", {minute:30, hour:0, date:1}, function(){
   films.getFilmList((err, films) => {
@@ -28,7 +35,6 @@ let job = schedule.scheduleJob("Preinscription", {minute:30, hour:0, date:1}, fu
     }
   })
 })
-
     
 function checkAuthenticated(req, res, next) {
   if (req.isAuthenticated()) {
@@ -43,6 +49,33 @@ function checkNotAuthenticated(req, res, next) {
   }
   next();
 }
+
+app.post('/sendEmail', (request, response) => {
+  let transporter = nodemailer.createTransport({
+    host: 'localhost',
+    port: 465,
+    auth: {
+      user: 'info@altocinema.com',
+      pass: 'Altocine2020'
+    }
+  });
+  let mailOptions = {
+    from: request.body.email,
+    to: 'info@altocinema.com',
+    subject: request.body.name,
+    text: request.body.text
+  }
+  transporter.sendMail(mailOptions, (err, info) => {
+    if (err) {
+      request.flash('error', 'En estos momentos estamos teniendo problemas. Por favor, vuelva a intentarlo más tarde.');
+      response.redirect('/contact');
+    }
+    else {
+      request.flash('succcess', "Muchas gracias por tu correo, te responderemos lo más rápidamente posible.");
+      response.redirect('/contact');
+    }
+  })
+})
 
 app.get('/', (request, response) => {
   response.render('altocinema');
@@ -60,7 +93,7 @@ app.get('/nouvelleCinema', (request, response) => {
   response.render('nouvelleCinema');
 })
 app.get('/contact', (request, response) => {
-  response.render('contact');
+  response.render('contact', {success: request.flash('success'), error: request.flash('error') });
 })
 
 app.get('/login', checkNotAuthenticated, (request, response) => {
@@ -68,17 +101,17 @@ app.get('/login', checkNotAuthenticated, (request, response) => {
 })
 
 app.get('/dashboard', checkAuthenticated, (request, response) => {
-  response.render('dashboard', {user: request.user, title: "Inicio"});
+  response.render('dashboard', {user: request.user, title: "Inicio", success: request.flash('success'), error: request.flash('error')});
 })
 
 app.get('/festivals', checkAuthenticated, (request, response) => {
     festivals.getFestivals((err, festivalList) => {
         if (err) {
-          request.flash('error', err);
+          request.flash('error', err.message);
           response.redirect("/dashboard");
         }
         else {
-          response.render('festivals', {user: request.user, title: "Festivales", festivals: festivalList});
+          response.render('festivals', {user: request.user, title: "Festivales", festivals: festivalList, error: request.flash('error')});
         }
     });
 })
@@ -86,7 +119,7 @@ app.get('/festivals', checkAuthenticated, (request, response) => {
 app.get("/festival:=:id", checkAuthenticated, (request, response) => {   
   festivals.getFestival(request.params.id, (err, festival) => {
     if (err) {
-      request.flash('error', err);
+      request.flash('error', err.message);
       response.redirect("/dashboard");
     }
     else {
@@ -98,11 +131,11 @@ app.get("/festival:=:id", checkAuthenticated, (request, response) => {
 app.get('/films', checkAuthenticated, (request, response) => {
   films.getFilmList((err, filmsList) => {
     if (err) {
-        request.flash('error', err);
+        request.flash('error', err.message);
         response.redirect("/dashboard");
     }
     else {
-      response.render('films', {user: request.user, title: "Películas", films: filmsList});
+      response.render('films', {user: request.user, title: "Películas", films: filmsList, error: request.flash('error')});
     }
   });
 })
@@ -110,7 +143,7 @@ app.get('/films', checkAuthenticated, (request, response) => {
 app.get("/film:=:id", checkAuthenticated, (request, response) => {   
   films.getFilm(request.params.id, (err, film) => {
     if (err) {
-      request.flash('error', err);
+      request.flash('error', err.message);
       response.redirect("/dashboard");
     }
     else {
@@ -119,15 +152,10 @@ app.get("/film:=:id", checkAuthenticated, (request, response) => {
   });
 });
 
-
-app.get('/halls', checkAuthenticated, (request, response) => {
-  response.render('halls', {user: request.user, title: "Salas de proyección"});
-})
-
 app.get('/producers', checkAuthenticated, (request, response) => {
   films.getProducerList((err, producers) => {
     if (err) {
-        request.flash('error', err);
+        request.flash('error', err.message);
         response.redirect("/dashboard");
     }
     else {
@@ -139,9 +167,30 @@ app.get('/producers', checkAuthenticated, (request, response) => {
 app.get('/platforms', checkAuthenticated, (request, response) => {
   response.render('platforms', {user: request.user, title: "Plataformas"});
 })
+
 app.get('/directors', checkAuthenticated, (request, response) => {
-  response.render('directors', {user: request.user, title: "Directores"});
+  directors.getDirectors((err, directors) => {
+    if (err) {
+      request.flash('error', err.message);
+      response.redirect('/dashboard');
+    }
+    else {
+      response.render('directors', {user: request.user, title: "Directores", directors: directors, success: request.flash('success'), error: request.flash('error')});
+    }
+  })
 })
+
+app.get("/director:=:id", checkAuthenticated, (request, response) => {   
+  directors.getDirector(request.params.id, (err, director) => {
+    if (err) {
+      request.flash('error', err.message);
+      response.redirect("/dashboard");
+    }
+    else {
+      response.render('director', {user: request.user, title: director.fullname, director: director, error: request.flash('error')});
+    }
+  });
+});
 
 app.get('/profile', checkAuthenticated, (request, response) => {
   response.render('profile', {user: request.user, title: "Perfil de usuario"});
@@ -160,15 +209,16 @@ app.get('/prizes', checkAuthenticated, (request, response) => {
 })
 
 app.get('/addFilm', checkAuthenticated, (request, response) => {
-  response.render('addFilm', {user: request.user, title: "Añadir película"});
-})
-app.get('/addFestival', checkAuthenticated, (request, response) => {
-  response.render('addFestival', {user: request.user, title: "Añadir festival"});
+  response.render('addFilm', {user: request.user, title: "Añadir película", error: request.flash('error')});
 })
 
-/*app.get('/main', checkAuthenticated, (request, response) => {
-  response.render('main');
-})*/
+app.get('/addFestival', checkAuthenticated, (request, response) => {
+  response.render('addFestival', {user: request.user, title: "Añadir festival", error: request.flash('error')});
+})
+
+app.get('/addDirector', checkAuthenticated, (request, response) => {
+  response.render('addDirector', {user: request.user, title: "Añadir direcror", error: request.flash('error') })
+})
 
 app.post('/login', passport.authenticate('local', {
   successRedirect: '/dashboard',
@@ -180,7 +230,6 @@ app.get('/logout', (req,res) =>{
   req.logout();
   res.redirect('/');
 })
-
 
 app.post("/addFilm", checkAuthenticated, (request, response) => {
 const film = [[
@@ -232,7 +281,7 @@ const categories = request.body.categories;
 
 films.newFilm(film, categories, (err) => {
     if (err) {
-        request.flash('error', err);
+        request.flash('error', err.message);
         response.redirect("addFilm");
     }
     else {
@@ -289,7 +338,7 @@ app.post("/updateFilm", checkAuthenticated, (request, response) => {
 
   films.updateFilm(film, request.body.categories, request.body.id, (err) => {
       if (err) {
-          request.flash('error', err);
+          request.flash('error', err.message);
           response.redirect("films");
       }
       else {
@@ -353,7 +402,7 @@ app.post("/addFestival", checkAuthenticated, (request, response) => {
 
   festivals.newFestival(festival, categories, (err) => {
       if (err) {
-          request.flash('error', err);
+          request.flash('error', err.message);
           response.redirect("addFestival");
       }
       else {
@@ -362,7 +411,7 @@ app.post("/addFestival", checkAuthenticated, (request, response) => {
   });
 });
 
-  app.post("/updateFestival", checkAuthenticated, (request, response) => {
+app.post("/updateFestival", checkAuthenticated, (request, response) => {
   let auxdate = new Date();
   let modif = "Modificado el " + auxdate + " por " +  request.user.name;
   const festival = [[
@@ -415,7 +464,7 @@ app.post("/addFestival", checkAuthenticated, (request, response) => {
 
   festivals.updateFestival(festival, request.body.categories, request.body.id, (err) => {
       if (err) {
-          request.flash('error', err);
+          request.flash('error', err.message);
           response.redirect("festivals");
       }
       else {
@@ -423,6 +472,68 @@ app.post("/addFestival", checkAuthenticated, (request, response) => {
       }
   });
 });
+
+app.post("/addDirector", checkAuthenticated, (request, response) => {
+  let auxdate = new Date();
+  let modif = "Modificado el " + auxdate + " por " +  request.user.name;
+  const director = [[
+      request.body.fullname,
+      request.body.name,
+      request.body.surname,
+      request.body.email,
+      request.body.phone,
+      request.body.birth_city,
+      request.body.home_city,
+      request.body.DNI,
+      request.body.birthdate,
+      request.body.age,
+      request.body.esp_bio,
+      request.body.eng_bio,
+      modif
+  ]];
+  
+  directors.newDirector(director, (err) => {
+      if (err) {
+          request.flash('error', err.message);
+          response.redirect("addDirector");
+      }
+      else {
+          request.flash('success', "Guardado.");
+          response.redirect("/directors");
+      }
+  });
+});
+  
+app.post("/updateDirector", checkAuthenticated, (request, response) => {
+  let auxdate = new Date();
+  let modif = "Modificado el " + auxdate + " por " +  request.user.name;
+  const director = [[
+      request.body.fullname,
+      request.body.name,
+      request.body.surname,
+      request.body.email,
+      request.body.phone,
+      request.body.birth_city,
+      request.body.home_city,
+      request.body.DNI,
+      request.body.birthdate,
+      request.body.age,
+      request.body.esp_bio,
+      request.body.eng_bio,
+      modif
+  ]];
+  
+    directors.updateDirector(director, request.body.id, (err) => {
+        if (err) {
+            request.flash('error', err.message);
+            response.redirect("directors");
+        }
+        else {
+            request.flash('success', "Director modificado correctamente en la base de datos.");
+            response.redirect("directors");
+        }
+    });
+  });
 
 app. post("/register_user", (request, response) => {
     bcrypt.hash(request.body.password, 10, (err, hashed) => {

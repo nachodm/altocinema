@@ -58,14 +58,57 @@
 
     <div class="animated fadeIn content container text-light">
         <h3 class="text-center mb-4">Contacto</h3>
-        <div class="row test align-items-center">
-            <div class="col-12 contact p-4">
-                <p class="mb-5">Contacta con nosotros a través de cualquiera de nuestros canales y te responderemos a la menor brevedad posible:</p>
-                <p><i class="mr-2 fas fa-map-marked-alt"></i>  Getafe, ESP</p>
-                <p><i class="mr-2 fas fa-phone"></i>  Teléfono: +00 1515151515</p>
-                <p><i class="mr-2 fas fa-envelope"></i>  Email: altocinema@altocinema.com</p>
-                <p><i class="mr-2 fab fa-twitter"></i>  Twitter: @altocinema</p>
-                <p><i class="mr-2 fab fa-instagram"></i>  Instagram: @altocinema</p>
+        <div class="contact">
+            <div class="row d-flex align-items-center">
+                <div class="col-12">
+                    <p class="mb-5">Contacta con nosotros a través de cualquiera de nuestros canales y te responderemos a la menor brevedad posible:</p>
+                </div>
+            </div>
+            <div class="row ">
+                <div class="col-md-12 col-lg-6 align-self-center">
+                    <p class="success-lighter-hoverho"><i class="mr-2 fas fa-map-marked-alt"></i>  Getafe, ESP</p>
+                    <p class="hover"><i class="mr-2 fas fa-phone"></i>  Teléfono: +00 1515151515</p>
+                    <p class="hover"><i class="mr-2 fas fa-envelope"></i>  Email: altocinema@altocinema.com</p>
+                    <p>
+                        <a class="hover" href="http://www.linkedin.com" target="_blank"><i class="mr-2 fab fa-linkedin-in"></i> Linkedin</a>
+                    </p>
+                    <p>
+                        <a class="hover" href="http://www.twitternp.com" target="_blank"><i class="mr-2 fab fa-twitter"></i>  Twitter: @altocinema</a>
+                    </p>
+                    <p></p>
+                        <a class="hover" href="http://www.instagram.com" target="_blank"><i class="mr-2 fab fa-instagram"></i>  Instagram: @altocinema</a>
+                    </p>
+                </div>
+                <div class="col-md-12 col-lg-6 align-self-center">
+                    <form action="/sendEmail" method="POST">
+                        <div class="md-form">
+                            <i class="fas fa-user prefix"></i>
+                            <input type="text" name="name" id="name" class="form-control validate text-white">
+                            <label for="name" data-error="wrong" data-success="right">Nombre</label>
+                        </div>
+                        <div class="md-form">
+                            <i class="fas fa-envelope prefix"></i>
+                            <input type="email" name="email" id="email"class="form-control validate text-white">
+                            <label for="email" data-error="wrong" data-success="right">Email</label>
+                        </div>
+                        <div class="md-form">
+                            <i class="fas fa-pencil-alt prefix"></i>
+                            <textarea id="text" name="text" class="md-textarea form-control text-white" rows="3"></textarea>
+                            <label for="text">Mensaje</label>
+                        </div>
+                        <button class="btn btn-lg btn-outline-white btn-block text-uppercase font-weight-bold" type="submit">Enviar</button>
+                    </form>
+                    <% if (success.length > 0) { %>
+                        <div class="alert alert-success mt-3" role="alert">
+                          <%= success %>
+                        </div>
+                      <% } %>
+                    <% if (error.length > 0) { %>
+                        <div class="alert alert-danger mt-3" role="alert">
+                          <%= error %>
+                        </div>
+                    <% } %>
+                 </div>   
             </div>
         </div>
     </div> 

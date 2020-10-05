@@ -36,6 +36,7 @@
     "jquery": "^3.5.1",
     "mysql": "^2.18.1",
     "node-schedule": "^1.3.2",
+    "nodemailer": "^6.4.13",
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",
     "path": "^0.12.7"
