@@ -60,9 +60,9 @@ app.post('/sendEmail', (request, response) => {
     }
   });
   let mailOptions = {
-    from: request.body.email,
-    to: 'info@altocinema.com',
-    subject: request.body.name,
+    from: 'info@altocinema.com',
+    to: 'antonio@altocinema.com, alba@altocinema.com',
+    subject: request.body.name + ': ' + request.body.email,
     text: request.body.text
   }
   transporter.sendMail(mailOptions, (err, info) => {
