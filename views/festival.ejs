@@ -106,8 +106,8 @@
                     </div>
                     <div class="col-lg-1 my--2">
                         <div class="form-group">
-                            <label class="form-control-label" for="edition">Año*</label>
-                            <input type="number" id="edition" class="form-control form-control-alternative form-control-sm" name="edition" value="<%=festival.year%>" required>
+                            <label class="form-control-label" for="year">Año*</label>
+                            <input type="number" id="year" class="form-control form-control-alternative form-control-sm" name="year" value="<%=festival.year%>" required>
                         </div>
                     </div>
                     <div class="col-lg-3 my--2">
@@ -766,6 +766,7 @@
                     </div>
                   </div>
                 </div>
+                <input type="hidden" name="id" id="id" value="<%=festival.id%>">
               </form>
             </div>
           </div>
@@ -773,8 +774,6 @@
       </div>
     </div>
   </div>
-
-  <input type="hidden" name="id" id="id" value="<%=festival.id%>">
   <!-- Include scripts -->
   <%- include ('partials/scripts'); -%>
 </body>

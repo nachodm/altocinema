@@ -111,7 +111,7 @@ app.get('/festivals', checkAuthenticated, (request, response) => {
           response.redirect("/dashboard");
         }
         else {
-          response.render('festivals', {user: request.user, title: "Festivales", festivals: festivalList, error: request.flash('error')});
+          response.render('festivals', {user: request.user, title: "Festivales", festivals: festivalList, success: request.flash('success'), error: request.flash('error')});
         }
     });
 })
@@ -135,7 +135,7 @@ app.get('/films', checkAuthenticated, (request, response) => {
         response.redirect("/dashboard");
     }
     else {
-      response.render('films', {user: request.user, title: "Películas", films: filmsList, error: request.flash('error')});
+      response.render('films', {user: request.user, title: "Películas", films: filmsList, success: request.flash('success'), error: request.flash('error')});
     }
   });
 })
@@ -291,50 +291,50 @@ films.newFilm(film, categories, (err) => {
 });
 
 app.post("/updateFilm", checkAuthenticated, (request, response) => {
-  const film = [[
-      request.body.title,
-      request.body.engtitle,
-      parseInt(request.body.year),
-      request.body.date,
-      request.body.color,
-      request.body.animationtechnique,
-      request.body.originalv,
-      request.body.genre,
-      parseInt(request.body.duration),
-      request.body.country,
-      request.body.screen,
-      request.body.shootingplace,
-      request.body.catalogue,
-      request.body.sinopsis,
-      request.body.eng_sinopsis,
-      request.body.materialslink,
-      request.body.link,
-      request.body.originalvimeo,
-      request.body.englishvimeo,
-      request.body.frenchvimeo,
-      request.body.italianvimeo,
-      request.body.spavimeo,
-      request.body.trailer,
-      request.body.trailereng,
-      request.body.director,
-      request.body.script,
-      request.body.photography,
-      request.body.artistic,
-      request.body.soundtrack,
-      request.body.montage,
-      request.body.producer,
-      request.body.animation,
-      request.body.sound,
-      request.body.interpreter,
-      request.body.copiesheader,
-      request.body.copiesstreet,
-      request.body.copiescp,
-      request.body.copiestel,
-      request.body.copiescity,
-      request.body.copiesprovince,
-      request.body.copiescountry,
-      request.body.catalogue
-  ]];
+  const film = {
+    title: request.body.title,
+    engtitle: request.body.engtitle,
+    year: request.body.year,
+    date: request.body.date,
+    color: request.body.color,
+    animationtechnique: request.body.animationtechnique,
+    originalv: request.body.originalv,
+    genre: request.body.genre,
+    duration: request.body.duration,
+    country: request.body.country,
+    screen: request.body.screen,
+    shootingplace: request.body.shootingplace,
+    catalogue: request.body.catalogue,
+    sinopsis: request.body.sinopsis,
+    eng_sinopsis: request.body.eng_sinopsis,
+    materialslink: request.body.materialslink,
+    link: request.body.link,
+    originalvimeo: request.body.originalvimeo,
+    englishvimeo: request.body.englishvimeo,
+    frenchvimeo: request.body.frenchvimeo,
+    italianvimeo: request.body.italianvimeo,
+    spavimeo: request.body.spavimeo,
+    trailer: request.body.trailer,
+    trailereng: request.body.trailereng,
+    director: request.body.director,
+    script: request.body.script,
+    photography: request.body.photography,
+    artistic: request.body.artistic,
+    soundtrack: request.body.soundtrack,
+    montage: request.body.montage,
+    producer: request.body.producer,
+    animation: request.body.animation,
+    sound: request.body.sound,
+    interpreter: request.body.interpreter,
+    copiesheader: request.body.copiesheader,
+    copiesstreet: request.body.copiesstreet,
+    copiescp: request.body.copiescp,
+    copiestel: request.body.copiestel,
+    copiescity: request.body.copiescity,
+    copiesprovince: request.body.copiesprovince,
+    copiescountry: request.body.copiescountry,
+    catalogue: request.body.catalogue
+  };
 
   films.updateFilm(film, request.body.categories, request.body.id, (err) => {
       if (err) {
@@ -342,6 +342,7 @@ app.post("/updateFilm", checkAuthenticated, (request, response) => {
           response.redirect("films");
       }
       else {
+          request.flash('success', 'Película actualizada');
           response.redirect("films");
       }
   });
@@ -414,53 +415,53 @@ app.post("/addFestival", checkAuthenticated, (request, response) => {
 app.post("/updateFestival", checkAuthenticated, (request, response) => {
   let auxdate = new Date();
   let modif = "Modificado el " + auxdate + " por " +  request.user.name;
-  const festival = [[
-      request.body.festival_id,
-      request.body.name,
-      request.body.ok,
-      request.body.init_date,
-      request.body.end_date,
-      request.body.edition,
-      request.body.year,
-      request.body.deadline,
-      request.body.type,
-      request.body.entryfee,
-      request.body.fee,
-      request.body.currency,
-      request.body.euros,
-      request.body.platform,
-      request.body.prize,
-      request.body.waiver,
-      request.body.disc,
-      request.body.final,
-      request.body.contactname,
-      request.body.contact_email,
-      request.body.programmer,
-      request.body.prog_email,
-      request.body.contact_tel,
-      request.body.contact_web,
-      request.body.platformurl,
-      request.body.state,
-      request.body.contactcountry,
-      request.body.language,
-      request.body.notes,
-      request.body.confirmed,
-      request.body.sheet,
-      request.body.shortname,
-      request.body.header,
-      request.body.street,
-      request.body.postalcode,
-      request.body.city,
-      request.body.province,
-      request.body.copies_header,
-      request.body.copies_street,
-      request.body.copies_cp,
-      request.body.copies_tel,
-      request.body.copies_city,
-      request.body.copies_province,
-      request.body.copies_country,
-      modif
-  ]];
+  const festival = {
+    festival_id: request.body.festival_id,
+    name: request.body.name,
+    ok: request.body.ok,
+    init_date: request.body.init_date,
+    end_date: request.body.end_date,
+    edition: request.body.edition,
+    year: request.body.year,
+    deadline: request.body.deadline,
+    type: request.body.type,
+    entryfee: request.body.entryfee,
+    fee: request.body.fee,
+    currency: request.body.currency,
+    euros: request.body.euros,
+    platform: request.body.platform,
+    prize: request.body.prize,
+    waiver: request.body.waiver,
+    disc:  request.body.disc,
+    final: request.body.final,
+    contactname:  request.body.contactname,
+    contact_email:  request.body.contact_email,
+    programmer:  request.body.programmer,
+    prog_email: request.body.prog_email,
+    contact_tel:  request.body.contact_tel,
+    contact_web : request.body.contact_web,
+    platformurl:  request.body.platformurl,
+    state: request.body.state,
+    contactcountry: request.body.contactcountry,
+    language: request.body.language,
+    notes: request.body.notes,
+    confirmed: request.body.confirmed,
+    sheet: request.body.sheet,
+    shortname: request.body.shortname,
+    header: request.body.header,
+    street: request.body.street,
+    postalcode: request.body.postalcode,
+    city: request.body.city,
+    province: request.body.province,
+    copies_header: request.body.copies_header,
+    copies_street: request.body.copies_street,
+    copies_cp: request.body.copies_cp,
+    copies_tel: request.body.copies_tel,
+    copies_city: request.body.copies_city,
+    copies_province: request.body.copies_province,
+    copies_country: request.body.copies_country,
+    modif: modif
+  };
 
   festivals.updateFestival(festival, request.body.categories, request.body.id, (err) => {
       if (err) {
@@ -468,6 +469,7 @@ app.post("/updateFestival", checkAuthenticated, (request, response) => {
           response.redirect("festivals");
       }
       else {
+          request.flash('success', 'Festival actualizado');
           response.redirect("festivals");
       }
   });
@@ -506,22 +508,22 @@ app.post("/addDirector", checkAuthenticated, (request, response) => {
   
 app.post("/updateDirector", checkAuthenticated, (request, response) => {
   let auxdate = new Date();
-  let modif = "Modificado el " + auxdate + " por " +  request.user.name;
-  const director = [[
-      request.body.fullname,
-      request.body.name,
-      request.body.surname,
-      request.body.email,
-      request.body.phone,
-      request.body.birth_city,
-      request.body.home_city,
-      request.body.DNI,
-      request.body.birthdate,
-      request.body.age,
-      request.body.esp_bio,
-      request.body.eng_bio,
-      modif
-  ]];
+  let modif = 'Modificado el ' + auxdate + ' por ' +  request.user.name;
+  const director = {
+    fullname: request.body.fullname,
+    name: request.body.name,
+    surname: request.body.surname,
+    email: request.body.email,
+    phone: request.body.phone,
+    birth_city: request.body.birth_city,
+    home_city: request.body.home_city,
+    DNI: request.body.DNI,
+    birthdate: request.body.birthdate,
+    age: request.body.age,
+    esp_bio: request.body.esp_bio,
+    eng_bio: request.body.eng_bio,
+    modif: modif
+};
   
     directors.updateDirector(director, request.body.id, (err) => {
         if (err) {

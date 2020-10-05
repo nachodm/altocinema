@@ -1,5 +1,7 @@
 "use strict";
 
+const { query } = require("express");
+
 /**
  * Proporciona operaciones para la gestión de directores en la base de datos.
  */
@@ -52,8 +54,9 @@ class DAODirectors {
             if (err) {
                 callback("Error de conexion a la BBDD", undefined); return;
             }
-            connection.query("UPDATE DIRECTORS SET = ? WHERE id = ?",
-            [director, id],
+            
+            connection.query("UPDATE DIRECTORS SET fullname = ?,name = ?,surname = ?,email = ?,phone = ?,birth_city = ?, home_city = ?, DNI = ?, birthdate = ?, age = ?, esp_bio = ?, eng_bio = ?, modif = ? WHERE id = ?",
+            [director.fullname, director.name, director.surname, director.email, director.phone, director.birth_city, director.home_city, director.DNI, director.birthdate, director.age, director.esp_bio, director.eng_bio, director.modif, id],
             (err) => {
                 connection.release();
                 if (err) {callback(err, undefined); return;}
