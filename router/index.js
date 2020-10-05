@@ -52,7 +52,7 @@ function checkNotAuthenticated(req, res, next) {
 
 app.post('/sendEmail', (request, response) => {
   let transporter = nodemailer.createTransport({
-    host: 'localhost',
+    host: 'altocinema.com',
     port: 465,
     auth: {
       user: 'info@altocinema.com',
@@ -67,12 +67,13 @@ app.post('/sendEmail', (request, response) => {
   }
   transporter.sendMail(mailOptions, (err, info) => {
     if (err) {
-      request.flash('error', 'En estos momentos estamos teniendo problemas. Por favor, vuelva a intentarlo más tarde.');
-      response.redirect('/contact');
+      console.log(err);
+      request.flash('error', 'Ups, parece que ahora mismo estamos teniendo un problema. Por favor, vuelva a intentarlo más tarde.');
+      response.redirect('contact');
     }
     else {
       request.flash('succcess', "Muchas gracias por tu correo, te responderemos lo más rápidamente posible.");
-      response.redirect('/contact');
+      response.redirect('contact');
     }
   })
 })
