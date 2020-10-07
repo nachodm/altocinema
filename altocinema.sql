@@ -49,6 +49,7 @@ CREATE TABLE FILMS (
     copiesprovince VARCHAR(255) DEFAULT NULL,
     copiescountry VARCHAR(255) DEFAULT NULL,
     addcatalogue BOOLEAN DEFAULT FALSE,
+    picture VARCHAR(255) DEFAULT NULL
     PRIMARY KEY (id)
     -- specify more columns here
 );
@@ -162,9 +163,9 @@ CREATE TABLE CONNECTFESTIVALCATEGORIES (
     phone VARCHAR (255) NOT NULL,
     birth_city VARCHAR(255),
     home_city VARCHAR(255),
-    DNI VARCHAR(255),
-    birthdate DATE,
-    age INT,
+    DNI VARCHAR(255) DEFAULT NULL,
+    birthdate DATE DEFAULT NULL,
+    age INT DEFAULT NULL,
     esp_bio VARCHAR(510),
     eng_bio VARCHAR (510),
     modif VARCHAR(255),

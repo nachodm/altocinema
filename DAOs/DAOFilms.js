@@ -1,5 +1,7 @@
 "use strict";
 
+const e = require("express");
+
 /**
  * Proporciona operaciones para la gestión de películas
  * en la base de datos.
@@ -31,7 +33,7 @@ class DAOFilms {
                 callback(null);
             }
             else{
-                connection.query("INSERT INTO FILMS (title, engtitle, year, date, color, animationtechnique, originalv, genre, duration, country, screen, shootingplace, catalogue, sinopsis, eng_sinopsis, materialslink, link, originalvimeo, englishvimeo, frenchvimeo, italianvimeo, spavimeo, trailer, trailereng, director, script, photography, artistic, soundtrack, montage, producer, animation, sound, interpreter, copiesheader, copiesstreet, copiescp, copiestel, copiescity, copiesprovince, copiescountry, addcatalogue) VALUES ?",
+                connection.query("INSERT INTO FILMS (title, engtitle, year, date, color, animationtechnique, originalv, genre, duration, country, screen, shootingplace, catalogue, sinopsis, eng_sinopsis, materialslink, link, originalvimeo, englishvimeo, frenchvimeo, italianvimeo, spavimeo, trailer, trailereng, director, script, photography, artistic, soundtrack, montage, producer, animation, sound, interpreter, copiesheader, copiesstreet, copiescp, copiestel, copiescity, copiesprovince, copiescountry, addcatalogue, picture) VALUES ?",
                 [film],
                 (err, result) => {
                     if (err) { callback(err);}
@@ -73,8 +75,8 @@ class DAOFilms {
             if (err) {
                 callback("Error de conexion a la BBDD", undefined); return;
             }
-            connection.query("UPDATE FILMS SET title = ?, engtitle = ?, year = ?,   date = ?,  color = ?, animationtechnique = ?, originalv = ?, genre = ?, duration = ?, country = ?, screen = ?, shootingplace = ?, catalogue = ?, sinopsis = ?, eng_sinopsis = ?, materialslink = ?, link = ?, originalvimeo = ?, englishvimeo = ?, frenchvimeo = ?, italianvimeo = ?,  spavimeo = ?, trailer = ?, trailereng = ?, director = ?,  script = ?, photography = ?, artistic = ?, soundtrack = ?, montage = ?, producer = ?, animation = ?, sound = ?,  interpreter = ?, copiesheader = ?, copiesstreet = ?,  copiescp = ?, copiestel = ?,  copiescity = ?, copiesprovince = ?, copiescountry = ?, addcatalogue = ? WHERE id = ?",
-            [data.title , data.engtitle , data.year , data.date , data.color , data.animationtechnique , data.originalv , data.genre , data.duration , data.country , data.screen , data.shootingplace , data.catalogue , data.sinopsis , data.eng_sinopsis , data.materialslink , data.link , data.originalvimeo , data.englishvimeo , data.frenchvimeo , data.italianvimeo , data.spavimeo , data.trailer , data.trailereng , data.director , data.script , data.photography , data.artistic , data.soundtrack , data.montage , data.producer , data.animation , data.sound , data.interpreter , data.copiesheader , data.copiesstreet , data.copiescp , data.copiestel , data.copiescity , data.copiesprovince , data.copiescountry , data.addcatalogue , id],
+            connection.query("UPDATE FILMS SET title = ?, engtitle = ?, year = ?,   date = ?,  color = ?, animationtechnique = ?, originalv = ?, genre = ?, duration = ?, country = ?, screen = ?, shootingplace = ?, catalogue = ?, sinopsis = ?, eng_sinopsis = ?, materialslink = ?, link = ?, originalvimeo = ?, englishvimeo = ?, frenchvimeo = ?, italianvimeo = ?,  spavimeo = ?, trailer = ?, trailereng = ?, director = ?,  script = ?, photography = ?, artistic = ?, soundtrack = ?, montage = ?, producer = ?, animation = ?, sound = ?,  interpreter = ?, copiesheader = ?, copiesstreet = ?,  copiescp = ?, copiestel = ?,  copiescity = ?, copiesprovince = ?, copiescountry = ?, addcatalogue = ?, picture = ? WHERE id = ?",
+            [data.title , data.engtitle , data.year , data.date , data.color , data.animationtechnique , data.originalv , data.genre , data.duration , data.country , data.screen , data.shootingplace , data.catalogue , data.sinopsis , data.eng_sinopsis , data.materialslink , data.link , data.originalvimeo , data.englishvimeo , data.frenchvimeo , data.italianvimeo , data.spavimeo , data.trailer , data.trailereng , data.director , data.script , data.photography , data.artistic , data.soundtrack , data.montage , data.producer , data.animation , data.sound , data.interpreter, data.copiesheader, data.copiesstreet, data.copiescp, data.copiestel, data.copiescity , data.copiesprovince , data.copiescountry, data.addcatalogue, data.picture, id],
             (err) => {
                 connection.release();
                 if (err) {callback(err, undefined); return;}
@@ -146,6 +148,72 @@ class DAOFilms {
                 }
             })
         });
+    }
+    /**
+     * Obtiene aquellas películas del catálogo AltoCinema marcadas para incluir en la web pública.
+     * @param {function} callback Función que devolverá el objeto error o el listado de películas.
+     */
+    getAltoCinema(callback) {
+        this.pool.getConnection((err, connection) => {
+            if (err) {
+                callback(err, null);
+            }
+            connection.query("SELECT title, year, country, sinopsis, picture FROM FILMS WHERE addcatalogue = ? AND catalogue = ?",
+            [1, 'AltoCinema'],
+            (err, films) => {
+                connection.release();
+                if (err) {
+                    callback(err, null);
+                }
+                else {
+                    callback(null, films);
+                }
+            })
+        })
+    }
+    /**
+     * Obtiene aquellas películas del catálogo ComingOutCinema marcadas para incluir en la web pública.
+     * @param {function} callback Función que devolverá el objeto error o el listado de películas.
+     */
+    getComingOutCinema(callback) {
+        this.pool.getConnection((err, connection) => {
+            if (err) {
+                callback(err, null);
+            }
+            connection.query("SELECT title, year, country, sinopsis, picture FROM FILMS WHERE addcatalogue = ? AND catalogue = ?",
+            [1, 'ComingOutCinema'],
+            (err, films) => {
+                connection.release();
+                if (err) {
+                    callback(err, null);
+                }
+                else {
+                    callback(null, films);
+                }
+            })
+        })
+    }
+    /**
+     * Obtiene aquellas películas del catálogo NouvelleCinema marcadas para incluir en la web pública.
+     * @param {function} callback Función que devolverá el objeto error o el listado de películas.
+     */
+    getNouvelleCinema(callback) {
+        this.pool.getConnection((err, connection) => {
+            if (err) {
+                callback(err, null);
+            }
+            connection.query("SELECT title, year, country, sinopsis, picture FROM FILMS WHERE addcatalogue = ? AND catalogue = ?",
+            [1, 'NouvelleCinema'],
+            (err, films) => {
+                connection.release();
+                if (err) {
+                    callback(err, null);
+                }
+                else {
+                    callback(null, films);
+                }
+            })
+        })
     }
 
 }

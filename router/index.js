@@ -91,7 +91,14 @@ app.get('/comingOutCinema', (request, response) => {
   response.render('comingOutCinema');
 })
 app.get('/nouvelleCinema', (request, response) => {
-  response.render('nouvelleCinema');
+  films.getNouvelleCinema((err, films) => {
+    if (err) {
+      redirect('altocinema');
+    }
+    else {
+      response.render('nouvelleCinema', {films: films});
+    }
+  })
 })
 app.get('/contact', (request, response) => {
   response.render('contact', {success: request.flash('success'), error: request.flash('error') });
@@ -275,7 +282,8 @@ const film = [[
     request.body.copiescity,
     request.body.copiesprovince,
     request.body.copiescountry,
-    request.body.addcatalogue
+    request.body.addcatalogue,
+    request.body.picture
 ]];
 
 const categories = request.body.categories;
@@ -334,7 +342,8 @@ app.post("/updateFilm", checkAuthenticated, (request, response) => {
     copiescity: request.body.copiescity,
     copiesprovince: request.body.copiesprovince,
     copiescountry: request.body.copiescountry,
-    catalogue: request.body.catalogue
+    addcatalogue: request.body.addcatalogue,
+    picture: request.body.picture
   };
 
   films.updateFilm(film, request.body.categories, request.body.id, (err) => {
