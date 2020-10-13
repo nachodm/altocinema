@@ -54,6 +54,7 @@ app.post('/sendEmail', (request, response) => {
   let transporter = nodemailer.createTransport({
     host: 'altocinema.com',
     port: 465,
+    secure:true,
     auth: {
       user: 'info@altocinema.com',
       pass: 'Altocine2020'
@@ -68,6 +69,7 @@ app.post('/sendEmail', (request, response) => {
   transporter.sendMail(mailOptions, (err, info) => {
     if (err) {
       console.log(err);
+      console.log(info);
       request.flash('error', 'Ups, parece que ahora mismo estamos teniendo un problema. Por favor, vuelva a intentarlo más tarde.');
       response.redirect('contact');
     }
