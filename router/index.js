@@ -74,7 +74,7 @@ app.post('/sendEmail', (request, response) => {
       response.redirect('contact');
     }
     else {
-      request.flash('succcess', "Muchas gracias por tu correo, te responderemos lo más rápidamente posible.");
+      request.flash('success', "Muchas gracias por tu correo, te responderemos lo más rápidamente posible.");
       response.redirect('contact');
     }
   })
