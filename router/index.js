@@ -85,10 +85,24 @@ app.get('/services', (request, response) => {
   response.render('services');
 })
 app.get('/catalogue', (request, response) => {
-  response.render('catalogue');
+  films.getAltoCinema((err, films) => {
+    if (err) {
+      redirect('altocinema');
+    }
+    else {
+      response.render('catalogue', {films: films});
+    }
+  })
 })
 app.get('/comingOutCinema', (request, response) => {
-  response.render('comingOutCinema');
+  films.getComingOutCinema((err, films) => {
+    if (err) {
+      redirect('altocinema');
+    }
+    else {
+      response.render('comingOutCinema', {films: films});
+    }
+  })
 })
 app.get('/nouvelleCinema', (request, response) => {
   films.getNouvelleCinema((err, films) => {
@@ -125,13 +139,13 @@ app.get('/festivals', checkAuthenticated, (request, response) => {
 })
 
 app.get("/festival:=:id", checkAuthenticated, (request, response) => {   
-  festivals.getFestival(request.params.id, (err, festival) => {
+  festivals.getFestival(request.params.id, (err, festival, categories) => {
     if (err) {
       request.flash('error', err.message);
       response.redirect("/dashboard");
     }
     else {
-      response.render('festival', {user: request.user, name: festival.name, festival: festival});
+      response.render('festival', {user: request.user, name: festival.name, festival: festival, categories: JSON.stringify(categories)});
     }
   });
 });
@@ -149,13 +163,13 @@ app.get('/films', checkAuthenticated, (request, response) => {
 })
 
 app.get("/film:=:id", checkAuthenticated, (request, response) => {   
-  films.getFilm(request.params.id, (err, film) => {
+  films.getFilm(request.params.id, (err, film, categories) => {
     if (err) {
       request.flash('error', err.message);
       response.redirect("/dashboard");
     }
     else {
-      response.render('film', {user: request.user, title: film.title, film: film});
+      response.render('film', {user: request.user, title: film.title, film: film, categories: JSON.stringify(categories)});
     }
   });
 });

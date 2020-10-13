@@ -556,8 +556,8 @@
                       <div class="form-group">
                         <label class="form-control-label text-warning" for="addcatalogue">Añadir al catálogo</label>
                         <select  class="form-control form-control-alternative form-control-sm" id="addcatalogue" name="addcatalogue" required>
-                          <option value="0" <%= film.addcatalogue === '0' ? 'selected': '' %>>No</option>
-                          <option value="1" <%= film.addcatalogue === '1' ? 'selected': '' %>>Sí</option>
+                          <option value="0" <%= film.addcatalogue === 0 ? 'selected': '' %>>No</option>
+                          <option value="1" <%= film.addcatalogue === 1 ? 'selected': '' %>>Sí</option>
                         </select> 
                       </div>
                     </div>
@@ -690,6 +690,8 @@
   
   <!-- Include scripts -->
   <%- include ('partials/scripts'); -%>
+  
+  <%- include ('partials/fillCategoriesScripts'); -%>
 </body>
 
 </html>

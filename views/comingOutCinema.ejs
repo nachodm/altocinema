@@ -65,101 +65,46 @@
                 <p class="text-white">Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
             </div>
                
+            <%if ((typeof films !== 'undefined' && films.length !== 0)) {%>
+                <% films.forEach(film => { %>
+                    <!-- Column -->
+                    <div class="col-md-4 mb-4 d-flex align-items-stretch">
+                        <!--Card-->
+                        <div class="card">
+                            <!--Card image-->
+                            <div class="view">
+                                <img src="<%=film.picture%>" class="card-img-top"alt="">
+                                <a href="#">
+                                    <div class="mask rgba-white-slight"></div>
+                                </a>
+                            </div>
+                            <!--Card content-->
+                            <div class="card-body  nouvelle-card">
+                                <!--Title-->
+                                <h4 class="card-title text-light"><%=film.title%> <small class="text-muted">(<%=film.year%>, <%=film.country%>)</small> </h4>
+                                <!--Text-->
+                                <p class="card-text text-light"><%=film.sinopsis%></p>
+                            </div>
+                        </div>
+                        <!--/.Card-->
+                    </div>
+                    <!-- Column -->
+                <% }) %>
+            <% } else {%>
+                <div class="col-md-4 mb-4 d-flex align-items-stretch">
+                    <!--Card-->
+                    <div class="card">
+                        <!--Card content-->
+                        <div class="card-body comingout-card">
+                            <!--Title-->
+                            <h4 class="card-title text-light">Próximamente</h4>
+                            <div class="card-text">Oops, este catálogo aún no tiene películas distribuidas.</div>
+                        </div>
+                    </div>
+                    <!--/.Card-->
+                </div>
+            <% } %>
             <!-- Column -->
-            <div class="col-md-4 mb-4 d-flex align-items-stretch">
-                <!--Card-->
-                <div class="card">
-                    <!--Card image-->
-                    <div class="view">
-                        <img src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/6-col/img%20(132).jpg" class="card-img-top"alt="">
-                        <a href="#">
-                            <div class="mask rgba-white-slight"></div>
-                        </a>
-                    </div>
-            
-                    <!--Card content-->
-                    <div class="card-body comingout-card">
-                        <!--Title-->
-                        <h4 class="card-title text-light">Card title</h4>
-                        <!--Text-->
-                        <p class="card-text text-light">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis
-                            praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint
-                            occaecati cupiditate non provident, similique sunt in culpa</p>
-                    </div>
-                </div>
-                <!--/.Card-->
-            </div>
-            <!-- Column -->
-            <!-- Column -->
-            <div class="col-md-4 mb-4 d-flex align-items-stretch">
-                <!--Card-->
-                <div class="card">
-                    <!--Card image-->
-                    <div class="view">
-                        <img src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/6-col/img%20(132).jpg" class="card-img-top"alt="">
-                        <a href="#">
-                            <div class="mask rgba-white-slight"></div>
-                        </a>
-                    </div>
-
-                    <!--Card content-->
-                    <div class="card-body comingout-card">
-                        <!--Title-->
-                        <h4 class="card-title text-light">Card title</h4>
-                        <!--Text-->
-                        <p class="card-text text-light">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis
-                            praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint
-                            occaecati cupiditate non provident, similique sunt in culpa</p>
-                    </div>
-                </div>
-                <!--/.Card-->
-            </div><!-- Column -->
-            <div class="col-md-4 mb-4 d-flex align-items-stretch">
-                <!--Card-->
-                <div class="card">
-                    <!--Card image-->
-                    <div class="view">
-                        <img src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/6-col/img%20(132).jpg" class="card-img-top"alt="">
-                        <a href="#">
-                            <div class="mask rgba-white-slight"></div>
-                        </a>
-                    </div>
-
-                    <!--Card content-->
-                    <div class="card-body comingout-card">
-                        <!--Title-->
-                        <h4 class="card-title text-light">Card title</h4>
-                        <!--Text-->
-                        <p class="card-text text-light">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis
-                            praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint
-                            occaecati cupiditate non provident, similique sunt in culpa</p>
-                    </div>
-                </div>
-                <!--/.Card-->
-            </div><!-- Column -->
-            <div class="col-md-4 mb-4 d-flex align-items-stretch">
-                <!--Card-->
-                <div class="card">
-                    <!--Card image-->
-                    <div class="view">
-                        <img src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/6-col/img%20(132).jpg" class="card-img-top"alt="">
-                        <a href="#">
-                            <div class="mask rgba-white-slight"></div>
-                        </a>
-                    </div>
-
-                    <!--Card content-->
-                    <div class="card-body comingout-card">
-                        <!--Title-->
-                        <h4 class="card-title text-light">Card title</h4>
-                        <!--Text-->
-                        <p class="card-text text-light">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis
-                            praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint
-                            occaecati cupiditate non provident, similique sunt in culpa</p>
-                    </div>
-                </div>
-                <!--/.Card-->
-            </div><!-- Column -->
             <div class="col-md-4 mb-4 d-flex align-items-stretch">
                 <!--Card-->
                 <div class="card">
@@ -279,16 +224,7 @@
         <!-- Container -->
     </div>
     
-    <!-- Footer -->
-    <footer class="mt-4 page-footer font-small grey pt-4">
-        <!-- Copyright -->
-        <div class="footer-copyright text-center py-3">© 2020 Copyright: 
-        <a href="https://www.linkedin.com/in/ignacio-d">Nacho Domingo</a> & 
-        <a href="https://www.altocinema.com/"> AltoCinema</a>
-        </div>
-        <!-- Copyright -->
-    </footer>
-  <!-- Footer -->
+    <%- include('partials/footer'); -%>
   <!-- JQuery -->
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <!-- Bootstrap tooltips -->

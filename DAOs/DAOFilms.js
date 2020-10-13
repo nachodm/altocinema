@@ -73,15 +73,38 @@ class DAOFilms {
     updateFilm(data, categories, id, callback){
         this.pool.getConnection((err, connection) => {
             if (err) {
-                callback("Error de conexion a la BBDD", undefined); return;
+                callback("Error de conexión a la BBDD", undefined);
             }
             connection.query("UPDATE FILMS SET title = ?, engtitle = ?, year = ?,   date = ?,  color = ?, animationtechnique = ?, originalv = ?, genre = ?, duration = ?, country = ?, screen = ?, shootingplace = ?, catalogue = ?, sinopsis = ?, eng_sinopsis = ?, materialslink = ?, link = ?, originalvimeo = ?, englishvimeo = ?, frenchvimeo = ?, italianvimeo = ?,  spavimeo = ?, trailer = ?, trailereng = ?, director = ?,  script = ?, photography = ?, artistic = ?, soundtrack = ?, montage = ?, producer = ?, animation = ?, sound = ?,  interpreter = ?, copiesheader = ?, copiesstreet = ?,  copiescp = ?, copiestel = ?,  copiescity = ?, copiesprovince = ?, copiescountry = ?, addcatalogue = ?, picture = ? WHERE id = ?",
             [data.title , data.engtitle , data.year , data.date , data.color , data.animationtechnique , data.originalv , data.genre , data.duration , data.country , data.screen , data.shootingplace , data.catalogue , data.sinopsis , data.eng_sinopsis , data.materialslink , data.link , data.originalvimeo , data.englishvimeo , data.frenchvimeo , data.italianvimeo , data.spavimeo , data.trailer , data.trailereng , data.director , data.script , data.photography , data.artistic , data.soundtrack , data.montage , data.producer , data.animation , data.sound , data.interpreter, data.copiesheader, data.copiesstreet, data.copiescp, data.copiestel, data.copiescity , data.copiesprovince , data.copiescountry, data.addcatalogue, data.picture, id],
             (err) => {
-                connection.release();
-                if (err) {callback(err, undefined); return;}
+                if (err) {callback(err, undefined);}
                 else {
-                    callback(null, true);
+                    let filmcategories = [];
+                    categories.forEach(c => {
+                        filmcategories.push({id: id, category: c});
+                    });
+                    if (filmcategories.length > 0) {
+                        connection.query("DELETE FROM FILMCATEGORIES WHERE id = ?", 
+                        [id],
+                        (err) => {
+                            if (err) {callback(err, undefined);}
+                            else {
+                                connection.query("INSERT INTO FILMCATEGORIES (id, category) VALUES ?",
+                                [filmcategories.map(film => [film.id, film.category])],
+                                (err) => {
+                                    connection.release();
+                                    if (err) { callback(err, undefined); }
+                                    else {
+                                        callback(null, true);
+                                    }
+                                });
+                            }
+                        })
+                    }
+                    else {
+                        callback(null, true);
+                    }
                 }
             })
         });
@@ -96,16 +119,25 @@ class DAOFilms {
     getFilm(id, callback) {
         this.pool.getConnection((err, connection) => {
             if (err) {
-                callback(err, undefined);
+                callback(err, undefined, undefined);
             }
             connection.query("SELECT * FROM FILMS WHERE id = ?",
             [id],
             (err, film) => {
-                connection.release();
-                if (err) {callback(err, undefined);}
-                else {
-                    callback(null, film[0]);
-                }
+                if (err) {callback(err, undefined, undefined);}
+                connection.query("SELECT category from FILMCATEGORIES WHERE id = ?",
+                [id],
+                (err, categories) => {
+                    connection.release();
+                    if (err) {callback(err, undefined, undefined);}
+                    else {
+                        let categoriesArray = [];
+                        categories.forEach(c => {
+                            categoriesArray.push(c.category);
+                        });
+                        callback(null, film[0], categoriesArray);
+                    }
+                });
             })
         });
     }
