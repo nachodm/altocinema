@@ -510,6 +510,7 @@ app.post("/addDirector", checkAuthenticated, (request, response) => {
       request.body.surname,
       request.body.email,
       request.body.phone,
+      request.body.nationality,
       request.body.birth_city,
       request.body.home_city,
       request.body.DNI,
@@ -517,6 +518,13 @@ app.post("/addDirector", checkAuthenticated, (request, response) => {
       request.body.age,
       request.body.esp_bio,
       request.body.eng_bio,
+      request.body.address,
+      request.body.street,
+      request.body.postalcode,
+      request.body.city,
+      request.body.country,
+      request.body.web,
+      request.body.notes,
       modif
   ]];
   
@@ -548,6 +556,13 @@ app.post("/updateDirector", checkAuthenticated, (request, response) => {
     age: request.body.age,
     esp_bio: request.body.esp_bio,
     eng_bio: request.body.eng_bio,
+    address: request.body.address,
+    street: request.body.street,
+    postalcode: request.body.postalcode,
+    city: request.body.city,
+    country: request.body.country,
+    web: request.body.web,
+    notes: request.body.notes,
     modif: modif
 };
   

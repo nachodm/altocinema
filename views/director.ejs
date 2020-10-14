@@ -6,7 +6,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="Añadir director">
-  <title><%=director.name%></title>
+  <title><%=director.fullname%></title>
  <!-- Favicon -->
   <link href="img/favicon.ico" rel="icon" type="image/png">
   <!-- Fonts -->
@@ -56,82 +56,131 @@
                     </div>
                   <% } %>
                   <div class="row">
-                    <div class="col-lg-12 my--2">
+                    <div class="col-lg-6 my--2">
                         <div class="form-group">
-                            <label class="form-control-label" for="fullname">Nombre completo*</label>
+                            <label class="form-control-label my--2" for="fullname">Nombre completo*</label>
                             <input type="text" id="fullname" class="form-control form-control-alternative form-control-sm" name="fullname" value="<%=director.fullname%>">
                         </div>
                     </div>
-                    <div class="col-lg-6 my--2">
+                    <div class="col-lg-3 my--2">
                         <div class="form-group">
-                            <label class="form-control-label" for="name">Nombre*</label>
+                            <label class="form-control-label my--2" for="name">Nombre*</label>
                             <input type="text" id="name" class="form-control form-control-alternative form-control-sm" name="name" value="<%=director.name%>" required>
                         </div>
                     </div>
-                    <div class="col-lg-6 my--2">
+                    <div class="col-lg-3 my--2">
                         <div class="form-group">
-                            <label class="form-control-label" for="surname">Apellidos*</label>
+                            <label class="form-control-label my--2" for="surname">Apellidos*</label>
                             <input type="text" id="surname" class="form-control form-control-alternative form-control-sm" name="surname" value="<%=director.surname%>" required>
                         </div>
                     </div>
                     <div class="col-lg-3 my--2">
                         <div class="form-group">
-                            <label class="form-control-label" for="email">E-mail*</label>
+                            <label class="form-control-label my--2" for="email">E-mail*</label>
                             <input type="email" id="email" class="form-control form-control-alternative form-control-sm" name="email" value="<%=director.email%>" required>
                         </div>
                     </div>
                     <div class="col-lg-3 my--2">
                         <div class="form-group">
-                            <label class="form-control-label" for="phone">Teléfono*</label>
+                            <label class="form-control-label my--2" for="phone">Teléfono*</label>
                             <input type="tel" id="phone" class="form-control form-control-alternative form-control-sm" name="phone" value="<%=director.phone%>" required>
                         </div>
                     </div>
                     <div class="col-lg-3 my--2">
                       <div class="form-group">
-                        <label class="form-control-label" for="birthdate">Fecha Nacimiento</label>
-                        <input type="date" id="birthdate" class="form-control form-control-alternative form-control-sm datepicker" name="birthdate" value="<%=director.birthdate%>">
+                        <label class="form-control-label my--2" for="birthdate">Fecha Nacimiento*</label>
+                        <input type="date" id="birthdate" class="form-control form-control-alternative form-control-sm datepicker" name="birthdate" value="<%=director.birthdate%>" required>
                       </div>
                     </div>
                     <div class="col-lg-3 my--2">
                       <div class="form-group">
-                        <label class="form-control-label" for="age">Edad</label>
+                        <label class="form-control-label my--2" for="age">Edad</label>
                         <input type="int" id="age" class="form-control form-control-alternative form-control-sm" name="age" value="<%=director.age%>">
                       </div>
                     </div>
-                    <div class="col-lg-4 my--2">
+                    <div class="col-lg-3 my--2">
                         <div class="form-group">
-                            <label class="form-control-label" for="DNI">DNI</label>
-                            <input type="text" id="DNI" class="form-control form-control-alternative form-control-sm" name="DNI" value="<%=director.DNI%>">
+                            <label class="form-control-label my--2" for="DNI">DNI*</label>
+                            <input type="text" id="DNI" class="form-control form-control-alternative form-control-sm" name="DNI" value="<%=director.DNI%>" required>
                         </div>
                     </div>
-                    <div class="col-lg-4 my--2">
+                    <div class="col-lg-3 my--2">
+                      <div class="form-group">
+                          <label class="form-control-label my--2" for="nationality">Nacionalidad*</label>
+                          <input type="text" id="nationality" class="form-control form-control-alternative form-control-sm" name="nationality" value="<%=director.nationality%>" required>
+                      </div>
+                    </div>
+                    <div class="col-lg-3 my--2">
                         <div class="form-group">
-                            <label class="form-control-label" for="birth_city">Lugar de nacimiento</label>
+                            <label class="form-control-label my--2" for="birth_city">Lugar de nacimiento</label>
                             <input type="text" id="birth_city" class="form-control form-control-alternative form-control-sm" name="birth_city"  value="<%=director.birth_city%>">
                         </div>
                     </div>
-                    <div class="col-lg-4 my--2">
+                    <div class="col-lg-3 my--2">
                         <div class="form-group">
-                            <label class="form-control-label" for="home_city">Lugar de residencia</label>
+                            <label class="form-control-label my--2" for="home_city">Lugar de residencia</label>
                             <input type="text" id="home_city" class="form-control form-control-alternative form-control-sm" name="home_city" value="<%=director.home_city%>">
                         </div>
                     </div>
                     <div class="col-lg-12 my--2">
                         <div class="form-group">
-                            <label class="form-control-label" for="esp_bio">Bio español</label>
+                            <label class="form-control-label my--2" for="esp_bio">Bio español</label>
                             <textarea name="esp_bio" id="esp_bio" class="form-control form-control-alternative form-control-sm" rows="3"  value="<%=director.esp_bio%>"></textarea>
                         </div>
-                    </div><div class="col-lg-12 my--2">
+                    </div>
+                    <div class="col-lg-12 my--2">
                         <div class="form-group">
-                            <label class="form-control-label" for="eng_bio">Bio inglés</label>
+                            <label class="form-control-label my--2" for="eng_bio">Bio inglés</label>
                             <textarea name="eng_bio" id="eng_bio" class="form-control form-control-alternative form-control-sm" rows="3"  value="<%=director.eng_bio%>"></textarea>
                         </div>
+                    </div>
+                    <div class="col-lg-4 my--2">
+                      <div class="form-group">
+                          <label class="form-control-label my--2" for="address">Dirección</label>
+                          <input type="text" id="address" class="form-control form-control-alternative form-control-sm" name="address" value="<%=director.address%>">
+                    </div>
+                      </div>
+                    <div class="col-lg-4 my--2">
+                        <div class="form-group">
+                            <label class="form-control-label my--2" for="street">Calle</label>
+                            <input type="text" id="street" class="form-control form-control-alternative form-control-sm" name="street" value="<%=director.street%>">
+                        </div>
+                    </div>
+                    <div class="col-lg-4 my--2">
+                        <div class="form-group">
+                            <label class="form-control-label my--2" for="city">Ciudad</label>
+                            <input type="text" id="city" class="form-control form-control-alternative form-control-sm" name="city" value="<%=director.city%>">
+                        </div>
+                    </div>
+                    <div class="col-lg-4 my--2">
+                      <div class="form-group">
+                          <label class="form-control-label my--2" for="postalcode">Código postal</label>
+                          <input type="text" id="postalcode" class="form-control form-control-alternative form-control-sm" name="postalcode" value="<%=director.postalcode%>">
+                      </div>
+                    </div>
+                    <div class="col-lg-4 my--2">
+                      <div class="form-group">
+                          <label class="form-control-label my--2" for="country">País</label>
+                          <input type="text" id="country" class="form-control form-control-alternative form-control-sm" name="country" value="<%=director.country%>">
+                      </div>
+                    </div>
+                    <div class="col-lg-4 my--2">
+                      <div class="form-group">
+                          <label class="form-control-label my--2" for="web">Web</label>
+                          <input type="text" id="web" class="form-control form-control-alternative form-control-sm" name="web" value="<%=director.web%>">
+                      </div>
+                    </div>
+                    <div class="col-lg-12 my--2">
+                      <div class="form-group">
+                          <label class="form-control-label my--2" for="notes">Notas</label>
+                          <textarea name="notes" id="notes" class="form-control form-control-alternative form-control-sm" rows="2"  value="<%=director.notes%>"></textarea>
+                      </div>
                     </div>
                     <div class="col-lg-12">
                         <%=director.modif%>
                     </div>
                     <div class="col-lg-12 text-center">
-                      <button class="btn btn-success mt-3 mb-2">Guardar</button>
+                      <button class="btn btn-success mt-2 mb-2">Guardar</button>
                     </div>
                   </div>
                 </div>
@@ -146,6 +195,7 @@
 
   <!-- Include scripts -->
   <%- include ('partials/scripts'); -%>
+  <%- include ('partials/getAge'); -%>
 </body>
 
 </html>

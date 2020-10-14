@@ -1,0 +1,11 @@
+
+<script>
+    $(document).ready(getAge);
+    $("#birthdate").change(getAge); 
+
+    function getAge() {
+        let Bdate = document.getElementById('birthdate').value;
+        let Bday = +new Date(Bdate);
+        document.getElementById("age").value = ~~((Date.now() - Bday) / (31557600000));
+    }
+</script>

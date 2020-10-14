@@ -31,7 +31,7 @@ class DAODirectors {
                 callback(null);
             }
             else{
-                connection.query("INSERT INTO DIRECTORS (fullname, name, surname, email, phone, birth_city, home_city, DNI, birthdate, age, esp_bio, eng_bio, modif) VALUES ?",
+                connection.query("INSERT INTO DIRECTORS (fullname, name, surname, email, phone, nationality, birth_city, home_city, DNI, birthdate, age, esp_bio, eng_bio, address, street, city, postalcode, country, web, notes, modif) VALUES ?",
                 [director],
                 (err) => {
                     if (err) { callback(err);}
@@ -55,8 +55,8 @@ class DAODirectors {
                 callback("Error de conexion a la BBDD", undefined); return;
             }
             
-            connection.query("UPDATE DIRECTORS SET fullname = ?,name = ?,surname = ?,email = ?,phone = ?,birth_city = ?, home_city = ?, DNI = ?, birthdate = ?, age = ?, esp_bio = ?, eng_bio = ?, modif = ? WHERE id = ?",
-            [director.fullname, director.name, director.surname, director.email, director.phone, director.birth_city, director.home_city, director.DNI, director.birthdate, director.age, director.esp_bio, director.eng_bio, director.modif, id],
+            connection.query("UPDATE DIRECTORS SET fullname = ?,name = ?,surname = ?,email = ?,phone = ?, nationality = ?, birth_city = ?, home_city = ?, DNI = ?, birthdate = ?, age = ?, esp_bio = ?, eng_bio = ?, address = ?, street = ?, city = ?, postalcode = ?, country = ?, web = ?, notes = ?, modif = ? WHERE id = ?",
+            [director.fullname, director.name, director.surname, director.email, director.phone, director.nationality, director.birth_city, director.home_city, director.DNI, director.birthdate, director.age, director.esp_bio, director.eng_bio, director.address, director.street, director.city, director.postalcode, director.country, director.web, director.notes, director.modif, id],
             (err) => {
                 connection.release();
                 if (err) {callback(err, undefined); return;}
