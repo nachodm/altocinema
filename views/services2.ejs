@@ -21,7 +21,7 @@
   <link rel="manifest" href="img/site.webmanifest">
   
   <link href="css/frontpage.css" rel="stylesheet">
-  <link href="css/pills.css" rel="stylesheet">
+  <link href="css/carousel.css" rel="stylesheet">
    
 </head>
 <body>
@@ -57,48 +57,95 @@
             
         </div>
     </nav>
-    <div class="my-auto content container">
-      <div class="row">
-        <div class="col-md-3">
-            <!-- Tabs nav -->
-            <div class="nav flex-column nav-pills nav-pills-custom text-left" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                <a class="nav-link mb-3 p-3 shadow active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">
-                    <i class="fas fa-film mr-2"></i>
-                    <span class="font-weight-bold small text-uppercase">Distribución</span>
-                </a>
-                <a class="nav-link mb-3 p-3 shadow" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">    
-                    <i class="fas fa-handshake mr-2"></i>
-                    <span class="font-weight-bold small text-uppercase">Asesoría</span>
-                </a>
-                <a class="nav-link mb-3 p-3 shadow" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">
-                    <i class="fa fa-star mr-2"></i>
-                    <span class="font-weight-bold small text-uppercase">Gestión de trámites ICAA</span>
-                </a>
-            </div>
-        </div>
 
-        <div class="col-md-9">
-            <!-- Tabs content -->
-            <div class="tab-content" id="v-pills-tabContent">
-                <div class="tab-pane fade shadow rounded bg-white show active p-4" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
-                    <h4 class="font-italic mb-4">Distribución</h4>
-                    <p class="font-italic text-muted mb-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est.</p>
-                </div>
-                
-                <div class="tab-pane fade shadow rounded bg-white p-4" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
-                    <h4 class="font-italic mb-4">Asesoría</h4>
-                    <p class="font-italic text-muted mb-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est .</p>
-                </div>
-                
-                <div class="tab-pane fade shadow rounded bg-white p-4" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
-                    <h4 class="font-italic mb-4">Gestión de trámites ICAA</h4>
-                    <p class="font-italic text-muted mb-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est.</p>
-                </div>
-            </div>
+  <!--Carousel Wrapper-->
+  <div id="carousel" class="carousel slide carousel-fade" data-ride="carousel" data-interval="false">
+
+    <!--Indicators-->
+    <ol class="carousel-indicators">
+      <li data-target="#carousel" data-slide-to="0" class="active"></li>
+      <li data-target="#carousel" data-slide-to="1"></li>
+      <li data-target="#carousel" data-slide-to="2"></li>
+    </ol>
+    <!--/.Indicators-->
+
+    <!--Slides-->
+    <div class="carousel-inner" role="listbox">
+
+      <!--First slide-->
+      <div class="carousel-item active">
+        <!--Mask-->
+        <div class="view">
+          <div class="full-bg-img flex-center mask rgba-indigo-light white-text">
+            <ul class="animated fadeInUp col-md-12 list-unstyled list-inline">
+              <li>
+                <h1 class="font-weight-bold text-uppercase">Distribución</h1>
+              </li>
+              <li class="autocenter">
+                <p class="px-5 mx-5 font-weight-thin py-4">Realizamos un servicio de distribución en festivales cinematográficos a nivel internacional de manera personalizada, cuidando al máximo los detalles de cada obra audiovisual.</p>
+              </li>
+            </ul>
+          </div>
         </div>
+        <!--/.Mask-->
       </div>
+      <!--/.First slide-->
+
+      <!--Second slide -->
+      <div class="carousel-item">
+        <!--Mask-->
+        <div class="view">
+          <div class="full-bg-img flex-center mask rgba-purple-light white-text">
+            <ul class="animated fadeInUp col-md-12 list-unstyled">
+              <li>
+                <h1 class="font-weight-bold text-uppercase">Asesoría</h1>
+              </li>
+              <li class="autocenter">
+                <p class="px-5 mx-5 font-weight-thin py-4">¿Tienes una obra audiovisual y te gustaría distribuirla tú mismo? Desde ALTOCINEMA te asesoramos ofreciéndote las claves necesarias para optimizar los resultados.
+                </p>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <!--/.Mask-->
+      </div>
+      <!--/.Second slide -->
+
+      <!--Third slide-->
+      <div class="carousel-item">
+        <!--Mask-->
+        <div class="view">
+          <div class="full-bg-img flex-center mask rgba-blue-light white-text">
+            <ul class="animated fadeInUp col-md-12 list-unstyled">
+              <li>
+                <h1 class="font-weight-bold text-uppercase">Gestión de trámites ICAA</h1>
+              </li>
+              <li class="autocenter">
+                <p class="px-5 mx-5 font-weight-thin py-4">Preparamos la documentación necesaria para obtener la nacionalidad y calificación por edades de tu obra audiovisual en el ICAA.</p>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <!--/.Mask-->
+      </div>
+      <!--/.Third slide-->
+
     </div>
-    
+    <!--/.Slides-->
+
+    <!--Controls-->
+    <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carousel" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+    <!--/.Controls-->
+  </div>
+  <!--/.Carousel Wrapper-->
+
   <!-- JQuery -->
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <!-- Bootstrap tooltips -->

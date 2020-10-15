@@ -19,6 +19,7 @@
   <link href="vendor/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
   <!-- Argon CSS -->
   <link type="text/css" href="css/argon.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/span.css">
   <!-- Bootstrap-select -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
   <style>
@@ -94,6 +95,7 @@
                       <div class="form-group">
                         <label class="form-control-label" for="color">Color*</label>
                         <select  class="form-control form-control-alternative form-control-sm" id="color" name="color" required>
+                          <option disabled selected value> -- Seleccionar -- </option>
                           <option value="Color">Color</option>
                           <option value="ByN">Blanco y Negro</option>
                         </select> 
@@ -115,6 +117,7 @@
                       <div class="form-group">
                         <label class="form-control-label" for="genre">Género*</label>
                         <select class="form-control form-control-alternative form-control-sm" id="genre" name="genre" required>
+                          <option disabled selected value> -- Seleccionar -- </option>
                           <option value="anim">Animación</option>
                           <option value="docu">Documental</option>
                           <option value="expe">Experimental</option>
@@ -134,22 +137,53 @@
                       <div class="form-group">
                         <label class="form-control-label" for="categories">Categorías*</label>
                         <select multiple class="selectpicker form-control form-control-alternative form-control-sm" id="categories" name="categories" data-actions-box="true" data-style="btn-light" required>
-                          <option value="anim">Animación</option>
-                          <option value="disc">Discapacidad</option>
-                          <option value="docu">Documental</option>
-                          <option value="escu">Escuelas</option>
-                          <option value="etno">Etnográfico</option>
-                          <option value="exper">Experimental</option>
-                          <option value="fantas">Fantástico</option>
-                          <option value="fash">Fashion</option>
-                          <option value="ficc">Ficción </option>
-                          <option value="gen">General</option>
-                          <option value="infan">Infantil</option>
-                          <option value="juve">Juvenil</option>
-                          <option value="scifi">Sci-Fi</option>
-                          <option value="terr">Terror</option>
-                          <option value="video">Videoclips</option>
+                          <option value="Envio0">Envio0</option>
+                          <option value="Envio1">Envio1</option>
+                          <option value="Envio2">Envio2</option>
+                          <option value="Envio4">Envio4</option>
+                          <option value="EnvioFee1">EnvioFee1</option>
+                          <option value="EnvioFee2">EnvioFee2</option>
+                          <option value="EnvioNo">EnvioNo</option>
+                          <option value="Animacion">Animación</option>
+                          <option value="Discapacidad">Discapacidad</option>
+                          <option value="Documental">Documental</option>
+                          <option value="Escuelas">Escuelas</option>
+                          <option value="Etnografico">Etnográfico</option>
+                          <option value="Experimental">Experimental</option>
+                          <option value="Fantastico">Fantástico</option>
+                          <option value="Fashion">Fashion</option>
+                          <option value="Ficcion">Ficción </option>
+                          <option value="General">General</option>
+                          <option value="Infantil">Infantil</option>
+                          <option value="Juvenil">Juvenil</option>
+                          <option value="Sci-Fi">Sci-Fi</option>
+                          <option value="Terror">Terror</option>
+                          <option value="Videoclips">Videoclips</option>
                           <option value="VR">VR</option>
+                          <option value="desde20">desde20</option>
+                          <option value="desde30">desde30</option>
+                          <option value="desde40">desde40</option>
+                          <option value="desde45">desde45</option>
+                          <option value="desde50">desde50</option>
+                          <option value="desde60">desde60</option>
+                          <option value="desde70">desde70</option>
+                          <option value="hasta01">hasta01 </option>
+                          <option value="hasta02">hasta02</option>
+                          <option value="hasta03">hasta03</option>
+                          <option value="hasta05">hasta05</option>
+                          <option value="hasta10">hasta10</option>
+                          <option value="hasta15">hasta15</option>
+                          <option value="hasta20">hasta20</option>
+                          <option value="hasta25">hasta25</option>
+                          <option value="hasta30">hasta30</option>
+                          <option value="hasta35">hasta35</option>
+                          <option value="hasta40">hasta40</option>
+                          <option value="hasta45">hasta45</option>
+                          <option value="hasta50">hasta50</option>
+                          <option value="hasta60">hasta60</option>
+                          <option value="hasta70">hasta70 </option>
+                          <option value="hasta75">hasta75</option>
+                          <option value="hasta90">hasta90</option>
                           <option value="comed">Comedia</option>
                           <option value="danz">Danza</option>
                           <option value="DDHH">DDHH</option>
@@ -158,46 +192,46 @@
                           <option value="edad30">Edad30</option>
                           <option value="edad35">Edad35</option>
                           <option value="edad40">Edad40 </option>
-                          <option value="inter">Internet</option>
-                          <option value="lgbt">LGBT</option>
-                          <option value="medioamb">MedioAmbiente</option>
-                          <option value="movil">Movil</option>
-                          <option value="mujer">Mujer</option>
-                          <option value="poes">Poesia</option>
-                          <option value="primpeli">PrimeraPeli</option>
-                          <option value="subfr">SubFrances</option>
-                          <option value="subita">SubItaliano</option>
-                          <option value="femen">TemaFemenino</option>
-                          <option value="trabaj">Trabajo</option>
-                          <option value="efa">EFA</option>
-                          <option value="fiapf">FIAPF</option>
-                          <option value="goya">Goya </option>
-                          <option value="melie">Melies</option>
+                          <option value="Internet">Internet</option>
+                          <option value="LGBT">LGBT</option>
+                          <option value="MedioAmbiente">MedioAmbiente</option>
+                          <option value="Movil">Movil</option>
+                          <option value="Mujer">Mujer</option>
+                          <option value="Poesia">Poesia</option>
+                          <option value="PrimeraPeli">PrimeraPeli</option>
+                          <option value="SubFrances">SubFrances</option>
+                          <option value="SubItaliano">SubItaliano</option>
+                          <option value="TemaFemenino">TemaFemenino</option>
+                          <option value="Trabajo">Trabajo</option>
+                          <option value="EFA">EFA</option>
+                          <option value="FIAPF">FIAPF</option>
+                          <option value="Goya">Goya </option>
+                          <option value="Melies">Melies</option>
                           <option value="MM">MM</option>
-                          <option value="oscar">Oscars</option>
-                          <option value="ip">IP</option>
-                          <option value="np">NP</option>
-                          <option value="rp">RP</option>
-                          <option value="wp">WP</option>
-                          <option value="alic">Alicantino</option>
-                          <option value="anda">Andaluz</option>
-                          <option value="arag">Aragonés</option>
-                          <option value="astu">Asturiano</option>
-                          <option value="cana">Canario</option>
-                          <option value="cata">Catalán</option>
-                          <option value="extr">Extremadura</option>
-                          <option value="franc">Francés</option>
-                          <option value="galle">Gallego </option>
-                          <option value="ita">Italiano</option>
-                          <option value="latin">Latino</option>
-                          <option value="leon">Leonés</option>
-                          <option value="mala">Malagueño</option>
-                          <option value="murc">Murciano</option>
-                          <option value="nava">Navarro</option>
-                          <option value="portu">Portugués</option>
-                          <option value="rioj">Riojano</option>
-                          <option value="valen">Valenciano</option>
-                          <option value="vasc">Vasco</option>
+                          <option value="Oscars">Oscars</option>
+                          <option value="IP">IP</option>
+                          <option value="NP">NP</option>
+                          <option value="RP">RP</option>
+                          <option value="WP">WP</option>
+                          <option value="Alicantino">Alicantino</option>
+                          <option value="Andaluz">Andaluz</option>
+                          <option value="Aragones">Aragonés</option>
+                          <option value="Asturiano">Asturiano</option>
+                          <option value="Canario">Canario</option>
+                          <option value="Catalan">Catalán</option>
+                          <option value="Extremadura">Extremadura</option>
+                          <option value="Frances">Francés</option>
+                          <option value="Gallego">Gallego </option>
+                          <option value="Italiano">Italiano</option>
+                          <option value="Latino">Latino</option>
+                          <option value="Leones">Leonés</option>
+                          <option value="Malagueño">Malagueño</option>
+                          <option value="Murciano">Murciano</option>
+                          <option value="Navarro">Navarro</option>
+                          <option value="Portugues">Portugués</option>
+                          <option value="Riojano">Riojano</option>
+                          <option value="Valenciano">Valenciano</option>
+                          <option value="Vasco">Vasco</option>
                         </select> 
                       </div>
                     </div>
@@ -470,6 +504,7 @@
                       <div class="form-group">
                         <label class="form-control-label" for="catalogue">Catálogo*</label>
                         <select  class="form-control form-control-alternative form-control-sm" id="catalogue" name="catalogue" required>
+                          <option disabled selected value> -- Seleccionar -- </option>
                           <option value="AltoCinema">AltoCinema</option>
                           <option value="NouvelleCinema">NouvelleCinema</option>
                           <option value="ComingOutCinema">ComingOutCinema</option>
@@ -478,14 +513,14 @@
                     </div>
                     <div class="col-lg-12 my--2">
                       <div class="form-group">
-                        <label class="form-control-label" for="sinopsis">Sinopsis en idioma original</label>
-                        <textarea name="sinopsis" id="sinopsis" class="form-control form-control-alternative form-control-sm" rows="3"></textarea>
+                        <label class="form-control-label" for="sinopsis">Sinopsis en idioma original*</label>
+                        <textarea name="sinopsis" id="sinopsis" class="form-control form-control-alternative form-control-sm" rows="3" required></textarea>
                       </div>
                     </div>
                     <div class="col-lg-12 my--2">
                       <div class="form-group">
-                        <label class="form-control-label" for="eng_sinopsis">Sinopsis en inglés</label>
-                        <textarea name="eng_sinopsis" id="eng_sinopsis" class="form-control form-control-alternative form-control-sm" rows="3"></textarea>
+                        <label class="form-control-label" for="eng_sinopsis">Sinopsis en inglés*</label>
+                        <textarea name="eng_sinopsis" id="eng_sinopsis" class="form-control form-control-alternative form-control-sm" rows="3" required></textarea>
                       </div>
                     </div>
                     <div class="col-lg-12 my--2">
@@ -558,6 +593,7 @@
                       <div class="form-group">
                         <label class="form-control-label text-warning" for="addcatalogue">Añadir al catálogo</label>
                         <select  class="form-control form-control-alternative form-control-sm" id="addcatalogue" name="addcatalogue" required>
+                          <option disabled selected value> -- Seleccionar -- </option>
                           <option value="0">No</option>
                           <option value="1">Sí</option>
                         </select> 
@@ -569,9 +605,7 @@
                         <input type="url" id="picture" class="form-control form-control-alternative form-control-sm" name="picture">
                       </div>
                     </div>
-                    <div class="col-lg-12">
-                      <p class="p-3 mb-2 bg-light font-weight-bold text-center text-uppercase">Ficha Técnica</p>  
-                    </div>
+                    <h2><span>FICHA TÉCNICA</span></h2>
                     <div class="col-lg-4">
                       <div class="form-group">
                           <label class="form-control-label" for="director">Director*</label>
@@ -604,8 +638,8 @@
                     </div>
                     <div class="col-lg-4 my--2">
                       <div class="form-group">
-                          <label class="form-control-label" for="montage">Montaje*</label>
-                          <input type="text" id="montage" class="form-control form-control-alternative form-control-sm" name="montage" required>
+                          <label class="form-control-label" for="montage">Montaje</label>
+                          <input type="text" id="montage" class="form-control form-control-alternative form-control-sm" name="montage">
                       </div>
                     </div>
                     <div class="col-lg-4 my--2">
@@ -632,25 +666,29 @@
                           <input type="text" id="interpreter" class="form-control form-control-alternative form-control-sm" name="interpreter">
                       </div>
                     </div>
-                    <div class="col-lg-12">
-                        <p class="p-3 mb-2 bg-light font-weight-bold text-center text-uppercase">Empresa</p>  
-                    </div>
-                    <div class="col-lg-6">
+                    <h2><span>EMPRESA</span></h2>
+                    <div class="col-lg-4 my--2">
                         <div class="form-group">
                             <label class="form-control-label" for="copiesheader">Encabezado</label>
                             <input type="text" id="copiesheader" class="form-control form-control-alternative form-control-sm" name="copiesheader">
                         </div>
                     </div>
-                    <div class="col-lg-4">
+                    <div class="col-lg-4 my--2">
                       <div class="form-group">
                           <label class="form-control-label" for="copiesstreet">Calle</label>
                           <input type="text" id="copiesstreet" class="form-control form-control-alternative form-control-sm" name="copiesstreet">
                       </div>
                     </div>
-                    <div class="col-lg-2">
+                    <div class="col-lg-2 my--2">
                       <div class="form-group">
                           <label class="form-control-label" for="copiescp">Código postal</label>
                           <input type="text" id="copiescp" class="form-control form-control-alternative form-control-sm" name="copiescp">
+                      </div>
+                    </div>
+                    <div class="col-lg-2 my--2">
+                      <div class="form-group">
+                          <label class="form-control-label" for="NIF">NIF/CIF</label>
+                          <input type="text" id="NIF" class="form-control form-control-alternative form-control-sm" name="NIF">
                       </div>
                     </div>
                     <div class="col-lg-3 my--2">
