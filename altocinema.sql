@@ -22,7 +22,7 @@ CREATE TABLE FILMS (
     catalogue VARCHAR(255) NOT NULL,
     sinopsis VARCHAR(510) NOT NULL,
     eng_sinopsis VARCHAR(510) NOT NULL,
-    esp_sinopsis VARCHAR(510) DEFAULT NULL
+    esp_sinopsis VARCHAR(510) DEFAULT NULL,
     materialslink VARCHAR(2083) DEFAULT NULL,
     link VARCHAR(2083) DEFAULT NULL,
     originalvimeo VARCHAR(2083) DEFAULT NULL,
@@ -51,7 +51,7 @@ CREATE TABLE FILMS (
     copiesprovince VARCHAR(255) DEFAULT NULL,
     copiescountry VARCHAR(255) DEFAULT NULL,
     addcatalogue BOOLEAN DEFAULT FALSE,
-    picture VARCHAR(255) DEFAULT NULL
+    picture VARCHAR(255) DEFAULT NULL,
     PRIMARY KEY (id)
     -- specify more columns here
 );
