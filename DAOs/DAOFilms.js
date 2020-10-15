@@ -163,25 +163,6 @@ class DAOFilms {
     }
 
     /**
-     * Devuelve el nombre de todos los productores junto con sus datos personales
-     * @param {function} callback Función que devolverá el objeto error o el resultado.
-     */
-    getProducerList(callback) {
-        this.pool.getConnection((err, connection) => {
-            if (err) {
-                callback(err, null);
-            }
-            connection.query("SELECT DISTINCT producer, copiestel, copiescountry FROM FILMS",
-            (err, films) => {
-                connection.release();
-                if (err) {callback(err, null);}
-                else {
-                    callback(null, films);
-                }
-            })
-        });
-    }
-    /**
      * Obtiene aquellas películas del catálogo AltoCinema marcadas para incluir en la web pública.
      * @param {function} callback Función que devolverá el objeto error o el listado de películas.
      */

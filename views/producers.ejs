@@ -42,6 +42,9 @@
                   <h6 class="text-uppercase text-muted ls-1 mb-1">Productores</h6>
                   <h2 class="mb-0">Listado de productores</h2>
                 </div>
+                <div class="col text-right">
+                  <a href="/addProducer" class="btn btn-info">Añadir productor</a>
+                </div>
               </div>
             </div>
             <div class="card-body">
@@ -65,15 +68,16 @@
                         <% producers.forEach(producer => { %>
                           <tr>
                             <th scope="row">
-                              <%= producer.producer %> </a>
+                              <a href="/producer:=<%= producer.id %>" value="visit"> <%= producer.fullname %> </a>
                             </th>
-                            <td><%= producer.copiestel %></td>
-                            <td><%= producer.copiescountry %></td>
+                            <td><%= producer.age %></td>
+                            <td><%= producer.email %></td>
+                            <td><%= producer.phone %></td>
                           </tr>
                         <% }) %>
                       <% } else {%>
                       <tr>
-                        <th colspan=4 scope="row" class="text-center text-danger">No hay productores en la base de datos</th>
+                        <th colspan=4 scope="row" class="text-center text-danger">No hay productores en la  base de datos</th>
                       </tr>
                       <% } %>
                   </table>

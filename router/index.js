@@ -1,6 +1,5 @@
 const { request } = require("express");
 const flash = require("express-flash");
-const DAODirectors = require("../DAOs/DAODirectors");
 
 module.exports = function(app, passport) {
 
@@ -13,11 +12,13 @@ const DAOUsers = require('../DAOs/DAOUsers');
 const DAOFilms = require('../DAOs/DAOFilms');
 const DAOFestivals = require('../DAOs/DAOFestivals');
 const DAODirectors = require('../DAOs/DAODirectors');
+const DAOProducers = require('../DAOs/DAOProducers')
 const pool = mysql.createPool(config.mysqlconfig);
 const users = new DAOUsers.DAOUsers(pool);
 const films = new DAOFilms.DAOFilms(pool);
 const festivals = new DAOFestivals.DAOFestivals(pool);
 const directors = new DAODirectors.DAODirectors(pool);
+const producers = new DAOProducers.DAOProducers(pool);
 
 let job = schedule.scheduleJob("Preinscription", {minute:30, hour:0, date:1}, function(){
   films.getFilmList((err, films) => {
@@ -83,9 +84,11 @@ app.post('/sendEmail', (request, response) => {
 app.get('/', (request, response) => {
   response.render('altocinema');
 })
+
 app.get('/services', (request, response) => {
   response.render('services');
 })
+
 app.get('/catalogue', (request, response) => {
   films.getAltoCinema((err, films) => {
     if (err) {
@@ -96,6 +99,7 @@ app.get('/catalogue', (request, response) => {
     }
   })
 })
+
 app.get('/comingOutCinema', (request, response) => {
   films.getComingOutCinema((err, films) => {
     if (err) {
@@ -106,6 +110,7 @@ app.get('/comingOutCinema', (request, response) => {
     }
   })
 })
+
 app.get('/nouvelleCinema', (request, response) => {
   films.getNouvelleCinema((err, films) => {
     if (err) {
@@ -116,6 +121,7 @@ app.get('/nouvelleCinema', (request, response) => {
     }
   })
 })
+
 app.get('/contact', (request, response) => {
   response.render('contact', {success: request.flash('success'), error: request.flash('error') });
 })
@@ -177,7 +183,7 @@ app.get("/film:=:id", checkAuthenticated, (request, response) => {
 });
 
 app.get('/producers', checkAuthenticated, (request, response) => {
-  films.getProducerList((err, producers) => {
+  producers.getProducers((err, producers) => {
     if (err) {
         request.flash('error', err.message);
         response.redirect("/dashboard");
@@ -187,6 +193,18 @@ app.get('/producers', checkAuthenticated, (request, response) => {
     }
   });
 })
+
+app.get("/producer:=:id", checkAuthenticated, (request, response) => {   
+  producers.getProducer(request.params.id, (err, producer) => {
+    if (err) {
+      request.flash('error', err.message);
+      response.redirect("/dashboard");
+    }
+    else {
+      response.render('producer', {user: request.user, title: producer.fullname, producer: producer, error: request.flash('error')});
+    }
+  });
+});
   
 app.get('/platforms', checkAuthenticated, (request, response) => {
   response.render('platforms', {user: request.user, title: "Plataformas"});
@@ -242,6 +260,10 @@ app.get('/addFestival', checkAuthenticated, (request, response) => {
 
 app.get('/addDirector', checkAuthenticated, (request, response) => {
   response.render('addDirector', {user: request.user, title: "Añadir direcror", error: request.flash('error') })
+})
+
+app.get('/addProducer', checkAuthenticated, (request, response) => {
+  response.render('addProducer', {user: request.user, title: "Añadir Productor", error: request.flash('error') })
 })
 
 app.post('/login', passport.authenticate('local', {
@@ -543,6 +565,7 @@ app.post("/updateDirector", checkAuthenticated, (request, response) => {
     surname: request.body.surname,
     email: request.body.email,
     phone: request.body.phone,
+    nationality: request.body.nationality,
     birth_city: request.body.birth_city,
     home_city: request.body.home_city,
     DNI: request.body.DNI,
@@ -572,6 +595,64 @@ app.post("/updateDirector", checkAuthenticated, (request, response) => {
     });
   });
 
+  app.post("/addProducer", checkAuthenticated, (request, response) => {
+    let auxdate = new Date();
+    let modif = "Modificado el " + auxdate + " por " +  request.user.name;
+    const producer = [[
+        request.body.fullname,
+        request.body.name,
+        request.body.surname,
+        request.body.email,
+        request.body.phone,
+        request.body.nationality,
+        request.body.home_city,
+        request.body.birthdate,
+        request.body.age,
+        request.body.notes,
+        modif
+    ]];
+    
+    producers.newProducer(producer, (err) => {
+        if (err) {
+            request.flash('error', err.message);
+            response.redirect("addProducer");
+        }
+        else {
+            request.flash('success', "Guardado.");
+            response.redirect("producers");
+        }
+    });
+  });
+    
+  app.post("/updateProducer", checkAuthenticated, (request, response) => {
+    let auxdate = new Date();
+    let modif = 'Modificado el ' + auxdate + ' por ' +  request.user.name;
+    const producer = {
+      fullname: request.body.fullname,
+      name: request.body.name,
+      surname: request.body.surname,
+      email: request.body.email,
+      phone: request.body.phone,
+      nationality: request.body.nationality,
+      home_city: request.body.home_city,
+      birthdate: request.body.birthdate,
+      age: request.body.age,
+      notes: request.body.notes,
+      modif: modif
+  };
+    
+      producers.updateProducer(producer, request.body.id, (err) => {
+          if (err) {
+              request.flash('error', err.message);
+              response.redirect("producers");
+          }
+          else {
+              request.flash('success', "Productor modificado correctamente en la base de datos.");
+              response.redirect("producers");
+          }
+      });
+    });
+  
 app. post("/register_user", (request, response) => {
     bcrypt.hash(request.body.password, 10, (err, hashed) => {
       if (err) {

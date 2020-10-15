@@ -55,15 +55,6 @@ CREATE TABLE FILMS (
     PRIMARY KEY (id)
     -- specify more columns here
 );
-
-CREATE TABLE DIRECTORS (
-    id INT NOT NULL AUTO_INCREMENT, -- primary key column
-    name VARCHAR(255) NOT NULL,
-    email VARCHAR(255) DEFAULT NULL,
-    phone VARCHAR(255) DEFAULT NULL,
-    PRIMARY KEY (id)
-    -- specify more columns here
-);
  
  CREATE TABLE FESTIVALS (
     id INT NOT NULL AUTO_INCREMENT, -- primary key column
@@ -172,6 +163,22 @@ CREATE TABLE CONNECTFESTIVALCATEGORIES (
     city VARCHAR(255) DEFAULT NULL,
     country VARCHAR(255) DEFAULT NULL,
     web VARCHAR(255) DEFAULT NULL,
+    notes VARCHAR(255) DEFAULT NULL,
+    modif VARCHAR(255),
+    PRIMARY KEY(id)
+ )
+
+ CREATE TABLE PRODUCERS(
+    id INT NOT NULL AUTO_INCREMENT,
+    fullname VARCHAR(255) NOT NULL,
+    name VARCHAR(255) NOT NULL,
+    surname VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    phone VARCHAR (255) NOT NULL,
+    nationality VARCHAR(255) NOT NULL,
+    home_city VARCHAR(255) NOT NULL,
+    birthdate DATE NOT NULL,
+    age INT DEFAULT NULL,
     notes VARCHAR(255) DEFAULT NULL,
     modif VARCHAR(255),
     PRIMARY KEY(id)

@@ -5,7 +5,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="Añadir director">
+  <meta name="description" content="Añadir productor">
   <title><%=title%></title>
  <!-- Favicon -->
   <link href="img/favicon.ico" rel="icon" type="image/png">
@@ -44,8 +44,15 @@
       <div class="row justify-content-center">
         <div class="col-xl-12 m-1">
           <div class="card bg-secondary shadow">
+            <div class="card-header bg-white border-0">
+              <div class="row align-items-center">
+                <div class="col-8">
+                  <h3 class="mb-0"><%=title%></h3>
+                </div>
+              </div>
+            </div>
             <div class="card-body">
-              <form action="/addDirector" method="POST">
+              <form action="/addProducer" method="POST">
                 <div class="pl-lg-2">
                   <% if (error.length > 0) { %>
                     <div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -56,119 +63,60 @@
                     </div>
                   <% } %>
                   <div class="row">
-                    <div class="col-lg-6 my--2">
+                    <div class="col-lg-12 my--2">
                         <div class="form-group">
                             <label class="form-control-label my--2" for="fullname">Nombre completo*</label>
                             <input type="text" id="fullname" class="form-control form-control-alternative form-control-sm" name="fullname">
                         </div>
                     </div>
-                    <div class="col-lg-3 my--2">
+                    <div class="col-lg-6 my--2">
                         <div class="form-group">
                             <label class="form-control-label my--2" for="name">Nombre*</label>
                             <input type="text" id="name" class="form-control form-control-alternative form-control-sm" name="name" required>
                         </div>
                     </div>
-                    <div class="col-lg-3 my--2">
+                    <div class="col-lg-6 my--2">
                         <div class="form-group">
                             <label class="form-control-label my--2" for="surname">Apellidos*</label>
                             <input type="text" id="surname" class="form-control form-control-alternative form-control-sm" name="surname" required>
                         </div>
                     </div>
-                    <div class="col-lg-3 my--2">
+                    <div class="col-lg-4 my--2">
                         <div class="form-group">
                             <label class="form-control-label my--2" for="email">E-mail*</label>
                             <input type="email" id="email" class="form-control form-control-alternative form-control-sm" name="email" required>
                         </div>
                     </div>
-                    <div class="col-lg-3 my--2">
+                    <div class="col-lg-4 my--2">
                         <div class="form-group">
                             <label class="form-control-label my--2" for="phone">Teléfono*</label>
                             <input type="tel" id="phone" class="form-control form-control-alternative form-control-sm" name="phone" required>
                         </div>
                     </div>
-                    <div class="col-lg-3 my--2">
+                    <div class="col-lg-4 my--2">
                       <div class="form-group">
                         <label class="form-control-label my--2" for="birthdate">Fecha Nacimiento*</label>
                         <input type="date" id="birthdate" class="form-control form-control-alternative form-control-sm datepicker" name="birthdate" required>
                       </div>
                     </div>
-                    <div class="col-lg-3 my--2">
+                    <div class="col-lg-4 my--2">
                       <div class="form-group">
                         <label class="form-control-label my--2" for="age">Edad</label>
                         <input type="int" id="age" class="form-control form-control-alternative form-control-sm" name="age">
                       </div>
                     </div>
-                    <div class="col-lg-3 my--2">
-                        <div class="form-group">
-                            <label class="form-control-label my--2" for="DNI">DNI*</label>
-                            <input type="text" id="DNI" class="form-control form-control-alternative form-control-sm" name="DNI" placeholder="00000000X" required>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 my--2">
+                    <div class="col-lg-4 my--2">
                       <div class="form-group">
                           <label class="form-control-label my--2" for="nationality">Nacionalidad*</label>
                           <input type="text" id="nationality" class="form-control form-control-alternative form-control-sm" name="nationality" required>
                       </div>
                     </div>
-                    <div class="col-lg-3 my--2">
-                        <div class="form-group">
-                            <label class="form-control-label my--2" for="birth_city">Lugar de nacimiento</label>
-                            <input type="text" id="birth_city" class="form-control form-control-alternative form-control-sm" name="birth_city">
-                        </div>
-                    </div>
-                    <div class="col-lg-3 my--2">
-                        <div class="form-group">
-                            <label class="form-control-label my--2" for="home_city">Lugar de residencia</label>
-                            <input type="text" id="home_city" class="form-control form-control-alternative form-control-sm" name="home_city" placeholder="Madrid">
-                        </div>
-                    </div>
-                    <div class="col-lg-12 my--2">
-                        <div class="form-group">
-                            <label class="form-control-label my--2" for="esp_bio">Bio original</label>
-                            <textarea name="esp_bio" id="esp_bio" class="form-control form-control-alternative form-control-sm" rows="3"></textarea>
-                        </div>
-                    </div><div class="col-lg-12 my--2">
-                        <div class="form-group">
-                            <label class="form-control-label my--2" for="eng_bio">Bio inglés</label>
-                            <textarea name="eng_bio" id="eng_bio" class="form-control form-control-alternative form-control-sm" rows="3"></textarea>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 my--2">
-                      <div class="form-group">
-                          <label class="form-control-label my--2" for="address">Dirección</label>
-                          <input type="text" id="address" class="form-control form-control-alternative form-control-sm" name="address">
-                    </div>
-                      </div>
                     <div class="col-lg-4 my--2">
                         <div class="form-group">
-                            <label class="form-control-label my--2" for="street">Calle</label>
-                            <input type="text" id="street" class="form-control form-control-alternative form-control-sm" name="street">
+                            <label class="form-control-label my--2" for="home_city">Lugar de residencia*</label>
+                            <input type="text" id="home_city" class="form-control form-control-alternative form-control-sm" name="home_city" required>
                         </div>
-                    </div>
-                    <div class="col-lg-4 my--2">
-                        <div class="form-group">
-                            <label class="form-control-label my--2" for="city">Ciudad</label>
-                            <input type="text" id="city" class="form-control form-control-alternative form-control-sm" name="city">
-                        </div>
-                    </div>
-                    <div class="col-lg-4 my--2">
-                      <div class="form-group">
-                          <label class="form-control-label my--2" for="postalcode">Código postal</label>
-                          <input type="text" id="postalcode" class="form-control form-control-alternative form-control-sm" name="postalcode">
-                      </div>
-                    </div>
-                    <div class="col-lg-4 my--2">
-                      <div class="form-group">
-                          <label class="form-control-label my--2" for="country">País</label>
-                          <input type="text" id="country" class="form-control form-control-alternative form-control-sm" name="country">
-                      </div>
-                    </div>
-                    <div class="col-lg-4 my--2">
-                      <div class="form-group">
-                          <label class="form-control-label my--2" for="web">Web</label>
-                          <input type="text" id="web" class="form-control form-control-alternative form-control-sm" name="web">
-                      </div>
-                    </div>
+                    </div> 
                     <div class="col-lg-12 my--2">
                       <div class="form-group">
                           <label class="form-control-label my--2" for="notes">Notas</label>
