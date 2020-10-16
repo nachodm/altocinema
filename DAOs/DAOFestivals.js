@@ -155,7 +155,7 @@ class DAOFestivals {
     getFestivals(callback) {
         this.pool.getConnection((err, connection) => {
             if (err) {
-                return null;
+                callback(err, null);
             }
             connection.query("SELECT * FROM FESTIVALS",
             (err, festivals) => {
@@ -167,6 +167,29 @@ class DAOFestivals {
             })
         });
     }
+
+    /**
+     * Devuelve el identificador que se insertará en la tabla festivals.
+     * @param {function} callback 
+     */
+    getLastId(callback) {
+        this.pool.getConnection((err, connection) => {
+            if (err) {
+                callback(err, null);
+            }
+            connection.query("SELECT `auto_increment` FROM INFORMATION_SCHEMA.TABLES WHERE table_name = ?",
+            ["FESTIVALS"],
+            (err, value) => {
+                connection.release();
+                if (err) {callback(err, null);}
+                else {
+                    callback(null, value[0].auto_increment);
+                }
+            })
+        });
+    }
+
+
     /**
      * Realiza las preinscripciones a los festivales de todas las películas que recibe por parámetro.
      * @param {*} films 

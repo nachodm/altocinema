@@ -255,7 +255,15 @@ app.get('/addFilm', checkAuthenticated, (request, response) => {
 })
 
 app.get('/addFestival', checkAuthenticated, (request, response) => {
-  response.render('addFestival', {user: request.user, title: "Añadir festival", error: request.flash('error')});
+  festivals.getLastId((err, auto_increment) => {
+    if (err) {
+      request.flash('error', err.message);
+      response.redirect("/dashboard");
+    }
+    else {
+      response.render('addFestival', {user: request.user, title: "Añadir festival", fest_id: auto_increment, error: request.flash('error')});
+    }
+  });
 })
 
 app.get('/addDirector', checkAuthenticated, (request, response) => {

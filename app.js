@@ -5,7 +5,6 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const mysql = require('mysql');
-//const expressLayouts = require('express-ejs-layouts');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const bcrypt = require('bcrypt');

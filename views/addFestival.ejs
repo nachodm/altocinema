@@ -75,7 +75,7 @@
                     <div class="col-lg-1 my--2">
                         <div class="form-group">
                             <label class="form-control-label" for="festival_id">Fest ID</label>
-                            <input type="number" id="festival_id" class="form-control form-control-alternative form-control-sm" name="festival_id">
+                            <input type="number" id="festival_id" class="form-control form-control-alternative form-control-sm" name="festival_id" value="<%=fest_id%>">
                         </div>
                     </div>
                     <div class="col-lg-9 my--2">
@@ -88,6 +88,7 @@
                         <div class="form-group">
                             <label class="form-control-label" for="ok">Ok*</label>
                             <select class="form-control form-control-alternative form-control-sm" id="ok" name="ok" required>
+                                <option disabled selected value> -- Seleccionar -- </option>
                                 <option class="text-white bg-success" value="y">Sí</option>
                                 <option class="text-white bg-danger" value="n">No</option>
                                 <option class="text-white bg-warning" value="pen">Pt</option>
@@ -128,6 +129,7 @@
                         <div class="form-group">
                             <label class="form-control-label" for="type">Tipo Deadline*</label>
                             <select  class="form-control form-control-alternative form-control-sm" id="type" name="type" required>
+                                <option disabled selected value> -- Seleccionar -- </option>
                                 <option value="0">Early</option>
                                 <option value="1">Regular</option>
                                 <option value="2">Late</option>
@@ -241,6 +243,7 @@
                         <div class="form-group">
                             <label class="form-control-label" for="entryfee">EntryFee*</label>
                             <select class="form-control form-control-alternative form-control-sm" id="entryfee" name="entryfee" required>
+                                <option disabled selected value> -- Seleccionar -- </option>
                                 <option value="y">Sí</option>
                                 <option value="n">No</option>
                             </select> 
@@ -250,6 +253,7 @@
                         <div class="form-group">
                             <label class="form-control-label" for="platform">Plataforma*</label>
                             <select class="form-control form-control-alternative" id="platform" name="platform" required>
+                                <option disabled selected value> -- Seleccionar -- </option>
                                 <option value="filmfreeway">FilmFreeway</option>
                                 <option value="festhome">Festhome</option>
                                 <option value="Click">Click</option>                              
@@ -282,7 +286,8 @@
                         <div class="form-group">
                             <label class="form-control-label" for="currency">Moneda*</label>
                             <select class="form-control form-control-alternative" id="currency" name="currency" required>
-                                <option value="USD" selected="selected">US Dollars ($)</option>
+                                <option disabled selected value> -- Seleccionar -- </option>
+                                <option value="USD">US Dollars ($)</option>
                                 <option value="EUR">Euro (€)</option>
                                 <option value="GBP">United Kingdom Pounds</option>
                                 <option value="DZD">Algeria Dinars</option>
@@ -346,6 +351,7 @@
                         <div class="form-group">
                             <label class="form-control-label" for="prize">Premio en metálico*</label>
                             <select class="form-control form-control-alternative" id="prize" name="prize" required>
+                                <option disabled selected value> -- Seleccionar -- </option>
                                 <option value="y">Sí</option>
                                 <option value="n">No</option>
                             </select> 
@@ -356,6 +362,7 @@
                         <div class="form-group">
                             <label class="form-control-label" for="waiver">Waiver</label>
                             <select class="form-control form-control-alternative form-control-sm" id="waiver" name="waiver">
+                                <option disabled selected value> -- Seleccionar -- </option>
                                 <option value="y1">Sí</option>
                                 <option value="n1">No</option>
                                 <option value="n2">Nunca</option>
@@ -367,7 +374,6 @@
                         <div class="form-group">
                             <label class="form-control-label" for="disc">Descuento</label>
                             <input type="number" step="0.1" min="0.0" id="disc" class="form-control form-control-alternative form-control-sm" name="disc">
-                            </select> 
                         </div>
                     </div>
                     <div class="col-lg-4 my--2">
@@ -698,6 +704,7 @@
                         <div class="form-group">
                             <label class="form-control-label" for="confirmed">Confirmado*</label>
                             <select class="form-control form-control-alternative" id="confirmed" name="confirmed" required>
+                                <option disabled selected value> -- Seleccionar -- </option>
                                 <option class="text-white bg-success" value="y">Sí</option>
                                 <option class="text-white bg-danger" value="n">No</option>
                                 <option class="text-white bg-warning" value="pen">Pt</option>
