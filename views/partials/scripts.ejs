@@ -43,10 +43,15 @@
   function updateFinalFee(){
     
       let waiver = $("#waiver").val()
-      if (waiver == "y1" || waiver == "y2") {
+      if (waiver == "y1") {
+        $("#disc").val(100);
+        $("#disc").prop('disabled', true); 
+        $("#final").val(0);
+      }
+      else if (waiver == "y2") {
         $("#disc").prop('disabled', false); 
         let desc = $("#disc").val()/100;
-        let final = desc * $("#fee").val();
+        let final = ($("#fee").val() - desc * $("#fee").val()).toFixed(2);
         $("#final").val(final);
       }
       else {

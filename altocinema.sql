@@ -87,7 +87,7 @@ CREATE TABLE FILMS (
     contactcountry VARCHAR(256),
     language VARCHAR(256) NOT NULL,
     notes VARCHAR(2048),
-    confirmed VARCHAR(16) NOT NULL,
+    confirmed VARCHAR(16) DEFAULT NULL,
     sheet VARCHAR(255),
     shortname VARCHAR(255) NOT NULL,
     copies_header VARCHAR(255),

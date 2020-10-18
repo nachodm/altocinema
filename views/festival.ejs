@@ -352,7 +352,7 @@
                                 <option value="y1" <%= festival.waiver === 'y1' ? 'selected': '' %>>Sí</option>
                                 <option value="n1" <%= festival.waiver === 'n1' ? 'selected': '' %>>No</option>
                                 <option value="n2" <%= festival.waiver === 'n2' ? 'selected': '' %>>Nunca</option>
-                                <option value="y2" <%= festival.waiver === 'y2' ? 'selected': '' %>>Siempre</option>
+                                <option value="y2" <%= festival.waiver === 'y2' ? 'selected': '' %>>Descuento</option>
                             </select> 
                         </div>
                     </div>
@@ -690,8 +690,9 @@
                     <h2><span>GESTIÓN INSCRIPCIONES</span></h2>
                     <div class="col-lg-2 my--2">
                         <div class="form-group">
-                            <label class="form-control-label" for="confirmed">Confirmado*</label>
-                            <select class="form-control form-control-alternative form-control-sm" id="confirmed" name="confirmed" required>
+                            <label class="form-control-label" for="confirmed">Confirmado</label>
+                            <select class="form-control form-control-alternative form-control-sm" id="confirmed" name="confirmed">
+                                <option disabled selected value> -- Seleccionar -- </option>
                                 <option class="text-white bg-success" value="y" <%= festival.confirmed === 'y' ? 'selected': '' %>>Sí</option>
                                 <option class="text-white bg-danger" value="n" <%= festival.confirmed === 'n' ? 'selected': '' %>>No</option>
                                 <option class="text-white bg-warning" value="pen" <%= festival.confirmed === 'pen' ? 'selected': '' %>>Pt</option>
