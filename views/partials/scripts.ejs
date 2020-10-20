@@ -69,7 +69,7 @@
 
 <script>
   document.addEventListener('DOMContentLoaded', endDateChange); 
-  document.getElementById('init_date').onchange = endDateChange();
+  document.getElementById('init_date').onchange = function() {endDateChange()};
   function endDateChange() { 
     let val = document.getElementById('init_date').value;
     document.getElementById('end_date').setAttribute('min', val);
@@ -78,7 +78,7 @@
  
 <script>
   document.addEventListener('DOMContentLoaded', colorChange); 
-  document.getElementById('ok').onchange = colorChange();
+  document.getElementById('ok').onchange = function() {colorChange()};
   function colorChange() {
     let val = document.getElementById('ok').value;
     if(val === "y") {
