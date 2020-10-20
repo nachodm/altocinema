@@ -68,15 +68,18 @@
 
 
 <script>
-  document.getElementById('init_date').onchange = function() { 
+  document.addEventListener('DOMContentLoaded', endDateChange); 
+  document.getElementById('init_date').onchange = endDateChange();
+  function endDateChange() { 
     let val = document.getElementById('init_date').value;
-    /*let date = $('#init_date').val().toISOString.split('T')[0];*/
     document.getElementById('end_date').setAttribute('min', val);
   }
 </script>
  
 <script>
-  document.getElementById('ok').onchange = function() { 
+  document.addEventListener('DOMContentLoaded', colorChange); 
+  document.getElementById('ok').onchange = colorChange();
+  function colorChange() {
     let val = document.getElementById('ok').value;
     if(val === "y") {
       setColors("#f7f7f7", "#5cb85c")
