@@ -41,7 +41,6 @@
   $("#fee").change(updateFinalFee); 
 
   function updateFinalFee(){
-    
       let waiver = $("#waiver").val()
       if (waiver == "y1") {
         $("#disc").val(100);
@@ -63,6 +62,35 @@
 
 <script>
  var today = new Date().toISOString().split('T')[0];
-  document.getElementsByName("init_date")[0].setAttribute('min', today);
-  document.getElementsByName("end_date")[0].setAttribute('min', today);
+  document.getElementById('init_date').setAttribute('min', today);
+  document.getElementById('end_date').setAttribute('min', today);
+</script>
+
+
+<script>
+  document.getElementById('init_date').onchange = function() { 
+    let val = document.getElementById('init_date').value;
+    /*let date = $('#init_date').val().toISOString.split('T')[0];*/
+    document.getElementById('end_date').setAttribute('min', val);
+  }
+</script>
+ 
+<script>
+  document.getElementById('ok').onchange = function() { 
+    let val = document.getElementById('ok').value;
+    if(val === "y") {
+      setColors("#f7f7f7", "#5cb85c")
+    }
+    else if(val === "n") {
+      setColors("#f7f7f7", "#d9534f")
+    }
+    else if (val === "pen"){
+      setColors("#f7f7f7", "#f0ad4e")
+    }
+  }
+
+  function setColors(color, background) {
+      document.getElementById('ok').style.color  = color;
+      document.getElementById('ok').style.backgroundColor  = background;
+  }
 </script>
