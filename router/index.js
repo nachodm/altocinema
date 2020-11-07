@@ -57,13 +57,13 @@ app.post('/sendEmail', (request, response) => {
     port: 465,
     secure:true,
     auth: {
-      user: 'info@altocinema.com',
+      user: 'contact@altocinema.com',
       pass: 'Altocine2020'
     }
   });
   let mailOptions = {
-    from: 'info@altocinema.com',
-    to: 'antonio@altocinema.com, alba@altocinema.com',
+    from: 'contact@altocinema.com',
+    to: 'info@altocinema.com',
     subject: request.body.name + ': ' + request.body.email,
     text: request.body.text
   }
