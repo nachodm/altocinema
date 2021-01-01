@@ -24,44 +24,15 @@
    
 </head>
 <body>
-    <nav class="navbar navbar-expand-md fixed-top navbar-dark elegant-color lighten-2">
-        <a class="navbar-brand" href="/"> 
-            <img class="img-fluid max-size" src="img/white-logo.png" alt="ALTO CINEMA">
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item m-2">
-                <a class="nav-link waves-effect waves-light py-2 px-3 text-uppercase" href="/">Quiénes somos <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item m-2">
-                    <a class="nav-link waves-effect waves-light py-2 px-3 text-uppercase" href="/services">Servicios</a>
-                </li>
-                <li class="nav-item dropdown m-2">
-                    <a class="nav-link dropdown-toggle waves-effect waves-light py-2 px-3 text-uppercase" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      Catálogos
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="/catalogue">AltoCinema</a>
-                        <a class="dropdown-item" href="/nouvelleCinema">NouvelleCinema</a>
-                        <a class="dropdown-item" href="/comingOutCinema">ComingOutCinema</a>
-                    </div>
-                </li>
-                <li class="nav-item active m-2">
-                    <a class="nav-link waves-effect waves-light py-2 px-3 text-uppercase" href="/contact">Contacto</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
+    
+    <%- include('partials/top-navbar', {active: "contact"}); %>
 
     <div class="animated fadeIn content container text-light">
         <h3 class="text-center mb-3">Contacto</h3>
         <div class="contact">
             <div class="row d-flex align-items-center">
                 <div class="col-12">
-                    <p class="mb-4">Contacta con nosotros a través de cualquiera de nuestros canales y te responderemos a la menor brevedad posible:</p>
+                    <p class="mb-4">Contacta con nosotros y te responderemos a la menor brevedad posible. Si deseas que valoremos tu obra, por favor envíanos el enlace de visionado y contraseña a través del formulario que encontrarás a continuación.</p>
                 </div>
             </div>
             <div class="row ">
@@ -103,7 +74,7 @@
                         </div>
                         <div class="md-form">
                             <i class="fas fa-pencil-alt prefix"></i>
-                            <textarea id="text" name="text" class="md-textarea form-control text-white" rows="3" required></textarea>
+                            <textarea id="text" name="text" class="md-textarea form-control text-white" rows="4" required></textarea>
                             <label for="text">Mensaje</label>
                         </div>
                         <button class="btn btn-lg btn-outline-white btn-block text-uppercase font-weight-bold" type="submit">Enviar</button>

@@ -25,39 +25,9 @@
    
 </head>
 <body>
-    <nav class="navbar navbar-expand-md scrolling-navbar fixed-top navbar-dark elegant-color lighten-2">
-        <a class="navbar-brand" href="/"> 
-            <img class="img-fluid max-size" src="img/white-logo.png" alt="ALTO CINEMA">
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item m-2">
-                <a class="nav-link waves-effect waves-light py-2 px-3 text-uppercase" href="/">Quiénes somos <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item active m-2">
-                    <a class="nav-link waves-effect waves-light py-2 px-3 text-uppercase" href="/services">Servicios</a>
-                </li>
-                <li class="nav-item dropdown m-2">
-                  <a class="nav-link dropdown-toggle waves-effect waves-light py-2 px-3 text-uppercase" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Catálogos
-                  </a>
-                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="/catalogue">AltoCinema</a>
-                    <a class="dropdown-item" href="/nouvelleCinema">NouvelleCinema</a>
-                    <a class="dropdown-item" href="/comingOutCinema">ComingOutCinema</a>
-                  </div>
-              </li>
-                <li class="nav-item m-2">
-                    <a class="nav-link waves-effect waves-light py-2 px-3 text-uppercase" href="/contact">Contacto</a>
-                </li>
-            </ul>
-            
-        </div>
-    </nav>
-    <div class="my-auto container">
+    
+    <%- include('partials/top-navbar', {active: "services"}); %>
+    <div class="my-auto container animated fadeIn">
       <div class="row align-items-center">
         <div class="col-md-3">
             <!-- Tabs nav -->
@@ -82,22 +52,22 @@
             <div class="tab-content" id="v-pills-tabContent">
                 <div class="tab-pane fade shadow rounded bg-white show active p-4" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
                     <h4 class="font-italic mb-4">Distribución</h4>
-                    <p class="font-italic text-muted mb-2">AltoCinema es una distribuidora de cine especializada en el circuito de festivales cinematográficos. Planificamos una estrategia personalizada acorde a las características de cada una de nuestras películas, teniendo en cuenta las metas y objetivos de nuestros clientes.
-                        Realizamos un servicio completo desde la planificación y el envío a festivales tanto nacionales como internacionales, hasta la gestión de los materiales necesarios en caso de selección. 
-                        Nuestra máxima es la transparencia y claridad, por ello ofrecemos a nuestros clientes un informe detallado de la situación en la que se encuentra la distribución de su obra: previsión de futuros envíos a festivales, el número de selecciones obtenidas, el estado del envío, información detallada sobre las tasas de inscripción…
+                    <p class="text-muted mb-2 text-justify">AltoCinema es una distribuidora de cine especializada en el circuito de festivales cinematográficos. Planificamos una estrategia personalizada acorde a las características de cada una de nuestras películas, teniendo en cuenta las metas y objetivos de nuestros clientes.<br>
+                        Realizamos un servicio completo desde la planificación y el envío a festivales tanto nacionales como internacionales, hasta la gestión de los materiales necesarios en caso de selección. <br>
+                        Nuestra máxima es la transparencia y claridad, por ello ofrecemos a nuestros clientes un informe detallado de la situación en la que se encuentra la distribución de su obra: previsión de futuros envíos a festivales, el número de selecciones obtenidas, el estado del envío, información detallada sobre las tasas de inscripción.
                     </p>
                 </div>
                 
                 <div class="tab-pane fade shadow rounded bg-white p-4" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
                     <h4 class="font-italic mb-4">Asesoría</h4>
-                    <p class="font-italic text-muted mb-2">¡Hazlo tú mismo! ¿Tienes un proyecto personal y te gustaría distribuirlo por tu cuenta? Nosotros te asesoramos.
+                    <p class="text-muted mb-2 text-justify">¡Hazlo tú mismo! ¿Tienes un proyecto personal y te gustaría distribuirlo por tu cuenta? Nosotros te asesoramos.<br>
                         Analizamos tu obra y sus características para conseguir el máximo rendimiento y una correcta distribución. Te guiaremos ofreciendo un calendario de distribución, así como todo lo que necesitas saber sobre las diferentes plataformas de inscripción para obtener los mejores resultados y lograr nominaciones en diferentes festivales cinematográficos a nivel internacional.
                     </p>
                 </div>
                 
                 <div class="tab-pane fade shadow rounded bg-white p-4" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
                     <h4 class="font-italic mb-4">Gestión de trámites ICAA</h4>
-                    <p class="font-italic text-muted mb-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est.</p>
+                    <p class="font-italic text-muted mb-2 text-justify">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est.</p>
                 </div>
             </div>
         </div>

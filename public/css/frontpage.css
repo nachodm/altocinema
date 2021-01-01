@@ -21,6 +21,7 @@ html {
     font-family: Montserrat;
     letter-spacing: 5px;
     font-size: small;
+    font-weight: 600;
 }
 
 body {
@@ -54,6 +55,11 @@ body {
     padding: 28px;
     opacity: 0.9;
     border-radius: 8px;
+}
+
+.nav-link .active {
+    background-color:
+    #d6d6d6 !important;
 }
 
 .max-size  {
@@ -90,23 +96,7 @@ body {
         position:absolute;
     }
 }
-/*
-.values {
-    -webkit-transform: skewY(-2deg);
-    -moz-transform: skewY(-2deg);
-    -ms-transform: skewY(-2deg);
-    -o-transform: skewY(-2deg);
-    transform: skewY(-2deg);
-}
-  
-.values > .wrapper {
-    -webkit-transform: skewY(2deg);
-    -moz-transform: skewY(2deg);
-    -ms-transform: skewY(2deg);
-    -o-transform: skewY(2deg);
-    transform: skewY(2deg);
-}
-*/
+
 .customsize {
     max-height: 280px;
 }

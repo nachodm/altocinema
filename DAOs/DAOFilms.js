@@ -171,17 +171,19 @@ class DAOFilms {
             if (err) {
                 callback(err, null);
             }
-            connection.query("SELECT title, year, country, sinopsis, picture FROM FILMS WHERE addcatalogue = ? AND catalogue = ?",
-            [1, 'AltoCinema'],
-            (err, films) => {
-                connection.release();
-                if (err) {
-                    callback(err, null);
-                }
-                else {
-                    callback(null, films);
-                }
-            })
+            else {
+                connection.query("SELECT title, year, country, sinopsis, picture FROM FILMS WHERE addcatalogue = ? AND catalogue = ?",
+                [1, 'AltoCinema'],
+                (err, films) => {
+                    connection.release();
+                    if (err) {
+                        callback(err, null);
+                    }
+                    else {
+                        callback(null, films);
+                    }
+                })
+            }
         })
     }
     /**
@@ -193,17 +195,19 @@ class DAOFilms {
             if (err) {
                 callback(err, null);
             }
-            connection.query("SELECT title, year, country, sinopsis, picture FROM FILMS WHERE addcatalogue = ? AND catalogue = ?",
-            [1, 'ComingOutCinema'],
-            (err, films) => {
-                connection.release();
-                if (err) {
-                    callback(err, null);
-                }
-                else {
-                    callback(null, films);
-                }
-            })
+            else {
+                connection.query("SELECT title, year, country, sinopsis, picture FROM FILMS WHERE addcatalogue = ? AND catalogue = ?",
+                [1, 'ComingOutCinema'],
+                (err, films) => {
+                    connection.release();
+                    if (err) {
+                        callback(err, null);
+                    }
+                    else {
+                        callback(null, films);
+                    }
+                })
+            }
         })
     }
     /**
@@ -215,17 +219,19 @@ class DAOFilms {
             if (err) {
                 callback(err, null);
             }
-            connection.query("SELECT title, year, country, sinopsis, picture FROM FILMS WHERE addcatalogue = ? AND catalogue = ?",
-            [1, 'NouvelleCinema'],
-            (err, films) => {
-                connection.release();
-                if (err) {
-                    callback(err, null);
-                }
-                else {
-                    callback(null, films);
-                }
-            })
+            else {
+                connection.query("SELECT title, year, country, sinopsis, picture FROM FILMS WHERE addcatalogue = ? AND catalogue = ?",
+                [1, 'NouvelleCinema'],
+                (err, films) => {
+                    connection.release();
+                    if (err) {
+                        callback(err, null);
+                    }
+                    else {
+                        callback(null, films);
+                    }
+                })
+            }
         })
     }
 

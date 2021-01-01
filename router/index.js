@@ -24,13 +24,13 @@ let job = schedule.scheduleJob("Preinscription", {minute:30, hour:0, date:1}, fu
   films.getFilmList((err, films) => {
     if (err) {  
       var datetime = new Date();
-      console.log("HUGE ERROR AT " + datetime);
+      console.log("HUGE RUNTIME ERROR AT " + datetime);
     }
     else {
       festivals.handleMonthPrescriptions(films, (err) => {
         if (err) {
           var datetime = new Date();
-          console.log("HUGE ERROR AT " + datetime);
+          console.log("HUGE RUNTIME ERROR AT " + datetime);
         }
       });
     }
@@ -92,7 +92,7 @@ app.get('/services', (request, response) => {
 app.get('/catalogue', (request, response) => {
   films.getAltoCinema((err, films) => {
     if (err) {
-      redirect('altocinema');
+      response.redirect('altocinema');
     }
     else {
       response.render('catalogue', {films: films});
@@ -103,7 +103,7 @@ app.get('/catalogue', (request, response) => {
 app.get('/comingOutCinema', (request, response) => {
   films.getComingOutCinema((err, films) => {
     if (err) {
-      redirect('altocinema');
+      response.redirect('altocinema');
     }
     else {
       response.render('comingOutCinema', {films: films});
@@ -114,7 +114,7 @@ app.get('/comingOutCinema', (request, response) => {
 app.get('/nouvelleCinema', (request, response) => {
   films.getNouvelleCinema((err, films) => {
     if (err) {
-      redirect('altocinema');
+      response.redirect('altocinema');
     }
     else {
       response.render('nouvelleCinema', {films: films});
@@ -525,6 +525,37 @@ app.post("/updateFestival", checkAuthenticated, (request, response) => {
   });
 });
 
+
+app.post('/festivalEmail', (request, response) => {
+  let transporter = nodemailer.createTransport({
+    host: 'altocinema.com',
+    port: 465,
+    secure:true,
+    auth: {
+      user: 'info@altocinema.com',
+      pass: 'Altocine2020'
+    }
+  });
+  let mailOptions = {
+    from: 'info@altocinema.com',
+    to: request.body.contact_email,
+    subject: request.body.name + ': ' + request.body.email,
+    text: request.body.text
+  }
+  transporter.sendMail(mailOptions, (err, info) => {
+    if (err) {
+      console.log(err);
+      console.log(info);
+      request.flash('error', 'No se ha podido enviar el correo.');
+      response.redirect('festivals');
+    }
+    else {
+      request.flash('success', "Correo enviado.");
+      response.redirect('festivals');
+    }
+  })
+})
+
 app.post("/addDirector", checkAuthenticated, (request, response) => {
   let auxdate = new Date();
   let modif = "Modificado el " + auxdate + " por " +  request.user.name;
@@ -603,7 +634,7 @@ app.post("/updateDirector", checkAuthenticated, (request, response) => {
     });
   });
 
-  app.post("/addProducer", checkAuthenticated, (request, response) => {
+app.post("/addProducer", checkAuthenticated, (request, response) => {
     let auxdate = new Date();
     let modif = "Modificado el " + auxdate + " por " +  request.user.name;
     const producer = [[
@@ -632,7 +663,7 @@ app.post("/updateDirector", checkAuthenticated, (request, response) => {
     });
   });
     
-  app.post("/updateProducer", checkAuthenticated, (request, response) => {
+app.post("/updateProducer", checkAuthenticated, (request, response) => {
     let auxdate = new Date();
     let modif = 'Modificado el ' + auxdate + ' por ' +  request.user.name;
     const producer = {

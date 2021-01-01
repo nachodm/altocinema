@@ -68,9 +68,9 @@ CREATE TABLE FILMS (
     deadline DATE NOT NULL,
     type TINYINT NOT NULL,
     entryfee BOOLEAN NOT NULL DEFAULT TRUE,
-    fee INT NOT NULL,
+    fee DOUBLE NOT NULL,
     currency VARCHAR(256) NOT NULL,
-    euros INT DEFAULT NULL,
+    euros DOUBLE DEFAULT NULL,
     platform VARCHAR(256) NOT NULL,
     prize BOOLEAN DEFAULT FALSE,
     waiver VARCHAR(32) NOT NULL,
@@ -115,6 +115,16 @@ CREATE TABLE FESTIVALCATEGORIES (
     category VARCHAR(255) NOT NULL,
     CONSTRAINT FK_festival_id FOREIGN KEY (id) REFERENCES FESTIVALS (id) ON DELETE CASCADE ON UPDATE CASCADE,
     primary key(id, category)
+    -- specify more columns here
+);
+CREATE TABLE PRIZES (
+    id INT NOT NULL AUTO_INCREMENT,
+    film INT NOT NULL,
+    festival INT NOT NULL,
+    prize VARCHAR(255) NOT NULL,
+    amount 
+    CONSTRAINT FK_festival_id FOREIGN KEY (id) REFERENCES FESTIVALS (id) ON DELETE CASCADE ON UPDATE CASCADE,
+    primary key(id)
     -- specify more columns here
 );
 

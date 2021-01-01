@@ -231,6 +231,37 @@ class DAOFestivals {
             })
         });
     }
+     /**
+     * Realiza las duplicidades anuales de todos los festivales en la base de datos.
+     * @param {*} films 
+     * @param {*} callback 
+     */
+    annualDuplicity(callback) {
+        this.pool.getConnection((err, connection) => {
+            if (err) {
+                callback(err);
+            }
+            let currentmonth = new Date().getMonth() + 1;
+            connection.query("UPDATE FESTIVALS SET init_date = DATE_ADD(init_date, INTERVAL 1 YEAR), end_date = DATE_ADD(end_date, INTERVAL 1 YEAR),deadline = DATE_ADD(deadline, INTERVAL 1 YEAR) ",
+            [currentmonth],
+            (err, festivals) => {
+                if (err) {
+                    connection.release();
+                    callback(err);
+                }
+                else {
+                    let preinscriptions;
+                    films.forEach(film => {
+                        festivals.forEach(festival => {
+                            let temp = [festival.id, film.id];
+                            preinscriptions.push(temp);
+                        });
+                    });
+                }
+            })
+        });
+    }
+
 
 }
 
