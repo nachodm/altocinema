@@ -82,9 +82,9 @@
                         <div class="form-group">
                             <label class="form-control-label" for="ok">Ok</label>
                             <select class="form-control form-control-alternative form-control-sm" id="ok" name="ok" required>
-                                <option class="text-white bg-success" value="y" <%= festival.ok === 'y' ? 'selected': '' %>>Sí</option>
-                                <option class="text-white bg-danger" value="n" <%= festival.ok === 'y' ? 'selected': '' %>>No</option>
-                                <option class="text-white bg-warning" value="pen" <%= festival.ok === 'pen' ? 'selected': '' %>>Pt</option>
+                                <option class="text-white bg-success" value="y" <%= festival.ok === "y" ? 'selected': '' %>>Sí</option>
+                                <option class="text-white bg-danger" value="n" <%= festival.ok === "n" ? 'selected': '' %>>No</option>
+                                <option class="text-white bg-warning" value="pen" <%= festival.ok === "pen" ? 'selected': '' %>>Pt</option>
                             </select> 
                         </div>
                     </div>
@@ -122,10 +122,10 @@
                         <div class="form-group">
                             <label class="form-control-label" for="type">Tipo Deadline</label>
                             <select  class="form-control form-control-alternative form-control-sm" id="type" name="type" required>
-                                <option value="0" <%= festival.type === 0 ? 'selected': '' %>>Early</option>
-                                <option value="1" <%= festival.type === 1 ? 'selected': '' %>>Regular</option>
-                                <option value="2" <%= festival.type === 2 ? 'selected': '' %>>Late</option>
-                                <option value="3" <%= festival.type === 3 ? 'selected': '' %>>Extended</option>
+                                <option value=0 <%= festival.type === 0 ? 'selected': '' %>>Early</option>
+                                <option value=1 <%= festival.type === 1 ? 'selected': '' %>>Regular</option>
+                                <option value=2 <%= festival.type === 2 ? 'selected': '' %>>Late</option>
+                                <option value=3 <%= festival.type === 3 ? 'selected': '' %>>Extended</option>
                             </select> 
                         </div>
                     </div>
@@ -235,8 +235,8 @@
                         <div class="form-group">
                             <label class="form-control-label" for="entryfee">EntryFee*</label>
                             <select class="form-control form-control-alternative form-control-sm" id="entryfee" name="entryfee" required>
-                                <option value="y"  <%= festival.entreyfee === 'y' ? 'selected': '' %>>Sí</option>
-                                <option value="n" <%= festival.entryfee === 'n' ? 'selected': '' %>>No</option>
+                                <option value=1  <%= festival.entreyfee === 1 ? 'selected': '' %>>Sí</option>
+                                <option value=0 <%= festival.entryfee === 0 ? 'selected': '' %>>No</option>
                             </select> 
                         </div>
                     </div>
@@ -244,25 +244,25 @@
                         <div class="form-group">
                             <label class="form-control-label" for="platform">Plataforma*</label>
                             <select class="form-control form-control-alternative form-control-sm" id="platform" name="platform" required>
-                                <option value="filmfreeway" <%= festival.type === 'filmfreeway' ? 'selected': '' %>>FilmFreeway</option>
-                                <option value="filmfreeway" <%= festival.type === 'filmfreeway' ? 'selected': '' %>>Festhome</option>
-                                <option value="Click" <%= festival.type === 'Click' ? 'selected': '' %>>Click</option>                              
-                                <option value="Director" <%= festival.type === 'Director' ? 'selected': '' %>>Director</option>                              
-                                <option value="DocFilmDepot" <%= festival.type === 'DocFilmDepot' ? 'selected': '' %>>DocFilmDepot</option>                            
-                                <option value="Evennial" <%= festival.type === 'Evennial' ? 'selected': '' %>>Evennial</option>                            
-                                <option value="Eventival" <%= festival.type === 'Eventival' ? 'selected': '' %>>Eventival</option>                            
-                                <option value="FilmFestivalLife" <%= festival.type === 'FilmFestivalLife' ? 'selected': '' %>>FilmFestivalLife</option>                             
-                                <option value="FilmFestPlatform" <%= festival.type === 'FilmFestPlatform' ? 'selected': '' %>>FilmFestPlatform</option>
-                                <option value="FilmFreewaygold" <%= festival.type === 'FilmFreewaygold' ? 'selected': '' %>>FilmFreeway Gold</option>
-                                <option value="ICAA" <%= festival.type === 'ICAA' ? 'selected': '' %>>ICAA</option>
-                                <option value="Invitacion" <%= festival.type === 'Invitacion' ? 'selected': '' %>>Invitación</option>
-                                <option value="KIMUAK" <%= festival.type === 'KIMUAK' ? 'selected': '' %>>KIMUAK</option>
-                                <option value="Movibeta" <%= festival.type === 'Movibeta' ? 'selected': '' %>>Movibeta</option>
-                                <option value="Online" <%= festival.type === 'Online' ? 'selected': '' %>>Online</option>
-                                <option value="Reelport" <%= festival.type === 'Reelport' ? 'selected': '' %>>Reelport</option>
-                                <option value="ShortFilmDepot" <%= festival.type === 'ShortFilmDepot' ? 'selected': '' %>>ShortFilmDepot</option>
-                                <option value="UpToFest" <%= festival.type === 'UpToFest' ? 'selected': '' %>>UpToFest</option>
-                                <option value="Withoutabox" <%= festival.type === 'Withoutabox' ? 'selected': '' %>>Withoutabox</option>
+                                <option value="Filmfreeway" <%= festival.type === "Filmfreeway" ? 'selected': '' %>>FilmFreeway</option>
+                                <option value="Festhome" <%= festival.type === "Festhome" ? 'selected': '' %>>Festhome</option>
+                                <option value="Click" <%= festival.type === "Click" ? 'selected': '' %>>Click</option>                              
+                                <option value="Director" <%= festival.type === "Director" ? 'selected': '' %>>Director</option>                              
+                                <option value="DocFilmDepot" <%= festival.type === "DocFilmDepot" ? 'selected': '' %>>DocFilmDepot</option>                            
+                                <option value="Evennial" <%= festival.type === "Evennial" ? 'selected': '' %>>Evennial</option>                            
+                                <option value="Eventival" <%= festival.type === "Eventival" ? 'selected': '' %>>Eventival</option>                            
+                                <option value="FilmFestivalLife" <%= festival.type === "FilmFestivalLife" ? 'selected': '' %>>FilmFestivalLife</option>                             
+                                <option value="FilmFestPlatform" <%= festival.type === "FilmFestPlatform" ? 'selected': '' %>>FilmFestPlatform</option>
+                                <option value="FilmFreewaygold" <%= festival.type === "FilmFreewaygold" ? 'selected': '' %>>FilmFreeway Gold</option>
+                                <option value="ICAA" <%= festival.type === "ICAA" ? 'selected': '' %>>ICAA</option>
+                                <option value="Invitacion" <%= festival.type === "Invitacion" ? 'selected': '' %>>Invitación</option>
+                                <option value="KIMUAK" <%= festival.type === "KIMUAK" ? 'selected': '' %>>KIMUAK</option>
+                                <option value="Movibeta" <%= festival.type === "Movibeta" ? 'selected': '' %>>Movibeta</option>
+                                <option value="Online" <%= festival.type === "Online" ? 'selected': '' %>>Online</option>
+                                <option value="Reelport" <%= festival.type === "Reelport" ? 'selected': '' %>>Reelport</option>
+                                <option value="ShortFilmDepot" <%= festival.type === "ShortFilmDepot" ? 'selected': '' %>>ShortFilmDepot</option>
+                                <option value="UpToFest" <%= festival.type === "UpToFest" ? 'selected': '' %>>UpToFest</option>
+                                <option value="Withoutabox" <%= festival.type === "Withoutabox" ? 'selected': '' %>>Withoutabox</option>
                             </select> 
                         </div>
                     </div>
@@ -276,57 +276,57 @@
                         <div class="form-group">
                             <label class="form-control-label" for="currency">Moneda</label>
                             <select class="form-control form-control-alternative form-control-sm" id="currency" name="currency">
-                                <option value="USD" <%= festival.currency === 'USD' ? 'selected': '' %>>US Dollars ($)</option>
-                                <option value="EUR" <%= festival.currency === 'EUR' ? 'selected': '' %>>Euro (€)</option>
-                                <option value="GBP" <%= festival.currency === 'GBP' ? 'selected': '' %>>United Kingdom Pounds</option>
-                                <option value="DZD" <%= festival.currency === 'DZD' ? 'selected': '' %>>Algeria Dinars</option>
-                                <option value="ARP" <%= festival.currency === 'ARP' ? 'selected': '' %>>Argentina Pesos</option>
-                                <option value="AUD" <%= festival.currency === 'AUD' ? 'selected': '' %>>Australia Dollars</option>
-                                <option value="BSD" <%= festival.currency === 'BSD' ? 'selected': '' %>>Bahamas Dollars</option>
-                                <option value="BBD" <%= festival.currency === 'BBD' ? 'selected': '' %>>Barbados Dollars</option>
-                                <option value="BMD" <%= festival.currency === 'BMD' ? 'selected': '' %>>Bermuda Dollars</option>
-                                <option value="BRR" <%= festival.currency === 'BRR' ? 'selected': '' %>>Brazil Real</option>
-                                <option value="BGL" <%= festival.currency === 'BGL' ? 'selected': '' %>>Bulgaria Lev</option>
-                                <option value="CAD" <%= festival.currency === 'CAD' ? 'selected': '' %>>Canada Dollars</option>
-                                <option value="CLP" <%= festival.currency === 'CLP' ? 'selected': '' %>>Chile Pesos</option>
-                                <option value="CNY" <%= festival.currency === 'CNY' ? 'selected': '' %>>China Yuan Renmimbi</option>
-                                <option value="CYP" <%= festival.currency === 'CYP' ? 'selected': '' %>>Cyprus Pounds</option>
-                                <option value="DKK" <%= festival.currency === 'DKK' ? 'selected': '' %>>Denmark Kroner</option>
-                                <option value="XCD" <%= festival.currency === 'XCD' ? 'selected': '' %>>Eastern Caribbean Dollars</option>
-                                <option value="EGP" <%= festival.currency === 'EGP' ? 'selected': '' %>>Egypt Pounds</option>
-                                <option value="FJD" <%= festival.currency === 'FJD' ? 'selected': '' %>>Fiji Dollars</option>
-                                <option value="HKD" <%= festival.currency === 'HKD' ? 'selected': '' %>>Hong Kong Dollars</option>
-                                <option value="HUF" <%= festival.currency === 'HUF' ? 'selected': '' %>>Hungary Forint</option>
-                                <option value="ISK" <%= festival.currency === 'ISK' ? 'selected': '' %>>Iceland Krona</option>
-                                <option value="INR" <%= festival.currency === 'INR' ? 'selected': '' %>>India Rupees</option>
-                                <option value="IDR" <%= festival.currency === 'IDR' ? 'selected': '' %>>Indonesia Rupiah</option>
-                                <option value="ILS" <%= festival.currency === 'ILS' ? 'selected': '' %>>Israel New Shekels</option>
-                                <option value="JMD" <%= festival.currency === 'JMD' ? 'selected': '' %>>Jamaica Dollars</option>
-                                <option value="JPY" <%= festival.currency === 'JPY' ? 'selected': '' %>>Japan Yen</option>
-                                <option value="JOD" <%= festival.currency === 'JOD' ? 'selected': '' %>>Jordan Dinar</option>
-                                <option value="KRW" <%= festival.currency === 'KRW' ? 'selected': '' %>>Korea (South) Won</option>
-                                <option value="LBP" <%= festival.currency === 'LBP' ? 'selected': '' %>>Lebanon Pounds</option>
-                                <option value="MYR" <%= festival.currency === 'MYR' ? 'selected': '' %>>Malaysia Ringgit</option>
-                                <option value="MXP" <%= festival.currency === 'MXP' ? 'selected': '' %>>Mexico Pesos</option>
-                                <option value="NZD" <%= festival.currency === 'NZD' ? 'selected': '' %>>New Zealand Dollars</option>
-                                <option value="NOK" <%= festival.currency === 'NOK' ? 'selected': '' %>>Norway Kroner</option>
-                                <option value="PKR" <%= festival.currency === 'PKR' ? 'selected': '' %>>Pakistan Rupees</option>
-                                <option value="PHP" <%= festival.currency === 'PHP' ? 'selected': '' %>>Philippines Pesos</option>
-                                <option value="PLZ" <%= festival.currency === 'PLZ' ? 'selected': '' %>>Poland Zloty</option>
-                                <option value="ROL" <%= festival.currency === 'ROL' ? 'selected': '' %>>Romania Leu</option>
-                                <option value="RUR" <%= festival.currency === 'RUR' ? 'selected': '' %>>Russia Rubles</option>
-                                <option value="SAR" <%= festival.currency === 'SAR' ? 'selected': '' %>>Saudi Arabia Riyal</option>
-                                <option value="SGD" <%= festival.currency === 'SGD' ? 'selected': '' %>>Singapore Dollars</option>
-                                <option value="ZAR" <%= festival.currency === 'ZAR' ? 'selected': '' %>>South Africa Rand</option>
-                                <option value="KRW" <%= festival.currency === 'KRW' ? 'selected': '' %>>South Korea Won</option>
-                                <option value="SDD" <%= festival.currency === 'SDD' ? 'selected': '' %>>Sudan Dinar</option>
-                                <option value="CHF" <%= festival.currency === 'CHF' ? 'selected': '' %>>Switzerland Francs</option>
-                                <option value="TWD" <%= festival.currency === 'TWD' ? 'selected': '' %>>Taiwan Dollars</option>
-                                <option value="THB" <%= festival.currency === 'THB' ? 'selected': '' %>>Thailand Baht</option>
-                                <option value="TTD" <%= festival.currency === 'TTD' ? 'selected': '' %>>Trinidad and Tobago Dollars</option>
-                                <option value="TRL" <%= festival.currency === 'TRL' ? 'selected': '' %>>Turkey Lira</option>
-                                <option value="VEB" <%= festival.currency === 'VEB' ? 'selected': '' %>>Venezuela Bolivar</option>
-                                <option value="ZMK" <%= festival.currency === 'ZMK' ? 'selected': '' %>>Zambia Kwacha</option>
+                                <option value="USD" <%= festival.currency === "USD" ? 'selected': '' %>>US Dollars ($)</option>
+                                <option value="EUR" <%= festival.currency === "EUR" ? 'selected': '' %>>Euro (€)</option>
+                                <option value="GBP" <%= festival.currency === "GBP" ? 'selected': '' %>>United Kingdom Pounds</option>
+                                <option value="DZD" <%= festival.currency === "DZD" ? 'selected': '' %>>Algeria Dinars</option>
+                                <option value="ARP" <%= festival.currency === "ARP" ? 'selected': '' %>>Argentina Pesos</option>
+                                <option value="AUD" <%= festival.currency === "AUD" ? 'selected': '' %>>Australia Dollars</option>
+                                <option value="BSD" <%= festival.currency === "BSD" ? 'selected': '' %>>Bahamas Dollars</option>
+                                <option value="BBD" <%= festival.currency === "BBD" ? 'selected': '' %>>Barbados Dollars</option>
+                                <option value="BMD" <%= festival.currency === "BMD" ? 'selected': '' %>>Bermuda Dollars</option>
+                                <option value="BRR" <%= festival.currency === "BRR" ? 'selected': '' %>>Brazil Real</option>
+                                <option value="BGL" <%= festival.currency === "BGL" ? 'selected': '' %>>Bulgaria Lev</option>
+                                <option value="CAD" <%= festival.currency === "CAD" ? 'selected': '' %>>Canada Dollars</option>
+                                <option value="CLP" <%= festival.currency === "CLP" ? 'selected': '' %>>Chile Pesos</option>
+                                <option value="CNY" <%= festival.currency === "CNY" ? 'selected': '' %>>China Yuan Renmimbi</option>
+                                <option value="CYP" <%= festival.currency === "CYP" ? 'selected': '' %>>Cyprus Pounds</option>
+                                <option value="DKK" <%= festival.currency === "DKK" ? 'selected': '' %>>Denmark Kroner</option>
+                                <option value="XCD" <%= festival.currency === "XCD" ? 'selected': '' %>>Eastern Caribbean Dollars</option>
+                                <option value="EGP" <%= festival.currency === "EGP" ? 'selected': '' %>>Egypt Pounds</option>
+                                <option value="FJD" <%= festival.currency === "FJD" ? 'selected': '' %>>Fiji Dollars</option>
+                                <option value="HKD" <%= festival.currency === "HKD" ? 'selected': '' %>>Hong Kong Dollars</option>
+                                <option value="HUF" <%= festival.currency === "HUF" ? 'selected': '' %>>Hungary Forint</option>
+                                <option value="ISK" <%= festival.currency === "ISK" ? 'selected': '' %>>Iceland Krona</option>
+                                <option value="INR" <%= festival.currency === "INR" ? 'selected': '' %>>India Rupees</option>
+                                <option value="IDR" <%= festival.currency === "IDR" ? 'selected': '' %>>Indonesia Rupiah</option>
+                                <option value="ILS" <%= festival.currency === "ILS" ? 'selected': '' %>>Israel New Shekels</option>
+                                <option value="JMD" <%= festival.currency === "JMD" ? 'selected': '' %>>Jamaica Dollars</option>
+                                <option value="JPY" <%= festival.currency === "JPY" ? 'selected': '' %>>Japan Yen</option>
+                                <option value="JOD" <%= festival.currency === "JOD" ? 'selected': '' %>>Jordan Dinar</option>
+                                <option value="KRW" <%= festival.currency === "KRW" ? 'selected': '' %>>Korea (South) Won</option>
+                                <option value="LBP" <%= festival.currency === "LBP" ? 'selected': '' %>>Lebanon Pounds</option>
+                                <option value="MYR" <%= festival.currency === "MYR" ? 'selected': '' %>>Malaysia Ringgit</option>
+                                <option value="MXP" <%= festival.currency === "MXP" ? 'selected': '' %>>Mexico Pesos</option>
+                                <option value="NZD" <%= festival.currency === "NZD" ? 'selected': '' %>>New Zealand Dollars</option>
+                                <option value="NOK" <%= festival.currency === "NOK" ? 'selected': '' %>>Norway Kroner</option>
+                                <option value="PKR" <%= festival.currency === "PKR" ? 'selected': '' %>>Pakistan Rupees</option>
+                                <option value="PHP" <%= festival.currency === "PHP" ? 'selected': '' %>>Philippines Pesos</option>
+                                <option value="PLZ" <%= festival.currency === "PLZ" ? 'selected': '' %>>Poland Zloty</option>
+                                <option value="ROL" <%= festival.currency === "ROL" ? 'selected': '' %>>Romania Leu</option>
+                                <option value="RUR" <%= festival.currency === "RUR" ? 'selected': '' %>>Russia Rubles</option>
+                                <option value="SAR" <%= festival.currency === "SAR" ? 'selected': '' %>>Saudi Arabia Riyal</option>
+                                <option value="SGD" <%= festival.currency === "SGD" ? 'selected': '' %>>Singapore Dollars</option>
+                                <option value="ZAR" <%= festival.currency === "ZAR" ? 'selected': '' %>>South Africa Rand</option>
+                                <option value="KRW" <%= festival.currency === "KRW" ? 'selected': '' %>>South Korea Won</option>
+                                <option value="SDD" <%= festival.currency === "SDD" ? 'selected': '' %>>Sudan Dinar</option>
+                                <option value="CHF" <%= festival.currency === "CHF" ? 'selected': '' %>>Switzerland Francs</option>
+                                <option value="TWD" <%= festival.currency === "TWD" ? 'selected': '' %>>Taiwan Dollars</option>
+                                <option value="THB" <%= festival.currency === "THB" ? 'selected': '' %>>Thailand Baht</option>
+                                <option value="TTD" <%= festival.currency === "TTD" ? 'selected': '' %>>Trinidad and Tobago Dollars</option>
+                                <option value="TRL" <%= festival.currency === "TRL" ? 'selected': '' %>>Turkey Lira</option>
+                                <option value="VEB" <%= festival.currency === "VEB" ? 'selected': '' %>>Venezuela Bolivar</option>
+                                <option value="ZMK" <%= festival.currency === "ZMK" ? 'selected': '' %>>Zambia Kwacha</option>
                             </select>
                         </div>
                     </div>
@@ -340,8 +340,8 @@
                         <div class="form-group">
                             <label class="form-control-label" for="prize">Premio en metálico</label>
                             <select class="form-control form-control-alternative form-control-sm" id="prize" name="prize">
-                                <option value="y" <%= festival.prize === 'y' ? 'selected': '' %>>Sí</option>
-                                <option value="n" <%= festival.prize === 'n' ? 'selected': '' %>>No</option>
+                                <option value=1 <%= festival.prize === 1 ? 'selected': '' %>>Sí</option>
+                                <option value=0 <%= festival.prize === 0 ? 'selected': '' %>>No</option>
                             </select> 
                         </div>
                     </div>
@@ -350,10 +350,10 @@
                         <div class="form-group">
                             <label class="form-control-label" for="waiver">Waiver</label>
                             <select class="form-control form-control-alternative form-control-sm" id="waiver" name="waiver">
-                                <option value="y1" <%= festival.waiver === 'y1' ? 'selected': '' %>>Sí</option>
-                                <option value="n1" <%= festival.waiver === 'n1' ? 'selected': '' %>>No</option>
-                                <option value="n2" <%= festival.waiver === 'n2' ? 'selected': '' %>>Nunca</option>
-                                <option value="y2" <%= festival.waiver === 'y2' ? 'selected': '' %>>Descuento</option>
+                                <option value="y1" <%= festival.waiver === "y1" ? 'selected': '' %>>Sí</option>
+                                <option value="n1" <%= festival.waiver === "n1" ? 'selected': '' %>>No</option>
+                                <option value="n2" <%= festival.waiver === "n2" ? 'selected': '' %>>Nunca</option>
+                                <option value="y2" <%= festival.waiver === "y2" ? 'selected': '' %>>Descuento</option>
                             </select> 
                         </div>
                     </div>
@@ -694,9 +694,9 @@
                             <label class="form-control-label" for="confirmed">Confirmado</label>
                             <select class="form-control form-control-alternative form-control-sm" id="confirmed" name="confirmed">
                                 <option disabled selected value> -- Seleccionar -- </option>
-                                <option class="text-white bg-success" value="y" <%= festival.confirmed === 'y' ? 'selected': '' %>>Sí</option>
-                                <option class="text-white bg-danger" value="n" <%= festival.confirmed === 'n' ? 'selected': '' %>>No</option>
-                                <option class="text-white bg-warning" value="pen" <%= festival.confirmed === 'pen' ? 'selected': '' %>>Pt</option>
+                                <option class="text-white bg-success" value="y" <%= festival.confirmed === "y" ? 'selected': '' %>>Sí</option>
+                                <option class="text-white bg-danger" value="n" <%= festival.confirmed === "n" ? 'selected': '' %>>No</option>
+                                <option class="text-white bg-warning" value="pen" <%= festival.confirmed === "pen" ? 'selected': '' %>>Pt</option>
                             </select> 
                         </div>
                     </div>

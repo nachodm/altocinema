@@ -122,7 +122,7 @@ CREATE TABLE PRIZES (
     film INT NOT NULL,
     festival INT NOT NULL,
     prize VARCHAR(255) NOT NULL,
-    amount 
+    amount FLOAT,
     CONSTRAINT FK_festival_id FOREIGN KEY (id) REFERENCES FESTIVALS (id) ON DELETE CASCADE ON UPDATE CASCADE,
     primary key(id)
     -- specify more columns here
