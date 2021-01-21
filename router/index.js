@@ -1,24 +1,27 @@
 const { request } = require("express");
 const flash = require("express-flash");
+const DAOPreinsc = require("../DAOs/DAOPreinsc");
 
 module.exports = function(app, passport) {
 
-const config = require ("../config/config");
-const mysql = require('mysql');
-const bcrypt = require('bcrypt');
-const schedule = require('node-schedule');
-const nodemailer = require('nodemailer');
-const DAOUsers = require('../DAOs/DAOUsers');
-const DAOFilms = require('../DAOs/DAOFilms');
-const DAOFestivals = require('../DAOs/DAOFestivals');
-const DAODirectors = require('../DAOs/DAODirectors');
+const config = require ("../config/config")
+const mysql = require('mysql')
+const bcrypt = require('bcrypt')
+const schedule = require('node-schedule')
+const nodemailer = require('nodemailer')
+const DAOUsers = require('../DAOs/DAOUsers')
+const DAOFilms = require('../DAOs/DAOFilms')
+const DAOFestivals = require('../DAOs/DAOFestivals')
+const DAODirectors = require('../DAOs/DAODirectors')
 const DAOProducers = require('../DAOs/DAOProducers')
+const DAOPreinc = require('../DAOs/DAOPreinsc')
 const pool = mysql.createPool(config.mysqlconfig);
 const users = new DAOUsers.DAOUsers(pool);
 const films = new DAOFilms.DAOFilms(pool);
 const festivals = new DAOFestivals.DAOFestivals(pool);
 const directors = new DAODirectors.DAODirectors(pool);
 const producers = new DAOProducers.DAOProducers(pool);
+const preinscr = new DAOPreinsc.DAOPreinsc(pool)
 
 let job = schedule.scheduleJob('0 0 1 * *', function(){
   films.getFilmList((err, films) => {
@@ -27,7 +30,7 @@ let job = schedule.scheduleJob('0 0 1 * *', function(){
       console.log("HUGE RUNTIME ERROR AT " + datetime);
     }
     else {
-      festivals.handleMonthPrescriptions(films, (err) => {
+      preinscr.handleMonthPreinscriptions(films, (err) => {
         if (err) {
           var datetime = new Date();
           console.log("HUGE RUNTIME ERROR AT " + datetime);
@@ -139,18 +142,26 @@ app.get('/contact', (request, response) => {
 })
 
 app.get('/login', checkNotAuthenticated, (request, response) => {
-  response.render('login');
+  response.render('login')
 })
 
 app.get('/dashboard', checkAuthenticated, (request, response) => {
-  response.render('dashboard', {user: request.user, title: "Inicio", success: request.flash('success'), error: request.flash('error')});
+  preinscr.getPreinsc((err, preinscriptions) => {
+    if (err) {
+      request.flash('error', err.message)
+      response.render('dashboard', {user: request.user, title: "Inicio", success: request.flash('success'), error: request.flash('error'), preinscr: undefined});
+    }
+    else {
+      response.render('dashboard', {user: request.user, title: "Inicio", success: request.flash('success'), error: request.flash('error'), preinscr: preinscriptions});
+    }
+  })
 })
 
 app.get('/festivals', checkAuthenticated, (request, response) => {
     festivals.getFestivals((err, festivalList) => {
         if (err) {
-          request.flash('error', err.message);
-          response.redirect("/dashboard");
+          request.flash('error', err.message)
+          response.redirect("/dashboard")
         }
         else {
           response.render('festivals', {user: request.user, title: "Festivales", festivals: festivalList, success: request.flash('success'), error: request.flash('error')});

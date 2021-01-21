@@ -1,12 +1,12 @@
 "use strict";
 
 /**
- * Proporciona operaciones para la gestión de películas
+ * Proporciona operaciones para la gestión de festivales
  * en la base de datos.
  */
 class DAOFestivals {
     /**
-     * Inicializa el DAO películas.
+     * Inicializa el DAO festivales.
      * 
      * @param {Pool} pool Pool de conexiones MySQL. Todas las operaciones
      *                    sobre la BD se realizarán sobre este pool.

@@ -56,32 +56,32 @@
               <!-- Chart -->
               <table
                   id="table"
-                  data-sort-name="date"
+                  data-sort-name="festival"
                   data-sort-order="desc"
                   data-search="true"
                   data-pagination="true"
                   data-locale="en-US">
                   <thead>
                     <tr>
-                      <th data-field="date" data-sortable="true">Deadline</th>
-                      <th data-field="festival" data-sortable="true">EntreFee SI</th>
-                      <th data-field="envío" data-sortable="true">EntryFee NO</th>
-                      <th data-field="description" data-sortable="true">Número de envíos</th>
+                      <th data-field="festival" data-sortable="true">Festival</th>
+                      <th data-field="film" data-sortable="true">Película</th>
                     </tr>
                   </thead>
                   <tbody>
+                    <%if (typeof preinscr !== 'undefined' && preinscr) {%>
+                      <% preinscr.forEach(pre => { %>
+                        <tr>
+                          <th scope="row">
+                            <%= pre.name %>
+                          </th>
+                          <td><%= pre.title %></td>
+                        </tr>
+                      <% }) %>
+                    <% } else {%>
                     <tr>
-                      <th scope="row">19/10/2012</th>
-                      <td>32</td>
-                      <td>12</td>
-                      <td>54</td>
+                      <th colspan=2 scope="row" class="text-center text-danger">No hay preinscripciones en la  base de datos</th>
                     </tr>
-                    <tr>
-                      <th scope="row">21/08/2010</th>
-                      <td>2</td>
-                      <td>4</td>
-                      <td>@3</td>
-                    </tr>
+                    <% } %>
                   </tbody>
               </table>
             </div>

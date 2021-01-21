@@ -70,15 +70,17 @@
                   data-search="true"
                   data-show-export="true"
                   data-pagination="true"
+                  data-page-size="25"
                   data-locale="en-US">
                   <thead>
                     <tr>
-                      <th data-field="id">id</th>
+                      <th data-field="id">Festival id</th>
                       <th data-field="festival" data-sortable="true">Festival</th>
                       <th data-field="ok" data-sortable="true">Ok</th>
-                      <th data-field="platform" data-sortable="false">Plataforma</th>
-                      <th data-field="envío" data-sortable="true">EntryFee</th>
-                      <th data-field="country" data-sortable="false">País</th>
+                      <th data-field="platform">Plataforma</th>
+                      <th data-field="year" data-sortable="true">Año</th>
+                      <th data-field="entryfee">EntryFee</th>
+                      <th data-field="country">País</th>
                       <th data-field="web" data-sortable="false">Web</th>
                     </tr>
                   </thead>
@@ -87,7 +89,7 @@
                       <% festivals.forEach(festival => { %>
                         <tr>
                           <th scope="row">
-                            <%= festival.id %>
+                            <%= festival.festival_id %>
                           </th>
                           <td><a href="/festival:=<%= festival.id %>" value="visit"> <%= festival.name %> </a></td>
                           <% if (festival.ok !== 'n') { %>
@@ -96,6 +98,7 @@
                             <td><span style="color:red">No</span></td>
                           <% } %>
                           <td><%=festival.platform %></td>
+                          <td><%=festival.year %></td>
                           <% if (festival.entryfee !== 0) { %>
                             <td>Sí</td>
                           <% } else { %>
