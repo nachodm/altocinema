@@ -20,7 +20,7 @@ const festivals = new DAOFestivals.DAOFestivals(pool);
 const directors = new DAODirectors.DAODirectors(pool);
 const producers = new DAOProducers.DAOProducers(pool);
 
-let job = schedule.scheduleJob("Preinscription", {minute:30, hour:0, date:1}, function(){
+let job = schedule.scheduleJob('0 0 1 * *', function(){
   films.getFilmList((err, films) => {
     if (err) {  
       var datetime = new Date();
@@ -33,6 +33,18 @@ let job = schedule.scheduleJob("Preinscription", {minute:30, hour:0, date:1}, fu
           console.log("HUGE RUNTIME ERROR AT " + datetime);
         }
       });
+    }
+  })
+})
+
+let duplicity = schedule.scheduleJob({hour: 23, minute: 00}, function(){
+  festivals.handleDuplicities((err, festivals) => {
+    var datetime = new Date();
+    if (err) {  
+      console.log("RUNTIME ERROR AT " + datetime);
+    }
+    else {
+      console.log(datetime + " correct. Duplicities: " + festivals)
     }
   })
 })
@@ -524,7 +536,6 @@ app.post("/updateFestival", checkAuthenticated, (request, response) => {
       }
   });
 });
-
 
 app.post('/festivalEmail', (request, response) => {
   let transporter = nodemailer.createTransport({

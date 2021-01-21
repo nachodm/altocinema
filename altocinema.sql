@@ -193,3 +193,5 @@ CREATE TABLE CONNECTFESTIVALCATEGORIES (
     modif VARCHAR(255),
     PRIMARY KEY(id)
  )
+
+ /*UPDATE festivals SET init_date = DATE_ADD(init_date, INTERVAL 2 YEAR), end_date = DATE_ADD(end_date, INTERVAL 2 YEAR), deadline = DATE_ADD(deadline, INTERVAL 2 YEAR), year = year+2*/

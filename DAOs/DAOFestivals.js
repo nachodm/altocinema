@@ -201,7 +201,7 @@ class DAOFestivals {
                 callback(err);
             }
             let currentmonth = new Date().getMonth() + 1;
-            connection.query("SELECT * FROM FESTIVALS WHERE MONTH(deadline) = ?",
+            connection.query("SELECT * FROM FESTIVALS WHERE MONTH(deadline) >= ? AND",
             [currentmonth],
             (err, festivals) => {
                 if (err) {
@@ -232,37 +232,33 @@ class DAOFestivals {
         });
     }
      /**
-     * Realiza las duplicidades anuales de todos los festivales en la base de datos.
-     * @param {*} films 
+     * Realiza las duplicidades de todos los festivales en la base de datos. 
      * @param {*} callback 
      */
-    annualDuplicity(callback) {
+    handleDuplicities(callback) {
         this.pool.getConnection((err, connection) => {
             if (err) {
-                callback(err);
+                callback(err, null);
             }
-            let currentmonth = new Date().getMonth() + 1;
-            connection.query("UPDATE FESTIVALS SET init_date = DATE_ADD(init_date, INTERVAL 1 YEAR), end_date = DATE_ADD(end_date, INTERVAL 1 YEAR),deadline = DATE_ADD(deadline, INTERVAL 1 YEAR) ",
-            [currentmonth],
+            let date = new Date()
+            const offset = date.getTimezoneOffset()
+            date = new Date(date.getTime() - (offset*60*1000))
+            date = date.toISOString().split('T')[0]
+            connection.query("INSERT INTO FESTIVALS (festival_id, name, ok, init_date, end_date, edition, year, deadline, type, entryfee, fee, currency, euros, platform, prize, waiver, disc, final, contactname, contact_email, programmer, prog_email, contact_tel, contact_web, platformurl,state,contactcountry,language,notes,confirmed,sheet,shortname, copies_header, copies_street,copies_cp,copies_tel,copies_city,copies_province, copies_country, modif)" +
+            "SELECT festival_id, name, ok, DATE_ADD(init_date, INTERVAL 1 YEAR) AS init_date, DATE_ADD(end_date, INTERVAL 1 YEAR) AS end_date, edition, year, DATE_ADD(deadline, INTERVAL 1 YEAR) AS deadline, type, entryfee, fee, currency, euros, platform, prize, waiver, disc, final, contactname, contact_email, programmer, prog_email, contact_tel, contact_web, platformurl,state,contactcountry,language,notes,confirmed,sheet,shortname, copies_header, copies_street,copies_cp,copies_tel,copies_city,copies_province, copies_country, modif FROM FESTIVALS" +
+            " WHERE end_date = ?",
+            [date],
             (err, festivals) => {
+                connection.release();
                 if (err) {
-                    connection.release();
-                    callback(err);
+                    callback(err, null);
                 }
                 else {
-                    let preinscriptions;
-                    films.forEach(film => {
-                        festivals.forEach(festival => {
-                            let temp = [festival.id, film.id];
-                            preinscriptions.push(temp);
-                        });
-                    });
+                    callback(null, festivals);
                 }
             })
         });
     }
-
-
 }
 
 module.exports = {

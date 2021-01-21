@@ -48,7 +48,6 @@ class DAOFilms {
                             (err) => {
                                 connection.release();
                                 if (err) { callback(err); }
-                                
                                 else {
                                     callback(null);
                                 }
