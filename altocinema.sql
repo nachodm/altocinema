@@ -26,10 +26,15 @@ CREATE TABLE FILMS (
     materialslink VARCHAR(2083) DEFAULT NULL,
     link VARCHAR(2083) DEFAULT NULL,
     originalvimeo VARCHAR(2083) DEFAULT NULL,
+    originalvimeopass VARCHAR(2083) DEFAULT NULL,
     englishvimeo VARCHAR(2083) DEFAULT NULL,
+    englishvimeopass VARCHAR(2083) DEFAULT NULL,
     frenchvimeo VARCHAR(2083) DEFAULT NULL,
+    frenchvimeopass VARCHAR(2083) DEFAULT NULL,
     italianvimeo VARCHAR(2083) DEFAULT NULL,
+    italianvimeopass VARCHAR(2083) DEFAULT NULL,
     spavimeo VARCHAR(2083) DEFAULT NULL,
+    spavimeopass VARCHAR(2083) DEFAULT NULL,
     trailer VARCHAR(2083) DEFAULT NULL,
     trailereng VARCHAR(2083) DEFAULT NULL,
     director VARCHAR(255) NOT NULL,
@@ -196,4 +201,23 @@ CREATE TABLE CONNECTFESTIVALCATEGORIES (
  )
 
  /*UPDATE festivals SET init_date = DATE_ADD(init_date, INTERVAL 2 YEAR), end_date = DATE_ADD(end_date, INTERVAL 2 YEAR),
-  deadline = DATE_ADD(deadline, INTERVAL 2 YEAR), year = year+2*/
+  deadline = DATE_ADD(deadline, INTERVAL 2 YEAR), year = year+2
+  
+INSERT INTO `preinscr`(`festival_id`, `film_id`) 
+SELECT W.festid, W.filmid FROM(
+  SELECT * FROM ( 
+    SELECT festcat.id as festid, COUNT(festcat.id) AS SUMA, fil.id as filmid, fest.name, fil.title
+    FROM festivalcategories festcat 
+    JOIN filmcategories filcat ON festcat.category = filcat.category 
+    JOIN festivals fest ON festcat.id = fest.id 
+    JOIN films fil ON filcat.id = fil.id 
+    WHERE MONTH(fest.deadline) = MONTH(CURRENT_DATE())
+    GROUP BY festcat.id
+) AS X 
+JOIN (
+    SELECT id as festid2, COUNT(id) as SUMA2 
+    FROM festivalcategories
+    GROUP BY id
+) AS Y 
+ON X.festid = Y.festid2 
+WHERE X.SUMA = Y.SUMA2) AS W */

@@ -42,6 +42,17 @@
                   <h6 class="text-uppercase text-muted ls-1 mb-1">Envíos a festivales</h6>
                   <h2 class="mb-0">Envíos pendientes</h2>
                 </div>
+                <form method="POST" action="/preinscription">
+                  <div class="col text-right">
+                    <button type="submit" class="btn btn-danger">Preinscripción</button>
+                  </div>
+                </form>
+                <form method="POST" action="/duplicate">
+                  <div class="col text-right">
+                    <button type="submit" class="btn btn-warning">Duplicación mensual</button>
+                  </div>
+                </form>
+                
               </div>
             </div>
             <% if (error.length > 0) { %>

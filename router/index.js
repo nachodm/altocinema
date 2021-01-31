@@ -24,18 +24,13 @@ const producers = new DAOProducers.DAOProducers(pool);
 const preinscr = new DAOPreinsc.DAOPreinsc(pool)
 
 let job = schedule.scheduleJob('0 0 1 * *', function(){
-  films.getFilmList((err, films) => {
+  preinscr.handleMonthPreinscriptions((err, preinscriptions) => {
+    var datetime = new Date();
     if (err) {  
-      var datetime = new Date();
-      console.log("HUGE RUNTIME ERROR AT " + datetime);
+      console.log("RUNTIME ERROR AT " + datetime);
     }
     else {
-      preinscr.handleMonthPreinscriptions(films, (err) => {
-        if (err) {
-          var datetime = new Date();
-          console.log("HUGE RUNTIME ERROR AT " + datetime);
-        }
-      });
+          console.log(datetime + " correct. Preinscriptions: " + preinscriptions);
     }
   })
 })
@@ -329,10 +324,15 @@ const film = [[
     request.body.materialslink,
     request.body.link,
     request.body.originalvimeo,
+    request.body.originalvimeopass,
     request.body.englishvimeo,
+    request.body.englishvimeopass,
     request.body.frenchvimeo,
+    request.body.frenchvimeopass,
     request.body.italianvimeo,
+    request.body.italianvimeopass,
     request.body.spavimeo,
+    request.body.spavimeopass,
     request.body.trailer,
     request.body.trailereng,
     request.body.director,
@@ -391,10 +391,15 @@ app.post("/updateFilm", checkAuthenticated, (request, response) => {
     materialslink: request.body.materialslink,
     link: request.body.link,
     originalvimeo: request.body.originalvimeo,
+    originalvimeopass: request.body.originalvimeopass,
     englishvimeo: request.body.englishvimeo,
+    englishvimeopass: request.body.englishvimeopass,
     frenchvimeo: request.body.frenchvimeo,
+    frenchvimeopass: request.body.frenchvimeopass,
     italianvimeo: request.body.italianvimeo,
+    italianvimeopass: request.body.italianvimeopass,
     spavimeo: request.body.spavimeo,
+    spavimeopass: request.body.spavimeopass,
     trailer: request.body.trailer,
     trailereng: request.body.trailereng,
     director: request.body.director,

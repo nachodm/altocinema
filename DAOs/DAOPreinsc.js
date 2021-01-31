@@ -39,39 +39,45 @@ class DAOPreinsc {
 
     /**
      * Realiza las preinscripciones a los festivales de todas las películas que recibe por parámetro.
-     * @param {*} films 
      * @param {*} callback 
      */
-    handleMonthPreinscriptions(films, callback) {
+    handleMonthPreinscriptions( callback) {
         this.pool.getConnection((err, connection) => {
             if (err) {
                 callback(err);
             }
             let currentmonth = new Date().getMonth() + 1;
-            connection.query("SELECT * FROM FESTIVALS WHERE MONTH(deadline) >= ? AND",
+            connection.query("SELECT * FROM ( SELECT festcat.id as festid, COUNT(festcat.id) AS SUMA, filcat.id, fest.name, fil.title" +
+                "FROM festivalcategories festcat "+
+                "JOIN filmcategories filcat ON festcat.category = filcat.category "+
+                "JOIN festivals fest ON festcat.id = fest.id "+
+                "JOIN films fil ON filcat.id = fil.id "+
+                "WHERE MONTH(fest.deadline) = ? "+
+                "GROUP BY festcat.id"+
+            ") AS X" +
+            "JOIN ("+
+                "SELECT id as festid2, COUNT(id) as SUMA2 "+
+                "FROM festivalcategories"+
+                "GROUP BY id"+
+            ") AS Y "+
+            "ON X.festid = Y.festid2 "+
+            "WHERE X.SUMA = Y.SUMA2 ",
             [currentmonth],
-            (err, festivals) => {
+            (err, preinscriptions) => {
                 if (err) {
                     connection.release();
-                    callback(err);
+                    callback(err, null);
                 }
                 else {
-                    let preinscriptions;
-                    films.forEach(film => {
-                        festivals.forEach(festival => {
-                            let temp = [festival.id, film.id];
-                            preinscriptions.push(temp);
-                        });
-                    });
                     connection.query("INSERT INTO PRESINSCR(festival_id, film_id) VALUES ?",
                     [preinscriptions],
                     (err) => {
                         if (err) {
                             connection.release();
-                            callback(err);
+                            callback(err, null);
                         }
                         else {
-                            callback(null);
+                            callback(null, preinscriptions);
                         }
                     })
                 }
