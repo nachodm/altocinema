@@ -1,6 +1,6 @@
-const { request } = require("express");
-const flash = require("express-flash");
-const DAOPreinsc = require("../DAOs/DAOPreinsc");
+const { request } = require("express")
+const flash = require("express-flash")
+const DAOPreinsc = require("../DAOs/DAOPreinsc")
 
 module.exports = function(app, passport) {
 
@@ -15,12 +15,12 @@ const DAOFestivals = require('../DAOs/DAOFestivals')
 const DAODirectors = require('../DAOs/DAODirectors')
 const DAOProducers = require('../DAOs/DAOProducers')
 const DAOPreinc = require('../DAOs/DAOPreinsc')
-const pool = mysql.createPool(config.mysqlconfig);
-const users = new DAOUsers.DAOUsers(pool);
-const films = new DAOFilms.DAOFilms(pool);
-const festivals = new DAOFestivals.DAOFestivals(pool);
-const directors = new DAODirectors.DAODirectors(pool);
-const producers = new DAOProducers.DAOProducers(pool);
+const pool = mysql.createPool(config.mysqlconfig)
+const users = new DAOUsers.DAOUsers(pool)
+const films = new DAOFilms.DAOFilms(pool)
+const festivals = new DAOFestivals.DAOFestivals(pool)
+const directors = new DAODirectors.DAODirectors(pool)
+const producers = new DAOProducers.DAOProducers(pool)
 const preinscr = new DAOPreinsc.DAOPreinsc(pool)
 
 let job = schedule.scheduleJob('0 0 1 * *', function(){
@@ -60,6 +60,34 @@ function checkNotAuthenticated(req, res, next) {
   }
   next();
 }
+
+app.post('/preinscription', (request, response) => {
+  preinscr.handleMonthPreinscriptions((err, preinscriptions) => {
+    var datetime = new Date();
+    if (err) {  
+      request.flash('error', "RUNTIME ERROR AT " + datetime + ":" + '\n' + err);
+      response.redirect('dashboard');
+    }
+    else {
+      request.flash('success', 'Preinscripción realizada correctamente.');
+      response.redirect('dashboard');
+    }
+  })
+})
+
+app.post('/handleDuplicities', (request, response) => {
+  festivals.handleDuplicities((err, festivals) => {
+    var datetime = new Date();
+    if (err) {  
+      request.flash('error', "RUNTIME ERROR AT " + datetime + ":" + '\n' + err);
+      response.redirect('dashboard');
+    }
+    else {
+      request.flash('success', 'Duplicidades generadas correctamente: ' +  JSON.stringify(festivals));
+      response.redirect('dashboard');
+    }
+  })
+})
 
 app.post('/sendEmail', (request, response) => {
   let transporter = nodemailer.createTransport({
