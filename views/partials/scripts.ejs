@@ -97,3 +97,12 @@
       document.getElementById('ok').style.backgroundColor  = background;
   }
 </script>
+
+<script>
+  const day = new Date().getDate();
+  console.log(day)
+  if ((day !== 28) && (day !== 29)) {
+    document.getElementById('ptask').style.display = 'none';
+    document.getElementById('dtask').style.display = 'none';
+  }
+</script>

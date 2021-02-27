@@ -26,11 +26,16 @@
     
     <%- include('partials/top-navbar', {active: "altocinema"}); %>
     <div class="container my-auto">
-        <div class="view">
-            <img class="img-fluid animated fadeIn" src="img/white-logo.png" alt="ALTO CINEMA">
+        
+        <video autoplay muted id="myVideo">
+            <source src="video/altocinema.mp4" type="video/mp4">
+        </video>
+  
+        <!--<div class="view logo">
+            <img class="main_logo img-fluid animated fadeIn" src="img/white-logo.png" alt="ALTO CINEMA">
             <div class="mask">
             </div>
-        </div>
+        </div>-->
         <a href="#values">
             <i class="float fas fa-angle-double-down fa-2x white-text animated fadeIn"></i>
         </a>

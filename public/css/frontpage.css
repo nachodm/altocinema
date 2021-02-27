@@ -25,7 +25,7 @@ html {
 }
 
 body {
-    background-color: black;
+    background-color: black !important;
 }
 
 .content {
@@ -50,6 +50,26 @@ body {
     min-height: 100vh;
 }
 
+video {
+    object-fit:cover;
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index:-1;
+    opacity: 0.4;
+}
+
+.logo {
+    position:relative;
+    height:100vh;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .contact {
     background-color: rgba(173, 171, 172, 0.2);
     padding: 28px;
@@ -71,7 +91,7 @@ body {
     background-color: transparent;
 }
 .scrolling-navbar {
-    transition: background .5s ease-in-out, padding .5s ease-in-out;
+    transition: .5s ease-in-out, padding .5s ease-in-out;
 }
 .top-nav-collapse {
     background-color: #667490;
