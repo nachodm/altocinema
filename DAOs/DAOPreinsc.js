@@ -48,16 +48,16 @@ class DAOPreinsc {
             }
             let currentmonth = new Date().getMonth() + 1;
             connection.query("SELECT * FROM ( SELECT festcat.id as festid, COUNT(festcat.id) AS SUMA, filcat.id, fest.name, fil.title" +
-                "FROM festivalcategories festcat "+
-                "JOIN filmcategories filcat ON festcat.category = filcat.category "+
-                "JOIN festivals fest ON festcat.id = fest.id "+
-                "JOIN films fil ON filcat.id = fil.id "+
+                "FROM FESTIVALCATEGORIES festcat "+
+                "JOIN FILMCATEGORIES filcat ON festcat.category = filcat.category "+
+                "JOIN FESTIVALS fest ON festcat.id = fest.id "+
+                "JOIN FILMS fil ON filcat.id = fil.id "+
                 "WHERE MONTH(fest.deadline) = ? "+
                 "GROUP BY festcat.id"+
             ") AS X" +
             "JOIN ("+
                 "SELECT id as festid2, COUNT(id) as SUMA2 "+
-                "FROM festivalcategories"+
+                "FROM FESTIVALCATEGORIES"+
                 "GROUP BY id"+
             ") AS Y "+
             "ON X.festid = Y.festid2 "+
