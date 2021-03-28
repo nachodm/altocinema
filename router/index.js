@@ -65,10 +65,12 @@ app.post('/preinscription', (request, response) => {
   preinscr.handleMonthPreinscriptions((err, preinscriptions) => {
     var datetime = new Date();
     if (err) {  
+      console.log(err)
       request.flash('error', "RUNTIME ERROR AT " + datetime + ":" + '\n' + err);
       response.redirect('dashboard');
     }
     else {
+      console.log(preinscriptions)
       request.flash('success', 'Preinscripción realizada correctamente.' +  JSON.stringify(preinscriptions));
       response.redirect('dashboard');
     }
@@ -79,10 +81,12 @@ app.post('/handleDuplicities', (request, response) => {
   festivals.handleDuplicities((err, festivals) => {
     var datetime = new Date();
     if (err) {  
+      console.log(err)
       request.flash('error', "RUNTIME ERROR AT " + datetime + ":" + '\n' + err);
       response.redirect('dashboard');
     }
     else {
+      console.log(festivals)
       request.flash('success', 'Duplicidades generadas correctamente: ' +  JSON.stringify(festivals));
       response.redirect('dashboard');
     }
