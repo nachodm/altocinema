@@ -47,17 +47,17 @@ class DAOPreinsc {
                 callback(err);
             }
             let currentmonth = new Date().getMonth() + 1;
-            connection.query("SELECT * FROM ( SELECT festcat.id as festid, COUNT(festcat.id) AS SUMA, filcat.id, fest.name, fil.title" +
+            connection.query("SELECT * FROM ( SELECT festcat.id as festid, COUNT(festcat.id) AS SUMA, filcat.id, fest.name, fil.title " +
                 "FROM FESTIVALCATEGORIES festcat "+
                 "JOIN FILMCATEGORIES filcat ON festcat.category = filcat.category "+
                 "JOIN FESTIVALS fest ON festcat.id = fest.id "+
                 "JOIN FILMS fil ON filcat.id = fil.id "+
                 "WHERE MONTH(fest.deadline) = ? "+
                 "GROUP BY festcat.id"+
-            ") AS X" +
+            ") AS X " +
             "JOIN ("+
                 "SELECT id as festid2, COUNT(id) as SUMA2 "+
-                "FROM FESTIVALCATEGORIES"+
+                "FROM FESTIVALCATEGORIES "+
                 "GROUP BY id"+
             ") AS Y "+
             "ON X.festid = Y.festid2 "+
@@ -69,17 +69,20 @@ class DAOPreinsc {
                     callback(err, null);
                 }
                 else {
-                    connection.query("INSERT INTO PRESINSCR(festival_id, film_id) VALUES ?",
-                    [preinscriptions],
-                    (err) => {
-                        if (err) {
-                            connection.release();
-                            callback(err, null);
-                        }
-                        else {
-                            callback(null, preinscriptions);
-                        }
-                    })
+                    if (preinscriptions.length > 0) {
+                        connection.query("INSERT INTO PRESINSCR(festival_id, film_id) VALUES ?",
+                        [preinscriptions],
+                        (err) => {
+                            if (err) {
+                                connection.release();
+                                callback(err, null);
+                            }
+                            else {
+                                callback(null, preinscriptions);
+                            }
+                        })
+                    }
+                    else callback(null, null)
                 }
             })
         });

@@ -235,7 +235,7 @@ class DAOFestivals {
      * Realiza las duplicidades de todos los festivales en la base de datos. 
      * @param {*} callback 
      */
-    handleDuplicities(callback) {
+     handleDuplicities(callback) {
         this.pool.getConnection((err, connection) => {
             if (err) {
                 callback(err, null);

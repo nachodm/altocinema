@@ -69,7 +69,7 @@ app.post('/preinscription', (request, response) => {
       response.redirect('dashboard');
     }
     else {
-      request.flash('success', 'Preinscripción realizada correctamente.');
+      request.flash('success', 'Preinscripción realizada correctamente.' +  JSON.stringify(preinscriptions));
       response.redirect('dashboard');
     }
   })
