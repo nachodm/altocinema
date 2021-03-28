@@ -47,7 +47,7 @@ class DAOPreinsc {
                 callback(err);
             }
             let currentmonth = new Date().getMonth() + 1;
-            connection.query("SELECT * FROM ( SELECT festcat.id as festid, COUNT(festcat.id) AS SUMA, filcat.id, fest.name, fil.title " +
+            connection.query("SELECT * FROM ( SELECT festcat.id as festid, COUNT(festcat.id) AS SUMA, filcat.id, fest.name, fil.id AS filmId " +
                 "FROM FESTIVALCATEGORIES festcat "+
                 "JOIN FILMCATEGORIES filcat ON festcat.category = filcat.category "+
                 "JOIN FESTIVALS fest ON festcat.id = fest.id "+
@@ -70,8 +70,9 @@ class DAOPreinsc {
                 }
                 else {
                     if (preinscriptions.length > 0) {
+                        const ids = [preinscriptions["id"], preinsciptions["filmId"]]
                         connection.query("INSERT INTO PRESINSCR(festival_id, film_id) VALUES ?",
-                        [preinscriptions],
+                        [ids],
                         (err) => {
                             if (err) {
                                 connection.release();
