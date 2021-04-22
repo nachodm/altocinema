@@ -70,8 +70,10 @@ class DAOPreinsc {
                 }
                 else {
                     if (preinscriptions.length > 0) {
-                        const ids = [preinscriptions["id"], preinsciptions["filmId"]]
-                        connection.query("INSERT INTO PRESINSCR(festival_id, film_id) VALUES ?",
+                        let ids = preinscriptions.map(insc => {
+                            return [insc["id"], insc["filmId"]]
+                        })
+                        connection.query("INSERT INTO PREINSCR(festival_id, film_id) VALUES ?",
                         [ids],
                         (err) => {
                             if (err) {
