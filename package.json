@@ -1,49 +1,52 @@
 {
-  "name": "alto-cinema",
-  "version": "1.0.0",
-  "description": "Alto Cinema web app",
-  "main": "app.js",
-  "scripts": {
-    "test": "mocha",
-    "devStart": "nodemon app.js",
-    "start": "node app.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/nachodm/altocinema.git"
-  },
-  "keywords": [
-    "web",
-    "app",
-    "node",
-    "js",
-    "cinema",
-    "alto"
-  ],
-  "author": "Ignacio Domingo Martin",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/nachodm/altocinema/issues"
-  },
-  "homepage": "https://github.com/nachodm/altocinema#readme",
-  "dependencies": {
-    "bcrypt": "^5.0.0",
-    "cookie-parser": "^1.4.5",
-    "ejs": "^3.1.6",
-    "express": "^4.17.1",
-    "express-ejs-layouts": "^2.5.0",
-    "express-flash": "0.0.2",
-    "express-session": "^1.17.1",
-    "jquery": "^3.5.1",
-    "mysql": "^2.18.1",
-    "node-schedule": "^1.3.3",
-    "nodemailer": "^6.4.18",
-    "passport": "^0.4.1",
-    "passport-local": "^1.0.0",
-    "path": "^0.12.7"
-  },
-  "devDependencies": {
-    "dotenv": "^8.2.0",
-    "nodemon": "^2.0.7"
-  }
+    "name": "alto-cinema",
+    "version": "1.0.0",
+    "description": "Alto Cinema web app",
+    "main": "app.js",
+    "scripts": {
+        "test": "mocha",
+        "dev": "nodemon app.js",
+        "start": "node app.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/nachodm/altocinema.git"
+    },
+    "keywords": [
+        "web",
+        "app",
+        "node",
+        "js",
+        "cinema",
+        "alto"
+    ],
+    "author": "Ignacio Domingo Martin",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/nachodm/altocinema/issues"
+    },
+    "homepage": "https://github.com/nachodm/altocinema#readme",
+    "dependencies": {
+        "bcrypt": "^5.0.0",
+        "cookie-parser": "^1.4.5",
+        "ejs": "^3.1.6",
+        "express": "^4.17.1",
+        "express-ejs-layouts": "^2.5.0",
+        "express-flash": "0.0.2",
+        "express-session": "^1.17.1",
+        "i18n": "^0.13.3",
+        "i18next": "^20.2.2",
+        "jquery": "^3.5.1",
+        "mysql": "^2.18.1",
+        "node-schedule": "^1.3.3",
+        "nodemailer": "^6.4.18",
+        "passport": "^0.4.1",
+        "passport-local": "^1.0.0",
+        "path": "^0.12.7"
+    },
+    "devDependencies": {
+        "dotenv": "^8.2.0",
+        "nodemon": "^2.0.7",
+        "prettier": "2.3.2"
+    }
 }

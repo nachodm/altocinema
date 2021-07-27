@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <title>Alto Cinema</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+  <!-- Google Fonts -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+  <!-- Bootstrap core CSS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Material Design Bootstrap -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
+  
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:200&display=swap" rel="stylesheet"> 
+  <!--https://favicon.io/favicon-generator/ Monoton font-->
+  <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
+  <link rel="manifest" href="img/site.webmanifest">
+  
+  <link href="css/frontpage.css" rel="stylesheet">
+  <link href="css/pills.css" rel="stylesheet">
+   
+</head>
+<body>
+    
+    <%- include('partials/top-navbar', {active: "services"}); %>
+    <div class="my-auto container animated fadeIn">
+      <div class="row align-items-center">
+        <div class="col-md-3">
+            <!-- Tabs nav -->
+            <div class="nav flex-column nav-pills nav-pills-custom text-left" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                <a class="nav-link mt-3 mb-3 p-3 shadow active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">
+                    <i class="fas fa-film mr-2"></i>
+                    <span class="font-weight-bold small text-uppercase">Distribución</span>
+                </a>
+                <a class="nav-link mb-3 p-3 shadow" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">    
+                    <i class="fas fa-handshake mr-2"></i>
+                    <span class="font-weight-bold small text-uppercase">Asesoría</span>
+                </a>
+                <a class="nav-link mb-3 p-3 shadow" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">
+                    <i class="fa fa-star mr-2"></i>
+                    <span class="font-weight-bold small text-uppercase">Gestión de trámites ICAA</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="col-md-9">
+            <!-- Tabs content -->
+            <div class="tab-content" id="v-pills-tabContent">
+                <div class="tab-pane fade shadow rounded bg-white show active p-4" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+                    <h4 class="font-italic mb-4">Distribución</h4>
+                    <p class="text-muted mb-2 text-justify">AltoCinema es una distribuidora de cine especializada en el circuito de festivales cinematográficos. Planificamos una estrategia personalizada acorde a las características de cada una de nuestras películas, teniendo en cuenta las metas y objetivos de nuestros clientes.<br>
+                        Realizamos un servicio completo desde la planificación y el envío a festivales tanto nacionales como internacionales, hasta la gestión de los materiales necesarios en caso de selección. <br>
+                        Nuestra máxima es la transparencia y claridad, por ello ofrecemos a nuestros clientes un informe detallado de la situación en la que se encuentra la distribución de su obra: previsión de futuros envíos a festivales, el número de selecciones obtenidas, el estado del envío, información detallada sobre las tasas de inscripción.
+                    </p>
+                </div>
+                
+                <div class="tab-pane fade shadow rounded bg-white p-4" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+                    <h4 class="font-italic mb-4">Asesoría</h4>
+                    <p class="text-muted mb-2 text-justify">¡Hazlo tú mismo! ¿Tienes un proyecto personal y te gustaría distribuirlo por tu cuenta? Nosotros te asesoramos.<br>
+                        Analizamos tu obra y sus características para conseguir el máximo rendimiento y una correcta distribución. Te guiaremos ofreciendo un calendario de distribución, así como todo lo que necesitas saber sobre las diferentes plataformas de inscripción para obtener los mejores resultados y lograr nominaciones en diferentes festivales cinematográficos a nivel internacional.
+                    </p>
+                </div>
+                
+                <div class="tab-pane fade shadow rounded bg-white p-4" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+                    <h4 class="font-italic mb-4">Gestión de trámites ICAA</h4>
+                    <p class="font-italic text-muted mb-2 text-justify">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est.</p>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+    
+  <!-- JQuery -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <!-- Bootstrap tooltips -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+  <!-- Bootstrap core JavaScript -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <!-- MDB core JavaScript -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js"></script>
+</body>
+</html>

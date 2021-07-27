@@ -185,3 +185,7 @@ video {
 .hover {
     color: whitesmoke;
 }
+
+.a_style {
+    border:none;
+}

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <title>Alto Cinema</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+  <!-- Google Fonts -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+  <!-- Bootstrap core CSS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Material Design Bootstrap -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
+  
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:200&display=swap" rel="stylesheet"> 
+  <!--https://favicon.io/favicon-generator/ Monoton font-->
+  <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
+  <link rel="manifest" href="img/site.webmanifest">
+  
+  <link href="css/frontpage.css" rel="stylesheet">
+</head>
+<body>
+    
+    <%- include('partials/top-navbar', {active: "altocinema"}); %>
+    <div class="container my-auto">
+        
+        <video autoplay muted id="myVideo">
+            <source src="video/altocinema.mp4" type="video/mp4">
+        </video>
+  
+        <div class="view logo">
+            <img class="main_logo img-fluid animated fadeIn" src="img/white-logo.png" alt="ALTO CINEMA">
+            <div class="mask">
+            </div>
+        </div>
+        <a href="#values">
+            <i class="float fas fa-angle-double-down fa-2x white-text animated fadeIn"></i>
+        </a>
+    </div>
+    <div id="values" class="values white p-4 container-fluid">
+        <div style="padding-top: -30px; margin-top: +30px;" class="p-4 wrapper row">
+            <div class="col-sm-4 d-flex justify-content-center align-items-center">
+                <img class="customsize img-fluid" src="img/values.png" alt="Values png">
+            </div>
+            <div class="p-4 col-sm-8">
+                <h2>Nuestros valores</h2><br>
+                <h4><strong>MISIÓN:</strong> En AltoCinema trabajamos para lograr el éxito y reconocimiento de nuestros clientes en el sector cinematográfico. Sabemos que su cine de hoy actuará como lanzadera para conseguir sacar adelante sus futuros proyectos. </h4><br>
+                <p><strong>VISIÓN:</strong> Cuidamos al máximo la distribución en festivales de cine de cada una de las películas que forman parte de nuestros catálogos. Nuestro objetivo es que logren un importante número de nominaciones, así como que puedan optar a premios como Goya, Oscar, EFA Awards, Bafta y Cesar.</p>
+                <p><strong>ACCIÓN:</strong> Diseñamos y planificamos una estrategia personalizada para que tanto nuestros largometrajes como cortometrajes, consigan alcanzar el reconocimiento tanto del público como la industria, no solo a nivel nacional sino también internacional.</p>
+        
+            </div>
+        </div>
+    </div>
+    <div id="aboutus" class="p-4 container text-center">
+        <h3 class="text-white p-4">Nosotros</h3>
+        <p class="text-light"><em>We love cinema!</em></p>
+        <p class="text-light">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, facere dolores aliquid molestias nihil odio accusamus modi deleniti, ipsam nisi qui in minus maiores? Dolorum modi enim reiciendis ea blanditiis.</p>
+        <br>
+        <div class="row">
+            <div class="col-sm-6">
+                <p class="text-light"><strong>First</strong></p><br>
+                <img src="https://www.zayedhotel.com/addons/default/themes/yoona/img/user.jpg" class="img-fluid rounded" alt="Random Name" width="255" height="255">
+                <div id="profile1">
+                <p class="text-light pt-3">Lorem ipsum</p>
+                <p class="text-light">Lorem ipsum dolor sit ame</p>
+                <p class="text-light">Lorem ipsum dolor sit ame</p>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <p class="text-light"><strong>Second</strong></p><br>
+                <img src="https://www.zayedhotel.com/addons/default/themes/yoona/img/user.jpg" class="img-fluid rounded" alt="Random Name" width="255" height="255">
+                <div id="profile2" class="">
+                    <p class="text-light pt-3">Lorem ipsum dolor sit ame</p>
+                    <p class="text-light">Lorem ipsum dolor sit ame'</p>
+                    <p class="text-light">Lorem ipsum dolor sit ame</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <%- include('partials/footer'); -%>
+  
+  <!-- JQuery -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <!-- Bootstrap tooltips -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+  <!-- Bootstrap core JavaScript -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <!-- MDB core JavaScript -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js"></script>
+</body>
+</html>

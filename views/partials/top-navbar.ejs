@@ -8,23 +8,23 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ml-auto">
             <li class="nav-item m-2 <%= active === 'altocinema' && 'active' %>" %>>
-            <a class="nav-link waves-effect waves-light py-2 px-3 text-uppercase" href="<%= active === 'altocinema' ? '#values' : '/' %>"">Quiénes somos</a>
+            <a class="nav-link waves-effect waves-light py-2 px-3 text-uppercase" href="<%= active === 'altocinema' ? '#values' : '/' %>""><%= __('us')%></a>
             </li>
             <li class="nav-item m-2 <%= active === 'services' && 'active' %>" >
-                <a class="nav-link waves-effect waves-light py-2 px-3 text-uppercase" href="/services">Servicios</a>
+                <a class="nav-link waves-effect waves-light py-2 px-3 text-uppercase" href="/services"><%= __('services')%></a>
             </li>
             <li class="nav-item dropdown m-2 <%= active === 'catalogue' && 'active' %>">
                 <a class="nav-link dropdown-toggle waves-effect waves-light py-2 px-3 text-uppercase" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Catálogos
+                    <%= __('catalogue')%>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="/catalogue">AltoCinema</a>
-                    <a class="dropdown-item" href="/nouvelleCinema">NouvelleCinema</a>
-                    <a class="dropdown-item" href="/comingOutCinema">ComingOutCinema</a>
+                    <a class="dropdown-item <%= active === 'catalogue' && 'active' %>" href="/catalogue">AltoCinema</a>
+                    <a class="dropdown-item <%= active === 'nouvelle' && 'active' %>" href="/nouvelleCinema">NouvelleCinema</a>
+                    <a class="dropdown-item <%= active === 'comingout' && 'active' %>" href="/comingOutCinema">ComingOutCinema</a>
                 </div>
             </li>
             <li class="nav-item m-2 <%= active === 'contact' && 'active' %>">
-                <a class="nav-link waves-effect waves-light py-2 px-3 text-uppercase" href="/contact">Contacto</a>
+                <a class="nav-link waves-effect waves-light py-2 px-3 text-uppercase" href="/contact"><%= __('contact')%></a>
             </li>
         </ul>
     </div>

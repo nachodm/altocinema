@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <title>Alto Cinema</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+  <!-- Google Fonts -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+  <!-- Bootstrap core CSS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Material Design Bootstrap -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
+  
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:200&display=swap" rel="stylesheet"> 
+  <!--https://favicon.io/favicon-generator/ Monoton font-->
+  <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
+  <link rel="manifest" href="img/site.webmanifest">
+  
+  <link href="css/frontpage.css" rel="stylesheet">
+   
+</head>
+<body>
+    
+    <%- include('partials/top-navbar', {active: "contact"}); %>
+
+    <div class="animated fadeIn content container text-light">
+        <h3 class="text-center mb-3">Contacto</h3>
+        <div class="contact">
+            <div class="row d-flex align-items-center">
+                <div class="col-12">
+                    <p class="mb-4">Contacta con nosotros y te responderemos a la menor brevedad posible. Si deseas que valoremos tu obra, por favor envíanos el enlace de visionado y contraseña a través del formulario que encontrarás a continuación.</p>
+                </div>
+            </div>
+            <div class="row ">
+                <div class="col-md-12 col-lg-6 align-self-center">
+                    <p class="success-lighter-hoverho"><i class="mr-2 fas fa-map-marked-alt"></i>  Madrid, ESPAÑA</p>
+                    <p class="hover"><i class="mr-2 fas fa-phone"></i>  Teléfono: +00 1515151515</p>
+                    <p class="hover"><i class="mr-2 fas fa-envelope"></i>  Email: info@altocinema.com</p>
+                    <p>
+                        <a class="hover" href="http://www.linkedin.com" target="_blank"><i class="mr-2 fab fa-linkedin-in"></i> Linkedin</a>
+                    </p>
+                    <p>
+                        <a class="hover" href="http://www.twitternp.com" target="_blank"><i class="mr-2 fab fa-twitter"></i>  Twitter: @altocinema</a>
+                    </p>
+                    <p></p>
+                        <a class="hover" href="http://www.instagram.com" target="_blank"><i class="mr-2 fab fa-instagram"></i>  Instagram: @altocinema</a>
+                    </p>
+                </div>
+                <div class="col-md-12 col-lg-6 align-self-center">
+                    <form action="/sendEmail" method="POST">
+                        <% if (success.length > 0) { %>
+                            <div class="alert alert-success mb-1" role="alert">
+                              <%= success %>
+                            </div>
+                          <% } %>
+                        <% if (error.length > 0) { %>
+                            <div class="alert alert-danger mb-1" role="alert">
+                              <%= error %>
+                            </div>
+                        <% } %>
+                        <div class="md-form">
+                            <i class="fas fa-user prefix"></i>
+                            <input type="text" name="name" id="name" class="form-control validate text-white" required>
+                            <label for="name" data-error="wrong" data-success="right">Nombre</label>
+                        </div>
+                        <div class="md-form">
+                            <i class="fas fa-envelope prefix"></i>
+                            <input type="email" name="email" id="email"class="form-control validate text-white" required>
+                            <label for="email" data-error="wrong" data-success="right">Email</label>
+                        </div>
+                        <div class="md-form">
+                            <i class="fas fa-pencil-alt prefix"></i>
+                            <textarea id="text" name="text" class="md-textarea form-control text-white" rows="4" required></textarea>
+                            <label for="text">Mensaje</label>
+                        </div>
+                        <button class="btn btn-lg btn-outline-white btn-block text-uppercase font-weight-bold" type="submit">Enviar</button>
+                    </form>
+                 </div>   
+            </div>
+        </div>
+    </div> 
+    
+    <!-- JQuery -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js"></script>
+</body>
+</html>
