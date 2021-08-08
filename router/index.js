@@ -135,7 +135,7 @@ module.exports = function (app, passport) {
         films.getAltoCinema((err, films) => {
             if (err) {
                 console.log(err)
-                response.redirect('/')
+                response.render('catalogue', { films: [] })
             } else {
                 response.render('catalogue', { films: films })
             }
