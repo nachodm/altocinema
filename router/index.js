@@ -134,6 +134,7 @@ module.exports = function (app, passport) {
     app.get('/catalogue', (request, response) => {
         films.getAltoCinema((err, films) => {
             if (err) {
+                console.log(err)
                 response.redirect('/')
             } else {
                 response.render('catalogue', { films: films })
@@ -144,6 +145,7 @@ module.exports = function (app, passport) {
     app.get('/comingOutCinema', (request, response) => {
         films.getComingOutCinema((err, films) => {
             if (err) {
+                console.log(err)
                 response.redirect('/')
             } else {
                 response.render('comingOutCinema', { films: films })
@@ -154,6 +156,7 @@ module.exports = function (app, passport) {
     app.get('/nouvelleCinema', (request, response) => {
         films.getNouvelleCinema((err, films) => {
             if (err) {
+                console.log(err)
                 response.redirect('/')
             } else {
                 response.render('nouvelleCinema', { films: films })
