@@ -13,7 +13,7 @@
             <li class="nav-item m-2 <%= active === 'services' && 'active' %>" >
                 <a class="nav-link waves-effect waves-light py-2 px-3 text-uppercase" href="/services"><%= __('services')%></a>
             </li>
-            <li class="nav-item dropdown m-2 <%= active === 'catalogue' && 'active' %>">
+            <li class="nav-item dropdown m-2 <%= (active === 'catalogue' || active === 'nouvelle' ||active === 'comingout') && 'active' %>">
                 <a class="nav-link dropdown-toggle waves-effect waves-light py-2 px-3 text-uppercase" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <%= __('catalogue')%>
                 </a>
@@ -24,7 +24,7 @@
                 </div>
             </li>
             <li class="nav-item m-2 <%= active === 'contact' && 'active' %>">
-                <a class="nav-link waves-effect waves-light py-2 px-3 text-uppercase" href="/contact"><%= __('contact')%></a>
+                <a class="nav-link waves-effect waves-light py-2 px-3 text-uppercase" href="/contact"><%= __('us')%></a>
             </li>
         </ul>
     </div>

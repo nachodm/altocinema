@@ -25,37 +25,7 @@
    
 </head>
 <body class="comingout">
-    <nav class="navbar navbar-expand-md fixed-top navbar-light white">
-        <a class="navbar-brand" href="/"> 
-            <img class="img-fluid max-size" src="img/logo.png" alt="ALTO CINEMA">
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item m-2">
-                <a class="nav-link waves-effect waves-light py-2 px-3 text-uppercase" href="/">Quiénes somos <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item m-2">
-                    <a class="nav-link waves-effect waves-light py-2 px-3 text-uppercase" href="/services">Servicios</a>
-                </li>
-                <li class="nav-item dropdown active m-2">
-                    <a class="nav-link dropdown-toggle waves-effect waves-light py-2 px-3 text-uppercase" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      Catálogos
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="/catalogue">AltoCinema</a>
-                        <a class="dropdown-item" href="/nouvelleCinema">NouvelleCinema</a>
-                        <a class="dropdown-item active" href="/comingOutCinema">ComingOutCinema</a>
-                    </div>
-                </li>
-                <li class="nav-item m-2">
-                    <a class="nav-link waves-effect waves-light py-2 px-3 text-uppercase" href="/contact">Contacto</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
+    <%- include('partials/top-navbar', {active: "comingout"}); %>
     <div class="content container animate__animated animate__zoomIn">
         <!-- Container -->
         <div class="row">
@@ -63,7 +33,7 @@
                 <img class="img-fluid catalogue-logo" src="img/comingout.png" alt="ALTO CINEMA">
             </div>
             <div class="col-12 d-flex text-center pb-2 m-1">
-                <p class="text-white">En ComingOutCinema nos especializamos en dar visibilidad al cine de temática LGBTQ+  dentro del circuito de festivales cinematográficos.</p>
+                <p class="text-white"><%= __('comingout_cat')%></p>
             </div>
                
             <%if ((typeof films !== 'undefined' && films.length !== 0)) {%>

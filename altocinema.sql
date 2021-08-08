@@ -122,6 +122,7 @@ CREATE TABLE FESTIVALCATEGORIES (
     primary key(id, category)
     -- specify more columns here
 );
+
 CREATE TABLE PRIZES (
     id INT NOT NULL AUTO_INCREMENT,
     film INT NOT NULL,

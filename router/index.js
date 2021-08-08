@@ -17,6 +17,7 @@ module.exports = function (app, passport) {
     const directors = new DAODirectors.DAODirectors(pool)
     const producers = new DAOProducers.DAOProducers(pool)
     const preinscr = new DAOPreinsc.DAOPreinsc(pool)
+    
 
     let job = schedule.scheduleJob('0 0 1 * *', function () {
         preinscr.handleMonthPreinscriptions((err, preinscriptions) => {
