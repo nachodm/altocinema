@@ -52,7 +52,11 @@
                     <button type="submit" class="btn btn-warning">Duplicación mensual</button>
                   </div>
                 </form>
-                
+                <form method="POST" action="/sendMonthlyEmails">
+                  <div id="etask" class="col text-right">
+                    <button type="submit" class="btn btn-danger">Envíos mensuales</button>
+                  </div>
+                </form>
               </div>
             </div>
             <% if (success.length > 0) { %>

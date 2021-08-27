@@ -17,7 +17,6 @@ module.exports = function (app, passport) {
     const directors = new DAODirectors.DAODirectors(pool)
     const producers = new DAOProducers.DAOProducers(pool)
     const preinscr = new DAOPreinsc.DAOPreinsc(pool)
-    
 
     let job = schedule.scheduleJob('0 0 1 * *', function () {
         preinscr.handleMonthPreinscriptions((err, preinscriptions) => {
@@ -83,6 +82,70 @@ module.exports = function (app, passport) {
             } else {
                 console.log(festivals)
                 request.flash('success', 'Duplicidades generadas correctamente: ' + JSON.stringify(festivals))
+                response.redirect('dashboard')
+            }
+        })
+    })
+
+    app.post('/sendMonthlyEmails', async (request, response) => {
+        const Excel = require('exceljs')
+        const filename = 'Debtors.xlsx'
+        let workbook = new Excel.Workbook()
+        let worksheet = workbook.addWorksheet('Debtors')
+        worksheet.columns = [
+            { header: 'Festival', key: 'festival' },
+            { header: 'Entry fee', key: 'entryFee' },
+            { header: 'Website', key: 'web' },
+            { header: 'Payments Made', key: 'paymentsMade' },
+        ]
+        let data = [
+            {
+                festival: 'Cannes',
+                entryFee: '70€',
+                web: 'www.cannes.com',
+                paymentsMade: 0,
+            },
+            {
+                festival: 'San Sebastián',
+                entryFee: '30€',
+                web: 'wwww.donosti.com',
+                paymentsMade: 15,
+            },
+        ]
+        data.forEach((e) => {
+            worksheet.addRow(e)
+        })
+        const buffer = await workbook.xlsx.writeBuffer()
+        const transporter = nodemailer.createTransport({
+            host: 'altocinema.com',
+            port: 465,
+            secure: true,
+            auth: {
+                user: 'contact@altocinema.com',
+                pass: 'Altocine2020',
+            },
+        })
+        const mailOptions = {
+            from: 'info@altocinema.com',
+            to: ['ignacio_domingo@outlook.com'],
+            subject: 'TEST EMAIL',
+            html: 'content',
+            attachments: [
+                {
+                    filename,
+                    content: buffer,
+                    contentType: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+                },
+            ],
+        }
+        transporter.sendMail(mailOptions, (err, info) => {
+            if (err) {
+                console.log(err)
+                request.flash('error', 'Mierda, algo ha fallado.')
+                response.redirect('dashboard')
+            } else {
+                console.log(info)
+                request.flash('success', 'Correos enviados satisfactoriamente')
                 response.redirect('dashboard')
             }
         })
@@ -842,7 +905,6 @@ module.exports = function (app, passport) {
         })
     })
 
-    
     app.use(function (req, res, next) {
         res.locals.success = req.flash('success')
         res.locals.error = req.flash('error')
