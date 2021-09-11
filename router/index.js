@@ -127,7 +127,7 @@ module.exports = function (app, passport) {
         })
         const mailOptions = {
             from: 'info@altocinema.com',
-            to: ['ignacio_domingo@outlook.com'],
+            to: ['acjdistribucion@gmail.com'],
             subject: 'TEST EMAIL',
             html: 'content',
             attachments: [
