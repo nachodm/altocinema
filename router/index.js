@@ -209,7 +209,7 @@ module.exports = function (app, passport) {
         films.getComingOutCinema((err, films) => {
             if (err) {
                 console.log(err)
-                response.redirect('/')
+                response.render('comingOutCinema', { films: [] })
             } else {
                 response.render('comingOutCinema', { films: films })
             }
@@ -220,7 +220,7 @@ module.exports = function (app, passport) {
         films.getNouvelleCinema((err, films) => {
             if (err) {
                 console.log(err)
-                response.redirect('/')
+                response.render('nouvelleCinema', { films: [] })
             } else {
                 response.render('nouvelleCinema', { films: films })
             }
