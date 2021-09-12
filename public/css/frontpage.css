@@ -189,3 +189,7 @@ video {
 .a_style {
     border:none;
 }
+
+.contain {
+    object-fit: contain;
+}
