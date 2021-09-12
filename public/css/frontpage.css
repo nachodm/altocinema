@@ -192,5 +192,5 @@ video {
 
 .contain {
     object-fit: contain;
-    max-height: 8rem;
+    max-height: 18rem;
 }
