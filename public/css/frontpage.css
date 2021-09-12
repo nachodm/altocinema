@@ -194,7 +194,10 @@ video {
     object-fit: contain;
     max-height: 18rem;
 }
-.cover {
-    object-fit: cover;
-    max-height: 13rem;
+
+.card-overflow {
+    max-height: 15rem;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
 }
