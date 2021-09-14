@@ -51,9 +51,10 @@
                     <div id="etask" class="col text-center my--2">
                       <button type="submit" class="btn btn-danger">EMAIL WAIVER</button>
                     </div>
-                    <input type="hidden" name="id" id="id" value="<%=festival.contactname%>">
-                    <input type="hidden" name="id" id="id" value="<%=festival.contact_email%>">
-                    <input type="hidden" name="id" id="id" value="<%=festival.language%>">
+                    <input type="hidden" name="wcontact" id="wcontact" value="<%=festival.contactname%>">
+                    <input type="hidden" name="wemail" id="wemail" value="<%=festival.contact_email%>">
+                    <input type="hidden" name="wlang" id="wlang" value="<%=festival.language%>">
+                    <input type="hidden" name="wwaiver" id="wwaiver" value="<%=festival.waiver%>">
                   </form>
               <form action="/updateFestival" method="POST">
                 <div class="pl-lg-2">

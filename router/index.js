@@ -10,6 +10,7 @@ module.exports = function (app, passport) {
     const DAODirectors = require('../DAOs/DAODirectors')
     const DAOProducers = require('../DAOs/DAOProducers')
     const DAOPreinsc = require('../DAOs/DAOPreinsc')
+    const {waiverTemplate} = require('../services/waiveremail')
     const pool = mysql.createPool(config.mysqlconfig)
     const users = new DAOUsers.DAOUsers(pool)
     const films = new DAOFilms.DAOFilms(pool)
@@ -664,7 +665,7 @@ module.exports = function (app, passport) {
         })
     })
 
-    app.post('/festivalEmail', (request, response) => {
+    app.post('/sendWaiverEmail', (request, response) => {
         let transporter = nodemailer.createTransport({
             host: 'altocinema.com',
             port: 465,
@@ -676,9 +677,9 @@ module.exports = function (app, passport) {
         })
         let mailOptions = {
             from: 'info@altocinema.com',
-            to: request.body.contact_email,
-            subject: request.body.name + ': ' + request.body.email,
-            text: request.body.text,
+            to: request.body.wemail,
+            subject: "Festival Waivers",
+            text: waiverTemplate(request.body.wlang, request.body.wcontact, request.body.wwaiver),
         }
         transporter.sendMail(mailOptions, (err, info) => {
             if (err) {
