@@ -1,4 +1,4 @@
-export const waiverTemplate = (language, contact, waiver)  => {
+module.exports = function waiverTemplate  (language, contact, waiver)  {
     const esp_no_waiver=`<p>Hola ${contact}</p>` +  
     "<p>Nos ponemos en contacto con vosotros desde AltoCinema. Somos una nueva distribuidora de cine independiente con base en Madrid. Tenemos en nuestro catálogo algunas obras que consideramos que encajarían con la línea editorial de vuestro festival y nos gustaría hacéroslas llegar. Nos preguntábamos si sería posible obtener algún tipo de waiver o descuento de las tasas de inscripción.</p>"
     +"<p>Un saludo,</p>"
