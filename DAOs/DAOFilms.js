@@ -224,65 +224,18 @@ class DAOFilms {
     }
 
     /**
-     * Obtiene aquellas películas del catálogo AltoCinema marcadas para incluir en la web pública.
+     * Obtiene aquellas películas del catálogo pasado por parámetro marcadas para incluir en la web pública.
+     * @param {string} catalogue Catálogo del que obtendrá las películas
      * @param {function} callback Función que devolverá el objeto error o el listado de películas.
      */
-    getAltoCinema(callback) {
+    getFilms(catalogue, callback) {
         this.pool.getConnection((err, connection) => {
             if (err) {
                 callback(err, null)
             } else {
                 connection.query(
-                    'SELECT title, year, country, sinopsis, picture FROM FILMS WHERE addcatalogue = ? AND catalogue = ?',
-                    [1, 'AltoCinema'],
-                    (err, films) => {
-                        connection.release()
-                        if (err) {
-                            callback(err, null)
-                        } else {
-                            callback(null, films)
-                        }
-                    }
-                )
-            }
-        })
-    }
-    /**
-     * Obtiene aquellas películas del catálogo ComingOutCinema marcadas para incluir en la web pública.
-     * @param {function} callback Función que devolverá el objeto error o el listado de películas.
-     */
-    getComingOutCinema(callback) {
-        this.pool.getConnection((err, connection) => {
-            if (err) {
-                callback(err, null)
-            } else {
-                connection.query(
-                    'SELECT title, year, country, sinopsis, picture FROM FILMS WHERE addcatalogue = ? AND catalogue = ?',
-                    [1, 'ComingOutCinema'],
-                    (err, films) => {
-                        connection.release()
-                        if (err) {
-                            callback(err, null)
-                        } else {
-                            callback(null, films)
-                        }
-                    }
-                )
-            }
-        })
-    }
-    /**
-     * Obtiene aquellas películas del catálogo NouvelleCinema marcadas para incluir en la web pública.
-     * @param {function} callback Función que devolverá el objeto error o el listado de películas.
-     */
-    getNouvelleCinema(callback) {
-        this.pool.getConnection((err, connection) => {
-            if (err) {
-                callback(err, null)
-            } else {
-                connection.query(
-                    'SELECT title, year, country, sinopsis, picture FROM FILMS WHERE addcatalogue = ? AND catalogue = ?',
-                    [1, 'NouvelleCinema'],
+                    'SELECT title, year, country, sinopsis, eng_sinopsis, picture FROM FILMS WHERE addcatalogue = ? AND catalogue = ?',
+                    [1, catalogue],
                     (err, films) => {
                         connection.release()
                         if (err) {

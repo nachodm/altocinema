@@ -196,33 +196,41 @@ module.exports = function (app, passport) {
     })
 
     app.get('/catalogue', (request, response) => {
-        films.getAltoCinema((err, films) => {
+        films.getFilms('AltoCinema', (err, films) => {
             if (err) {
-                console.log(err)
                 response.render('catalogue', { films: [] })
             } else {
+                if (response.locals.locale === 'en') {
+                    films.sinopsis = films.eng_sinopsis
+                }
                 response.render('catalogue', { films: films })
             }
         })
     })
 
     app.get('/comingOutCinema', (request, response) => {
-        films.getComingOutCinema((err, films) => {
+        films.getFilms('ComingOutCinema', (err, films) => {
             if (err) {
                 console.log(err)
                 response.render('comingOutCinema', { films: [] })
             } else {
+                if (response.locals.locale === 'en') {
+                    films.sinopsis = films.eng_sinopsis
+                }
                 response.render('comingOutCinema', { films: films })
             }
         })
     })
 
     app.get('/nouvelleCinema', (request, response) => {
-        films.getNouvelleCinema((err, films) => {
+        films.getFilms('NouvelleCinema', (err, films) => {
             if (err) {
                 console.log(err)
                 response.render('nouvelleCinema', { films: [] })
             } else {
+                if (response.locals.locale === 'en') {
+                    films.sinopsis = films.eng_sinopsis
+                }
                 response.render('nouvelleCinema', { films: films })
             }
         })
@@ -678,7 +686,7 @@ module.exports = function (app, passport) {
         let mailOptions = {
             from: 'info@altocinema.com',
             to: request.body.wemail,
-            subject: "Festival Waivers",
+            subject: 'Festival Waivers',
             text: waiverTemplate(request.body.wlang, request.body.wcontact, request.body.wwaiver),
         }
         transporter.sendMail(mailOptions, (err, info) => {
