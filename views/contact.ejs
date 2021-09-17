@@ -37,7 +37,7 @@
             </div>
             <div class="row ">
                 <div class="col-md-12 col-lg-6 align-self-center">
-                    <p class="success-lighter-hoverho"><i class="mr-2 fas fa-map-marked-alt"></i>  Madrid, ESPAÑA</p>
+                    <p class="success-lighter-hoverho"><i class="mr-2 fas fa-map-marked-alt"></i>  Madrid, <%= __('esp')%></p>
                     <a class="hover" href="tel:+34 650 23 68 57"><i class="mr-2 fas fa-phone"></i> +34 650 23 68 57</a>
                     <p class="hover mt-3"><i class="mr-2 fas fa-envelope"></i>  Email: info@altocinema.com</p>
                     <!-- <p>
@@ -65,7 +65,7 @@
                         <div class="md-form">
                             <i class="fas fa-user prefix"></i>
                             <input type="text" name="name" id="name" class="form-control validate text-white" required>
-                            <label for="name" data-error="wrong" data-success="right">Nombre</label>
+                            <label for="name" data-error="wrong" data-success="right"><%= __('name')%></label>
                         </div>
                         <div class="md-form">
                             <i class="fas fa-envelope prefix"></i>
@@ -75,9 +75,9 @@
                         <div class="md-form">
                             <i class="fas fa-pencil-alt prefix"></i>
                             <textarea id="text" name="text" class="md-textarea form-control text-white" rows="4" required></textarea>
-                            <label for="text">Mensaje</label>
+                            <label for="text"><%= __('msg')%></label>
                         </div>
-                        <button class="btn btn-lg btn-outline-white btn-block text-uppercase font-weight-bold" type="submit">Enviar</button>
+                        <button class="btn btn-lg btn-outline-white btn-block text-uppercase font-weight-bold" type="submit"><%= __('send')%></button>
                     </form>
                  </div>   
             </div>

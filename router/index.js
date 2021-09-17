@@ -201,7 +201,10 @@ module.exports = function (app, passport) {
                 response.render('catalogue', { films: [] })
             } else {
                 if (response.locals.locale === 'en') {
-                    films.sinopsis = films.eng_sinopsis
+                    films = films.map((film) => {
+                        film.sinopsis = film.eng_sinopsis
+                        return film
+                    })
                 }
                 response.render('catalogue', { films: films })
             }
@@ -215,7 +218,10 @@ module.exports = function (app, passport) {
                 response.render('comingOutCinema', { films: [] })
             } else {
                 if (response.locals.locale === 'en') {
-                    films.sinopsis = films.eng_sinopsis
+                    films = films.map((film) => {
+                        film.sinopsis = film.eng_sinopsis
+                        return film
+                    })
                 }
                 response.render('comingOutCinema', { films: films })
             }
@@ -229,7 +235,10 @@ module.exports = function (app, passport) {
                 response.render('nouvelleCinema', { films: [] })
             } else {
                 if (response.locals.locale === 'en') {
-                    films.sinopsis = films.eng_sinopsis
+                    films = films.map((film) => {
+                        film.sinopsis = film.eng_sinopsis
+                        return film
+                    })
                 }
                 response.render('nouvelleCinema', { films: films })
             }

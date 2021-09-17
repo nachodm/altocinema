@@ -3,6 +3,8 @@
     "services": "Services",
     "catalogue": "Catalogue",
     "contact": "Get in touch",
+    "values": "Our values",
+    "aboutus": "About us",
     "alba": "A specialist in media distribution with a B.A. in Media from the Rey Juan Carlos University in Madrid and a M.A. in Media Distribution from ECAM. She started her career in the institutional cinema field through the Ibermedia program, during which she was charged with the managing and processing of development and co-production project applications in the Iberoamerican world. She later took on a specialization as an expert in cinema festival distribution, working at several industry players, taking in her hands the planning of strategies, material management and brokering with the festival organizations. In 2021 she founded her own distribution firm, AltoCinema, in partnership with her associate, Antonio Muñoz.",
     "antonio": "With a B.A. in Media from the Rey Juan Carlos University, he kickstarted his career in the cinema festival field with a research essay on themed cinema festivals, with a special focus on LGBTI festivals. This opened for him the doors to the 21st edition of the Madrid-based cinema festival, Lesgaicinemad. Concurrently, he carried out his Cinema Industry Managing studies in the Carlos III University in Madrid, during which his specialty was the managing of cinema products in each of its phases: production, distribution, showing, international trade, etc. In recent years he has worked for several firms and for roles as varied as processing and managing aids for various long features with several public and private organizations, as well as festival distribution with a focus in strategy planning and brokering with festival organizations.",
     "mission": "Mission",
@@ -20,5 +22,9 @@
     "altocinema_cat": "AltoCinema selects both short and full-length quality films at the international level for its distribution through cinema festivals from every corner of the world.",
     "nouvelle_cat": "Keeping with our commitment with fledgling authors, our NouvelleCinema division drives your first works for a superb start in the film industry.",
     "comingout_cat": "ComingOutCinema gives visibility to LGBTQ+ films in the festival playing field.",
-    "contact_text": "Get in contact with us and we will get back to you in no time. If you wish to have your work assessed, please provide us with a viewing link and password using the following form."
+    "contact_text": "Get in contact with us and we will get back to you in no time. If you wish to have your work assessed, please provide us with a viewing link and password using the following form.",
+    "esp": "Spain",
+    "name": "Name",
+    "msg": "Message",
+    "send": "send"
 }

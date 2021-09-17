@@ -3,6 +3,8 @@
     "services": "Servicios",
     "catalogue": "Catálogos",
     "contact": "Contacto",
+    "values": "Nuestros valores",
+    "aboutus": "Nosotros",
     "alba": "Graduada en Comunicación audiovisual por la Universidad Rey Juan Carlos de Madrid, se especializa en el sector de la distribución audiovisual a través del Máster en Distribución Audiovisual de la ECAM. Comienza su actividad profesional dentro del marco institucional cinematográfico en el Programa Ibermedia con la gestión y tramitación de solicitudes de proyectos de desarrollo y coproducción por parte del mercado iberoamericano. Posteriormente decide especializarse en el sector de la distribución en festivales cinematográficos, trabajando en diferentes empresas del sector durante los últimos años con la planificación de estrategias, gestión de materiales y negociación con festivales. En 2021 crea su propia marca de distribución, AltoCinema, junto con su socio Antonio Muñoz.",
     "antonio": "Graduado en Comunicación Audiovisual por la Universidad Rey Juan Carlos, comienza su andadura en el sector de los festivales de cine a través de la realización de su trabajo de investigación: “Gestión de los festivales de cine temáticos: festivales de cine LGBTI”. Este estudio le lleva a formar parte del equipo de la 21ª edición del Festival Lesgaicinemad de Madrid. Durante esta etapa, además, realiza el Máster en Gestión de la Industria Cinematográfica en la Universidad Carlos III de Madrid especializándose en la gestión del producto cinematográfico en todos los ámbitos: producción, distribución, exhibición, ventas internacionales, etc. En los últimos años trabaja en diferentes empresas del sector tanto de producción, gestionando los trámites y subvenciones con instituciones públicas y privadas de diferentes largometrajes, así como de distribución en festivales de cine desarrollando tareas de planificación de estrategias y negociación con los festivales.",
     "mission": "Misión",
@@ -21,5 +23,8 @@
     "nouvelle_cat": "Comprometidos con los nuevos autores, desde NouvelleCinema proporcionamos el impulso necesario a sus primeras obras para que inicien su carrera en el sector cinematográfico.",
     "comingout_cat": "En ComingOutCinema nos especializamos en dar visibilidad al cine de temática LGBTQ+  dentro del circuito de festivales cinematográficos.",
     "contact_text": "Contacta con nosotros y te responderemos a la menor brevedad posible. Si deseas que valoremos tu obra, por favor envíanos el enlace de visionado y contraseña a través del formulario que encontrarás a continuación.",
-    "consultancy": "consultancy"
+    "esp": "España",
+    "name": "Nombre",
+    "msg": "Mensaje",
+    "send": "Enviar"
 }
