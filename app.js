@@ -5,7 +5,6 @@ const express = require('express')
 const app = express()
 const path = require('path')
 const cookieParser = require('cookie-parser')
-const session = require('express-session')
 const passport = require('passport')
 const flash = require('express-flash')
 const initializePassport = require('./passport-config')
@@ -18,13 +17,7 @@ app.set('views', path.join(__dirname, 'views'))
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())
-app.use(
-    session({
-        saveUninitialized: false,
-        secret: 'sup3rs4f3',
-        resave: false,
-    })
-)
+
 app.use(flash())
 app.use(passport.initialize())
 app.use(passport.session())

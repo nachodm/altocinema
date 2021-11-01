@@ -2,5 +2,6 @@
     "git.ignoreLimitWarning": true,
     "files.associations": {
         "\"*.ejs\"": "\"html\""
-    }
+    },
+    "editor.formatOnSave": true
 }
