@@ -1,158 +1,206 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-  <title>Alto Cinema</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
-  <!-- Google Fonts -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
-  <!-- Bootstrap core CSS -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Material Design Bootstrap -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
-  
-  <link href="https://fonts.googleapis.com/css?family=Montserrat:200&display=swap" rel="stylesheet"> 
-  <!--https://favicon.io/favicon-generator/ Monoton font-->
-  <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
-  <link rel="manifest" href="img/site.webmanifest">
-  
-  <link href="css/frontpage.css" rel="stylesheet">
-  <link href="css/carousel.css" rel="stylesheet">
-   
-</head>
-<body>
-    <nav class="navbar navbar-expand-md scrolling-navbar fixed-top navbar-dark elegant-color lighten-2">
-        <a class="navbar-brand" href="/"> 
-            <img class="img-fluid max-size" src="img/white-logo.png" alt="ALTO CINEMA">
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item m-2">
-                <a class="nav-link waves-effect waves-light py-2 px-3 text-uppercase" href="/">Quiénes somos <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item active m-2">
-                    <a class="nav-link waves-effect waves-light py-2 px-3 text-uppercase" href="/services">Servicios</a>
-                </li>
-                <li class="nav-item dropdown m-2">
-                  <a class="nav-link dropdown-toggle waves-effect waves-light py-2 px-3 text-uppercase" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Catálogos
-                  </a>
-                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="/catalogue">AltoCinema</a>
-                    <a class="dropdown-item" href="/nouvelleCinema">NouvelleCinema</a>
-                    <a class="dropdown-item" href="/comingOutCinema">ComingOutCinema</a>
-                  </div>
-              </li>
-                <li class="nav-item m-2">
-                    <a class="nav-link waves-effect waves-light py-2 px-3 text-uppercase" href="/contact">Contacto</a>
-                </li>
-            </ul>
-            
+    <head>
+        <title>Alto Cinema</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" />
+        <!-- Google Fonts -->
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+        />
+        <!-- Bootstrap core CSS -->
+        <link
+            href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css"
+            rel="stylesheet"
+        />
+        <!-- Material Design Bootstrap -->
+        <link
+            href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css"
+            rel="stylesheet"
+        />
+
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:200&display=swap" rel="stylesheet" />
+        <!--https://favicon.io/favicon-generator/ Monoton font-->
+        <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png" />
+        <link rel="manifest" href="img/site.webmanifest" />
+
+        <link href="/css/frontpage.css" rel="stylesheet" />
+        <link href="css/carousel.css" rel="stylesheet" />
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-md scrolling-navbar fixed-top navbar-dark elegant-color lighten-2">
+            <a class="navbar-brand" href="/">
+                <img class="img-fluid max-size" src="img/white-logo.png" alt="ALTO CINEMA" />
+            </a>
+            <button
+                class="navbar-toggler"
+                type="button"
+                data-toggle="collapse"
+                data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+            >
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item m-2">
+                        <a class="nav-link waves-effect waves-light py-2 px-3 text-uppercase" href="/"
+                            >Quiénes somos <span class="sr-only">(current)</span></a
+                        >
+                    </li>
+                    <li class="nav-item active m-2">
+                        <a class="nav-link waves-effect waves-light py-2 px-3 text-uppercase" href="/services"
+                            >Servicios</a
+                        >
+                    </li>
+                    <li class="nav-item dropdown m-2">
+                        <a
+                            class="nav-link dropdown-toggle waves-effect waves-light py-2 px-3 text-uppercase"
+                            href="#"
+                            id="navbarDropdown"
+                            role="button"
+                            data-toggle="dropdown"
+                            aria-haspopup="true"
+                            aria-expanded="false"
+                        >
+                            Catálogos
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="/catalogue">AltoCinema</a>
+                            <a class="dropdown-item" href="/nouvelleCinema">NouvelleCinema</a>
+                            <a class="dropdown-item" href="/comingOutCinema">ComingOutCinema</a>
+                        </div>
+                    </li>
+                    <li class="nav-item m-2">
+                        <a class="nav-link waves-effect waves-light py-2 px-3 text-uppercase" href="/contact"
+                            >Contacto</a
+                        >
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <!--Carousel Wrapper-->
+        <div id="carousel" class="carousel slide carousel-fade" data-ride="carousel" data-interval="false">
+            <!--Indicators-->
+            <ol class="carousel-indicators">
+                <li data-target="#carousel" data-slide-to="0" class="active"></li>
+                <li data-target="#carousel" data-slide-to="1"></li>
+                <li data-target="#carousel" data-slide-to="2"></li>
+            </ol>
+            <!--/.Indicators-->
+
+            <!--Slides-->
+            <div class="carousel-inner" role="listbox">
+                <!--First slide-->
+                <div class="carousel-item active">
+                    <!--Mask-->
+                    <div class="view">
+                        <div class="full-bg-img flex-center mask rgba-indigo-light white-text">
+                            <ul class="animated fadeInUp col-md-12 list-unstyled list-inline">
+                                <li>
+                                    <h1 class="font-weight-bold text-uppercase">Distribución</h1>
+                                </li>
+                                <li class="autocenter">
+                                    <p class="px-5 mx-5 font-weight-thin py-4">
+                                        Realizamos un servicio de distribución en festivales cinematográficos
+                                        a nivel internacional de manera personalizada, cuidando al máximo los
+                                        detalles de cada obra audiovisual.
+                                    </p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!--/.Mask-->
+                </div>
+                <!--/.First slide-->
+
+                <!--Second slide -->
+                <div class="carousel-item">
+                    <!--Mask-->
+                    <div class="view">
+                        <div class="full-bg-img flex-center mask rgba-purple-light white-text">
+                            <ul class="animated fadeInUp col-md-12 list-unstyled">
+                                <li>
+                                    <h1 class="font-weight-bold text-uppercase">Asesoría</h1>
+                                </li>
+                                <li class="autocenter">
+                                    <p class="px-5 mx-5 font-weight-thin py-4">
+                                        ¿Tienes una obra audiovisual y te gustaría distribuirla tú mismo?
+                                        Desde ALTOCINEMA te asesoramos ofreciéndote las claves necesarias para
+                                        optimizar los resultados.
+                                    </p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!--/.Mask-->
+                </div>
+                <!--/.Second slide -->
+
+                <!--Third slide-->
+                <div class="carousel-item">
+                    <!--Mask-->
+                    <div class="view">
+                        <div class="full-bg-img flex-center mask rgba-blue-light white-text">
+                            <ul class="animated fadeInUp col-md-12 list-unstyled">
+                                <li>
+                                    <h1 class="font-weight-bold text-uppercase">Gestión de trámites ICAA</h1>
+                                </li>
+                                <li class="autocenter">
+                                    <p class="px-5 mx-5 font-weight-thin py-4">
+                                        Preparamos la documentación necesaria para obtener la nacionalidad y
+                                        calificación por edades de tu obra audiovisual en el ICAA.
+                                    </p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!--/.Mask-->
+                </div>
+                <!--/.Third slide-->
+            </div>
+            <!--/.Slides-->
+
+            <!--Controls-->
+            <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carousel" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+            <!--/.Controls-->
         </div>
-    </nav>
+        <!--/.Carousel Wrapper-->
 
-  <!--Carousel Wrapper-->
-  <div id="carousel" class="carousel slide carousel-fade" data-ride="carousel" data-interval="false">
-
-    <!--Indicators-->
-    <ol class="carousel-indicators">
-      <li data-target="#carousel" data-slide-to="0" class="active"></li>
-      <li data-target="#carousel" data-slide-to="1"></li>
-      <li data-target="#carousel" data-slide-to="2"></li>
-    </ol>
-    <!--/.Indicators-->
-
-    <!--Slides-->
-    <div class="carousel-inner" role="listbox">
-
-      <!--First slide-->
-      <div class="carousel-item active">
-        <!--Mask-->
-        <div class="view">
-          <div class="full-bg-img flex-center mask rgba-indigo-light white-text">
-            <ul class="animated fadeInUp col-md-12 list-unstyled list-inline">
-              <li>
-                <h1 class="font-weight-bold text-uppercase">Distribución</h1>
-              </li>
-              <li class="autocenter">
-                <p class="px-5 mx-5 font-weight-thin py-4">Realizamos un servicio de distribución en festivales cinematográficos a nivel internacional de manera personalizada, cuidando al máximo los detalles de cada obra audiovisual.</p>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <!--/.Mask-->
-      </div>
-      <!--/.First slide-->
-
-      <!--Second slide -->
-      <div class="carousel-item">
-        <!--Mask-->
-        <div class="view">
-          <div class="full-bg-img flex-center mask rgba-purple-light white-text">
-            <ul class="animated fadeInUp col-md-12 list-unstyled">
-              <li>
-                <h1 class="font-weight-bold text-uppercase">Asesoría</h1>
-              </li>
-              <li class="autocenter">
-                <p class="px-5 mx-5 font-weight-thin py-4">¿Tienes una obra audiovisual y te gustaría distribuirla tú mismo? Desde ALTOCINEMA te asesoramos ofreciéndote las claves necesarias para optimizar los resultados.
-                </p>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <!--/.Mask-->
-      </div>
-      <!--/.Second slide -->
-
-      <!--Third slide-->
-      <div class="carousel-item">
-        <!--Mask-->
-        <div class="view">
-          <div class="full-bg-img flex-center mask rgba-blue-light white-text">
-            <ul class="animated fadeInUp col-md-12 list-unstyled">
-              <li>
-                <h1 class="font-weight-bold text-uppercase">Gestión de trámites ICAA</h1>
-              </li>
-              <li class="autocenter">
-                <p class="px-5 mx-5 font-weight-thin py-4">Preparamos la documentación necesaria para obtener la nacionalidad y calificación por edades de tu obra audiovisual en el ICAA.</p>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <!--/.Mask-->
-      </div>
-      <!--/.Third slide-->
-
-    </div>
-    <!--/.Slides-->
-
-    <!--Controls-->
-    <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-    <a class="carousel-control-next" href="#carousel" role="button" data-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="sr-only">Next</span>
-    </a>
-    <!--/.Controls-->
-  </div>
-  <!--/.Carousel Wrapper-->
-
-  <!-- JQuery -->
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <!-- Bootstrap tooltips -->
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
-  <!-- Bootstrap core JavaScript -->
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
-  <!-- MDB core JavaScript -->
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js"></script>
-</body>
+        <!-- JQuery -->
+        <script
+            type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+        ></script>
+        <!-- Bootstrap tooltips -->
+        <script
+            type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"
+        ></script>
+        <!-- Bootstrap core JavaScript -->
+        <script
+            type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"
+        ></script>
+        <!-- MDB core JavaScript -->
+        <script
+            type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js"
+        ></script>
+    </body>
 </html>

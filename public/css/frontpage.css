@@ -138,10 +138,10 @@ video {
     position: absolute;
     bottom: 10vh;
     float: left;
-    -webkit-animation-name: Floatingx;
-    -webkit-animation-duration: 3s;
-    -webkit-animation-iteration-count: infinite;
-    -webkit-animation-timing-function: ease-in-out;
+    animation-name: Floatingx;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
     -moz-animation-name: Floating;
     -moz-animation-duration: 3s;
     -moz-animation-iteration-count: infinite;
@@ -149,13 +149,13 @@ video {
 
 }
 
-@-webkit-keyframes Floatingx{
+@keyframes Floatingx{
     from {-webkit-transform:translate(0, 0px);}
     65% {-webkit-transform:translate(0, 10px);}
     to {-webkit-transform: translate(0, -0px);    }    
 }
     
-@-moz-keyframes Floating{
+@keyframes Floating{
     from {-moz-transform:translate(0, 0px);}
     65% {-moz-transform:translate(0, 10px);}
     to {-moz-transform: translate(0, -0px);}    
@@ -202,4 +202,10 @@ video {
     -webkit-line-clamp: 5;
     -webkit-box-orient: vertical;
     overflow: hidden;
+}
+
+.cardZoom:hover {
+    transition: all 0.3s;
+    transform: scale(1.03);
+    cursor: pointer;
 }

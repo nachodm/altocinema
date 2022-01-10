@@ -234,7 +234,7 @@ class DAOFilms {
                 callback(err, null)
             } else {
                 connection.query(
-                    'SELECT title, year, country, sinopsis, eng_sinopsis, picture FROM FILMS WHERE addcatalogue = ? AND catalogue = ?',
+                    'SELECT id, title, year, country, sinopsis, eng_sinopsis, picture FROM FILMS WHERE addcatalogue = ? AND catalogue = ?',
                     [1, catalogue],
                     (err, films) => {
                         connection.release()

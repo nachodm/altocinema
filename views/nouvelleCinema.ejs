@@ -20,7 +20,7 @@
   <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
   <link rel="manifest" href="img/site.webmanifest">
   
-  <link href="css/frontpage.css" rel="stylesheet">
+  <link href="/css/frontpage.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
    
 </head>
@@ -40,7 +40,7 @@
                     <!-- Column -->
                     <div class="col-md-4 mb-4 d-flex align-items-stretch">
                         <!--Card-->
-                        <div class="card w-100">
+                        <div class="card w-100 cardZoom" onClick="window.open('https://altocinema.com/movie/:<%=film.id%>');">
                             <!--Card image-->
                             <div class="view">
                                 <img src="<%=film.picture%>" class="card-img-top contain" alt="Film picture">
@@ -74,22 +74,6 @@
                     <!--/.Card-->
                 </div>
             <% } %>
-            <!-- <div class="col-md-4 mb-4 d-flex align-items-stretch">
-                <div class="card">
-                    <div class="view">
-                        <img src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/6-col/img%20(132).jpg" class="card-img-top"alt="">
-                        <a href="#">
-                            <div class="mask rgba-white-slight"></div>
-                        </a>
-                    </div>
-                    <div class="card-body  nouvelle-card">
-                        <h4 class="card-title text-light">Card title</h4>
-                        <p class="card-text text-light">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis
-                            praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint
-                            occaecati cupiditate non provident, similique sunt in culpa</p>
-                    </div>
-                </div> -->
-                <!--/.Card-->
             </div>
         </div>
         <!-- Container -->

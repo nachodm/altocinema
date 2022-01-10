@@ -1,87 +1,110 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-  <title>Alto Cinema</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
-  <!-- Google Fonts -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
-  <!-- Bootstrap core CSS -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Material Design Bootstrap -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
-  
-  <link href="https://fonts.googleapis.com/css?family=Montserrat:200&display=swap" rel="stylesheet"> 
-  <!--https://favicon.io/favicon-generator/ Monoton font-->
-  <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
-  <link rel="manifest" href="img/site.webmanifest">
-  
-  <link href="css/frontpage.css" rel="stylesheet">
-</head>
-<body>
-    
-    <%- include('partials/top-navbar', {active: "altocinema"}); %>
-    <div class="container my-auto">
-        <video autoplay muted id="myVideo">
-            <source src="video/altocinema.mp4" type="video/mp4">
-        </video>
-        <!-- <div class="view logo">
+    <head>
+        <title>Alto Cinema</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" />
+        <!-- Google Fonts -->
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+        />
+        <!-- Bootstrap core CSS -->
+        <link
+            href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css"
+            rel="stylesheet"
+        />
+        <!-- Material Design Bootstrap -->
+        <link
+            href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css"
+            rel="stylesheet"
+        />
+
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:200&display=swap" rel="stylesheet" />
+        <!--https://favicon.io/favicon-generator/ Monoton font-->
+        <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png" />
+        <link rel="manifest" href="img/site.webmanifest" />
+
+        <link href="/css/frontpage.css" rel="stylesheet" />
+    </head>
+    <body>
+        <%- include('partials/top-navbar', {active: "altocinema"}); %>
+        <div class="container my-auto">
+            <video autoplay muted id="myVideo">
+                <source src="video/altocinema.mp4" type="video/mp4" />
+            </video>
+            <!-- <div class="view logo">
             <img class="main_logo img-fluid animated fadeIn" src="img/white-logo.png" alt="ALTO CINEMA">
             <div class="mask">
             </div>
         </div> -->
-        <a href="#values">
-            <i class="float fas fa-angle-double-down fa-2x white-text animated fadeIn"></i>
-        </a>
-    </div>
-    <div id="values" class="values white p-4 container-fluid">
-        <div style="padding-top: -30px; margin-top: +30px;" class="p-4 wrapper row">
-            <div class="col-sm-4 d-flex justify-content-center align-items-center">
-                <img class="customsize img-fluid" src="img/values.png" alt="Values png">
-            </div>
-            <div class="p-4 col-sm-8">
-                <h2><%= __('values')%></h2><br>
-                <h4><strong><%= __('mission')%>:</strong> <%= __('mission_text')%></h4><br>
-                <p><strong><%= __('vision')%>:</strong> <%= __('vision_text')%></p>
-                <p><strong><%= __('action')%>:</strong> <%= __('action_text')%></p>
-        
-            </div>
+            <a href="#values">
+                <i class="float fas fa-angle-double-down fa-2x white-text animated fadeIn"></i>
+            </a>
         </div>
-    </div>
-    <div id="aboutus" class="p-4 container text-center">
-        <h3 class="text-white p-4"><%= __('aboutus')%></h3>
-        <p class="text-light"><em>We love cinema!</em></p>
-        <br>
-        <div class="row">
-            <div class="col-sm-6">
-                <p class="text-light"><strong>Alba Cañamares</strong></p><br>
-                <!-- <img src="https://www.zayedhotel.com/addons/default/themes/yoona/img/user.jpg" class="img-fluid rounded" alt="Random Name" width="255" height="255"> -->
-                <div id="profile1">
-                <p class="text-light pt-3 pr-2 text-justify"><%= __('alba')%></p>
+        <div id="values" class="values white p-4 container-fluid">
+            <div style="padding-top: -30px; margin-top: +30px" class="p-4 wrapper row">
+                <div class="col-sm-4 d-flex justify-content-center align-items-center">
+                    <img class="customsize img-fluid" src="img/values.png" alt="Values png" />
                 </div>
-            </div>
-            <div class="col-sm-6">
-                <p class="text-light"><strong>Antonio Muñoz</strong></p><br>
-                <!-- <img src="https://www.zayedhotel.com/addons/default/themes/yoona/img/user.jpg" class="img-fluid rounded" alt="Random Name" width="255" height="255"> -->
-                <div id="profile2" class="">
-                    <p class="text-light pt-3 pl-2 text-justify"><%= __('antonio')%></p>
+                <div class="p-4 col-sm-8">
+                    <h2><%= __('values')%></h2>
+                    <br />
+                    <h4><strong><%= __('mission')%>:</strong> <%= __('mission_text')%></h4>
+                    <br />
+                    <p><strong><%= __('vision')%>:</strong> <%= __('vision_text')%></p>
+                    <p><strong><%= __('action')%>:</strong> <%= __('action_text')%></p>
                 </div>
             </div>
         </div>
-    </div>
-    <%- include('partials/footer'); -%>
-  
-  <!-- JQuery -->
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <!-- Bootstrap tooltips -->
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
-  <!-- Bootstrap core JavaScript -->
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
-  <!-- MDB core JavaScript -->
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js"></script>
-</body>
+        <div id="aboutus" class="p-4 container text-center">
+            <h3 class="text-white p-4"><%= __('aboutus')%></h3>
+            <p class="text-light"><em>We love cinema!</em></p>
+            <br />
+            <div class="row">
+                <div class="col-sm-6">
+                    <p class="text-light"><strong>Alba Cañamares</strong></p>
+                    <br />
+                    <!-- <img src="https://www.zayedhotel.com/addons/default/themes/yoona/img/user.jpg" class="img-fluid rounded" alt="Random Name" width="255" height="255"> -->
+                    <div id="profile1">
+                        <p class="text-light pt-3 pr-2 text-justify"><%= __('alba')%></p>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <p class="text-light"><strong>Antonio Muñoz</strong></p>
+                    <br />
+                    <!-- <img src="https://www.zayedhotel.com/addons/default/themes/yoona/img/user.jpg" class="img-fluid rounded" alt="Random Name" width="255" height="255"> -->
+                    <div id="profile2" class="">
+                        <p class="text-light pt-3 pl-2 text-justify"><%= __('antonio')%></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <%- include('partials/footer'); -%>
+
+        <!-- JQuery -->
+        <script
+            type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+        ></script>
+        <!-- Bootstrap tooltips -->
+        <script
+            type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"
+        ></script>
+        <!-- Bootstrap core JavaScript -->
+        <script
+            type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"
+        ></script>
+        <!-- MDB core JavaScript -->
+        <script
+            type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js"
+        ></script>
+    </body>
 </html>

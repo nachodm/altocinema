@@ -1,82 +1,146 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-  <title>Alto Cinema - <%= __('services')%></title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
-  <!-- Google Fonts -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
-  <!-- Bootstrap core CSS -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Material Design Bootstrap -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
-  
-  <link href="https://fonts.googleapis.com/css?family=Montserrat:200&display=swap" rel="stylesheet"> 
-  <!--https://favicon.io/favicon-generator/ Monoton font-->
-  <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
-  <link rel="manifest" href="img/site.webmanifest">
-  
-  <link href="css/frontpage.css" rel="stylesheet">
-  <link href="css/pills.css" rel="stylesheet">
-   
-</head>
-<body>
-    
-    <%- include('partials/top-navbar', {active: "services"}); %>
-    <div class="my-auto container animated fadeIn">
-      <div class="row align-items-center">
-        <div class="col-md-3">
-            <!-- Tabs nav -->
-            <div class="nav flex-column nav-pills nav-pills-custom text-left" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                <a class="nav-link mt-3 mb-3 p-3 shadow active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">
-                    <i class="fas fa-film mr-2"></i>
-                    <span class="font-weight-bold small text-uppercase"><%= __('distribution')%></span>
-                </a>
-                <a class="nav-link mb-3 p-3 shadow" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">    
-                    <i class="fas fa-handshake mr-2"></i>
-                    <span class="font-weight-bold small text-uppercase"><%= __('consultory')%></span>
-                </a>
-                <a class="nav-link mb-3 p-3 shadow" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">
-                    <i class="fa fa-star mr-2"></i>
-                    <span class="font-weight-bold small text-uppercase"><%= __('procedures')%></span>
-                </a>
+    <head>
+        <title>Alto Cinema - <%= __('services')%></title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" />
+        <!-- Google Fonts -->
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+        />
+        <!-- Bootstrap core CSS -->
+        <link
+            href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css"
+            rel="stylesheet"
+        />
+        <!-- Material Design Bootstrap -->
+        <link
+            href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css"
+            rel="stylesheet"
+        />
+
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:200&display=swap" rel="stylesheet" />
+        <!--https://favicon.io/favicon-generator/ Monoton font-->
+        <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png" />
+        <link rel="manifest" href="img/site.webmanifest" />
+
+        <link href="/css/frontpage.css" rel="stylesheet" />
+        <link href="css/pills.css" rel="stylesheet" />
+    </head>
+    <body>
+        <%- include('partials/top-navbar', {active: "services"}); %>
+        <div class="my-auto container animated fadeIn">
+            <div class="row align-items-center">
+                <div class="col-md-3">
+                    <!-- Tabs nav -->
+                    <div
+                        class="nav flex-column nav-pills nav-pills-custom text-left"
+                        id="v-pills-tab"
+                        role="tablist"
+                        aria-orientation="vertical"
+                    >
+                        <a
+                            class="nav-link mt-3 mb-3 p-3 shadow active"
+                            id="v-pills-home-tab"
+                            data-toggle="pill"
+                            href="#v-pills-home"
+                            role="tab"
+                            aria-controls="v-pills-home"
+                            aria-selected="true"
+                        >
+                            <i class="fas fa-film mr-2"></i>
+                            <span class="font-weight-bold small text-uppercase"
+                                ><%= __('distribution')%></span
+                            >
+                        </a>
+                        <a
+                            class="nav-link mb-3 p-3 shadow"
+                            id="v-pills-profile-tab"
+                            data-toggle="pill"
+                            href="#v-pills-profile"
+                            role="tab"
+                            aria-controls="v-pills-profile"
+                            aria-selected="false"
+                        >
+                            <i class="fas fa-handshake mr-2"></i>
+                            <span class="font-weight-bold small text-uppercase"><%= __('consultory')%></span>
+                        </a>
+                        <a
+                            class="nav-link mb-3 p-3 shadow"
+                            id="v-pills-messages-tab"
+                            data-toggle="pill"
+                            href="#v-pills-messages"
+                            role="tab"
+                            aria-controls="v-pills-messages"
+                            aria-selected="false"
+                        >
+                            <i class="fa fa-star mr-2"></i>
+                            <span class="font-weight-bold small text-uppercase"><%= __('procedures')%></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-md-9">
+                    <!-- Tabs content -->
+                    <div class="tab-content" id="v-pills-tabContent">
+                        <div
+                            class="tab-pane fade shadow rounded bg-white show active p-4"
+                            id="v-pills-home"
+                            role="tabpanel"
+                            aria-labelledby="v-pills-home-tab"
+                        >
+                            <h4 class="font-italic mb-4"><%= __('distribution')%></h4>
+                            <p class="text-muted mb-2 text-justify"><%= __('dist_text')%></p>
+                        </div>
+
+                        <div
+                            class="tab-pane fade shadow rounded bg-white p-4"
+                            id="v-pills-profile"
+                            role="tabpanel"
+                            aria-labelledby="v-pills-profile-tab"
+                        >
+                            <h4 class="font-italic mb-4"><%= __('consultory')%></h4>
+                            <p class="text-muted mb-2 text-justify"><%= __('consult_text')%></p>
+                        </div>
+
+                        <div
+                            class="tab-pane fade shadow rounded bg-white p-4"
+                            id="v-pills-messages"
+                            role="tabpanel"
+                            aria-labelledby="v-pills-messages-tab"
+                        >
+                            <h4 class="font-italic mb-4"><%= __('procedures')%></h4>
+                            <p class="font-italic text-muted mb-2 text-justify"><%= __('proc_text')%></p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <div class="col-md-9">
-            <!-- Tabs content -->
-            <div class="tab-content" id="v-pills-tabContent">
-                <div class="tab-pane fade shadow rounded bg-white show active p-4" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
-                    <h4 class="font-italic mb-4"><%= __('distribution')%></h4>
-                    <p class="text-muted mb-2 text-justify"><%= __('dist_text')%> </p>
-                </div>
-                
-                <div class="tab-pane fade shadow rounded bg-white p-4" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
-                    <h4 class="font-italic mb-4"><%= __('consultory')%></h4>
-                    <p class="text-muted mb-2 text-justify">
-                        <%= __('consult_text')%> </p>
-                </div>
-                
-                <div class="tab-pane fade shadow rounded bg-white p-4" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
-                    <h4 class="font-italic mb-4"><%= __('procedures')%></h4>
-                    <p class="font-italic text-muted mb-2 text-justify"><%= __('proc_text')%></p>
-                </div>
-            </div>
-        </div>
-      </div>
-    </div>
-    
-  <!-- JQuery -->
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <!-- Bootstrap tooltips -->
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
-  <!-- Bootstrap core JavaScript -->
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
-  <!-- MDB core JavaScript -->
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js"></script>
-</body>
+        <!-- JQuery -->
+        <script
+            type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+        ></script>
+        <!-- Bootstrap tooltips -->
+        <script
+            type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"
+        ></script>
+        <!-- Bootstrap core JavaScript -->
+        <script
+            type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"
+        ></script>
+        <!-- MDB core JavaScript -->
+        <script
+            type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js"
+        ></script>
+    </body>
 </html>

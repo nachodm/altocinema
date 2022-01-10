@@ -345,6 +345,21 @@ module.exports = function (app, passport) {
         })
     })
 
+    app.get('/movie/:id', (request, response) => {
+        films.getFilm(request.params.id, (err, film, categories) => {
+            if (err || film === undefined) {
+                response.redirect('/')
+            } else {
+                response.render('movie', {
+                    user: request.user,
+                    title: film.title,
+                    film: film,
+                    categories: JSON.stringify(categories),
+                })
+            }
+        })
+    })
+
     app.get('/producers', checkAuthenticated, (request, response) => {
         producers.getProducers((err, producers) => {
             if (err) {
