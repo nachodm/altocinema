@@ -13,7 +13,7 @@ html {
   }
   *::-webkit-scrollbar-thumb {
     background-color: #212121;
-    border-radius: 20px;
+    border-radius: 10px;
     border: 0.5px solid whitesmoke;
   }
 
@@ -40,7 +40,7 @@ body {
 }
 
 .dropdown-menu {
-    opacity: 0.8;
+    opacity: 0.9;
 }
 
 .my-auto {
@@ -85,9 +85,8 @@ video {
 
 .contact {
     background-color: rgba(173, 171, 172, 0.2);
-    padding: 28px;
+    padding: 30px 40px;
     opacity: 0.9;
-    border-radius: 8px;
 }
 
 .nav-link .active {
@@ -205,7 +204,11 @@ video {
 }
 
 .cardZoom:hover {
-    transition: all 0.3s;
+    transition: ease-in-out 0.3s;
     transform: scale(1.03);
     cursor: pointer;
+}
+
+.br0 {
+    border-radius: 0px !important;
 }
