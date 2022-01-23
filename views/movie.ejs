@@ -47,7 +47,7 @@
             <div class="row animate__animated animate__zoomIn">
                 <div class="col-12 col-md-6 d-flex center align-items-center justify-content-center p-3">
                     <div class="view">
-                        <img src="<%=film.picture%>" class="card-img-top contain" alt="" />
+                        <img src="<%=film.picture%>" class="card-img-top contain" alt="Movie image" />
                         <a href="#">
                             <div class="mask rgba-white-slight"></div>
                         </a>
@@ -55,10 +55,19 @@
                 </div>
                 <div class="col-12 col-md-6 d-flex center align-items-center justify-content-center p-3">
                     <ul class="list-group list-group-flush text-light">
-                        <li class="list-group-item bg-transparent">Year: <%=film.year%></li>
-                        <li class="list-group-item bg-transparent">Country: <%=film.country%></li>
-                        <li class="list-group-item bg-transparent">Genre: <%=film.genre%></li>
-                        <li class="list-group-item bg-transparent">Sinopsis: <%=film.sinopsis%></li>
+                        <li class="list-group-item bg-transparent">
+                            <%= __('sinopsis')%>: <%=film.sinopsis%>
+                        </li>
+                        <li class="list-group-item bg-transparent"><%= __('country')%>: <%=film.country%></li>
+                        <li class="list-group-item bg-transparent"><%= __('year')%>: <%=film.year%></li>
+                        <li class="list-group-item bg-transparent"><%= __('genre')%>: <%=film.genre%></li>
+                        <li class="list-group-item bg-transparent">
+                            <%= __('runtime')%>: <%=film.duration%>
+                        </li>
+                        <li class="list-group-item bg-transparent">
+                            <%= __('producer')%>: <%=film.producer%>
+                        </li>
+                        <li class="list-group-item bg-transparent"><%= __('trailer')%>: <%=film.trailer%></li>
                     </ul>
                 </div>
             </div>

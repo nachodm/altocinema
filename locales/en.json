@@ -26,6 +26,12 @@
     "esp": "Spain",
     "name": "Name",
     "msg": "Message",
-    "send": "Send"
-
+    "send": "Send",
+    "sinopsis": "Synopsis",
+    "country": "Country",
+    "year": "Release year",
+    "genre": "Genre",
+    "runtime": "Runtime",
+    "producer": "Producer",
+    "trailer": "Trailer"
 }

@@ -26,5 +26,12 @@
     "esp": "España",
     "name": "Nombre",
     "msg": "Mensaje",
-    "send": "Enviar"
+    "send": "Enviar",
+    "sinopsis": "Sinopsis",
+    "country": "País",
+    "year": "Año",
+    "genre": "Género",
+    "runtime": "Duración",
+    "producer": "Productor",
+    "trailer": "Tráiler"
 }
