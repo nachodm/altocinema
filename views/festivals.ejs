@@ -1,130 +1,138 @@
-
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="Pantalla festivales" />
+        <title>Festivales - Alto Cinema</title>
+        <!-- Favicon -->
+        <link href="img/favicon.ico" rel="icon" type="image/png" />
+        <!-- Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+        <!-- Icons -->
+        <link href="vendor/nucleo/css/nucleo.css" rel="stylesheet" />
+        <link href="vendor/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet" />
+        <!-- Argon CSS -->
+        <link type="text/css" href="css/argon.min.css" rel="stylesheet" />
 
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="Pantalla festivales">
-  <title>Festivales - Alto Cinema</title>
-  <!-- Favicon -->
-  <link href="img/favicon.ico" rel="icon" type="image/png">
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
-  <!-- Icons -->
-  <link href="vendor/nucleo/css/nucleo.css" rel="stylesheet">
-  <link href="vendor/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
-  <!-- Argon CSS -->
-  <link type="text/css" href="css/argon.min.css" rel="stylesheet">
+        <link href="https://unpkg.com/bootstrap-table@1.19.1/dist/bootstrap-table.min.css" rel="stylesheet" />
 
-  <link href="https://unpkg.com/bootstrap-table@1.16.0/dist/bootstrap-table.min.css" rel="stylesheet">
+        <script src="https://unpkg.com/bootstrap-table@1.19.1/dist/bootstrap-table.min.js"></script>
+        <script src="https://unpkg.com/bootstrap-table@1.19.1/dist/extensions/multiple-sort/bootstrap-table-multiple-sort.js"></script>
+    </head>
 
-  <script src="https://unpkg.com/bootstrap-table@1.16.0/dist/bootstrap-table.min.js"></script>
-  <script src="https://unpkg.com/bootstrap-table@1.16.0/dist/extensions/multiple-sort/bootstrap-table-multiple-sort.js"></script>
-</head>
-  
-<body>
-  <!-- Sidenav -->
-  <%- include ('partials/sidebar'); -%>
-  <!-- Main content -->
-  <div class="main-content">
-    <!-- Top navbar -->
-    <%- include ('partials/navbar'); -%>
-    <!-- Header -->
-    <%- include ('partials/header'); -%>
-    <!-- Page content -->
-    <div class="container-fluid mt--7">
-      <div class="row">
-        <div class="col">
-          <div class="card shadow">
-            <div class="card-header bg-transparent">
-              <div class="row align-items-center">
-                <div class="col">
-                  <h6 class="text-uppercase text-muted ls-1 mb-0">Festivales</h6>
-                  <h2 class="mb-0">Listado de festivales</h2>
+    <body>
+        <!-- Sidenav -->
+        <%- include ('partials/sidebar'); -%>
+        <!-- Main content -->
+        <div class="main-content">
+            <!-- Top navbar -->
+            <%- include ('partials/navbar'); -%>
+            <!-- Header -->
+            <%- include ('partials/header'); -%>
+            <!-- Page content -->
+            <div class="container-fluid mt--7">
+                <div class="row">
+                    <div class="col">
+                        <div class="card shadow">
+                            <div class="card-header bg-transparent">
+                                <div class="row align-items-center">
+                                    <div class="col">
+                                        <h6 class="text-uppercase text-muted ls-1 mb-0">Festivales</h6>
+                                        <h2 class="mb-0">Listado de festivales</h2>
+                                    </div>
+                                    <div class="col text-right">
+                                        <a href="/addFestival" class="btn btn-info">Añadir festival</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <% if (error.length > 0) { %>
+                            <div class="alert alert-danger alert-dismissible fade show m-2" role="alert">
+                                <%= error %>
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">×</span>
+                                </button>
+                            </div>
+                            <% } %> <% if (success.length > 0) { %>
+                            <div class="alert alert-success alert-dismissible fade show m-2" role="alert">
+                                <%= success %>
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">×</span>
+                                </button>
+                            </div>
+                            <% } %>
+                            <div class="card-body">
+                                <table
+                                    id="table"
+                                    data-search="true"
+                                    data-show-export="true"
+                                    data-pagination="true"
+                                    data-page-size="25"
+                                    data-filter-control="true"
+                                    data-locale="en-US"
+                                >
+                                    <thead>
+                                        <tr>
+                                            <th data-field="id">Festival id</th>
+                                            <th data-field="festival" data-sortable="true">Festival</th>
+                                            <th data-field="ok" data-sortable="true">Ok</th>
+                                            <th data-field="platform" data-filter-control="input">
+                                                Plataforma
+                                            </th>
+                                            <th data-field="year" data-filter-control="select">Año</th>
+                                            <th data-field="entryfee" data-filter-control="select">
+                                                EntryFee
+                                            </th>
+                                            <th data-field="country" data-filter-control="select">País</th>
+                                            <th data-field="web" data-sortable="false">Web</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <%if (typeof festivals !== 'undefined' && festivals) {%> <%
+                                        festivals.forEach(festival => { %>
+                                        <tr>
+                                            <th scope="row"><%= festival.festival_id %></th>
+                                            <td>
+                                                <a href="/festival:=<%= festival.id %>" value="visit">
+                                                    <%= festival.name %>
+                                                </a>
+                                            </td>
+                                            <% if (festival.ok !== 'n') { %>
+                                            <td>Sí</td>
+                                            <% } else { %>
+                                            <td><span style="color: red">No</span></td>
+                                            <% } %>
+                                            <td><%=festival.platform %></td>
+                                            <td><%=festival.year %></td>
+                                            <% if (festival.entryfee !== 0) { %>
+                                            <td>Sí</td>
+                                            <% } else { %>
+                                            <td>No</td>
+                                            <% } %>
+                                            <td><%= festival.contactcountry %></td>
+
+                                            <td>
+                                                <a target="_blank" href="<%= festival.contact_web %>"
+                                                    ><%= festival.contact_web %></a
+                                                >
+                                            </td>
+                                        </tr>
+                                        <% }) %> <% } else {%>
+                                        <tr>
+                                            <th colspan="4" scope="row" class="text-center text-danger">
+                                                No hay festivales en la base de datos
+                                            </th>
+                                        </tr>
+                                        <% } %>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="col text-right">
-                  <a href="/addFestival" class="btn btn-info">Añadir festival</a>
-                </div>
-              </div>
             </div>
-            <% if (error.length > 0) { %>
-              <div class="alert alert-danger alert-dismissible fade show m-2" role="alert">
-                <%= error %>
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                  <span aria-hidden="true">×</span>
-                </button>
-              </div>
-            <% } %>
-            <% if (success.length > 0) { %>
-              <div class="alert alert-success alert-dismissible fade show m-2" role="alert">
-                <%= success %>
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                  <span aria-hidden="true">×</span>
-                </button>
-              </div>
-            <% } %>
-            <div class="card-body">
-              <table
-                  id="table"
-                  data-search="true"
-                  data-show-export="true"
-                  data-pagination="true"
-                  data-page-size="25"
-                  data-locale="en-US">
-                  <thead>
-                    <tr>
-                      <th data-field="id">Festival id</th>
-                      <th data-field="festival" data-sortable="true">Festival</th>
-                      <th data-field="ok" data-sortable="true">Ok</th>
-                      <th data-field="platform">Plataforma</th>
-                      <th data-field="year" data-sortable="true">Año</th>
-                      <th data-field="entryfee">EntryFee</th>
-                      <th data-field="country">País</th>
-                      <th data-field="web" data-sortable="false">Web</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <%if (typeof festivals !== 'undefined' && festivals) {%>
-                      <% festivals.forEach(festival => { %>
-                        <tr>
-                          <th scope="row">
-                            <%= festival.festival_id %>
-                          </th>
-                          <td><a href="/festival:=<%= festival.id %>" value="visit"> <%= festival.name %> </a></td>
-                          <% if (festival.ok !== 'n') { %>
-                            <td>Sí</td>
-                          <% } else { %>
-                            <td><span style="color:red">No</span></td>
-                          <% } %>
-                          <td><%=festival.platform %></td>
-                          <td><%=festival.year %></td>
-                          <% if (festival.entryfee !== 0) { %>
-                            <td>Sí</td>
-                          <% } else { %>
-                            <td>No</td>
-                          <% } %>
-                          <td><%= festival.contactcountry %></td>
-                          
-                          <td><a target="_blank" href="<%= festival.contact_web %>"><%= festival.contact_web %></a></td>
-                        </tr>
-                      <% }) %>
-                    <% } else {%>
-                    <tr>
-                      <th colspan=4 scope="row" class="text-center text-danger">No hay festivales en la  base de datos</th>
-                    </tr>
-                    <% } %>
-                  </tbody>
-                </table>
-            </div>
-          </div>
         </div>
-      </div>
-    </div>
-  </div>
-  <!-- Include scripts -->
-  <%- include ('partials/scripts'); -%>
-
-</body>
+        <!-- Include scripts -->
+        <%- include ('partials/scripts'); -%>
+    </body>
 </html>
-
